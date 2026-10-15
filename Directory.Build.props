@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+    <RevitVersion Condition="'$(RevitVersion)' == '' And ('$(Configuration)' == 'Debug2022' Or '$(Configuration)' == 'Release2022')">2022</RevitVersion>
+    <RevitVersion Condition="'$(RevitVersion)' == '' And ('$(Configuration)' == 'Debug2023' Or '$(Configuration)' == 'Release2023')">2023</RevitVersion>
+    <RevitVersion Condition="'$(RevitVersion)' == '' And ('$(Configuration)' == 'Debug2024' Or '$(Configuration)' == 'Release2024')">2024</RevitVersion>
+    <RevitVersion Condition="'$(RevitVersion)' == '' And ('$(Configuration)' == 'Debug2025' Or '$(Configuration)' == 'Release2025')">2025</RevitVersion>
+    <RevitVersion Condition="'$(RevitVersion)' == '' And ('$(Configuration)' == 'Debug2026' Or '$(Configuration)' == 'Release2026')">2026</RevitVersion>
+    <RevitVersion Condition="'$(RevitVersion)' == '' And ('$(Configuration)' == 'Debug2027' Or '$(Configuration)' == 'Release2027')">2027</RevitVersion>
+    <RevitVersion Condition="'$(RevitVersion)' == ''">2025</RevitVersion>
+    <BaseIntermediateOutputPath>obj\$(RevitVersion)\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+</Project>

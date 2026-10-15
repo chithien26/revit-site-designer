@@ -1,0 +1,181 @@
+{
+  "date": "2026-10-15T14:56:51.2270665+07:00",
+  "method": "Roslyn semantic type references across evaluated production build inputs; all external entry points and types referenced by smoke harnesses retained as roots. Whole classes are retained, including every member and inherited UI dependency.",
+  "roots": [
+    "Compatibility\\LegacyUnits.cs",
+    "Compatibility\\LegacyUnitTypes.cs",
+    "Compatibility\\RuntimeDiagnostics.cs",
+    "Compatibility\\RuntimePaths.cs",
+    "EPCommon\\ApplicationUtility.cs",
+    "EPCommon\\Eps_Point.cs",
+    "EPCommon\\EPShared.cs",
+    "EPCommon\\EPSharedExternal.cs",
+    "EPCommon\\FamilyLoadOptions.cs",
+    "EPCommon\\ProgressBarForm.cs",
+    "EPCommon\\RegistryPaths.cs",
+    "EPCommon\\RevitGeometry.cs",
+    "EPCommon\\RevitProduct.cs",
+    "EPCommon\\Settings.cs",
+    "EPCommon\\SettingsForm.cs",
+    "EPCommon\\TopographyEditFailuresPreprocessor.cs",
+    "EPCommon\\TopographySurfaceContainer.cs",
+    "EPCommon\\ValueConversion.cs",
+    "obj\\2025\\Release\\net8.0-windows\\UI\\DialogWindow.g.cs",
+    "SITES\\AnnotateCommand.cs",
+    "SITES\\ConvertObjectToToposurfaceCommand.cs",
+    "SITES\\CurbFamilyManagerCommand.cs",
+    "SITES\\ExportLandXMLCommand.cs",
+    "SITES\\ExternalApplication.cs",
+    "SITES\\ImportLandXMLCommand.cs",
+    "SITES\\LocateCurbCommand.cs",
+    "SITES\\LocateFeatureLineCommand.cs",
+    "SITES\\LocateParkingLotCommand.cs",
+    "SITES\\LocatePointWipeoutCommand.cs",
+    "SITES\\LocateRetainingWallCommand.cs",
+    "SITES\\LocateSideWalkCommand.cs",
+    "SITES\\LocateSoftTerrainCommand.cs",
+    "SITES\\LocateStreetCommand.cs",
+    "SITES\\ModifyCurbCommand.cs",
+    "SITES\\ModifyFeatureLineCommand.cs",
+    "SITES\\ModifyParkingLotCommand.cs",
+    "SITES\\ModifyPointWipeoutCommand.cs",
+    "SITES\\ModifyRetainingWallCommand.cs",
+    "SITES\\ModifySidewalkCommand.cs",
+    "SITES\\ModifySoftTerrainCommand.cs",
+    "SITES\\ModifyStreetCommand.cs",
+    "SITES\\ParkingLotFamilyManagerCommand.cs",
+    "SITES\\Properties\\Resources.cs",
+    "SITES\\RetainingWallFamilyManagerCommand.cs",
+    "SITES\\SetBaseToposurfaceCommand.cs",
+    "SITES\\SidewalkFamilyManagerCommand.cs",
+    "SITES\\Sites_Core\\Resources.cs",
+    "SITES\\SitesAboutCommand.cs",
+    "SITES\\SitesBorrowLicenseCommand.cs",
+    "SITES\\SitesLicenseManagementCommand.cs",
+    "SITES\\SitesReportCommand.cs",
+    "SITES\\SitesReturnLicenseCommand.cs",
+    "SITES\\SitesSettingsCommand.cs",
+    "SITES\\SoftTerrainFamilyManagerCommand.cs",
+    "SITES\\StepsFamilyManagerCommand.cs",
+    "SITES\\StreetsFamilyManagerCommand.cs",
+    "UI\\DialogWindow.xaml.cs",
+    "UI\\WpfFocus.cs",
+    "UI\\WpfForm.cs"
+  ],
+  "unused_ui_launchers": [
+    {
+      "method": "EPCommon.ImportExport.ImportFileWithSeparator(Autodesk.Revit.DB.Document, string, string, ref System.Collections.Generic.List\u003CEPCommon.FamilyTypeContainer\u003E)",
+      "file": "EPCommon\\ImportExport.cs",
+      "start": 272,
+      "length": 6899,
+      "dialogs": [
+        "EPCommon.ProgressBarForm",
+        "EPCommon.WarningOptionsForm"
+      ]
+    },
+    {
+      "method": "EPCommon.ImportExport.ExportToFile(Autodesk.Revit.DB.Document, string, string, System.Collections.Generic.List\u003CEPCommon.FamilyTypeContainer\u003E, System.Collections.Generic.List\u003CEPCommon.ParameterColumn\u003E)",
+      "file": "EPCommon\\ImportExport.cs",
+      "start": 11186,
+      "length": 6314,
+      "dialogs": [
+        "EPCommon.WarningOptionsForm"
+      ]
+    },
+    {
+      "method": "EPCommon.ManageFamily.SetupFamilyDocument(Autodesk.Revit.DB.Document, string, EPCommon.LandcaddID, Autodesk.Revit.DB.Family, ref bool, ref bool, ref Autodesk.Revit.DB.Document, ref EPCommon.EPTransactionContainer, ref System.Collections.Generic.List\u003CAutodesk.Revit.DB.FamilyParameter\u003E)",
+      "file": "EPCommon\\ManageFamily.cs",
+      "start": 33273,
+      "length": 6601,
+      "dialogs": [
+        "EPCommon.ProgressBarForm"
+      ]
+    },
+    {
+      "method": "EPCommon.ManagePlants.CreateNewMixFamilyDocument(Autodesk.Revit.DB.Document, System.Collections.Generic.List\u003CEPCommon.FamilyTypeContainer\u003E, EPCommon.DialogType, string)",
+      "file": "EPCommon\\ManagePlants.cs",
+      "start": 59783,
+      "length": 8370,
+      "dialogs": [
+        "EPCommon.ProgressBarForm"
+      ]
+    },
+    {
+      "method": "EPCommon.ManagePlants.CreateNewFamilyDocument(Autodesk.Revit.DB.Document, System.Collections.Generic.List\u003CEPCommon.FamilyTypeContainer\u003E, string, string, string)",
+      "file": "EPCommon\\ManagePlants.cs",
+      "start": 68153,
+      "length": 9060,
+      "dialogs": [
+        "EPCommon.ProgressBarForm"
+      ]
+    },
+    {
+      "method": "EPCommon.ManagePlants.VerifySharedParameters(Autodesk.Revit.DB.Document, EPCommon.EPTransactionContainer)",
+      "file": "EPCommon\\ManagePlants.cs",
+      "start": 132148,
+      "length": 2344,
+      "dialogs": [
+        "EPCommon.WarningOptionsForm"
+      ]
+    },
+    {
+      "method": "EPCommon.ParkingLotCommon.PlaceLegList(Autodesk.Revit.DB.Document, EPCommon.PlacementSettings, EPCommon.Eps_Leg)",
+      "file": "EPCommon\\ParkingLotCommon.cs",
+      "start": 94478,
+      "length": 5159,
+      "dialogs": [
+        "EPCommon.ProgressBarForm"
+      ]
+    },
+    {
+      "method": "EPCommon.TopographySurfaceManagement.RefreshAllSiteComponents(Autodesk.Revit.DB.Document, EPCommon.EPTransactionContainer, System.Collections.Generic.List\u003CEPCommon.FamilyInstanceComponentWrapper\u003E, EPCommon.TopographySurfaceContainer, EPCommon.TopographySurfaceContainer, Autodesk.Revit.DB.FamilyInstance)",
+      "file": "EPCommon\\TopographySurfaceManagement.cs",
+      "start": 331423,
+      "length": 11528,
+      "dialogs": [
+        "EPCommon.ProgressBarForm"
+      ]
+    }
+  ],
+  "unused_ui": [],
+  "removal_files": [],
+  "retained_ui": [
+    "EPCommon.AboutForm",
+    "EPCommon.AddBreaklineForm",
+    "EPCommon.AddModifyFamilyForm",
+    "EPCommon.AnnotateForm",
+    "EPCommon.ChangeFamilyTypeForm",
+    "EPCommon.ChangeIntersectionRadiusForm",
+    "EPCommon.ChangeValueForm",
+    "EPCommon.ConvertToToposurfaceForm",
+    "EPCommon.CopyFamilyForm",
+    "EPCommon.EPForm",
+    "EPCommon.ErrorTreeListForm",
+    "EPCommon.ExportLandXMLManager",
+    "EPCommon.ExportLandXMLTypeList",
+    "EPCommon.FamilyManagerForm",
+    "EPCommon.ImportLandXMLManager",
+    "EPCommon.LandXMLTypeList",
+    "EPCommon.LocateSiteComponentForm",
+    "EPCommon.LocateSiteCurbComponentForm",
+    "EPCommon.LocateSiteFeatureLineComponentForm",
+    "EPCommon.LocateSiteParkingLotComponentForm",
+    "EPCommon.LocateSitePointWipeoutComponentForm",
+    "EPCommon.ModifySiteComponentForm",
+    "EPCommon.ModifySiteParkingLotComponentForm",
+    "EPCommon.ModifySitePointWipeoutComponentForm",
+    "EPCommon.NewFamilyForm",
+    "EPCommon.PhasePickerForm",
+    "EPCommon.ProgressBar",
+    "EPCommon.ProgressBarForm",
+    "EPCommon.QuantumListView",
+    "EPCommon.SetBaseToposurfaceForm",
+    "EPCommon.SettingsForm",
+    "EPCommon.SiteComponentReport",
+    "EPCommon.SurfaceInformation",
+    "EPCommon.TypeManagerForm",
+    "EPCommon.WarningOptionsForm",
+    "SiteDesigner.UI.WpfForm"
+  ],
+  "outside_references": []
+}

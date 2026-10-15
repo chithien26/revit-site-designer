@@ -1,0 +1,11 @@
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.pdb
+*.log
+tools/ilspy/
+tools/decompiled/
+tools/NormalizeResources.exe
+tools/revit-test-process*.txt

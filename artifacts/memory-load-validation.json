@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-15T15:19:05.2233121+07:00",
+  "cause": "Add-in Manager byte-loading leaves Assembly.Location empty; old RuntimePaths passed a null folder to Path.Combine.",
+  "reproduced_before": "artifacts/memory-load-before.log",
+  "builds": "Revit 2022-2027 Release and Release2025: 0 errors",
+  "smoke": [
+    {
+      "revit_target": 2022,
+      "passed": 98,
+      "log": "artifacts/memory-load-smoke-2022.log"
+    },
+    {
+      "revit_target": 2025,
+      "passed": 98,
+      "log": "artifacts/memory-load-smoke-2025.log"
+    },
+    {
+      "revit_target": 2027,
+      "passed": 98,
+      "log": "artifacts/memory-load-smoke-2027.log"
+    }
+  ],
+  "tested_dll": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release2025\\2025\\net8.0-windows\\SiteDesigner.dll",
+  "sha256": "ADA16154F1152417F13AD12F643EEAD35EB0B39DC819D401CDAB7F02C69C7B93",
+  "build_id": "6e287585-1c3a-4a34-9561-21de9c71cf10",
+  "native_library": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release2025\\2025\\net8.0-windows\\SitesDLLWrapper.dll",
+  "native_library_preserved": true,
+  "revit_2025": {
+    "loader": "Revit Add In Manager 1.5.7, manual mode",
+    "assembly_location": "<memory>",
+    "commands": [
+      "SITES.SitesAboutCommand",
+      "SITES.ConvertObjectToToposurfaceCommand"
+    ],
+    "result": "Both WPF dialogs opened and closed normally; conversion cancelled before execution.",
+    "log": "artifacts/memory-load-revit-2025.log"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-15",
+  "default_revit": 2025,
+  "builds": [
+    {
+      "revit": 2022,
+      "framework": "net48",
+      "package": "Revit_All_Main_Versions_API_x64/2022.0.0",
+      "dll": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2022\\net48\\SiteDesigner.dll",
+      "sha256": "68b4e6772d7d84e10d54cbcc27f398aa11da2c29da0a00c539ea6d8a2702211c",
+      "revit_api_dlls_deployed": false
+    },
+    {
+      "revit": 2023,
+      "framework": "net48",
+      "package": "Revit_All_Main_Versions_API_x64/2023.0.0",
+      "dll": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2023\\net48\\SiteDesigner.dll",
+      "sha256": "9a3afe42cf4e3e1766b418167c78e29f55cfecb8d14f7081a0cfc7df041b969b",
+      "revit_api_dlls_deployed": false
+    },
+    {
+      "revit": 2024,
+      "framework": "net48",
+      "package": "Revit_All_Main_Versions_API_x64/2024.0.0",
+      "dll": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2024\\net48\\SiteDesigner.dll",
+      "sha256": "97cffac666690d21cb7fccac64505f4d75eb27e0243a4b76f7a209df04ec641e",
+      "revit_api_dlls_deployed": false
+    },
+    {
+      "revit": 2025,
+      "framework": "net8.0-windows",
+      "package": "Revit_All_Main_Versions_API_x64/2025.0.0",
+      "dll": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2025\\net8.0-windows\\SiteDesigner.dll",
+      "sha256": "09e98e6739957e527abd6f23ddbad110c5e7901a9697ab108edac9d90c893639",
+      "revit_api_dlls_deployed": false
+    },
+    {
+      "revit": 2026,
+      "framework": "net8.0-windows",
+      "package": "Revit_All_Main_Versions_API_x64/2026.0.0",
+      "dll": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2026\\net8.0-windows\\SiteDesigner.dll",
+      "sha256": "b259947192101d1c64bdf9c40cdae8be5c738d247c87aed48a6fa4eb13ded7c3",
+      "revit_api_dlls_deployed": false
+    },
+    {
+      "revit": 2027,
+      "framework": "net10.0-windows",
+      "package": "Revit_All_Main_Versions_API_x64/2027.0.0",
+      "dll": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2027\\net10.0-windows\\SiteDesigner.dll",
+      "sha256": "6d79471b72e14e05f3134acffb24e759a700a0929cd91987bb7bdc6ab248bbbe",
+      "revit_api_dlls_deployed": false
+    }
+  ],
+  "ui_native_smoke": [
+    {
+      "revit_target": 2022,
+      "checks": 98,
+      "result": "passed"
+    },
+    {
+      "revit_target": 2025,
+      "checks": 98,
+      "result": "passed"
+    },
+    {
+      "revit_target": 2027,
+      "checks": 98,
+      "result": "passed"
+    }
+  ],
+  "revit_hosted_smoke": {
+    "revit": 2025,
+    "checks": 11,
+    "result": "passed"
+  },
+  "limitations": [
+    "Native WPF presentation retains hidden WinForms controller objects.",
+    "Terrain commands operate on legacy TopographySurface; native Toposolid editing is not implemented.",
+    "Runtime tests do not cover every workflow in every Revit version."
+  ],
+  "native_dependencies": {
+    "original_source": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release2025\\2025\\net8.0-windows",
+    "build_source": "D:\\WIPRevitAPI\\SiteDesigner\\Dependencies\\Native",
+    "sha256": {
+      "SitesDLLWrapper.dll": "6392ca7f4d0322e60103d1eb83f91cf255a41677f1ff91b58d9d543baf466450",
+      "whitelist.xml": "131dc52001cec4db4d3ef5713c137bfef00810cd9168a204aad00cc1c61c3beb"
+    },
+    "verified_folders": [
+      "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2022\\net48",
+      "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2023\\net48",
+      "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2024\\net48",
+      "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2025\\net8.0-windows",
+      "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2026\\net8.0-windows",
+      "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2027\\net10.0-windows",
+      "D:\\WIPRevitAPI\\SiteDesigner\\Dependencies\\Native",
+      "C:\\Users\\vinhp\\AppData\\Roaming\\Autodesk\\Revit\\Addins\\2025\\SiteDesigner",
+      "C:\\Users\\vinhp\\AppData\\Roaming\\Autodesk\\Revit\\Addins\\2027\\SiteDesigner"
+    ]
+  },
+  "command_runtime_update": {
+    "date": "2026-10-15T14:38:28.5440589+07:00",
+    "builds": "All six Release builds and Release2025: 0 errors",
+    "standalone_smoke": "89 checks passed for each of 2022, 2025, 2027",
+    "installed_versions": [
+      2025,
+      2027
+    ],
+    "hosted_command_checks": "Not completed: test launch timed out at the unsigned Site Designer WPF prompt. Temporary harness registration was removed; test Revit process 49588 remains at the prompt for user input.",
+    "previous_hosted_result": "Original direct-dialog test: 11 checks passed before command runtime changes"
+  },
+  "unused_ui_cleanup": {
+    "date": "2026-10-15T14:57:16.0066542+07:00",
+    "report": "D:\\WIPRevitAPI\\SiteDesigner\\artifacts\\ui-cleanup.json",
+    "removed_ui_types": 24,
+    "removed_files": 85,
+    "removed_resource_files": 50,
+    "built_and_smoke_tested": true,
+    "installed_after_cleanup": false
+  },
+  "memory_load_fix": {
+    "report": "D:\\WIPRevitAPI\\SiteDesigner\\artifacts\\memory-load-validation.json",
+    "build_id": "6e287585-1c3a-4a34-9561-21de9c71cf10",
+    "actual_revit_2025_dialogs_verified": true,
+    "full_conversion_executed": false
+  }
+}

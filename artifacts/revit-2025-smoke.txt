@@ -1,0 +1,12 @@
+PASS: Site Designer OnStartup initialized
+PASS: Original native license check
+PASS: Modern project units mapping
+PASS: Units parse preserves internal feet
+PASS: Units format millimeters
+PASS: Legacy topography creation in Revit 2025
+PASS: Terrain mesh and geometry container
+PASS: Topography edit scope
+PASS: Upgrade/load 2020 curb family
+PASS: Forge family parameter creation
+PASS: Settings rendered by WPF in Revit
+SUCCESS: 11 Revit-hosted checks

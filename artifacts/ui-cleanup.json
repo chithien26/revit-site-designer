@@ -1,0 +1,555 @@
+{
+  "date": "2026-10-15T14:50:53.491811+07:00",
+  "backup": "D:\\WIPRevitAPI\\SiteDesigner\\artifacts\\ui-before-cleanup-20261015-145052.zip",
+  "removed_ui_types": [
+    {
+      "name": "EPCommon.AddModifyMix",
+      "file": "EPCommon\\AddModifyMix.cs"
+    },
+    {
+      "name": "EPCommon.ConvertPlantForm",
+      "file": "EPCommon\\ConvertPlantForm.cs"
+    },
+    {
+      "name": "EPCommon.GrowthSimulationForm",
+      "file": "EPCommon\\GrowthSimulationForm.cs"
+    },
+    {
+      "name": "EPCommon.LandcaddMixReport",
+      "file": "EPCommon\\LandcaddMixReport.cs"
+    },
+    {
+      "name": "EPCommon.LocateComponentsForm",
+      "file": "EPCommon\\LocateComponentsForm.cs"
+    },
+    {
+      "name": "EPCommon.LocateFenceForm",
+      "file": "EPCommon\\LocateFenceForm.cs"
+    },
+    {
+      "name": "EPCommon.ModifyPlantForm",
+      "file": "EPCommon\\ModifyPlantForm.cs"
+    },
+    {
+      "name": "EPCommon.ParkingLotAreaSettingsForm",
+      "file": "EPCommon\\ParkingLotAreaSettingsForm.cs"
+    },
+    {
+      "name": "EPCommon.ParkingLotPlacementForm",
+      "file": "EPCommon\\ParkingLotPlacementForm.cs"
+    },
+    {
+      "name": "EPCommon.PlacePlantForm",
+      "file": "EPCommon\\PlacePlantForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantBookletForm",
+      "file": "EPCommon\\PlantBookletForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantDWGCreatorForm",
+      "file": "EPCommon\\PlantDWGCreatorForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantExportForm",
+      "file": "EPCommon\\PlantExportForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantFieldsForm",
+      "file": "EPCommon\\PlantFieldsForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantGrowthListView",
+      "file": "EPCommon\\PlantGrowthListView.cs"
+    },
+    {
+      "name": "EPCommon.PlantGrowthModify",
+      "file": "EPCommon\\PlantGrowthModify.cs"
+    },
+    {
+      "name": "EPCommon.PlantMixFamilyManager",
+      "file": "EPCommon\\PlantMixFamilyManager.cs"
+    },
+    {
+      "name": "EPCommon.PlantMixForm",
+      "file": "EPCommon\\PlantMixForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantMixSearchForm",
+      "file": "EPCommon\\PlantMixSearchForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantViewForm",
+      "file": "EPCommon\\PlantViewForm.cs"
+    },
+    {
+      "name": "EPCommon.ProductUpdateForm",
+      "file": "EPCommon\\ProductUpdateForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantSearchForm",
+      "file": "EPCommon\\PlantSearchForm.cs"
+    },
+    {
+      "name": "EPCommon.SharedParametersFilenameForm",
+      "file": "EPCommon\\SharedParametersFilenameForm.cs"
+    },
+    {
+      "name": "EPCommon.InputValueForm",
+      "file": "EPCommon\\InputValueForm.cs"
+    }
+  ],
+  "removed_files": [
+    {
+      "path": "EPCommon\\AddModifyFamilyForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\AddModifyMix.cs",
+      "bytes": 41312,
+      "sha256": "3867EE57012D18148577B93ADDDED7056BE38BFD5E1B40BD941FBC51EC0BCFE5"
+    },
+    {
+      "path": "EPCommon\\AddModifyMix.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\AnnotateForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ChangeIntersectionRadiusForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ComponentCreation.cs",
+      "bytes": 23571,
+      "sha256": "53813F1BE788D71691556E4ED4705DC3C9190CF10EA98692AED42EA6C110F95B"
+    },
+    {
+      "path": "EPCommon\\ConvertPlant.cs",
+      "bytes": 17802,
+      "sha256": "108B8536DC814621D862D30CEF3D626193D74B8E1EE32A4395F5BFA87114D4E2"
+    },
+    {
+      "path": "EPCommon\\ConvertPlantForm.cs",
+      "bytes": 23126,
+      "sha256": "CF630652B6B54803B81C38B345EAB6376D14DE3A9BD7DFD085A0C2F35E6D4C03"
+    },
+    {
+      "path": "EPCommon\\ConvertPlantForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ConvertToToposurfaceForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\CopyFamilyForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\CreatePlantMix.cs",
+      "bytes": 16469,
+      "sha256": "B96249F1CCCDA96BE25B26B84AF61FAC710FC1FF68365382B2B08D3716A668B9"
+    },
+    {
+      "path": "EPCommon\\EPForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ErrorTreeListForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ExportLandXMLManager.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ExportLandXMLTypeList.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\FamilyManagerForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\FenceCreation.cs",
+      "bytes": 22342,
+      "sha256": "460A3EF2F3D4E5059889BF1A824B2285B0CA8CC872AC03DA48600BE98BE9486E"
+    },
+    {
+      "path": "EPCommon\\GrowthSimulation.cs",
+      "bytes": 16486,
+      "sha256": "39D3C38055A0969423E6EFEB07C51E78987256D017B2B7818515935554D0EB35"
+    },
+    {
+      "path": "EPCommon\\GrowthSimulationForm.cs",
+      "bytes": 21649,
+      "sha256": "BB82B7E25B10248C5567FA0AAE42C31750DCCC42BC999F2780F28B7EDBD65FD8"
+    },
+    {
+      "path": "EPCommon\\GrowthSimulationForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ImportLandXMLManager.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\LandcaddMixReport.cs",
+      "bytes": 49051,
+      "sha256": "25C7ECE80511FFFE39E0CF3FAEE4F55A426F252A62F4DC4B903DF6F90FC8138F"
+    },
+    {
+      "path": "EPCommon\\LandcaddMixReport.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\LandXMLTypeList.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\LocateComponentsForm.cs",
+      "bytes": 51963,
+      "sha256": "48493FE2C766BE60F504810BF096AD65B5D63B36388A78576B50EDCE7504DACD"
+    },
+    {
+      "path": "EPCommon\\LocateComponentsForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\LocateFenceForm.cs",
+      "bytes": 38988,
+      "sha256": "D3E948C34054123D57118DA5049C347816696D4ED8A922AA1CB5A6A628E3A478"
+    },
+    {
+      "path": "EPCommon\\LocateFenceForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\LocateSiteCurbComponentForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\LocateSiteParkingLotComponentForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\LocateSitePointWipeoutComponentForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ModifyPlant.cs",
+      "bytes": 19403,
+      "sha256": "C3F5DBD34456CFEF2E5D9C0DF4B970ABA5A9DB5989FB9F8725AB60BDA17EDAFC"
+    },
+    {
+      "path": "EPCommon\\ModifyPlantForm.cs",
+      "bytes": 36511,
+      "sha256": "6EB145FBA03C5D3EB21E063C41BCACF2D7EB730D8BC99E3ED8A09EAFFD2E1D3F"
+    },
+    {
+      "path": "EPCommon\\ModifyPlantForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ModifySiteComponentForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ModifySiteParkingLotComponentForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ModifySitePointWipeoutComponentForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\NewFamilyForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ParkingLotAreaSettingsForm.cs",
+      "bytes": 13851,
+      "sha256": "115E7FF53BDE68326B9DC288B5C7D56B15248AA1A2A7A1D34881058A2DA56D05"
+    },
+    {
+      "path": "EPCommon\\ParkingLotAreaSettingsForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ParkingLotPlacement.cs",
+      "bytes": 26585,
+      "sha256": "C21E5BF7655734523382E8F91A2889F5BEE152D468742DA470AB8B16157EF8F7"
+    },
+    {
+      "path": "EPCommon\\ParkingLotPlacementForm.cs",
+      "bytes": 111887,
+      "sha256": "6387CDCEA58AF55F968547C1B22AF30D7E4B399D8DE515F470E9C4B5FAB878A8"
+    },
+    {
+      "path": "EPCommon\\ParkingLotPlacementForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PhasePickerForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PlacePlantForm.cs",
+      "bytes": 73622,
+      "sha256": "FBBC44160C29B2022B070149D354016E83500F35A0625180A230E1233F26B4F4"
+    },
+    {
+      "path": "EPCommon\\PlacePlantForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PlantBooklet.cs",
+      "bytes": 7304,
+      "sha256": "7C1D4E915511223AD5B61A317B75714CA22D06C3C59D00EFF6AA16726FED77DA"
+    },
+    {
+      "path": "EPCommon\\PlantBookletForm.cs",
+      "bytes": 35751,
+      "sha256": "DE56EF7DF50C220878FFBCAECDA3436A9BF82DF1088A267FB1DDE1E6292D1EE4"
+    },
+    {
+      "path": "EPCommon\\PlantBookletForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PlantCreation.cs",
+      "bytes": 28103,
+      "sha256": "B67E5E164C255877A8B4EF69A738DBB5B45E7BFC694F4792DA6AA4E0F97FF3E9"
+    },
+    {
+      "path": "EPCommon\\PlantDWGCreatorForm.cs",
+      "bytes": 44590,
+      "sha256": "D4DF70FADEBEBAFBF8A276F4636631A8790AEB72918B1627770EE1F2D8663A86"
+    },
+    {
+      "path": "EPCommon\\PlantDWGCreatorForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PlantExportForm.cs",
+      "bytes": 10165,
+      "sha256": "900553996C540E486F72CE711ED854132718AB55CEE3926435754D235276A29B"
+    },
+    {
+      "path": "EPCommon\\PlantExportForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PlantFamilyCreation.cs",
+      "bytes": 534,
+      "sha256": "9A5DDBA45DC09AF7B675B53CF64B29B626C00C0AFA1469BEE2077D3AC85986DD"
+    },
+    {
+      "path": "EPCommon\\PlantFieldsForm.cs",
+      "bytes": 14770,
+      "sha256": "B5263403E1FE993AD411F68D2E2C605A06530FBA6CF6DC680F5CC867416AF1FD"
+    },
+    {
+      "path": "EPCommon\\PlantFieldsForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PlantGrowthListView.cs",
+      "bytes": 6142,
+      "sha256": "2B5523F68FF84FC3B3973FC616AB3F0BBA8E9E266578A2CD865EB31630ABC449"
+    },
+    {
+      "path": "EPCommon\\PlantGrowthModify.cs",
+      "bytes": 14103,
+      "sha256": "E846F4AAF605157F6404BAF7EE1923101B9E8AC208B7319487058F3BA63A5A59"
+    },
+    {
+      "path": "EPCommon\\PlantGrowthModify.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PlantMixFamilyManager.cs",
+      "bytes": 60901,
+      "sha256": "2DE715C79D55DFBA251BBB1F5FBE8D99C82BAC566F964CE06A11F31514BD0EFF"
+    },
+    {
+      "path": "EPCommon\\PlantMixFamilyManager.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PlantMixForm.cs",
+      "bytes": 15920,
+      "sha256": "41F19D0DE80DF1C75FAB7C1390D0A09F9C0FC82B80EBB60FFDF80C4A60BA8EDE"
+    },
+    {
+      "path": "EPCommon\\PlantMixForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PlantMixSearchForm.cs",
+      "bytes": 44711,
+      "sha256": "E41BE756CDEEA92D474E0926760C28DA1D658B616E4FD4AD823BFB34B8CFA6B8"
+    },
+    {
+      "path": "EPCommon\\PlantMixSearchForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PlantSearchForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\PlantViewForm.cs",
+      "bytes": 71703,
+      "sha256": "0968C45866CDE00EF3923312F07B80817CEA20E19D721D7867FB0ED2B0C7C3D8"
+    },
+    {
+      "path": "EPCommon\\PlantViewForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ProductUpdateForm.cs",
+      "bytes": 6623,
+      "sha256": "B5AED72ABABBA1C162D17EE583E4E4AA70E167BFEEE6B7F7C5CE663ACEE7384C"
+    },
+    {
+      "path": "EPCommon\\ProductUpdateForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\ProgressBar.resx",
+      "bytes": 6633,
+      "sha256": "082092D9683EBD108683A7AFDB701BF2389CA501607752B559FB9D8E30CF24BB"
+    },
+    {
+      "path": "EPCommon\\ProgressBarForm.resx",
+      "bytes": 26024,
+      "sha256": "6AAFEE1F6375908A70F36C933B8E7311E645A962BB2B9C47BDC61DED30F61A20"
+    },
+    {
+      "path": "EPCommon\\SettingsForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\SharedParametersFilenameForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\SiteComponentReport.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\SurfaceInformation.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\TypeManagerForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "EPCommon\\WarningOptionsForm.resx",
+      "bytes": 5817,
+      "sha256": "4363CD7D5B8671C72442CE1A1BFC10D64EBD24B2D718B54BD4FCD025E4967298"
+    },
+    {
+      "path": "SITES\\WinFormStrings.cs",
+      "bytes": 182419,
+      "sha256": "36CE1A179B3B87E73EBCDB0E09DD9E177EE342ACD5835BF52EE99AC16DF323E3"
+    },
+    {
+      "path": "EPCommon\\PlantSearchForm.cs",
+      "bytes": 20016,
+      "sha256": "EEA35978C8242A29B1FF694846B273CDC70DD7B93646FF5D991FE73F0C0897FB"
+    },
+    {
+      "path": "EPCommon\\SharedParametersFilenameForm.cs",
+      "bytes": 7522,
+      "sha256": "E19DE0B8B919CB3DE02D76BD200937B1C033E767C736E5F0CD8E91E8D8ED4419"
+    },
+    {
+      "path": "EPCommon\\InputValueForm.cs",
+      "bytes": 4425,
+      "sha256": "4B6EF58B62A629BEBF1EC36A255F9D136D302548A0CCEFE56CCC7DA4D530E50A"
+    },
+    {
+      "path": "EPCommon\\InputValueForm.resx",
+      "bytes": 26024,
+      "sha256": "6AAFEE1F6375908A70F36C933B8E7311E645A962BB2B9C47BDC61DED30F61A20"
+    }
+  ],
+  "removed_resource_count": 50,
+  "modified_files": [
+    "EPCommon\\ProgressBarForm.cs",
+    "EPCommon\\ManagePlants.cs",
+    "tools\\SmokeTests\\Program.cs"
+  ],
+  "validation": {
+    "completed": "2026-10-15T14:57:14.5388776+07:00",
+    "release_builds": "2022-2027: 0 errors",
+    "release2025_configuration": "0 errors",
+    "smoke_checks": {
+      "2027": 89,
+      "2025": 89,
+      "2022": 89
+    },
+    "unused_ui_types_remaining": 0,
+    "references_to_removed_types": 0,
+    "retained_ui_types": 36,
+    "revit_hosted": "Not run for cleanup: Revit is in use with an open user project."
+  },
+  "removed_unreferenced_launchers": [
+    "EPCommon.ManagePlants.FindFamilySymbols(string, Autodesk.Revit.DB.Document, EPCommon.EPTransactionContainer, System.Collections.Generic.List<Autodesk.Revit.DB.FamilySymbol>, ref System.Collections.Generic.List<Autodesk.Revit.DB.FamilySymbol>)",
+    "EPCommon.ManagePlants.FindFamilyTypes(string, Autodesk.Revit.DB.Document, ref System.Collections.Generic.List<EPCommon.FamilyTypeContainer>)",
+    "EPCommon.ManagePlants.CreateSharedParametersFilename(Autodesk.Revit.DB.Document)"
+  ],
+  "backup_verified": true
+}

@@ -1,0 +1,227 @@
+{
+  "date": "2026-10-15T14:48:56.8040046+07:00",
+  "method": "Roslyn semantic type references across evaluated production build inputs; all external entry points and types referenced by smoke harnesses retained as roots. Whole classes are retained, including every member and inherited UI dependency.",
+  "roots": [
+    "Compatibility\\LegacyUnits.cs",
+    "Compatibility\\LegacyUnitTypes.cs",
+    "Compatibility\\RuntimeDiagnostics.cs",
+    "Compatibility\\RuntimePaths.cs",
+    "EPCommon\\ApplicationUtility.cs",
+    "EPCommon\\Eps_Point.cs",
+    "EPCommon\\EPShared.cs",
+    "EPCommon\\EPSharedExternal.cs",
+    "EPCommon\\FamilyLoadOptions.cs",
+    "EPCommon\\InputValueForm.cs",
+    "EPCommon\\ProgressBarForm.cs",
+    "EPCommon\\RegistryPaths.cs",
+    "EPCommon\\RevitGeometry.cs",
+    "EPCommon\\RevitProduct.cs",
+    "EPCommon\\Settings.cs",
+    "EPCommon\\SettingsForm.cs",
+    "EPCommon\\TopographyEditFailuresPreprocessor.cs",
+    "EPCommon\\TopographySurfaceContainer.cs",
+    "EPCommon\\ValueConversion.cs",
+    "obj\\2025\\Release\\net8.0-windows\\UI\\DialogWindow.g.cs",
+    "SITES\\AnnotateCommand.cs",
+    "SITES\\ConvertObjectToToposurfaceCommand.cs",
+    "SITES\\CurbFamilyManagerCommand.cs",
+    "SITES\\ExportLandXMLCommand.cs",
+    "SITES\\ExternalApplication.cs",
+    "SITES\\ImportLandXMLCommand.cs",
+    "SITES\\LocateCurbCommand.cs",
+    "SITES\\LocateFeatureLineCommand.cs",
+    "SITES\\LocateParkingLotCommand.cs",
+    "SITES\\LocatePointWipeoutCommand.cs",
+    "SITES\\LocateRetainingWallCommand.cs",
+    "SITES\\LocateSideWalkCommand.cs",
+    "SITES\\LocateSoftTerrainCommand.cs",
+    "SITES\\LocateStreetCommand.cs",
+    "SITES\\ModifyCurbCommand.cs",
+    "SITES\\ModifyFeatureLineCommand.cs",
+    "SITES\\ModifyParkingLotCommand.cs",
+    "SITES\\ModifyPointWipeoutCommand.cs",
+    "SITES\\ModifyRetainingWallCommand.cs",
+    "SITES\\ModifySidewalkCommand.cs",
+    "SITES\\ModifySoftTerrainCommand.cs",
+    "SITES\\ModifyStreetCommand.cs",
+    "SITES\\ParkingLotFamilyManagerCommand.cs",
+    "SITES\\Properties\\Resources.cs",
+    "SITES\\RetainingWallFamilyManagerCommand.cs",
+    "SITES\\SetBaseToposurfaceCommand.cs",
+    "SITES\\SidewalkFamilyManagerCommand.cs",
+    "SITES\\Sites_Core\\Resources.cs",
+    "SITES\\SitesAboutCommand.cs",
+    "SITES\\SitesBorrowLicenseCommand.cs",
+    "SITES\\SitesLicenseManagementCommand.cs",
+    "SITES\\SitesReportCommand.cs",
+    "SITES\\SitesReturnLicenseCommand.cs",
+    "SITES\\SitesSettingsCommand.cs",
+    "SITES\\SoftTerrainFamilyManagerCommand.cs",
+    "SITES\\StepsFamilyManagerCommand.cs",
+    "SITES\\StreetsFamilyManagerCommand.cs",
+    "UI\\DialogWindow.xaml.cs",
+    "UI\\WpfFocus.cs",
+    "UI\\WpfForm.cs"
+  ],
+  "unused_ui": [
+    {
+      "name": "EPCommon.AddModifyMix",
+      "file": "EPCommon\\AddModifyMix.cs"
+    },
+    {
+      "name": "EPCommon.ConvertPlantForm",
+      "file": "EPCommon\\ConvertPlantForm.cs"
+    },
+    {
+      "name": "EPCommon.GrowthSimulationForm",
+      "file": "EPCommon\\GrowthSimulationForm.cs"
+    },
+    {
+      "name": "EPCommon.LandcaddMixReport",
+      "file": "EPCommon\\LandcaddMixReport.cs"
+    },
+    {
+      "name": "EPCommon.LocateComponentsForm",
+      "file": "EPCommon\\LocateComponentsForm.cs"
+    },
+    {
+      "name": "EPCommon.LocateFenceForm",
+      "file": "EPCommon\\LocateFenceForm.cs"
+    },
+    {
+      "name": "EPCommon.ModifyPlantForm",
+      "file": "EPCommon\\ModifyPlantForm.cs"
+    },
+    {
+      "name": "EPCommon.ParkingLotAreaSettingsForm",
+      "file": "EPCommon\\ParkingLotAreaSettingsForm.cs"
+    },
+    {
+      "name": "EPCommon.ParkingLotPlacementForm",
+      "file": "EPCommon\\ParkingLotPlacementForm.cs"
+    },
+    {
+      "name": "EPCommon.PlacePlantForm",
+      "file": "EPCommon\\PlacePlantForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantBookletForm",
+      "file": "EPCommon\\PlantBookletForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantDWGCreatorForm",
+      "file": "EPCommon\\PlantDWGCreatorForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantExportForm",
+      "file": "EPCommon\\PlantExportForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantFieldsForm",
+      "file": "EPCommon\\PlantFieldsForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantGrowthListView",
+      "file": "EPCommon\\PlantGrowthListView.cs"
+    },
+    {
+      "name": "EPCommon.PlantGrowthModify",
+      "file": "EPCommon\\PlantGrowthModify.cs"
+    },
+    {
+      "name": "EPCommon.PlantMixFamilyManager",
+      "file": "EPCommon\\PlantMixFamilyManager.cs"
+    },
+    {
+      "name": "EPCommon.PlantMixForm",
+      "file": "EPCommon\\PlantMixForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantMixSearchForm",
+      "file": "EPCommon\\PlantMixSearchForm.cs"
+    },
+    {
+      "name": "EPCommon.PlantViewForm",
+      "file": "EPCommon\\PlantViewForm.cs"
+    },
+    {
+      "name": "EPCommon.ProductUpdateForm",
+      "file": "EPCommon\\ProductUpdateForm.cs"
+    }
+  ],
+  "removal_files": [
+    "EPCommon\\AddModifyMix.cs",
+    "EPCommon\\ComponentCreation.cs",
+    "EPCommon\\ConvertPlant.cs",
+    "EPCommon\\ConvertPlantForm.cs",
+    "EPCommon\\CreatePlantMix.cs",
+    "EPCommon\\FenceCreation.cs",
+    "EPCommon\\GrowthSimulation.cs",
+    "EPCommon\\GrowthSimulationForm.cs",
+    "EPCommon\\LandcaddMixReport.cs",
+    "EPCommon\\LocateComponentsForm.cs",
+    "EPCommon\\LocateFenceForm.cs",
+    "EPCommon\\ModifyPlant.cs",
+    "EPCommon\\ModifyPlantForm.cs",
+    "EPCommon\\ParkingLotAreaSettingsForm.cs",
+    "EPCommon\\ParkingLotPlacement.cs",
+    "EPCommon\\ParkingLotPlacementForm.cs",
+    "EPCommon\\PlacePlantForm.cs",
+    "EPCommon\\PlantBooklet.cs",
+    "EPCommon\\PlantBookletForm.cs",
+    "EPCommon\\PlantCreation.cs",
+    "EPCommon\\PlantDWGCreatorForm.cs",
+    "EPCommon\\PlantExportForm.cs",
+    "EPCommon\\PlantFamilyCreation.cs",
+    "EPCommon\\PlantFieldsForm.cs",
+    "EPCommon\\PlantGrowthListView.cs",
+    "EPCommon\\PlantGrowthModify.cs",
+    "EPCommon\\PlantMixFamilyManager.cs",
+    "EPCommon\\PlantMixForm.cs",
+    "EPCommon\\PlantMixSearchForm.cs",
+    "EPCommon\\PlantViewForm.cs",
+    "EPCommon\\ProductUpdateForm.cs"
+  ],
+  "retained_ui": [
+    "EPCommon.AboutForm",
+    "EPCommon.AddBreaklineForm",
+    "EPCommon.AddModifyFamilyForm",
+    "EPCommon.AnnotateForm",
+    "EPCommon.ChangeFamilyTypeForm",
+    "EPCommon.ChangeIntersectionRadiusForm",
+    "EPCommon.ChangeValueForm",
+    "EPCommon.ConvertToToposurfaceForm",
+    "EPCommon.CopyFamilyForm",
+    "EPCommon.EPForm",
+    "EPCommon.ErrorTreeListForm",
+    "EPCommon.ExportLandXMLManager",
+    "EPCommon.ExportLandXMLTypeList",
+    "EPCommon.FamilyManagerForm",
+    "EPCommon.ImportLandXMLManager",
+    "EPCommon.InputValueForm",
+    "EPCommon.LandXMLTypeList",
+    "EPCommon.LocateSiteComponentForm",
+    "EPCommon.LocateSiteCurbComponentForm",
+    "EPCommon.LocateSiteFeatureLineComponentForm",
+    "EPCommon.LocateSiteParkingLotComponentForm",
+    "EPCommon.LocateSitePointWipeoutComponentForm",
+    "EPCommon.ModifySiteComponentForm",
+    "EPCommon.ModifySiteParkingLotComponentForm",
+    "EPCommon.ModifySitePointWipeoutComponentForm",
+    "EPCommon.NewFamilyForm",
+    "EPCommon.PhasePickerForm",
+    "EPCommon.PlantSearchForm",
+    "EPCommon.ProgressBar",
+    "EPCommon.ProgressBarForm",
+    "EPCommon.QuantumListView",
+    "EPCommon.SetBaseToposurfaceForm",
+    "EPCommon.SettingsForm",
+    "EPCommon.SharedParametersFilenameForm",
+    "EPCommon.SiteComponentReport",
+    "EPCommon.SurfaceInformation",
+    "EPCommon.TypeManagerForm",
+    "EPCommon.WarningOptionsForm",
+    "SiteDesigner.UI.WpfForm"
+  ],
+  "outside_references": []
+}

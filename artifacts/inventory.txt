@@ -1,0 +1,676 @@
+EPCommon\AboutForm.cs:12:using System.Windows.Forms;
+EPCommon\AboutForm.cs:17:public class AboutForm : EPForm
+SITES\AnnotateCommand.cs:12:using System.Windows.Forms;
+SITES\CurbFamilyManagerCommand.cs:12:using System.Windows.Forms;
+SITES\ConvertObjectToToposurfaceCommand.cs:12:using System.Windows.Forms;
+SITES\ExportLandXMLCommand.cs:12:using System.Windows.Forms;
+SITES\ImportLandXMLCommand.cs:12:using System.Windows.Forms;
+SITES\LocateCurbCommand.cs:12:using System.Windows.Forms;
+SITES\LocateFeatureLineCommand.cs:12:using System.Windows.Forms;
+SITES\LocateParkingLotCommand.cs:12:using System.Windows.Forms;
+SITES\LocatePointWipeoutCommand.cs:12:using System.Windows.Forms;
+SITES\LocateRetainingWallCommand.cs:12:using System.Windows.Forms;
+SITES\LocateSideWalkCommand.cs:12:using System.Windows.Forms;
+SITES\LocateSoftTerrainCommand.cs:12:using System.Windows.Forms;
+SITES\LocateStreetCommand.cs:12:using System.Windows.Forms;
+SITES\ModifyCurbCommand.cs:12:using System.Windows.Forms;
+SITES\ModifyParkingLotCommand.cs:12:using System.Windows.Forms;
+SITES\ModifyFeatureLineCommand.cs:12:using System.Windows.Forms;
+SITES\ModifyPointWipeoutCommand.cs:12:using System.Windows.Forms;
+SITES\ModifyRetainingWallCommand.cs:12:using System.Windows.Forms;
+SITES\ModifySidewalkCommand.cs:12:using System.Windows.Forms;
+SITES\ModifySoftTerrainCommand.cs:12:using System.Windows.Forms;
+SITES\ModifyStreetCommand.cs:12:using System.Windows.Forms;
+SITES\ParkingLotFamilyManagerCommand.cs:12:using System.Windows.Forms;
+SITES\SetBaseToposurfaceCommand.cs:12:using System.Windows.Forms;
+SITES\RetainingWallFamilyManagerCommand.cs:12:using System.Windows.Forms;
+SITES\SidewalkFamilyManagerCommand.cs:12:using System.Windows.Forms;
+SITES\SitesAboutCommand.cs:12:using System.Windows.Forms;
+SITES\SitesBorrowLicenseCommand.cs:12:using System.Windows.Forms;
+SITES\SitesLicenseManagementCommand.cs:12:using System.Windows.Forms;
+SITES\SitesReturnLicenseCommand.cs:12:using System.Windows.Forms;
+SITES\SitesReportCommand.cs:12:using System.Windows.Forms;
+SITES\SitesSettingsCommand.cs:12:using System.Windows.Forms;
+SITES\SoftTerrainFamilyManagerCommand.cs:12:using System.Windows.Forms;
+SITES\StepsFamilyManagerCommand.cs:12:using System.Windows.Forms;
+SITES\StreetsFamilyManagerCommand.cs:12:using System.Windows.Forms;
+EPCommon\AboutForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\AboutForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\AboutForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\AboutForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\AddBreaklineForm.cs:12:using System.Windows.Forms;
+EPCommon\AddBreaklineForm.cs:17:public class AddBreaklineForm : EPForm
+EPCommon\AddBreaklineForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\AddBreaklineForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\AddBreaklineForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\AddBreaklineForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+SITES\Properties\Resources.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+SITES\Properties\Resources.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+SITES\Properties\Resources.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+SITES\Properties\Resources.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\AddModifyFamilyForm.cs:16:using System.Windows.Forms;
+EPCommon\AddModifyFamilyForm.cs:21:public class AddModifyFamilyForm : EPForm
+SITES\WinFormStrings.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+SITES\WinFormStrings.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+SITES\WinFormStrings.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+SITES\WinFormStrings.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+SITES\Sites_Core\Resources.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+SITES\Sites_Core\Resources.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+SITES\Sites_Core\Resources.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+SITES\Sites_Core\Resources.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\AddModifyFamilyForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\AddModifyFamilyForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\AddModifyFamilyForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\AddModifyFamilyForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\AddModifyMix.cs:13:using System.Windows.Forms;
+EPCommon\AddModifyMix.cs:18:public class AddModifyMix : EPForm
+EPCommon\AddModifyMix.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\AddModifyMix.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\AddModifyMix.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\AddModifyMix.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\AnnotateForm.cs:11:using System.Windows.Forms;
+EPCommon\AnnotateForm.cs:16:public class AnnotateForm : EPForm
+EPCommon\AnnotateForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\AnnotateForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\AnnotateForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\AnnotateForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\Annotation.cs:14:using System.Windows.Forms;
+EPCommon\ApplicationUtility.cs:16:using System.Windows.Forms;
+EPCommon\ChangeFamilyTypeForm.cs:15:using System.Windows.Forms;
+EPCommon\ChangeFamilyTypeForm.cs:20:public class ChangeFamilyTypeForm : EPForm
+EPCommon\ChangeFamilyTypeForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ChangeFamilyTypeForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ChangeFamilyTypeForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ChangeFamilyTypeForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ChangeIntersectionRadiusForm.cs:13:using System.Windows.Forms;
+EPCommon\ChangeIntersectionRadiusForm.cs:18:public class ChangeIntersectionRadiusForm : EPForm
+EPCommon\ChangeIntersectionRadiusForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ChangeIntersectionRadiusForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ChangeIntersectionRadiusForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ChangeIntersectionRadiusForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ChangeValueForm.cs:12:using System.Windows.Forms;
+EPCommon\ChangeValueForm.cs:17:public class ChangeValueForm : EPForm
+EPCommon\ChangeValueForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ChangeValueForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ChangeValueForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ChangeValueForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ComponentCommon.cs:13:using System.Windows.Forms;
+EPCommon\ComponentCommon.cs:105:      if (_LocationElement.Location is LocationCurve location && GeometryObject.op_Inequality((GeometryObject) location.Curve, (GeometryObject) null))
+EPCommon\ComponentCreation.cs:16:using System.Windows.Forms;
+EPCommon\ComponentCreation.cs:285:      if (GeometryObject.op_Inequality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\ConvertPlant.cs:16:using System.Windows.Forms;
+EPCommon\ConvertPlantForm.cs:13:using System.Windows.Forms;
+EPCommon\ConvertPlantForm.cs:18:public class ConvertPlantForm : EPForm
+EPCommon\ConvertPlantForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ConvertPlantForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ConvertPlantForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ConvertPlantForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ConvertToToposurface.cs:15:using System.Windows.Forms;
+EPCommon\ConvertToToposurface.cs:166:        if (parameter1 != null && ElementId.op_Equality(parameter1.AsElementId(), ((Element) SelectedPhase).Id))
+EPCommon\ConvertToToposurface.cs:304:    if (!GeometryObject.op_Inequality((GeometryObject) source, (GeometryObject) null) || ((IEnumerable<GeometryObject>) source).Count<GeometryObject>() <= 0)
+EPCommon\ConvertToToposurface.cs:351:    if (GeometryObject.op_Equality((GeometryObject) geometryInstance, (GeometryObject) null))
+EPCommon\ConvertToToposurface.cs:354:    if (GeometryObject.op_Equality((GeometryObject) symbolGeometry, (GeometryObject) null))
+EPCommon\ConvertToToposurface.cs:357:    if (GeometryObject.op_Inequality((GeometryObject) symbolGeometry, (GeometryObject) null))
+EPCommon\ConvertToToposurface.cs:365:    if (GeometryObject.op_Equality((GeometryObject) geometryElement, (GeometryObject) null))
+EPCommon\ConvertToToposurface.cs:373:    if (GeometryObject.op_Equality((GeometryObject) solid, (GeometryObject) null))
+EPCommon\ConvertToToposurface.cs:385:    if (GeometryObject.op_Equality((GeometryObject) face, (GeometryObject) null))
+EPCommon\ConvertToToposurface.cs:388:    if (GeometryObject.op_Equality((GeometryObject) _Object1, (GeometryObject) null))
+EPCommon\ConvertToToposurface.cs:396:    if (GeometryObject.op_Equality((GeometryObject) profile, (GeometryObject) null))
+EPCommon\ConvertToToposurface.cs:405:    if (GeometryObject.op_Equality((GeometryObject) mesh, (GeometryObject) null))
+EPCommon\ConvertToToposurface.cs:428:    if (GeometryObject.op_Equality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\ConvertToToposurface.cs:445:    if (GeometryObject.op_Equality((GeometryObject) edge, (GeometryObject) null))
+EPCommon\ConvertToToposurfaceForm.cs:12:using System.Windows.Forms;
+EPCommon\ConvertToToposurfaceForm.cs:17:public class ConvertToToposurfaceForm : EPForm
+EPCommon\ConvertToToposurfaceForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ConvertToToposurfaceForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ConvertToToposurfaceForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ConvertToToposurfaceForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\CopyFamilyForm.cs:12:using System.Windows.Forms;
+EPCommon\CopyFamilyForm.cs:17:public class CopyFamilyForm : EPForm
+EPCommon\CopyFamilyForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\CopyFamilyForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\CopyFamilyForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\CopyFamilyForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\CreatePlantMix.cs:19:using System.Windows.Forms;
+EPCommon\CurbForm.cs:15:using System.Windows.Forms;
+EPCommon\CurbForm.cs:20:public class CurbForm : BaseForm
+EPCommon\CurbForm.cs:142:        if (GeometryObject.op_Equality((GeometryObject) solid, (GeometryObject) null))
+EPCommon\EPForm.cs:12:using System.Windows.Forms;
+EPCommon\EPForm.cs:17:public class EPForm : Form
+EPCommon\EPForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\EPForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\EPForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\EPForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\EPShared.cs:2408:      else if (GeometryObject.op_Inequality((GeometryObject) epsLeg2.HermiteSpline, (GeometryObject) null))
+EPCommon\EPShared.cs:2413:      else if (GeometryObject.op_Inequality((GeometryObject) epsLeg2.NurbSpline, (GeometryObject) null))
+EPCommon\EPShared.cs:2440:    else if (GeometryObject.op_Inequality((GeometryObject) _pLeg.HermiteSpline, (GeometryObject) null))
+EPCommon\EPShared.cs:2447:      if (!GeometryObject.op_Inequality((GeometryObject) _pLeg.NurbSpline, (GeometryObject) null))
+EPCommon\EPSharedExternal.cs:1309:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1312:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1315:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1318:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1321:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1324:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1327:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1330:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1336:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1345:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1348:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1355:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1362:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1369:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1376:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1383:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1390:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1398:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1406:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1412:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1419:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1426:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1432:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1441:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1447:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1455:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1461:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1467:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1473:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1479:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1487:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1493:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1499:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1505:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1511:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1518:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1524:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1531:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1539:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1547:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1552:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1557:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1560:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1574:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1577:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1582:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1587:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1590:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1593:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1598:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1603:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1608:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1613:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1620:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1626:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1632:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1635:    [DllImport("SITESWrapperx86.dll")]
+EPCommon\EPSharedExternal.cs:1638:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Unicode)]
+EPCommon\EPSharedExternal.cs:1659:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Unicode)]
+EPCommon\EPSharedExternal.cs:1696:    [DllImport("SITESWrapperx86.dll", CharSet = CharSet.Unicode)]
+EPCommon\EPSharedExternal.cs:1709:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1712:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1715:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1718:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1721:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1724:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1727:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1730:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1736:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1745:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1748:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1755:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1762:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1769:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1776:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1783:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1790:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1798:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1806:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1812:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1819:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1826:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1832:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1841:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1847:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1855:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1861:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1867:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1873:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1879:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1887:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1893:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1899:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1905:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1911:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1918:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1924:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1931:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1939:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1947:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1952:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1957:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1960:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:1974:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1977:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1982:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1987:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1990:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1993:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:1998:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:2003:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:2008:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Auto)]
+EPCommon\EPSharedExternal.cs:2013:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:2020:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:2026:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:2032:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:2035:    [DllImport("SitesDLLWrapper.dll")]
+EPCommon\EPSharedExternal.cs:2038:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Unicode)]
+EPCommon\EPSharedExternal.cs:2059:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Unicode)]
+EPCommon\EPSharedExternal.cs:2096:    [DllImport("SitesDLLWrapper.dll", CharSet = CharSet.Unicode)]
+EPCommon\Eps_Leg.cs:43:      if (this.Element != null && ElementId.op_Inequality(this.Element.Id, another.Element.Id))
+EPCommon\Eps_Leg.cs:46:    else if (this.Element == null || another.Element == null || ElementId.op_Inequality(this.Element.Id, another.Element.Id))
+EPCommon\EPTransactionContainer.cs:237:      if (FailureDefinitionId.op_Equality(_Id, failureDefinitionId))
+EPCommon\ErrorTreeListForm.cs:14:using System.Windows.Forms;
+EPCommon\ErrorTreeListForm.cs:19:public class ErrorTreeListForm : Form
+EPCommon\ErrorTreeListForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ErrorTreeListForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ErrorTreeListForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ErrorTreeListForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ExportLandXMLManager.cs:14:using System.Windows.Forms;
+EPCommon\ExportLandXMLManager.cs:20:public class ExportLandXMLManager : EPForm
+EPCommon\ExportLandXMLManager.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ExportLandXMLManager.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ExportLandXMLManager.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ExportLandXMLManager.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ExportLandXMLTypeList.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ExportLandXMLTypeList.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ExportLandXMLTypeList.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ExportLandXMLTypeList.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ExportLandXMLTypeList.cs:15:using System.Windows.Forms;
+EPCommon\ExportLandXMLTypeList.cs:20:public class ExportLandXMLTypeList : EPForm
+EPCommon\ExportLandXMLTypeList.cs:240:            if (GeometryObject.op_Inequality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\FailurePreprocessor.cs:36:        if (FailureDefinitionId.op_Equality(this.m_FailureDefinitionIdList[index], failureDefinitionId))
+EPCommon\FamilyInstanceComponentWrapper.cs:152:          if (GeometryObject.op_Inequality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\FamilyInstanceComponentWrapper.cs:492:        if (ElementId.op_Equality(this.m_FamilyContainerList[index].Element.Id, _ContainerID))
+EPCommon\FamilyInstanceComponentWrapper.cs:506:        if (ElementId.op_Equality(proposedElement.Id, _ElementId))
+EPCommon\FamilyInstanceComponentWrapper.cs:520:        if (ElementId.op_Equality(((Element) this.m_FamilyContainerList[index].FamilyInstance).Id, _ElementId))
+EPCommon\FamilyInstanceComponentWrapper.cs:533:        if (ElementId.op_Equality(this.m_FamilyContainerList[index].Element.Id, _FindElementId))
+EPCommon\FamilyInstanceComponentWrapper.cs:548:        if (_FindElementId.IntegerValue == -1 || ElementId.op_Equality(_FindElementId, this.m_FamilyContainerList[index].Element.Id))
+EPCommon\FamilyInstanceComponentWrapper.cs:566:        if (_FindElementId.IntegerValue == -1 || ElementId.op_Equality(_FindElementId, this.m_FamilyContainerList[index].Element.Id))
+EPCommon\FamilyInstanceComponentWrapper.cs:579:        if (ElementId.op_Equality(this.m_FamilyContainerList[index].Element.Id, _FindElementId))
+EPCommon\FamilyInstanceComponentWrapper.cs:682:        if (GeometryObject.op_Inequality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\FamilyInstanceComponentWrapper.cs:775:      if (GeometryObject.op_Inequality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\FamilyInstanceComponentWrapper.cs:834:            if (GeometryObject.op_Inequality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\FamilyInstanceComponentWrapper.cs:994:      if (ElementId.op_Equality(((Element) intersectionFamilyInstance).Id, id))
+EPCommon\FamilyManagerForm.cs:18:using System.Windows.Forms;
+EPCommon\FamilyManagerForm.cs:23:public class FamilyManagerForm : EPForm
+EPCommon\FamilyManagerForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\FamilyManagerForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\FamilyManagerForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\FamilyManagerForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\FenceCommon.cs:13:using System.Windows.Forms;
+EPCommon\FenceCreation.cs:16:using System.Windows.Forms;
+EPCommon\FenceCreation.cs:303:      if (GeometryObject.op_Inequality((GeometryObject) _Arc, (GeometryObject) null))
+EPCommon\GenericModelFamilyInstanceWrapper.cs:51:        if (this.m_FamilyContainerList[index].GetFamilyInstance(_CurrentDocument) != null && ElementId.op_Equality(this.m_FamilyContainerList[index].ID, _ContainerID))
+EPCommon\GenericModelFamilyInstanceWrapper.cs:64:        if (this.m_IslandFamilyInstanceList[index].GetFamilyInstance(_CurrentDocument) != null && ElementId.op_Equality(this.m_IslandFamilyInstanceList[index].ID, _ContainerID))
+EPCommon\GenericModelFamilyInstanceWrapper.cs:190:          if (ElementId.op_Equality(_DeletedElementsList[index2], this.m_FamilyAssignmentList[index1].ID))
+EPCommon\GeometryData.cs:52:    if (GeometryObject.op_Equality((GeometryObject) geometryElement, (GeometryObject) null))
+EPCommon\GeometryData.cs:55:    if (GeometryObject.op_Inequality((GeometryObject) geometryElement, (GeometryObject) null))
+EPCommon\GeometryData.cs:104:    if (GeometryObject.op_Equality((GeometryObject) null, (GeometryObject) solid))
+EPCommon\GeometryData.cs:116:    if (GeometryObject.op_Equality((GeometryObject) null, (GeometryObject) face))
+EPCommon\GeometryData.cs:119:    if (GeometryObject.op_Equality((GeometryObject) null, (GeometryObject) _Object1))
+EPCommon\GeometryData.cs:127:    if (GeometryObject.op_Equality((GeometryObject) null, (GeometryObject) profile))
+EPCommon\GeometryData.cs:136:    if (GeometryObject.op_Equality((GeometryObject) null, (GeometryObject) mesh))
+EPCommon\GeometryData.cs:162:    if (GeometryObject.op_Equality((GeometryObject) null, (GeometryObject) curve) || !curve.IsBound)
+EPCommon\GeometryData.cs:177:    if (GeometryObject.op_Equality((GeometryObject) null, (GeometryObject) geometryInstance))
+EPCommon\GeometryData.cs:181:    if (GeometryObject.op_Equality((GeometryObject) null, (GeometryObject) symbolGeometry))
+EPCommon\GeometryData.cs:184:    if (GeometryObject.op_Inequality((GeometryObject) symbolGeometry, (GeometryObject) null))
+EPCommon\GeometryData.cs:192:    if (GeometryObject.op_Equality((GeometryObject) null, (GeometryObject) edge))
+EPCommon\GrowthSimulation.cs:15:using System.Windows.Forms;
+EPCommon\GrowthSimulationForm.cs:14:using System.Windows.Forms;
+EPCommon\GrowthSimulationForm.cs:19:public class GrowthSimulationForm : EPForm
+EPCommon\GrowthSimulationForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\GrowthSimulationForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\GrowthSimulationForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\GrowthSimulationForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ImportData.cs:11:using System.Windows.Forms;
+EPCommon\ImportExport.cs:15:using System.Windows.Forms;
+EPCommon\ImportLandXMLClass.cs:12:using System.Windows.Forms;
+EPCommon\ImportLandXMLManager.cs:17:using System.Windows.Forms;
+EPCommon\ImportLandXMLManager.cs:22:public class ImportLandXMLManager : EPForm
+EPCommon\ImportLandXMLManager.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ImportLandXMLManager.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ImportLandXMLManager.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ImportLandXMLManager.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\InputValueForm.cs:10:using System.Windows.Forms;
+EPCommon\InputValueForm.cs:15:public class InputValueForm : Form
+EPCommon\InputValueForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\InputValueForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\InputValueForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\InputValueForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LandcaddMixReport.cs:17:using System.Windows.Forms;
+EPCommon\LandcaddMixReport.cs:22:public class LandcaddMixReport : EPForm
+EPCommon\LandcaddMixReport.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\LandcaddMixReport.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\LandcaddMixReport.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LandcaddMixReport.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LandXMLParser.cs:11:using System.Windows.Forms;
+EPCommon\LandXMLTypeList.cs:12:using System.Windows.Forms;
+EPCommon\LandXMLTypeList.cs:17:public class LandXMLTypeList : EPForm
+EPCommon\LandXMLTypeList.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\LandXMLTypeList.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\LandXMLTypeList.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LandXMLTypeList.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ListViewItemComparer.cs:8:using System.Windows.Forms;
+EPCommon\LocateComponentsForm.cs:13:using System.Windows.Forms;
+EPCommon\LocateComponentsForm.cs:18:public class LocateComponentsForm : EPForm
+EPCommon\LocateComponentsForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\LocateComponentsForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\LocateComponentsForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateComponentsForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateFenceForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\LocateFenceForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\LocateFenceForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateFenceForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateFenceForm.cs:13:using System.Windows.Forms;
+EPCommon\LocateFenceForm.cs:18:public class LocateFenceForm : EPForm
+EPCommon\LocateSiteComponentForm.cs:14:using System.Windows.Forms;
+EPCommon\LocateSiteComponentForm.cs:19:public class LocateSiteComponentForm : EPForm
+EPCommon\LocateSiteComponentForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\LocateSiteComponentForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\LocateSiteComponentForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateSiteComponentForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateSiteCurbComponentForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\LocateSiteCurbComponentForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\LocateSiteCurbComponentForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateSiteCurbComponentForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateSiteCurbComponentForm.cs:14:using System.Windows.Forms;
+EPCommon\LocateSiteCurbComponentForm.cs:19:public class LocateSiteCurbComponentForm : EPForm
+EPCommon\LocateSiteFeatureLineComponentForm.cs:12:using System.Windows.Forms;
+EPCommon\LocateSiteFeatureLineComponentForm.cs:17:public class LocateSiteFeatureLineComponentForm : EPForm
+EPCommon\LocateSiteFeatureLineComponentForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\LocateSiteFeatureLineComponentForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\LocateSiteFeatureLineComponentForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateSiteFeatureLineComponentForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateSiteParkingLotComponentForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\LocateSiteParkingLotComponentForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\LocateSiteParkingLotComponentForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateSiteParkingLotComponentForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateSiteParkingLotComponentForm.cs:13:using System.Windows.Forms;
+EPCommon\LocateSiteParkingLotComponentForm.cs:18:public class LocateSiteParkingLotComponentForm : EPForm
+EPCommon\LocateSitePointWipeoutComponentForm.cs:12:using System.Windows.Forms;
+EPCommon\LocateSitePointWipeoutComponentForm.cs:17:public class LocateSitePointWipeoutComponentForm : EPForm
+EPCommon\LocateSitePointWipeoutComponentForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\LocateSitePointWipeoutComponentForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\LocateSitePointWipeoutComponentForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\LocateSitePointWipeoutComponentForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ManageFamily.cs:14:using System.Windows.Forms;
+EPCommon\ManageFamily.cs:201:              if (familyParameter2 != null && (familyParameter2.FamilyParameter != null && familyParameter2.FamilyParameter.Id.IntegerValue != -1 && ElementId.op_Equality(familyParameter2.FamilyParameter.Id, familyParameter1.Id) || string.Compare(familyParameter2.ParameterName, familyParameter1.Definition.Name, true) == 0) && familyParameter2.StorageType == familyParameter1.StorageType)
+EPCommon\ManageFamily.cs:341:              if (familyParameter4 != null && (familyParameter4.FamilyParameter != null && familyParameter4.FamilyParameter.Id.IntegerValue != -1 && ElementId.op_Equality(familyParameter4.FamilyParameter.Id, familyParameter3.Id) || string.Compare(familyParameter4.ParameterName, familyParameter3.Definition.Name, true) == 0) && familyParameter4.StorageType == familyParameter3.StorageType)
+EPCommon\ManagePlants.cs:20:using System.Windows.Forms;
+EPCommon\ManagePlants.cs:1759:              if (familyParameter2 != null && (familyParameter2.FamilyParameter != null && familyParameter2.FamilyParameter.Id.IntegerValue != -1 && ElementId.op_Equality(familyParameter2.FamilyParameter.Id, familyParameter1.Id) || string.Compare(familyParameter2.ParameterName, familyParameter1.Definition.Name, true) == 0) && familyParameter2.StorageType == familyParameter1.StorageType)
+EPCommon\ManagePlants.cs:1849:              if (familyParameter4 != null && (familyParameter4.FamilyParameter != null && familyParameter4.FamilyParameter.Id.IntegerValue != -1 && ElementId.op_Equality(familyParameter4.FamilyParameter.Id, familyParameter3.Id) || string.Compare(familyParameter4.ParameterName, familyParameter3.Definition.Name, true) == 0) && familyParameter4.StorageType == familyParameter3.StorageType)
+EPCommon\ManagePlants.cs:1982:              if (familyParameter2 != null && (familyParameter2.FamilyParameter != null && familyParameter2.FamilyParameter.Id.IntegerValue != -1 && ElementId.op_Equality(familyParameter2.FamilyParameter.Id, familyParameter1.Id) || string.Compare(familyParameter2.ParameterName, familyParameter1.Definition.Name, true) == 0) && familyParameter2.StorageType == familyParameter1.StorageType)
+EPCommon\ManagePlants.cs:2059:              if (familyParameter4 != null && (familyParameter4.FamilyParameter != null && familyParameter4.FamilyParameter.Id.IntegerValue != -1 && ElementId.op_Equality(familyParameter4.FamilyParameter.Id, familyParameter3.Id) || string.Compare(familyParameter4.ParameterName, familyParameter3.Definition.Name, true) == 0) && familyParameter4.StorageType == familyParameter3.StorageType)
+EPCommon\MeshTriangleList.cs:29:    if (GeometryObject.op_Equality((GeometryObject) source, (GeometryObject) null))
+EPCommon\MeshTriangleList.cs:61:    if (GeometryObject.op_Equality((GeometryObject) null, (GeometryObject) mesh))
+EPCommon\ModifyPlant.cs:16:using System.Windows.Forms;
+EPCommon\ModifyPlantForm.cs:14:using System.Windows.Forms;
+EPCommon\ModifyPlantForm.cs:19:public class ModifyPlantForm : EPForm
+EPCommon\ModifyPlantForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ModifyPlantForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ModifyPlantForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ModifyPlantForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ModifySiteComponentForm.cs:10:using System.Windows.Forms;
+EPCommon\ModifySiteComponentForm.cs:15:public class ModifySiteComponentForm : EPForm
+EPCommon\ModifySiteComponent.cs:15:using System.Windows.Forms;
+EPCommon\ModifySiteComponent.cs:677:            IEnumerable<Element> source2 = ((IEnumerable<Element>) source1).Where<Element>((Func<Element, bool>) (CurrentElement => CurrentElement is CurveElement FindCurveElement && (LineStyleParameter = ((Element) FindCurveElement)[(BuiltInParameter) -1006210]) != null && ElementId.op_Equality(LineStyleParameter.AsElementId(), ((Element) MassLineSubCategoryList[nIndex].Value.GetGraphicsStyle((GraphicsStyleType) 1)).Id)));
+EPCommon\ModifySiteComponent.cs:870:          if (ElementId.op_Equality(categoryLineElement.Id, _CurElement.Id))
+EPCommon\ModifySiteComponent.cs:2007:              if (GeometryObject.op_Inequality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\ModifySiteComponent.cs:3070:                if (ElementId.op_Equality(element.Id, elementId))
+EPCommon\ModifySiteComponent.cs:3092:          if (parameter34 != null && ElementId.op_Inequality(parameter34.AsElementId(), (ElementId) null) && ElementId.op_Inequality(parameter34.AsElementId(), ElementId.InvalidElementId))
+EPCommon\ModifySiteComponent.cs:3102:          if (parameter36 != null && ElementId.op_Inequality(parameter36.AsElementId(), (ElementId) null) && ElementId.op_Inequality(parameter36.AsElementId(), ElementId.InvalidElementId))
+EPCommon\ModifySiteComponentForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ModifySiteComponentForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ModifySiteComponentForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ModifySiteComponentForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ModifySiteParkingLotComponentForm.cs:10:using System.Windows.Forms;
+EPCommon\ModifySiteParkingLotComponentForm.cs:15:public class ModifySiteParkingLotComponentForm : EPForm
+EPCommon\ModifySiteParkingLotComponentForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ModifySiteParkingLotComponentForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ModifySiteParkingLotComponentForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ModifySiteParkingLotComponentForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ModifySitePointWipeoutComponentForm.cs:10:using System.Windows.Forms;
+EPCommon\ModifySitePointWipeoutComponentForm.cs:15:public class ModifySitePointWipeoutComponentForm : EPForm
+EPCommon\ModifySitePointWipeoutComponentForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ModifySitePointWipeoutComponentForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ModifySitePointWipeoutComponentForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ModifySitePointWipeoutComponentForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\NewFamilyForm.cs:13:using System.Windows.Forms;
+EPCommon\NewFamilyForm.cs:18:public class NewFamilyForm : EPForm
+EPCommon\NewFamilyForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\NewFamilyForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\NewFamilyForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\NewFamilyForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ParkingLotAreaSettingsForm.cs:12:using System.Windows.Forms;
+EPCommon\ParkingLotAreaSettingsForm.cs:17:public class ParkingLotAreaSettingsForm : EPForm
+EPCommon\ParkingLotAreaSettingsForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ParkingLotAreaSettingsForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ParkingLotAreaSettingsForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ParkingLotAreaSettingsForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ParkingLotPlacement.cs:15:using System.Windows.Forms;
+EPCommon\ParkingLotPlacement.cs:368:      if (GeometryObject.op_Inequality((GeometryObject) _Arc, (GeometryObject) null))
+EPCommon\ParkingLotPlacementForm.cs:13:using System.Windows.Forms;
+EPCommon\ParkingLotPlacementForm.cs:18:public class ParkingLotPlacementForm : EPForm
+EPCommon\ParkingLotPlacementForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ParkingLotPlacementForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ParkingLotPlacementForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ParkingLotPlacementForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PhasePickerForm.cs:12:using System.Windows.Forms;
+EPCommon\PhasePickerForm.cs:17:public class PhasePickerForm : EPForm
+EPCommon\PhasePickerForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PhasePickerForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PhasePickerForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PhasePickerForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlacePlantForm.cs:16:using System.Windows.Forms;
+EPCommon\PlacePlantForm.cs:21:public class PlacePlantForm : EPForm
+EPCommon\PlacePlantForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PlacePlantForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PlacePlantForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlacePlantForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantBooklet.cs:10:using System.Windows.Forms;
+EPCommon\PlantBookletForm.cs:20:using System.Windows.Forms;
+EPCommon\PlantBookletForm.cs:25:public class PlantBookletForm : EPForm
+EPCommon\PlantBookletForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PlantBookletForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PlantBookletForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantBookletForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantCommon.cs:16:using System.Windows.Forms;
+EPCommon\PlantCommon.cs:315:      if (_LocationElement.Location is LocationCurve location && GeometryObject.op_Inequality((GeometryObject) location.Curve, (GeometryObject) null))
+EPCommon\PlantCreation.cs:15:using System.Windows.Forms;
+EPCommon\PlantCreation.cs:371:      if (GeometryObject.op_Inequality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\PlantDWGCreatorForm.cs:13:using System.Windows.Forms;
+EPCommon\PlantDWGCreatorForm.cs:18:public class PlantDWGCreatorForm : EPForm, IMessageFilter
+EPCommon\PlantDWGCreatorForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PlantDWGCreatorForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PlantDWGCreatorForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantDWGCreatorForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantDWGViewer.cs:11:using System.Windows.Forms;
+EPCommon\PlantExportForm.cs:13:using System.Windows.Forms;
+EPCommon\PlantExportForm.cs:18:public class PlantExportForm : EPForm
+EPCommon\PlantExportForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PlantExportForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PlantExportForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantExportForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantFamilyCreation.cs:8:using System.Windows.Forms;
+EPCommon\PlantFieldsForm.cs:11:using System.Windows.Forms;
+EPCommon\PlantFieldsForm.cs:16:public class PlantFieldsForm : EPForm
+EPCommon\PlantFieldsForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PlantFieldsForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PlantFieldsForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantFieldsForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantGrowthListView.cs:9:using System.Windows.Forms;
+EPCommon\PlantGrowthModify.cs:12:using System.Windows.Forms;
+EPCommon\PlantGrowthModify.cs:17:public class PlantGrowthModify : EPForm
+EPCommon\PlantGrowthModify.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PlantGrowthModify.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PlantGrowthModify.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantGrowthModify.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantMixFamilyManager.cs:17:using System.Windows.Forms;
+EPCommon\PlantMixFamilyManager.cs:22:public class PlantMixFamilyManager : EPForm
+EPCommon\PlantMixFamilyManager.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PlantMixFamilyManager.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PlantMixFamilyManager.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantMixFamilyManager.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantMixForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PlantMixForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PlantMixForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantMixForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantMixForm.cs:14:using System.Windows.Forms;
+EPCommon\PlantMixForm.cs:19:public class PlantMixForm : EPForm
+EPCommon\PlantMixSearchForm.cs:16:using System.Windows.Forms;
+EPCommon\PlantMixSearchForm.cs:21:public class PlantMixSearchForm : EPForm
+EPCommon\PlantMixSearchForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PlantMixSearchForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PlantMixSearchForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantMixSearchForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantSearchForm.cs:14:using System.Windows.Forms;
+EPCommon\PlantSearchForm.cs:19:public class PlantSearchForm : EPForm
+EPCommon\PlantViewForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PlantViewForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PlantViewForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantViewForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantSearchForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\PlantSearchForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\PlantSearchForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantSearchForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\PlantViewForm.cs:17:using System.Windows.Forms;
+EPCommon\PlantViewForm.cs:22:public class PlantViewForm : EPForm
+EPCommon\ProductUpdateForm.cs:10:using System.Windows.Forms;
+EPCommon\ProductUpdateForm.cs:15:public class ProductUpdateForm : EPForm
+EPCommon\ProductUpdateForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ProductUpdateForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ProductUpdateForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ProductUpdateForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ProgressBar.cs:11:using System.Windows.Forms;
+EPCommon\ProgressBarForm.cs:10:using System.Windows.Forms;
+EPCommon\ProgressBarForm.cs:15:public class ProgressBarForm : Form
+EPCommon\ProgressBar.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ProgressBar.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ProgressBar.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ProgressBar.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ProgressBarForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\ProgressBarForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\ProgressBarForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\ProgressBarForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\QuantumListView.cs:10:using System.Windows.Forms;
+EPCommon\QuantumListView.cs:11:using System.Windows.Forms.Layout;
+EPCommon\RetainingWallForm.cs:15:using System.Windows.Forms;
+EPCommon\RetainingWallForm.cs:20:public class RetainingWallForm : BaseForm
+EPCommon\RetainingWallForm.cs:102:        if (GeometryObject.op_Equality((GeometryObject) solid, (GeometryObject) null))
+EPCommon\RevitMessageBox.cs:8:using System.Windows.Forms;
+EPCommon\RevitUtility.cs:21:using System.Windows.Forms;
+EPCommon\RevitUtility.cs:1857:          IEnumerable<Element> source3 = ((IEnumerable<Element>) source2).Where<Element>((Func<Element, bool>) (CurrentElement => CurrentElement is CurveElement FindCurveElement && (LineStyleParameter = ((Element) FindCurveElement)[(BuiltInParameter) -1006210]) != null && ElementId.op_Equality(LineStyleParameter.AsElementId(), ((Element) MassLineSubCategoryList[nIndex].Value.GetGraphicsStyle((GraphicsStyleType) 1)).Id)));
+EPCommon\RunCommands.cs:14:using System.Windows.Forms;
+EPCommon\RunCommands.cs:312:    [DllImport("PSAPICLIENTx86.DLL", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+EPCommon\RunCommands.cs:318:    [DllImport("PSAPICLIENTx86.DLL", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+EPCommon\RunCommands.cs:321:    [DllImport("PSAPICLIENTx86.DLL", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+EPCommon\RunCommands.cs:327:    [DllImport("PSAPICLIENTx64.DLL", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+EPCommon\RunCommands.cs:333:    [DllImport("PSAPICLIENTx64.DLL", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+EPCommon\RunCommands.cs:336:    [DllImport("PSAPICLIENTx64.DLL", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+EPCommon\SetBaseToposurfaceForm.cs:13:using System.Windows.Forms;
+EPCommon\SetBaseToposurfaceForm.cs:18:public class SetBaseToposurfaceForm : EPForm
+EPCommon\SetBaseToposurfaceForm.cs:112:          if (ElementId.op_Equality(((Element) phase).Id, parameter2.AsElementId()))
+EPCommon\SetBaseToposurface.cs:17:using System.Windows.Forms;
+EPCommon\SetBaseToposurface.cs:419:            if (ElementId.op_Equality(element.Id, _MaterialId))
+EPCommon\SetBaseToposurfaceForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\SetBaseToposurfaceForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\SetBaseToposurfaceForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\SetBaseToposurfaceForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\SettingsForm.cs:15:using System.Windows.Forms;
+EPCommon\SettingsForm.cs:20:public class SettingsForm : EPForm
+EPCommon\Settings.cs:424:  [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+EPCommon\Settings.cs:430:  [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+EPCommon\Settings.cs:439:  [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+EPCommon\Settings.cs:446:  [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+EPCommon\Settings.cs:453:  [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+EPCommon\SettingsForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\SettingsForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\SettingsForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\SettingsForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\SharedParametersFilenameForm.cs:11:using System.Windows.Forms;
+EPCommon\SharedParametersFilenameForm.cs:16:public class SharedParametersFilenameForm : EPForm
+EPCommon\SharedParametersFilenameForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\SharedParametersFilenameForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\SharedParametersFilenameForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\SharedParametersFilenameForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\SidewalkForm.cs:15:using System.Windows.Forms;
+EPCommon\SidewalkForm.cs:20:public class SidewalkForm : BaseForm
+EPCommon\SidewalkForm.cs:100:        if (GeometryObject.op_Equality((GeometryObject) solid, (GeometryObject) null))
+EPCommon\SiteComponentCreation.cs:15:using System.Windows.Forms;
+EPCommon\SiteComponentCreation.cs:1077:        if (GeometryObject.op_Inequality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\SiteComponentReport.cs:17:using System.Windows.Forms;
+EPCommon\SiteComponentReport.cs:22:public class SiteComponentReport : EPForm
+EPCommon\SiteComponentReport.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\SiteComponentReport.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\SiteComponentReport.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\SiteComponentReport.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\SiteEditingUtils.cs:20:    return XYZ.op_Addition(input, XYZ.op_Multiply(XYZ.BasisZ, elevation - input.Z));
+EPCommon\SiteEditingUtils.cs:31:    return XYZ.op_Division(XYZ.op_Addition(boundingBoxXyz.Min, boundingBoxXyz.Max), 2.0);
+EPCommon\StreetForm.cs:15:using System.Windows.Forms;
+EPCommon\StreetForm.cs:20:public class StreetForm : BaseForm
+EPCommon\StreetForm.cs:186:        if (GeometryObject.op_Equality((GeometryObject) solid, (GeometryObject) null))
+EPCommon\StreetForm.cs:206:        if (GeometryObject.op_Equality((GeometryObject) solid, (GeometryObject) null))
+EPCommon\StreetForm.cs:226:        if (GeometryObject.op_Equality((GeometryObject) solid, (GeometryObject) null))
+EPCommon\StringTableModule.cs:10:using System.Windows.Forms;
+EPCommon\SurfaceInformation.cs:14:using System.Windows.Forms;
+EPCommon\SurfaceInformation.cs:19:public class SurfaceInformation : EPForm
+EPCommon\SurfaceInformation.cs:244:        if (parameter1 != null && ElementId.op_Equality(parameter1.AsElementId(), ((Element) SelectedPhase).Id))
+EPCommon\SurfaceInformation.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\SurfaceInformation.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\SurfaceInformation.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\SurfaceInformation.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\SymbolPlacementUpdater.cs:375:          if (GeometryObject.op_Inequality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\SymbolPlacementUpdater.cs:484:    if (ElementId.op_Inequality(((Element) _CurFamilyInstance).LevelId, (ElementId) null))
+EPCommon\TopographySurfaceContainer.cs:169:      if (GeometryObject.op_Inequality((GeometryObject) geometryElement, (GeometryObject) null))
+EPCommon\TopographySurfaceContainer.cs:186:        if (!GeometryObject.op_Equality((GeometryObject) mesh, (GeometryObject) null))
+EPCommon\TopographySurfaceContainer.cs:270:      if (GeometryObject.op_Inequality((GeometryObject) geometryElement, (GeometryObject) null))
+EPCommon\TopographySurfaceContainer.cs:281:        if (!GeometryObject.op_Equality((GeometryObject) solid, (GeometryObject) null))
+EPCommon\TopographySurfaceContainer.cs:286:            if (!GeometryObject.op_Equality((GeometryObject) face, (GeometryObject) null))
+EPCommon\TopographySurfaceContainer.cs:289:              if (!GeometryObject.op_Equality((GeometryObject) mesh, (GeometryObject) null))
+EPCommon\TopographySurfaceContainer.cs:322:      if (GeometryObject.op_Inequality((GeometryObject) geometryElement, (GeometryObject) null))
+EPCommon\TopographySurfaceContainer.cs:333:        if (!GeometryObject.op_Equality((GeometryObject) solid, (GeometryObject) null))
+EPCommon\TopographySurfaceContainer.cs:338:            if (!GeometryObject.op_Equality((GeometryObject) face, (GeometryObject) null))
+EPCommon\TopographySurfaceContainer.cs:341:              if (!GeometryObject.op_Equality((GeometryObject) mesh, (GeometryObject) null))
+EPCommon\TopographySurfaceContainer.cs:396:    if (_CurPhase == null || this.m_TopographySurface != null && ElementId.op_Inequality(((Element) this.m_TopographySurface).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_TopographySurface).CreatedPhaseId, ((Element) _CurPhase).Id) || this.m_BuildingPad != null && ElementId.op_Inequality(((Element) this.m_BuildingPad).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_BuildingPad).CreatedPhaseId, ((Element) _CurPhase).Id))
+EPCommon\TopographySurfaceContainer.cs:412:          if (_CurPhase == null || this.m_SubregionBuildingPadList[index1].TopographySurface != null && ElementId.op_Inequality(((Element) this.m_SubregionBuildingPadList[index1].TopographySurface).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_SubregionBuildingPadList[index1].TopographySurface).CreatedPhaseId, ((Element) _CurPhase).Id) || this.m_SubregionBuildingPadList[index1].BuildingPad != null && ElementId.op_Inequality(((Element) this.m_SubregionBuildingPadList[index1].BuildingPad).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_SubregionBuildingPadList[index1].BuildingPad).CreatedPhaseId, ((Element) _CurPhase).Id))
+EPCommon\TopographySurfaceContainer.cs:452:    if ((_PhaseCreated == null || this.m_TopographySurface != null && ElementId.op_Inequality(((Element) this.m_TopographySurface).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_TopographySurface).CreatedPhaseId, ((Element) _PhaseCreated).Id) || this.m_BuildingPad != null && ElementId.op_Inequality(((Element) this.m_BuildingPad).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_BuildingPad).CreatedPhaseId, ((Element) _PhaseCreated).Id)) && (_PhaseDemolished == null || this.m_TopographySurface != null && ElementId.op_Inequality(((Element) this.m_TopographySurface).DemolishedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_TopographySurface).DemolishedPhaseId, ((Element) _PhaseDemolished).Id) || this.m_BuildingPad != null && ElementId.op_Inequality(((Element) this.m_BuildingPad).DemolishedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_BuildingPad).DemolishedPhaseId, ((Element) _PhaseDemolished).Id)))
+EPCommon\TopographySurfaceContainer.cs:473:          if ((_PhaseCreated == null || this.m_SubregionBuildingPadList[index1].TopographySurface != null && ElementId.op_Inequality(((Element) this.m_SubregionBuildingPadList[index1].TopographySurface).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_SubregionBuildingPadList[index1].TopographySurface).CreatedPhaseId, ((Element) _PhaseCreated).Id) || this.m_SubregionBuildingPadList[index1].BuildingPad != null && ElementId.op_Inequality(((Element) this.m_SubregionBuildingPadList[index1].BuildingPad).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_SubregionBuildingPadList[index1].BuildingPad).CreatedPhaseId, ((Element) _PhaseCreated).Id)) && (_PhaseDemolished == null || this.m_SubregionBuildingPadList[index1].TopographySurface != null && ElementId.op_Inequality(((Element) this.m_SubregionBuildingPadList[index1].TopographySurface).DemolishedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_SubregionBuildingPadList[index1].TopographySurface).DemolishedPhaseId, ((Element) _PhaseDemolished).Id) || this.m_SubregionBuildingPadList[index1].BuildingPad != null && ElementId.op_Inequality(((Element) this.m_SubregionBuildingPadList[index1].BuildingPad).DemolishedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) this.m_SubregionBuildingPadList[index1].BuildingPad).DemolishedPhaseId, ((Element) _PhaseDemolished).Id)))
+EPCommon\TopographySurfaceManagement.cs:21:using System.Windows.Forms;
+EPCommon\TopographySurfaceManagement.cs:883:            if (ElementId.op_Inequality(viewTemplateId, ElementId.InvalidElementId))
+EPCommon\TopographySurfaceManagement.cs:3143:          if (ElementId.op_Equality(element.Id, elementId))
+EPCommon\TopographySurfaceManagement.cs:5564:          if (GeometryObject.op_Inequality((GeometryObject) curve, (GeometryObject) null))
+EPCommon\TopographySurfaceManagement.cs:5749:      if (parameter1 != null && ElementId.op_Inequality(parameter1.AsElementId(), (ElementId) null) && ElementId.op_Inequality(parameter1.AsElementId(), ElementId.InvalidElementId))
+EPCommon\TopographySurfaceManagement.cs:5759:      if (parameter3 != null && ElementId.op_Inequality(parameter3.AsElementId(), (ElementId) null) && ElementId.op_Inequality(parameter3.AsElementId(), ElementId.InvalidElementId))
+EPCommon\TopographySurfaceManagement.cs:5769:      if (parameter5 != null && ElementId.op_Inequality(parameter5.AsElementId(), (ElementId) null) && ElementId.op_Inequality(parameter5.AsElementId(), ElementId.InvalidElementId))
+EPCommon\TopographySurfaceManagement.cs:5856:    if (ElementId.op_Inequality(_MaterialId, (ElementId) null))
+EPCommon\TopographySurfaceManagement.cs:5858:    if (ElementId.op_Inequality(_PhaseCreated, (ElementId) null))
+EPCommon\TopographySurfaceManagement.cs:5860:    if (ElementId.op_Inequality(_PhaseDemolished, (ElementId) null))
+EPCommon\TopographySurfaceManagement.cs:6520:              if ((ElementId.op_Equality(elementId1, (ElementId) null) || surfaceContainerList1[index3].TopographySurface != null && ElementId.op_Inequality(((Element) surfaceContainerList1[index3].TopographySurface).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) surfaceContainerList1[index3].TopographySurface).CreatedPhaseId, elementId1) || surfaceContainerList1[index3].BuildingPad != null && ElementId.op_Inequality(((Element) surfaceContainerList1[index3].BuildingPad).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) surfaceContainerList1[index3].BuildingPad).CreatedPhaseId, elementId1)) && (ElementId.op_Equality(elementId2, (ElementId) null) || surfaceContainerList1[index3].TopographySurface != null && ElementId.op_Inequality(((Element) surfaceContainerList1[index3].TopographySurface).DemolishedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) surfaceContainerList1[index3].TopographySurface).DemolishedPhaseId, elementId2) || surfaceContainerList1[index3].BuildingPad != null && ElementId.op_Inequality(((Element) surfaceContainerList1[index3].BuildingPad).DemolishedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) surfaceContainerList1[index3].BuildingPad).DemolishedPhaseId, elementId2)))
+EPCommon\TopographySurfaceManagement.cs:6633:        if (_CurPhase == null || _SurfaceList[index].TopographySurface != null && ElementId.op_Inequality(((Element) _SurfaceList[index].TopographySurface).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) _SurfaceList[index].TopographySurface).CreatedPhaseId, ((Element) _CurPhase).Id) || _SurfaceList[index].BuildingPad != null && ElementId.op_Inequality(((Element) _SurfaceList[index].BuildingPad).CreatedPhaseId, (ElementId) null) && ElementId.op_Equality(((Element) _SurfaceList[index].BuildingPad).CreatedPhaseId, ((Element) _CurPhase).Id))
+EPCommon\TopographySurfaceManagement.cs:6984:        if (parameter14 != null && ElementId.op_Inequality(parameter14.AsElementId(), (ElementId) null) && ElementId.op_Inequality(parameter14.AsElementId(), ElementId.InvalidElementId))
+EPCommon\TopographySurfaceManagement.cs:6994:        if (parameter16 != null && ElementId.op_Inequality(parameter16.AsElementId(), (ElementId) null) && ElementId.op_Inequality(parameter16.AsElementId(), ElementId.InvalidElementId))
+EPCommon\TopographySurfaceManagement.cs:7004:        if (parameter18 != null && ElementId.op_Inequality(parameter18.AsElementId(), (ElementId) null) && ElementId.op_Inequality(parameter18.AsElementId(), ElementId.InvalidElementId))
+EPCommon\TypeManagerForm.cs:17:using System.Windows.Forms;
+EPCommon\TypeManagerForm.cs:22:public class TypeManagerForm : EPForm
+EPCommon\TypeManagerForm.cs:1705:              if (familyParameter2 != null && (familyParameter2.FamilyParameter != null && familyParameter2.FamilyParameter.Id.IntegerValue != -1 && ElementId.op_Equality(familyParameter2.FamilyParameter.Id, familyParameter1.Id) || string.Compare(familyParameter2.ParameterName, familyParameter1.Definition.Name, true) == 0) && familyParameter2.StorageType == familyParameter1.StorageType)
+EPCommon\TypeManagerForm.cs:1873:              if (familyParameter4 != null && (familyParameter4.FamilyParameter != null && familyParameter4.FamilyParameter.Id.IntegerValue != -1 && ElementId.op_Equality(familyParameter4.FamilyParameter.Id, familyParameter3.Id) || string.Compare(familyParameter4.ParameterName, familyParameter3.Definition.Name, true) == 0) && familyParameter4.StorageType == familyParameter3.StorageType)
+EPCommon\TypeManagerForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\TypeManagerForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\TypeManagerForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\TypeManagerForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\WarningOptionsForm.cs:12:using System.Windows.Forms;
+EPCommon\WarningOptionsForm.cs:17:public class WarningOptionsForm : Form
+EPCommon\WindowWrapper.cs:8:using System.Windows.Forms;
+EPCommon\WarningOptionsForm.resx:18:    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+EPCommon\WarningOptionsForm.resx:19:    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+EPCommon\WarningOptionsForm.resx:115:    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+EPCommon\WarningOptionsForm.resx:118:    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

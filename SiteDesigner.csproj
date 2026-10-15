@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RevitVersion Condition="'$(RevitVersion)' == ''">2025</RevitVersion>
+    <TargetFramework Condition="$(RevitVersion) &lt;= 2024">net48</TargetFramework>
+    <TargetFramework Condition="$(RevitVersion) == 2025 Or $(RevitVersion) == 2026">net8.0-windows</TargetFramework>
+    <TargetFramework Condition="$(RevitVersion) == 2027">net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+    <NoWarn>$(NoWarn);WFO1000</NoWarn>
+    <UseWindowsForms>true</UseWindowsForms>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <Configurations>Debug;Release;Debug2022;Release2022;Debug2023;Release2023;Debug2024;Release2024;Debug2025;Release2025;Debug2026;Release2026;Debug2027;Release2027</Configurations>
+    <Optimize Condition="$(Configuration.StartsWith('Debug'))">false</Optimize>
+    <DebugSymbols Condition="$(Configuration.StartsWith('Debug'))">true</DebugSymbols>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RootNamespace>SITES</RootNamespace>
+    <AssemblyName>SiteDesigner</AssemblyName>
+    <OutputPath>bin\$(Configuration)\$(RevitVersion)\</OutputPath>
+    <DefineConstants>$(DefineConstants);REVIT$(RevitVersion)</DefineConstants>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <RevitApiVersion>$(RevitVersion).0.0</RevitApiVersion>
+    <NativeDependencyDirectory Condition="'$(NativeDependencyDirectory)' == ''">$(MSBuildProjectDirectory)\Dependencies\Native</NativeDependencyDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs;EPCommon\**\*.cs;SITES\**\*.cs;Compatibility\**\*.cs;UI\**\*.cs" />
+    <Page Remove="UI\DialogWindow.xaml" />
+    <EmbeddedResource Include="UI\DialogWindow.xaml" LogicalName="SiteDesigner.UI.DialogWindow.xaml" />
+    <EmbeddedResource Include="EPCommon\*.resx">
+      <LogicalName>EPCommon.%(Filename).resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SITES\WinFormStrings.resx" LogicalName="SITES.WinFormStrings.resources" />
+    <EmbeddedResource Include="SITES\Properties\Resources.resx" LogicalName="SITES.Properties.Resources.resources" />
+    <EmbeddedResource Include="SITES\Sites_Core\Resources.resx" LogicalName="SITES.Sites_Core.Resources.resources" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitApiVersion)" IncludeAssets="build;compile" PrivateAssets="all" />
+    <PackageReference Include="System.Resources.Extensions" Version="8.0.0" Condition="$(RevitVersion) &lt;= 2026" />
+    <Content Include="Defaults\SitesRevit.ini" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="$(NativeDependencyDirectory)\SitesDLLWrapper.dll" Condition="Exists('$(NativeDependencyDirectory)\SitesDLLWrapper.dll')" Link="SitesDLLWrapper.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="$(NativeDependencyDirectory)\whitelist.xml" Condition="Exists('$(NativeDependencyDirectory)\whitelist.xml')" Link="whitelist.xml" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="ValidateRevitVersion" BeforeTargets="PrepareForBuild">
+    <Error Condition="$(RevitVersion) &lt; 2022 Or $(RevitVersion) &gt; 2027" Text="RevitVersion must be between 2022 and 2027." />
+  </Target>
+  <Target Name="GenerateRuntimeDirectory" BeforeTargets="CoreCompile">
+    <ItemGroup>
+      <RuntimeDirectoryAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+        <_Parameter1>SiteDesigner.BuildDirectory</_Parameter1>
+        <_Parameter2>$(TargetDir)</_Parameter2>
+      </RuntimeDirectoryAttribute>
+    </ItemGroup>
+    <WriteCodeFragment AssemblyAttributes="@(RuntimeDirectoryAttribute)" Language="C#" OutputFile="$(IntermediateOutputPath)RuntimeDirectory.g.cs">
+      <Output TaskParameter="OutputFile" ItemName="Compile" />
+    </WriteCodeFragment>
+  </Target>
+</Project>

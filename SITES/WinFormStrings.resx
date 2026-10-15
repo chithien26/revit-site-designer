@@ -1,0 +1,4278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AMP_SingleFileDialog" xml:space="preserve">
+    <value>&amp;Single File</value>
+  </data>
+  <data name="MaintenanceTransplantingTimePlantFamilyParameter" xml:space="preserve">
+    <value>Maintenance Transplanting Time</value>
+  </data>
+  <data name="AnnotateRibbonToolTip" xml:space="preserve">
+    <value>Annotates the view to indicate the grade and elevation of site elements.</value>
+  </data>
+  <data name="TypeNamePlantFamilyType" xml:space="preserve">
+    <value>Type Name</value>
+  </data>
+  <data name="UserInformationString" xml:space="preserve">
+    <value>User Information</value>
+  </data>
+  <data name="ModifySoftTerrainRibbonButton" xml:space="preserve">
+    <value>Soft Terrain</value>
+  </data>
+  <data name="Export_AMP_TopoSurfacesExportXMLDialog" xml:space="preserve">
+    <value>Export &amp;toposurfaces found in the model</value>
+  </data>
+  <data name="ModifyRetainingWallRibbonToolTip" xml:space="preserve">
+    <value>Moves, modifies, or deletes a retaining wall or a landscaping wall, or changes its elevation or family type.</value>
+  </data>
+  <data name="AutodeskSiteDesignerForRevitDialog" xml:space="preserve">
+    <value>Site Designer for Revit</value>
+  </data>
+  <data name="RetainingwallCo_AMP_nstantElevationDialog" xml:space="preserve">
+    <value>Co&amp;nstant Top of Wall Elevation</value>
+  </data>
+  <data name="Export_AMP_RegionInformationDialog" xml:space="preserve">
+    <value>Export &amp;Region Information</value>
+  </data>
+  <data name="SoftTerrainRightOffsetWidthParameter" xml:space="preserve">
+    <value>Right Offset Width</value>
+  </data>
+  <data name="AMP_ChainDialog" xml:space="preserve">
+    <value>&amp;Chain</value>
+  </data>
+  <data name="CostPlantFamilyParameter" xml:space="preserve">
+    <value>Cost</value>
+  </data>
+  <data name="GrowthSimulationNoFamilyMessage" xml:space="preserve">
+    <value>No plants have been placed in the project.</value>
+  </data>
+  <data name="LocateStreetTransaction" xml:space="preserve">
+    <value>Locate Street</value>
+  </data>
+  <data name="ParkingLotFamilyManagerRibbonButton" xml:space="preserve">
+    <value>Parking Lot</value>
+  </data>
+  <data name="ChainPickedClosedProjectInnerSlopesMessage" xml:space="preserve">
+    <value>You selected a closed chain, do you want to project slopes on the inside?</value>
+  </data>
+  <data name="ModifyStreetDialog" xml:space="preserve">
+    <value>Modify Street</value>
+  </data>
+  <data name="CharacteristicsBarkSurfacePlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Bark Surface</value>
+  </data>
+  <data name="CharacteristicsBloomEffectPlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Bloom Effect</value>
+  </data>
+  <data name="BoundaryIslandIDGenericFamilyParameter" xml:space="preserve">
+    <value>Boundary Island ID</value>
+  </data>
+  <data name="AMP_NewElevationDialog" xml:space="preserve">
+    <value>&amp;New Elevation:</value>
+  </data>
+  <data name="ToposurfaceNotCreatedMessage" xml:space="preserve">
+    <value>Toposurface not created.</value>
+  </data>
+  <data name="SoftTerrainCutSlopeParameter" xml:space="preserve">
+    <value>Cut Slope</value>
+  </data>
+  <data name="RetainingWallString" xml:space="preserve">
+    <value>Retaining Wall</value>
+  </data>
+  <data name="StreetCutSlopeParameter" xml:space="preserve">
+    <value>Cut Slope</value>
+  </data>
+  <data name="PickPointPrompt" xml:space="preserve">
+    <value>Pick a Point.</value>
+  </data>
+  <data name="OutOfRangeArgumentMessage" xml:space="preserve">
+    <value>Specified argument was out of the range of valid values.</value>
+  </data>
+  <data name="AMP_DeleteDialog" xml:space="preserve">
+    <value>&amp;Delete</value>
+  </data>
+  <data name="CenterToCenterPlacement" xml:space="preserve">
+    <value>Center-to-center</value>
+  </data>
+  <data name="Si_AMP_deWalkNameDialog" xml:space="preserve">
+    <value>Si&amp;dewalk Name:</value>
+  </data>
+  <data name="NoAlignmentInProjectString" xml:space="preserve">
+    <value>No Site Designer alignments were found in the Project. Please click OK to continue.</value>
+  </data>
+  <data name="CreatePatioWalkFamilyTransaction" xml:space="preserve">
+    <value>Create Patio/Walk Family</value>
+  </data>
+  <data name="ExportType_AMP_InformationDialog" xml:space="preserve">
+    <value>Export Type &amp;Information</value>
+  </data>
+  <data name="SoftTerrainFamilyDialog" xml:space="preserve">
+    <value>Soft &amp;Terrain Family:</value>
+  </data>
+  <data name="SiteComponentHasElevationAnnotationParameter" xml:space="preserve">
+    <value>Has Elevation Annotation</value>
+  </data>
+  <data name="CurbFamilyNotLoadedMessage" xml:space="preserve">
+    <value>There is no Curb Family currently loaded in this project. Do you want to:</value>
+  </data>
+  <data name="AddBreaklineDialog" xml:space="preserve">
+    <value>Add Breakline</value>
+  </data>
+  <data name="ImportString" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="MaintenanceDetrimentsPlantFamilyParameter" xml:space="preserve">
+    <value>Maintenance Detriments</value>
+  </data>
+  <data name="StreetBaseSurfaceParameter" xml:space="preserve">
+    <value>Street Base depth</value>
+  </data>
+  <data name="CollectionDialog" xml:space="preserve">
+    <value>Collection</value>
+  </data>
+  <data name="PlantMixReportNoFamilyMessage" xml:space="preserve">
+    <value>No Plant Mix family instances were found in the project.</value>
+  </data>
+  <data name="CharacteristicsAdmirationPointPlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Admiration Point</value>
+  </data>
+  <data name="PlacementIDFamilyParameter" xml:space="preserve">
+    <value>Placement ID</value>
+  </data>
+  <data name="ParkingPlacementDialog" xml:space="preserve">
+    <value>Parking Placement</value>
+  </data>
+  <data name="ProgressbarImportMessage" xml:space="preserve">
+    <value>Importing information from file ........</value>
+  </data>
+  <data name="ParkingNotObjectSelectedMessage" xml:space="preserve">
+    <value>Object selected not supported for placing parking spaces.</value>
+  </data>
+  <data name="ShowMassInAllViewsOption" xml:space="preserve">
+    <value>Show Mass in all existing Views</value>
+  </data>
+  <data name="StepsTreadParameter" xml:space="preserve">
+    <value>Step tread</value>
+  </data>
+  <data name="InformationString" xml:space="preserve">
+    <value>User Information</value>
+  </data>
+  <data name="Toposurface_AMP_NameSurfaceInfoDialog" xml:space="preserve">
+    <value>Toposurface &amp;Name</value>
+  </data>
+  <data name="RegionString" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="PlaceTagDialog" xml:space="preserve">
+    <value>Place Tag</value>
+  </data>
+  <data name="ValidTypeCommonOrScientificName" xml:space="preserve">
+    <value>Plant Scientific Name or Plant Common Name Fields must be present in File</value>
+  </data>
+  <data name="CurrentTypeDialog" xml:space="preserve">
+    <value>Current Type:</value>
+  </data>
+  <data name="Searc_AMP_hDialog" xml:space="preserve">
+    <value>Searc	&amp;h</value>
+  </data>
+  <data name="SidewalkLineSubCategoryLineWeight" xml:space="preserve">
+    <value>Sidewalk Line Sub Category Line Weight</value>
+  </data>
+  <data name="AddInsRibbonTabIDValue" xml:space="preserve">
+    <value>ADD_INS_TAB</value>
+  </data>
+  <data name="SecondaryPlacementIDParameter" xml:space="preserve">
+    <value>Secondary Placement Id</value>
+  </data>
+  <data name="LoadRetainingWallFamilyTransaction" xml:space="preserve">
+    <value>Load Retaining Wall Family: </value>
+  </data>
+  <data name="Place_AMP_BumpersDialog" xml:space="preserve">
+    <value>Place &amp;Bumpers</value>
+  </data>
+  <data name="S_AMP_tartingDistanceDialog" xml:space="preserve">
+    <value>S&amp;tarting Distance:</value>
+  </data>
+  <data name="LocatePlantSearchTitle" xml:space="preserve">
+    <value>Locate Plant Search</value>
+  </data>
+  <data name="RegionSelectedNotAssignedMessage" xml:space="preserve">
+    <value>Region selected is not assigned.</value>
+  </data>
+  <data name="LocateSoftTerrainRibbonToolTipLongDescription" xml:space="preserve">
+    <value>Use this tool to create a master plan and to perform mass grading of the toposurface.</value>
+  </data>
+  <data name="ExportCompleteMessage" xml:space="preserve">
+    <value>Export Complete</value>
+  </data>
+  <data name="PlacementTypeGenericFamilyParameter" xml:space="preserve">
+    <value>Placement Type</value>
+  </data>
+  <data name="NoSurfacesSelectedToExportString" xml:space="preserve">
+    <value>No toposurface was selected for export.</value>
+  </data>
+  <data name="SidewalkLineSubCategoryColor" xml:space="preserve">
+    <value>Sidewalk Sub Category Color</value>
+  </data>
+  <data name="NoPlantsSelected" xml:space="preserve">
+    <value>No plant(s) selected.</value>
+  </data>
+  <data name="AMP_PhaseCreatedFamilyParameterSurfaceInfoDialog" xml:space="preserve">
+    <value>&amp;Phase Created:</value>
+  </data>
+  <data name="NoIslandOnArcMessage" xml:space="preserve">
+    <value>Islands cannot be placed on arcs.</value>
+  </data>
+  <data name="FamilyNotPlantingMessage" xml:space="preserve">
+    <value>Family loaded was not a Planting Family.</value>
+  </data>
+  <data name="TypeParameterFamilyMessage" xml:space="preserve">
+    <value> Type Parameter) Family.</value>
+  </data>
+  <data name="Cen_AMP_terToCenterDialog" xml:space="preserve">
+    <value>Cen&amp;ter-to-Center</value>
+  </data>
+  <data name="AMP_GroveDialog" xml:space="preserve">
+    <value>&amp;Grove</value>
+  </data>
+  <data name="ComponentFamilyCantBeLoadedMessage" xml:space="preserve">
+    <value>Family cannot be loaded. Please pick another Component (Generic Model, Site, Entourage, Furniture, Lighting Fixtures, Columns, or Electrical Equipment) Family File.</value>
+  </data>
+  <data name="ProductDownloadIntructionsDialog" xml:space="preserve">
+    <value>1. Download the files to your local drive into a temporary location.
+2. Extract the contents of the compressed file (ZIP) to this temporary location.
+3. Run the setup.exe file found in the root folder of your setup location. The product installation kiosk will display.
+4. Read through the Installation Procedures on the right side of the kiosk and follow the instructions to properly install the software.</value>
+  </data>
+  <data name="AMP_GradesDialog" xml:space="preserve">
+    <value>&amp;Grades</value>
+  </data>
+  <data name="StreetFillSlopeParameter" xml:space="preserve">
+    <value>Fill Slope</value>
+  </data>
+  <data name="ToposurfaceSelectionDialog" xml:space="preserve">
+    <value>Toposurface Selection</value>
+  </data>
+  <data name="ImperialTemplateCabName" xml:space="preserve">
+    <value>ImperialTempl.cab</value>
+  </data>
+  <data name="Column_AMP_DisplayDialog" xml:space="preserve">
+    <value>Column &amp;Display</value>
+  </data>
+  <data name="IslandDialog" xml:space="preserve">
+    <value>Island</value>
+  </data>
+  <data name="RetainingwallRe_AMP_lativeElevationFromToposurfaceDialog" xml:space="preserve">
+    <value>Wall Exposure Re&amp;lative to Toposurface</value>
+  </data>
+  <data name="LocatePointWipeoutTransaction" xml:space="preserve">
+    <value>Locate Point Wipeout</value>
+  </data>
+  <data name="ModifyDialog" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <data name="ConvertPlantsTransaction" xml:space="preserve">
+    <value>Convert Plants</value>
+  </data>
+  <data name="StreetCurbOffsetParameter" xml:space="preserve">
+    <value>Curb Offset</value>
+  </data>
+  <data name="UseMeterUnitsOption" xml:space="preserve">
+    <value>Use meter units</value>
+  </data>
+  <data name="R_AMP_otationDialog" xml:space="preserve">
+    <value>R&amp;otation:</value>
+  </data>
+  <data name="AMP_LoadDialog" xml:space="preserve">
+    <value>&amp;Load</value>
+  </data>
+  <data name="AMP_GradeDialog" xml:space="preserve">
+    <value>&amp;Grade</value>
+  </data>
+  <data name="Add_AMP_VertexDialog" xml:space="preserve">
+    <value>Add &amp;Vertex</value>
+  </data>
+  <data name="ManageLicenseRibbonToolTip" xml:space="preserve">
+    <value>Configure Licensing for Site Designer.</value>
+  </data>
+  <data name="CostGenericFamilyParameter" xml:space="preserve">
+    <value>Cost</value>
+  </data>
+  <data name="OmniClassNumberPlantParameter" xml:space="preserve">
+    <value>OmniClass Number</value>
+  </data>
+  <data name="MassCreationOnlyModeOnMessage" xml:space="preserve">
+    <value>Site Designer is in Mass Creation Only Mode, so this command cannot be run. Please change the MassCreationOnlyMode setting in the SitesRevit.ini file to 0 to run the command.</value>
+  </data>
+  <data name="LocateFeatureLineRibbonToolTip" xml:space="preserve">
+    <value>Creates additional contours and graded lines to refine the toposurface.</value>
+  </data>
+  <data name="SetBaseTopoSurfaceRibbonToolTipLongDescription" xml:space="preserve">
+    <value>This tool creates a copy of the original toposurface. This copy becomes the proposed toposurface, the one that Site Designer manipulates.</value>
+  </data>
+  <data name="PickSecondPointForRotationPrompt" xml:space="preserve">
+    <value>Pick second point to define rotation base.</value>
+  </data>
+  <data name="PickPointsForBoundaryPrompt" xml:space="preserve">
+    <value>Pick Points to be used to create the Boundary.</value>
+  </data>
+  <data name="SideWalkTypeDialog" xml:space="preserve">
+    <value>S&amp;idewalk Type:</value>
+  </data>
+  <data name="LoadComponentFamilyTransaction" xml:space="preserve">
+    <value>Load Component Family: </value>
+  </data>
+  <data name="SelectTemplateMessage" xml:space="preserve">
+    <value>Please select Template File.</value>
+  </data>
+  <data name="AddBuildingPadsPointsToSurfacesMessage" xml:space="preserve">
+    <value>Building Pad(s) found in project that are within the bounds of the Base and Proposed surfaces. Do you wish to add the points of the Building Pad(s) to these surfaces?</value>
+  </data>
+  <data name="SoftTerrainFamilyManagerRibbonButton" xml:space="preserve">
+    <value>Soft Terrain</value>
+  </data>
+  <data name="ConvertObjectToToposurfaceTransaction" xml:space="preserve">
+    <value>Convert Object To Toposurface</value>
+  </data>
+  <data name="ObjectSelectedNotToposurfaceMessage" xml:space="preserve">
+    <value>Object selected not Toposurface.</value>
+  </data>
+  <data name="TypeNameMissing" xml:space="preserve">
+    <value>Need a type name to update the family.</value>
+  </data>
+  <data name="ImportLandXMLString" xml:space="preserve">
+    <value>Select File to Import</value>
+  </data>
+  <data name="Pick_AMP_Toposurface" xml:space="preserve">
+    <value>Pick &amp;Toposurface</value>
+  </data>
+  <data name="SiteworksNetworkLicenseError" xml:space="preserve">
+    <value>Site Designer is not licensed for network.</value>
+  </data>
+  <data name="ModifyStreetRibbonToolTip" xml:space="preserve">
+    <value>Moves, modifies, or deletes a street, or changes its elevation or family type.</value>
+  </data>
+  <data name="SideWalkNameDialog" xml:space="preserve">
+    <value>Si&amp;dewalk Name:</value>
+  </data>
+  <data name="ImportLandXMLComponentsCompleteString" xml:space="preserve">
+    <value>The import process is done.</value>
+  </data>
+  <data name="AMP_PlantFamilyDialog" xml:space="preserve">
+    <value>&amp;Plant Family:</value>
+  </data>
+  <data name="NoFenceSpanMessage" xml:space="preserve">
+    <value>Need a valid Fence Span.</value>
+  </data>
+  <data name="PlacingStallMessage" xml:space="preserve">
+    <value>Placing stalls on segment #</value>
+  </data>
+  <data name="IntersectionDetectedMessage" xml:space="preserve">
+    <value>Intersection(s) were found. Do you want to create the Intersection(s)</value>
+  </data>
+  <data name="BumperHeightGenericModelFamilyParameter" xml:space="preserve">
+    <value>Bumper Height</value>
+  </data>
+  <data name="TypeCommentsPlantFamilyParameter" xml:space="preserve">
+    <value>Type Comments</value>
+  </data>
+  <data name="_InSettingString" xml:space="preserve">
+    <value> in current settings.</value>
+  </data>
+  <data name="ModifyStreetRibbonButton" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="ProgressBarCreatingNewProposedToposurfaceMessage" xml:space="preserve">
+    <value>Creating New Proposed Toposurface .........</value>
+  </data>
+  <data name="LoadSidewalkFamilyTransaction" xml:space="preserve">
+    <value>Load Sidewalk Family: </value>
+  </data>
+  <data name="AMP_NewRadiusDialog" xml:space="preserve">
+    <value>&amp;New Radius</value>
+  </data>
+  <data name="AMP_ExportDialog" xml:space="preserve">
+    <value>&amp;Export</value>
+  </data>
+  <data name="Growth" xml:space="preserve">
+    <value>Growth</value>
+  </data>
+  <data name="PlantBookletNoFamilyMessage" xml:space="preserve">
+    <value>No Planting family instances were found in the project.</value>
+  </data>
+  <data name="AdditionalFormIDFamilyParameter" xml:space="preserve">
+    <value>Additional Form ID</value>
+  </data>
+  <data name="InvalidSpenceSpanMessage" xml:space="preserve">
+    <value>Fence span should be greater than zero.</value>
+  </data>
+  <data name="SitesReportRibbonToolTip" xml:space="preserve">
+    <value>Calculates the gross surface area, gross volume, base volume, and sub base volume for retaining walls, streets, curbs, sidewalks, and parking lots on the site.</value>
+  </data>
+  <data name="NoSetbackMessage" xml:space="preserve">
+    <value>Need a valid Setback value.</value>
+  </data>
+  <data name="PositionFenceMessage" xml:space="preserve">
+    <value>The position of the fence</value>
+  </data>
+  <data name="PlacementFamilyNotLoadedMessage" xml:space="preserve">
+    <value>Placement Family not loaded in project.</value>
+  </data>
+  <data name="_TypeParameterPFamilyNotLoadedMessage" xml:space="preserve">
+    <value> Type Parameter) Family not loaded.</value>
+  </data>
+  <data name="ProgressBarObtainingSiteComponentsMessage" xml:space="preserve">
+    <value>Obtaining Site Component(s) .........</value>
+  </data>
+  <data name="NeedValidInputFor_" xml:space="preserve">
+    <value>Need Valid Input for </value>
+  </data>
+  <data name="AnnotateRibbonButton" xml:space="preserve">
+    <value>Annotate</value>
+  </data>
+  <data name="GetNewRevitVersionMessage" xml:space="preserve">
+    <value>Element Id Fields cannot be set with this version of Revit. Latest update to Revit will resolve issue.</value>
+  </data>
+  <data name="SoftTerrainNameDialog" xml:space="preserve">
+    <value>S&amp;oft Terrain Name:</value>
+  </data>
+  <data name="StreetCurbHeightParameter" xml:space="preserve">
+    <value>Curb height</value>
+  </data>
+  <data name="LocateParkingLotDialog" xml:space="preserve">
+    <value>Locate Parking Lot</value>
+  </data>
+  <data name="LocateComponentsNoFamilyMessage" xml:space="preserve">
+    <value>No Site, Entourage, Furniture, GenericModel, Lighting Fixtures, Columns, or Electrical Equipment have been loaded into the project. Please load any of these families before you use this command.</value>
+  </data>
+  <data name="LocateRetainingWallTransaction" xml:space="preserve">
+    <value>Locate Retaining Wall</value>
+  </data>
+  <data name="RetainingwallConstantElevationDialog" xml:space="preserve">
+    <value>Co&amp;nstant Top of Wall Elevation</value>
+  </data>
+  <data name="ProjectedAreaSubRegionParameter" xml:space="preserve">
+    <value>Projected Area</value>
+  </data>
+  <data name="AMP_RFAFileDialog" xml:space="preserve">
+    <value>&amp;RFA(Family File)</value>
+  </data>
+  <data name="CharacteristicsBarkColorPlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Bark Color</value>
+  </data>
+  <data name="IntersectionLineSubCategoryColor" xml:space="preserve">
+    <value>Intersection Line Sub Category Color</value>
+  </data>
+  <data name="GrowthServiceLifePlantFamilyParameter" xml:space="preserve">
+    <value>Growth Service Life</value>
+  </data>
+  <data name="LoadParkingFamilyTransaction" xml:space="preserve">
+    <value>Load Parking Family: </value>
+  </data>
+  <data name="Set_AMP_backDialog" xml:space="preserve">
+    <value>Set&amp;back:</value>
+  </data>
+  <data name="PathWalkDialog" xml:space="preserve">
+    <value>Patio/Walk</value>
+  </data>
+  <data name="PlantCountPlantFamilyParameter" xml:space="preserve">
+    <value>Plant Count</value>
+  </data>
+  <data name="BlackAndWhiteColorMode" xml:space="preserve">
+    <value>Black and white</value>
+  </data>
+  <data name="SelectRFADir" xml:space="preserve">
+    <value>Select the directory that you want to search for plant families (.rfas)</value>
+  </data>
+  <data name="NoImportOptionsSelectedString" xml:space="preserve">
+    <value>Please select one of the import options before proceeding.</value>
+  </data>
+  <data name="DeleteSiteComponentOption" xml:space="preserve">
+    <value>Delete the component</value>
+  </data>
+  <data name="LoadParkingLotFamilyTransaction" xml:space="preserve">
+    <value>Load Parking Lot Family: </value>
+  </data>
+  <data name="Plac_AMP_eAtLevelDialog" xml:space="preserve">
+    <value>Plac&amp;e at Level:</value>
+  </data>
+  <data name="SpecifyPlantHeightMessage" xml:space="preserve">
+    <value>Please specify the Plant Height</value>
+  </data>
+  <data name="AMP_ApplyDialog" xml:space="preserve">
+    <value>&amp;Apply</value>
+  </data>
+  <data name="AMP_NumberOfRowsDialog" xml:space="preserve">
+    <value>&amp;Number of Rows:</value>
+  </data>
+  <data name="B_AMP_ySurveyPointsDialog" xml:space="preserve">
+    <value>B&amp;y Survey Point</value>
+  </data>
+  <data name="NoEdgingYesMowingMessage" xml:space="preserve">
+    <value>To add a Mowing Strip, Edging needs to be set to Yes.</value>
+  </data>
+  <data name="LessThanComparator" xml:space="preserve">
+    <value>Less Than</value>
+  </data>
+  <data name="NoTypeSelectedMessage" xml:space="preserve">
+    <value>No Type was selected.</value>
+  </data>
+  <data name="UseMillimeterUnitsOption" xml:space="preserve">
+    <value>Use millimeter units</value>
+  </data>
+  <data name="SetBaseToposurfaceInformationDialog" xml:space="preserve">
+    <value>Please highlight the toposurface(s) that you want to use to create the base toposurface. Highlighting more than one toposurface will combine them.</value>
+  </data>
+  <data name="ProgressDialog" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="PlantSpacingPlantFamilyParameter" xml:space="preserve">
+    <value>Plant Spacing</value>
+  </data>
+  <data name="Save_AMP_FamilyDialog" xml:space="preserve">
+    <value>Save &amp;Family</value>
+  </data>
+  <data name="SideWalkPavementSurfaceParameter" xml:space="preserve">
+    <value>Pavement material</value>
+  </data>
+  <data name="Fence_AMP_HeightDialog" xml:space="preserve">
+    <value>Fence &amp;Height:</value>
+  </data>
+  <data name="ModifyParkingLotRibbonButton" xml:space="preserve">
+    <value>Parking Lot</value>
+  </data>
+  <data name="ArcPickedClosedProjectInnerSlopesMessage" xml:space="preserve">
+    <value>Arc picked is closed. Do you want to project inner slopes?</value>
+  </data>
+  <data name="ValidSetbackMessage" xml:space="preserve">
+    <value>Setback must be a valid number greater than 0.00001</value>
+  </data>
+  <data name="EdgePathWalkFamilyParameter" xml:space="preserve">
+    <value>Edging</value>
+  </data>
+  <data name="ProgressBarCreatingCurbMassMessage" xml:space="preserve">
+    <value>Creating Curb. This process may take a few moments...</value>
+  </data>
+  <data name="SidewalkMassSubCategoryName" xml:space="preserve">
+    <value>Sidewalk Mass Sub Category Name</value>
+  </data>
+  <data name="LoadTopoPlacementFamilyTransaction" xml:space="preserve">
+    <value>Load Topo Placement Family: </value>
+  </data>
+  <data name="ReturnLicenseRibbonButton" xml:space="preserve">
+    <value>Return License</value>
+  </data>
+  <data name="ConstantElevationDialog" xml:space="preserve">
+    <value>Co&amp;nstant Elevation</value>
+  </data>
+  <data name="PickTagPointPrompt" xml:space="preserve">
+    <value>Pick Tag Point.</value>
+  </data>
+  <data name="LocateSidewalkRibbonButton" xml:space="preserve">
+    <value>Sidewalk</value>
+  </data>
+  <data name="ModifySidewalkDialog" xml:space="preserve">
+    <value>Modify Sidewalk</value>
+  </data>
+  <data name="AMP_LengthDialog" xml:space="preserve">
+    <value>&amp;Length:</value>
+  </data>
+  <data name="FindFamilySymbolsTransaction" xml:space="preserve">
+    <value>Find Family Symbols</value>
+  </data>
+  <data name="SideWalkWidthParameter" xml:space="preserve">
+    <value>Sidewalk Width</value>
+  </data>
+  <data name="_AssignFor_Message" xml:space="preserve">
+    <value> assigned for </value>
+  </data>
+  <data name="SelectTopoSurfaceLabelString" xml:space="preserve">
+    <value>Highlight the toposurface(s) that you wish to import into your model</value>
+  </data>
+  <data name="MassMetricTemplate" xml:space="preserve">
+    <value>Metric Mass</value>
+  </data>
+  <data name="AlignmentNotSelectedString" xml:space="preserve">
+    <value>Alignment not selected.</value>
+  </data>
+  <data name="BuildingPadString" xml:space="preserve">
+    <value>Building Pad</value>
+  </data>
+  <data name="LayerLevelColorsDialog" xml:space="preserve">
+    <value>Layer/Level Colors</value>
+  </data>
+  <data name="CharacteristicsFruitColorPlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Fruit Color</value>
+  </data>
+  <data name="AMP_ProjectNameExportXMLDialog" xml:space="preserve">
+    <value>&amp;Project</value>
+  </data>
+  <data name="BorrowLicenseRibbonToolTip" xml:space="preserve">
+    <value>Checks out a Site Designer license from the License Manager.</value>
+  </data>
+  <data name="RetainingWallFamilyManagerRibbonButton" xml:space="preserve">
+    <value>Retaining Wall</value>
+  </data>
+  <data name="NoPlantsFoundMessage" xml:space="preserve">
+    <value>No plants found.</value>
+  </data>
+  <data name="PlantAlreadyPickedMessage" xml:space="preserve">
+    <value>Plant has already been picked. Pick again.</value>
+  </data>
+  <data name="AMP_FindDialog" xml:space="preserve">
+    <value>&amp;Find</value>
+  </data>
+  <data name="_RegionNameAlreadyAssigned_Message" xml:space="preserve">
+    <value> region name already assigned to </value>
+  </data>
+  <data name="LocateParkingLotRibbonToolTip" xml:space="preserve">
+    <value>Creates parking lots in the site design.</value>
+  </data>
+  <data name="StepsWidthParameter" xml:space="preserve">
+    <value>Step width</value>
+  </data>
+  <data name="FileOverwriteMessage" xml:space="preserve">
+    <value>File Already Exists. Append ?</value>
+  </data>
+  <data name="NoParkingSpacesOnArc" xml:space="preserve">
+    <value>Parking spaces for Areas cannot be placed on arcs.</value>
+  </data>
+  <data name="NotSiteComponentMessage_" xml:space="preserve">
+    <value>The selected object is not a </value>
+  </data>
+  <data name="LengthString" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="OptimizeParkingGenericModelFamilyParameter" xml:space="preserve">
+    <value>Optimize Parking</value>
+  </data>
+  <data name="LaunchPatioWalkFamilyManagerOption" xml:space="preserve">
+    <value>Launch Patio/Walk Family Manager</value>
+  </data>
+  <data name="PositionComponetsMessage" xml:space="preserve">
+    <value>The position of the Componets</value>
+  </data>
+  <data name="PleaseSelectParkingLotFamilyFileMessage" xml:space="preserve">
+    <value>Please select Site Designer Parking Lot Family File.</value>
+  </data>
+  <data name="FamilyNotSoftTerrainMessage" xml:space="preserve">
+    <value>Family loaded was not a Soft Terrain (Site with Siteworks ID </value>
+  </data>
+  <data name="CharacteristicsFallColorPlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Fall Color</value>
+  </data>
+  <data name="DeleteE_AMP_xistingElementDialog" xml:space="preserve">
+    <value>Delete E&amp;xisting Element</value>
+  </data>
+  <data name="GenericMetricTemplate" xml:space="preserve">
+    <value>Metric Generic Model</value>
+  </data>
+  <data name="AMP_AreaDialog" xml:space="preserve">
+    <value>&amp;Area</value>
+  </data>
+  <data name="SWSidewalkLineNameString" xml:space="preserve">
+    <value>SW Sidewalk</value>
+  </data>
+  <data name="MaterialPathWalkFamilyParameter" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="NoOptionsSelectedMessage" xml:space="preserve">
+    <value>Need to have at least one option selected.</value>
+  </data>
+  <data name="ParkingLotFamilyNotLoadedMessage" xml:space="preserve">
+    <value>There is no Parking Lot Family currently loaded in this project. Do you want to:</value>
+  </data>
+  <data name="RetainingWallSlopeProjectionParameter" xml:space="preserve">
+    <value>Slope Projection</value>
+  </data>
+  <data name="ConceptualMassFolder" xml:space="preserve">
+    <value>Conceptual Mass</value>
+  </data>
+  <data name="SelectExportTopoSurfaceLabelString" xml:space="preserve">
+    <value>Highlight the toposurface(s) that you wish to export into your model</value>
+  </data>
+  <data name="C_AMP_hangeTypeDialog" xml:space="preserve">
+    <value>C&amp;hange Type</value>
+  </data>
+  <data name="ToposurfacNotInProjectMessage" xml:space="preserve">
+    <value>You must have at least one Toposurface in your Project to run this command.</value>
+  </data>
+  <data name="GroveRotationGenericFamilyParameter" xml:space="preserve">
+    <value>Grove Rotation</value>
+  </data>
+  <data name="SpiralsNotSupportedMessages" xml:space="preserve">
+    <value>One or more alignments in the file contain spiral information that cannot be imported.</value>
+  </data>
+  <data name="OmniClassTitlePlantParameter" xml:space="preserve">
+    <value>OmniClass Title</value>
+  </data>
+  <data name="SlopeUnitRiseInches" xml:space="preserve">
+    <value>Rise / 12”</value>
+  </data>
+  <data name="ObjectSelectedNotSupportedMessage" xml:space="preserve">
+    <value>Selected object is not supported.</value>
+  </data>
+  <data name="NotSiteComponentHostLineMessage" xml:space="preserve">
+    <value>The selected object is not a Site Component host line.</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="MessagesDialog" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="MassCreationString" xml:space="preserve">
+    <value>Mass Creation</value>
+  </data>
+  <data name="ContinueWOLoadFamiliesOption" xml:space="preserve">
+    <value>Continue without loading families</value>
+  </data>
+  <data name="PleaseSelectStreetFamilyFileMessage" xml:space="preserve">
+    <value>Please select Site Designer Street Family File.</value>
+  </data>
+  <data name="E_AMP_xportFamilyInformationDialog" xml:space="preserve">
+    <value>E&amp;xport Family Information</value>
+  </data>
+  <data name="SWIntersectionLineNameString" xml:space="preserve">
+    <value>SW Intersection</value>
+  </data>
+  <data name="AMP_OptimizeDialog" xml:space="preserve">
+    <value>&amp;Optimize</value>
+  </data>
+  <data name="ModifyParkingLotRibbonToolTipLongDescription" xml:space="preserve">
+    <value>Select the host line of the parking lot to modify.</value>
+  </data>
+  <data name="PickPlantMessage" xml:space="preserve">
+    <value>Pick Plant</value>
+  </data>
+  <data name="StreetIntersectionDefaultRadius" xml:space="preserve">
+    <value>Street Intersection Default Radius</value>
+  </data>
+  <data name="FamilySymbolOptionsDialog" xml:space="preserve">
+    <value>Family Symbol Options</value>
+  </data>
+  <data name="DeleteFromL_AMP_ampDialog" xml:space="preserve">
+    <value>Delete From L&amp;ist</value>
+  </data>
+  <data name="VarianceMoreThanPlantWidthMessage" xml:space="preserve">
+    <value>Plant Width Variance cannot be greater than or equal to Plant Width</value>
+  </data>
+  <data name="FenceFamilyCantBeLoadedMessage" xml:space="preserve">
+    <value>Family cannot be loaded. Please pick another Fence (Generic Model with LandcaddID </value>
+  </data>
+  <data name="GeneralParametersTabString" xml:space="preserve">
+    <value>General Parameters</value>
+  </data>
+  <data name="HeightVarianceGenericFamilyParameter" xml:space="preserve">
+    <value>Height Variance</value>
+  </data>
+  <data name="ProgressBarProcessingPointsForSurfaceMessage" xml:space="preserve">
+    <value>Processing Points for Surface </value>
+  </data>
+  <data name="PlantSpacingPlantMixFamilyParameter" xml:space="preserve">
+    <value>Plant Spacing</value>
+  </data>
+  <data name="LocatePlacementFamilyTransaction" xml:space="preserve">
+    <value>Load Placement Family: </value>
+  </data>
+  <data name="CurbNa_AMP_meDialog" xml:space="preserve">
+    <value>Curb Na&amp;me:</value>
+  </data>
+  <data name="SideWalkBaseSurfaceParameter" xml:space="preserve">
+    <value>Sidewalk Base depth</value>
+  </data>
+  <data name="SetBaseTopoSurfaceRibbonToolTip" xml:space="preserve">
+    <value>Selects an existing toposurface in the model to use as the base toposurface.</value>
+  </data>
+  <data name="PlantCommonNamePlantFamilyParameter" xml:space="preserve">
+    <value>Plant Common Name</value>
+  </data>
+  <data name="ImportLandXMLRibbonButton" xml:space="preserve">
+    <value>Import LandXML</value>
+  </data>
+  <data name="RetainingWallLineSubCategoryColor" xml:space="preserve">
+    <value>Retaining Wall Line Sub Category Color</value>
+  </data>
+  <data name="NoPlantingRFTMessage" xml:space="preserve">
+    <value>Could not find Planting.rft in your Revit template folder.</value>
+  </data>
+  <data name="ParkingLotTransaction" xml:space="preserve">
+    <value>Parking Lot</value>
+  </data>
+  <data name="Parameter" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="AMP_MoveUpDialog" xml:space="preserve">
+    <value>&amp;Move Up</value>
+  </data>
+  <data name="S_AMP_ideWalkTypeDialog" xml:space="preserve">
+    <value>S&amp;idewalk Type:</value>
+  </data>
+  <data name="SideWalkCutSlopeParameter" xml:space="preserve">
+    <value>Cut Slope</value>
+  </data>
+  <data name="RedLineColor" xml:space="preserve">
+    <value>255-0-0</value>
+  </data>
+  <data name="ConvertPlantsDialog" xml:space="preserve">
+    <value>Convert Plants</value>
+  </data>
+  <data name="KeynotePlantFamilyParameter" xml:space="preserve">
+    <value>Keynote</value>
+  </data>
+  <data name="PlantingTagFamiliesNotLoadedMessage" xml:space="preserve">
+    <value>Planting and/or Tag Families not loaded in project.</value>
+  </data>
+  <data name="Ali_AMP_gnToDialog" xml:space="preserve">
+    <value>Ali&amp;gn To</value>
+  </data>
+  <data name="AllGeometryStringQuotes" xml:space="preserve">
+    <value>&lt;All Geometry&gt;</value>
+  </data>
+  <data name="FamilyManagerLblSoftTerrainText" xml:space="preserve">
+    <value>Create, add, or modify the families for graded areas, berms, ditches, swales, and others.</value>
+  </data>
+  <data name="PatioWalkString" xml:space="preserve">
+    <value>Patio/Walk</value>
+  </data>
+  <data name="Maintenance" xml:space="preserve">
+    <value>Maintenance</value>
+  </data>
+  <data name="FamilyTemplatePath" xml:space="preserve">
+    <value>FamilyTemplatePath</value>
+  </data>
+  <data name="IsProposedSurfaceFamilyParameter" xml:space="preserve">
+    <value>Is Proposed Surface</value>
+  </data>
+  <data name="ParkingLotManagerString" xml:space="preserve">
+    <value>Parking Lot</value>
+  </data>
+  <data name="RetainingWallFamilyNotLoadedMessage" xml:space="preserve">
+    <value>There is no Retaining wall Family currently loaded in this project. Do you want to:</value>
+  </data>
+  <data name="LandcaddIDGenericModelFamilyParameter" xml:space="preserve">
+    <value>LandcaddID</value>
+  </data>
+  <data name="CannotImport_String" xml:space="preserve">
+    <value>Cannot import </value>
+  </data>
+  <data name="TemplateNotPickedFamilyNotCreatedMessage" xml:space="preserve">
+    <value>Template File not picked. Planting Family not created.</value>
+  </data>
+  <data name="BumperSymbolIDGenericFamilyParameter" xml:space="preserve">
+    <value>Bumper Symbol ID</value>
+  </data>
+  <data name="SidewalkMassTemplateFileNameString" xml:space="preserve">
+    <value>Sidewalk Mass Template File Name</value>
+  </data>
+  <data name="StreetTypeManagerString" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="AMP_ShowDialog" xml:space="preserve">
+    <value>&amp;Show</value>
+  </data>
+  <data name="GenericModelLandcaddID_String" xml:space="preserve">
+    <value>(Generic Model with LancaddID </value>
+  </data>
+  <data name="RelinkSurfacesTransaction" xml:space="preserve">
+    <value>Relink Surface(s)</value>
+  </data>
+  <data name="ModifySoftTerrainDialog" xml:space="preserve">
+    <value>Modify Soft Terrain</value>
+  </data>
+  <data name="PositionParkingLotsMessage" xml:space="preserve">
+    <value>The position of the Parking Lots</value>
+  </data>
+  <data name="ParkingLotAreaSettingsDialog" xml:space="preserve">
+    <value>Parking Lot Area Settings</value>
+  </data>
+  <data name="ParkingLotParkingBaseDepthParameter" xml:space="preserve">
+    <value>Parking base Depth</value>
+  </data>
+  <data name="TickLengthPlantParameter" xml:space="preserve">
+    <value>Tick Length</value>
+  </data>
+  <data name="SiteworksNetworkLicenseBorrowError" xml:space="preserve">
+    <value>Site Designer has not borrowed a license to return.</value>
+  </data>
+  <data name="FamilyManagerLblSidewalkText" xml:space="preserve">
+    <value>Create, add, or modify the sidewalk families for your projects.</value>
+  </data>
+  <data name="ExistingSymbolFileName" xml:space="preserve">
+    <value>Please specify an existing Symbol File Name</value>
+  </data>
+  <data name="ModifyPlantNoFamilyMessage" xml:space="preserve">
+    <value>No plants have been placed in the project.</value>
+  </data>
+  <data name="AMP_AddToFamilyDialog" xml:space="preserve">
+    <value>&amp;Add To Family</value>
+  </data>
+  <data name="AMP_PickDialog" xml:space="preserve">
+    <value>&amp;Pick</value>
+  </data>
+  <data name="SideWalkSubbaseSurfaceParameter" xml:space="preserve">
+    <value>Sidewalk Sub-base depth</value>
+  </data>
+  <data name="AMP_AngleDialog" xml:space="preserve">
+    <value>&amp;Angle:</value>
+  </data>
+  <data name="ManageLicenseRibbonButton" xml:space="preserve">
+    <value>Manage Licensing</value>
+  </data>
+  <data name="ProgressBarProcessingPointsForAlignmentMessage" xml:space="preserve">
+    <value>Processing Points for Alignment </value>
+  </data>
+  <data name="LocatePointWipeoutRibbonToolTip" xml:space="preserve">
+    <value>Creates an area of the toposurface in which to remove points to smooth the terrain.</value>
+  </data>
+  <data name="ParkingStyleDialog" xml:space="preserve">
+    <value>Parking Style</value>
+  </data>
+  <data name="FeatureLineString" xml:space="preserve">
+    <value>Feature Line</value>
+  </data>
+  <data name="BumperDialog" xml:space="preserve">
+    <value>Bumper</value>
+  </data>
+  <data name="ValidLineWeightValuesMessage" xml:space="preserve">
+    <value>Valid Line Weights are 1 to 16.</value>
+  </data>
+  <data name="Triang_AMP_ularDialog" xml:space="preserve">
+    <value>Triang&amp;ular</value>
+  </data>
+  <data name="PointNotInParkingLotBoundaryMessage" xml:space="preserve">
+    <value>Point picked not within the Parking Lot Toposurface Boundary.</value>
+  </data>
+  <data name="ObjectNotSupportedForPlantsMessage" xml:space="preserve">
+    <value>Object selected not supported for modifying plants.</value>
+  </data>
+  <data name="LocateComponentsTransaction" xml:space="preserve">
+    <value>Locate Components</value>
+  </data>
+  <data name="ProgressBarCreatingNewToposurfaceMessage" xml:space="preserve">
+    <value>Creating New Toposurface .........</value>
+  </data>
+  <data name="PlaceIslandGenericModelFamilyParameter" xml:space="preserve">
+    <value>Place Island</value>
+  </data>
+  <data name="LocateRetainingWallRibbonButton" xml:space="preserve">
+    <value>Retaining Wall</value>
+  </data>
+  <data name="InvalidNumberOfLanesMessage" xml:space="preserve">
+    <value>Number of lanes should be more than zero</value>
+  </data>
+  <data name="SingleFileDialog" xml:space="preserve">
+    <value>Single File</value>
+  </data>
+  <data name="LoadDrawingToolTip" xml:space="preserve">
+    <value>Load Drawing</value>
+  </data>
+  <data name="AMP_FamilyDialog" xml:space="preserve">
+    <value>&amp;Family:</value>
+  </data>
+  <data name="ConditionsMiscellaneousPlantFamilyParameter" xml:space="preserve">
+    <value>Conditions Miscellaneous</value>
+  </data>
+  <data name="FenceError" xml:space="preserve">
+    <value>Vertical Found when placing fence. Locating fence halted.</value>
+  </data>
+  <data name="StreetBoulevardWidthParameter" xml:space="preserve">
+    <value>Boulevard width</value>
+  </data>
+  <data name="PickViewOptionForMassMessage" xml:space="preserve">
+    <value>Show Mass mode will be enabled, so the newly created Mass will be visible. Pick View option for which view(s) you want to make Mass visible.</value>
+  </data>
+  <data name="AMP_WindowSelectDialog" xml:space="preserve">
+    <value>&amp;Window Select</value>
+  </data>
+  <data name="NorthSouthBasePointParameter" xml:space="preserve">
+    <value>N/S</value>
+  </data>
+  <data name="SidewalkFamilyManagerRibbonButton" xml:space="preserve">
+    <value>Sidewalk</value>
+  </data>
+  <data name="SlopeUnitRiseFeet" xml:space="preserve">
+    <value>Rise / 1'- 0”</value>
+  </data>
+  <data name="ParkingFamiliesNotLoadedMessage" xml:space="preserve">
+    <value>Parking Families not loaded in project.</value>
+  </data>
+  <data name="AMP_UseBiDirectionalAislesDialog" xml:space="preserve">
+    <value>&amp;Use Bi-Directional Aisles</value>
+  </data>
+  <data name="ReturnLicenseRibbonToolTip" xml:space="preserve">
+    <value>Returns the Site Designer license to the License Manager.</value>
+  </data>
+  <data name="RetainingWallManagerString" xml:space="preserve">
+    <value>Retaining Wall</value>
+  </data>
+  <data name="AMP_DirectoryMultipleFilesDialog" xml:space="preserve">
+    <value>&amp;Directory (Multiple Family Files)</value>
+  </data>
+  <data name="NoGenericModelRFTMessage" xml:space="preserve">
+    <value>Could not find GenericModel.rft in your Revit template folder.</value>
+  </data>
+  <data name="ProposedToposurfaceMaterialParameter" xml:space="preserve">
+    <value>Proposed Toposurface material</value>
+  </data>
+  <data name="RPCRenderAppearanceFamilyParameter" xml:space="preserve">
+    <value>Render Appearance</value>
+  </data>
+  <data name="B_AMP_ySharedCoordinatesDialog" xml:space="preserve">
+    <value>B&amp;y Shared Coordinates</value>
+  </data>
+  <data name="FamilySymbolNameFamilyParameter" xml:space="preserve">
+    <value>Family Symbol Name</value>
+  </data>
+  <data name="GrowthFormPlantFamilyParameter" xml:space="preserve">
+    <value>Growth Form</value>
+  </data>
+  <data name="CopyrightDialog" xml:space="preserve">
+    <value>Copyright {0}</value>
+  </data>
+  <data name="PatioWalkFamilyManagerRibbonButton" xml:space="preserve">
+    <value>Patio/Walk</value>
+  </data>
+  <data name="LocateParkingLotTransaction" xml:space="preserve">
+    <value>Locate Parking Lot</value>
+  </data>
+  <data name="LocatePlantsDialog" xml:space="preserve">
+    <value>Locate Plants</value>
+  </data>
+  <data name="AMP_UseParametersDialog" xml:space="preserve">
+    <value>&amp;Use Parameters</value>
+  </data>
+  <data name="BoundaryClosedChainMessage" xml:space="preserve">
+    <value>Boundary picked must be a closed chain.</value>
+  </data>
+  <data name="IntersectionSWStreetMass" xml:space="preserve">
+    <value>Intersection Street</value>
+  </data>
+  <data name="SetBaseTopoSurfaceRibbonButton" xml:space="preserve">
+    <value>Set Base Toposurface</value>
+  </data>
+  <data name="RetainingWallLineSubCategoryName" xml:space="preserve">
+    <value>Retaining Wall Line Sub Category Name</value>
+  </data>
+  <data name="AllwaysLoadDefaultFamiliesOption" xml:space="preserve">
+    <value>Always Load Default Families</value>
+  </data>
+  <data name="CurbTemplateNotMassTypeMessage" xml:space="preserve">
+    <value>Curb Template file is not Mass Family Type. Go to Settings Command and change the Curb Mass Template File Name.</value>
+  </data>
+  <data name="NoPointsFoundMessage" xml:space="preserve">
+    <value>No points found.</value>
+  </data>
+  <data name="SettingRibbonButton" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="PositioningMethodLandXMLSurfacePlacementFamilyInstanceParameter" xml:space="preserve">
+    <value>Positioning Method</value>
+  </data>
+  <data name="NeedValidTypeName" xml:space="preserve">
+    <value>Need a valid Type Name.</value>
+  </data>
+  <data name="HeightPlantFamilyParameter" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="ImportFailedString" xml:space="preserve">
+    <value>Import failed</value>
+  </data>
+  <data name="StartsWithComparator" xml:space="preserve">
+    <value>Starts With</value>
+  </data>
+  <data name="PlantDialog" xml:space="preserve">
+    <value>Plant</value>
+  </data>
+  <data name="SpecifyPlantSpacingMessage" xml:space="preserve">
+    <value>Please specify the Plant Spacing</value>
+  </data>
+  <data name="CharacteristicsFruitPeriodPlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Fruit Period</value>
+  </data>
+  <data name="InvalidRadiusMessage" xml:space="preserve">
+    <value>Radius is Invalid, Arc doesn't fit in the intersection</value>
+  </data>
+  <data name="SingleFileNoRFAMessage" xml:space="preserve">
+    <value>Single File Name must have .rfa extension.</value>
+  </data>
+  <data name="ProgressBarPlacingComponentsMessage" xml:space="preserve">
+    <value>Placing components .........</value>
+  </data>
+  <data name="FamilyManagerLblParkingLotText" xml:space="preserve">
+    <value>Create, add, or modify the parkinglot families for your projects.</value>
+  </data>
+  <data name="NewParkingLot" xml:space="preserve">
+    <value>New Parking Lot</value>
+  </data>
+  <data name="ObtainDrawingImageTransaction" xml:space="preserve">
+    <value>Obtain Drawing Image</value>
+  </data>
+  <data name="AMP_ConvertDialog" xml:space="preserve">
+    <value>&amp;Convert</value>
+  </data>
+  <data name="ProgressBarProcessingSelectedSiteComponentPointsMessage" xml:space="preserve">
+    <value>Processing Selected Site Component Points for Surface .........</value>
+  </data>
+  <data name="ToposurfacesString" xml:space="preserve">
+    <value>Toposurfaces</value>
+  </data>
+  <data name="ToposurfacesToExportDialog" xml:space="preserve">
+    <value>Toposurfaces to Export</value>
+  </data>
+  <data name="BottomViewDirection" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="Export_AMP_AligmentsExportXMLDialog" xml:space="preserve">
+    <value>Export Site Designer &amp;alignments found in the model</value>
+  </data>
+  <data name="ParkingLotString" xml:space="preserve">
+    <value>Parking Lot</value>
+  </data>
+  <data name="NoComponentSpacingMessage" xml:space="preserve">
+    <value>Please specify the Component Spacing.</value>
+  </data>
+  <data name="AMP_DrawHostLineDialog" xml:space="preserve">
+    <value>&amp;Draw Host Line (Click Escape to Complete)</value>
+  </data>
+  <data name="PrimaryPlacementIDParameter" xml:space="preserve">
+    <value>Primary Placement Id</value>
+  </data>
+  <data name="SitesReportRibbonButton" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="PickRegionSubRegionMessage" xml:space="preserve">
+    <value>Pick Region or Subregion</value>
+  </data>
+  <data name="AMP_DoNotShowMessageDialog" xml:space="preserve">
+    <value>&amp;Do not show message again</value>
+  </data>
+  <data name="NoLinearFootageMessage" xml:space="preserve">
+    <value>No edging linear footage or mowing strip volume will be calculated for the region.</value>
+  </data>
+  <data name="EndsWithComparator" xml:space="preserve">
+    <value>Ends With</value>
+  </data>
+  <data name="LocateRibbonPanel" xml:space="preserve">
+    <value>Locate</value>
+  </data>
+  <data name="SelectSurfaceNameAndPhaseDialog" xml:space="preserve">
+    <value>Select Surface Name and Phase</value>
+  </data>
+  <data name="AMP_ModifyPlantTypeDialog" xml:space="preserve">
+    <value>&amp;Modify Plant Type</value>
+  </data>
+  <data name="LoadDefaultFamiliesOption" xml:space="preserve">
+    <value>Load default families</value>
+  </data>
+  <data name="ModelPlantFamilyParameter" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="NewCurb" xml:space="preserve">
+    <value>New Curb</value>
+  </data>
+  <data name="ConditionsSoilConditionPlantFamilyParameter" xml:space="preserve">
+    <value>Conditions Soil Condition</value>
+  </data>
+  <data name="AMP_InsertDialog" xml:space="preserve">
+    <value>&amp;Insert</value>
+  </data>
+  <data name="StepsManagerString" xml:space="preserve">
+    <value>Steps</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="All_AMP_InstancesDialog" xml:space="preserve">
+    <value>All &amp;Instances</value>
+  </data>
+  <data name="EndingElevationFamilyParameter" xml:space="preserve">
+    <value>Ending Elevation</value>
+  </data>
+  <data name="Elevatio_AMP_nRangeDialog" xml:space="preserve">
+    <value>Elevatio&amp;n Range</value>
+  </data>
+  <data name="Slope_" xml:space="preserve">
+    <value>Slope </value>
+  </data>
+  <data name="ObjectSelectedNotSupportedPlantingMessage" xml:space="preserve">
+    <value>Object selected not supported for placing plants.</value>
+  </data>
+  <data name="MissingSharedParametersMessage" xml:space="preserve">
+    <value>Plant Family Parameter field(s) found currently not in Shared Parameters file. Do you wish to add them?</value>
+  </data>
+  <data name="UsePlacementElevationsFamilyParameter" xml:space="preserve">
+    <value>Use Placement Elevations</value>
+  </data>
+  <data name="NotEqualComparator" xml:space="preserve">
+    <value>Not Equal</value>
+  </data>
+  <data name="PositioningBySharedCoordinates" xml:space="preserve">
+    <value>By Shared Coordinates</value>
+  </data>
+  <data name="MaximumString" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="AddDialog" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="SiteComponentAnnotationEndElevationIDParameter" xml:space="preserve">
+    <value>Annotation End Elevation ID</value>
+  </data>
+  <data name="RetainingWallFamilyDialog" xml:space="preserve">
+    <value>&amp;Retaining Wall Family:</value>
+  </data>
+  <data name="Add_AMP_NewSurfaceSurfaceInfoDialog" xml:space="preserve">
+    <value>Add as a &amp;New Toposurface</value>
+  </data>
+  <data name="CurbFamilyManagerRibbonButton" xml:space="preserve">
+    <value>Curb</value>
+  </data>
+  <data name="PickSiteComponentLineMessage" xml:space="preserve">
+    <value>Please pick a site component model line to run this command.</value>
+  </data>
+  <data name="AreaRowSpacingOptionsGenericModelFamilyParameter" xml:space="preserve">
+    <value>Area Row Spacing Options</value>
+  </data>
+  <data name="AMP_SetbackDialog" xml:space="preserve">
+    <value>&amp;Setback:</value>
+  </data>
+  <data name="ChangeGradeDialog" xml:space="preserve">
+    <value>Change Grade</value>
+  </data>
+  <data name="ModifyCurbDialog" xml:space="preserve">
+    <value>Modify Curb</value>
+  </data>
+  <data name="PlantMixFamilyManagerRibbonButton" xml:space="preserve">
+    <value>Plant Mix</value>
+  </data>
+  <data name="ShowMassInActiveViewOption" xml:space="preserve">
+    <value>Show Mass only in currently active View</value>
+  </data>
+  <data name="SidewalkTemplateNotMassTypeMessage" xml:space="preserve">
+    <value>Sidewalk Template file is not Mass Family Type. Go to Settings Command and change the Sidewalk Mass Template File Name.</value>
+  </data>
+  <data name="AMP_CancelDialog" xml:space="preserve">
+    <value>&amp;Cancel</value>
+  </data>
+  <data name="OverwriteMessage" xml:space="preserve">
+    <value>Override ?</value>
+  </data>
+  <data name="IncorrectFamilySymbolMessage" xml:space="preserve">
+    <value>There is no family loaded to run this command.</value>
+  </data>
+  <data name="LocateFenceTransaction" xml:space="preserve">
+    <value>Locate Fence</value>
+  </data>
+  <data name="LocateSidewalkRibbonToolTipLongDescription" xml:space="preserve">
+    <value>Select a sidewalk family to control the sidewalk width, depth, material, and slope projection settings.</value>
+  </data>
+  <data name="AMP_DirectoryDialog" xml:space="preserve">
+    <value>&amp;Directory:</value>
+  </data>
+  <data name="ProductUpdateAvailableTitle" xml:space="preserve">
+    <value>Product Update Available</value>
+  </data>
+  <data name="StallOnArcMessage" xml:space="preserve">
+    <value>Placing stalls on arc.</value>
+  </data>
+  <data name="TrunkHeightPlantParameter" xml:space="preserve">
+    <value>Trunk Height</value>
+  </data>
+  <data name="ReportRibbonPanel" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="_FamilyFileMessage" xml:space="preserve">
+    <value>Family File.</value>
+  </data>
+  <data name="NeedEdgeMowingYes" xml:space="preserve">
+    <value>Please set Edge and Mowing Strip set to 'Yes' to set Edge Width.</value>
+  </data>
+  <data name="LocateCurbRibbonToolTipLongDescription" xml:space="preserve">
+    <value>Select a curb family to control the curb width and height, gutter width and height, material, and slope projection settings.</value>
+  </data>
+  <data name="StreetIntersectionNotOnStraightLinesMessage" xml:space="preserve">
+    <value>An intersection was found that can't be created. Please make sure that the new street intersects other streets only on straight line segments.</value>
+  </data>
+  <data name="M_AMP_odifyPlantWidthDialog" xml:space="preserve">
+    <value>M&amp;odify Plant Width</value>
+  </data>
+  <data name="FineDetailLevel" xml:space="preserve">
+    <value>Fine</value>
+  </data>
+  <data name="NewerVersionAvailableForDownloadDialog" xml:space="preserve">
+    <value>A newer version is available for download.  Please follow the instructions below and click the Download Now button to get the latest version.</value>
+  </data>
+  <data name="NoSurfacesInProjectString" xml:space="preserve">
+    <value>No Site Designer surfaces were found in the Project. Please click OK to continue.</value>
+  </data>
+  <data name="SoftTerrainFamilyCantBeLoadedMessage" xml:space="preserve">
+    <value>Family cannot be loaded. Please pick another Soft Terrain (Site with Siteworks ID </value>
+  </data>
+  <data name="MassGrossVolumeParameter" xml:space="preserve">
+    <value>Gross Volume</value>
+  </data>
+  <data name="Lea_AMP_deredTagDialog" xml:space="preserve">
+    <value>Lea&amp;dered Tag</value>
+  </data>
+  <data name="IsSingleSegmentGenericFamilyParameter" xml:space="preserve">
+    <value>Is Single Segment</value>
+  </data>
+  <data name="AMP_SingleDialog" xml:space="preserve">
+    <value>&amp;Single</value>
+  </data>
+  <data name="LocateSoftTerrainTransaction" xml:space="preserve">
+    <value>Locate Soft Terrain</value>
+  </data>
+  <data name="AMP_HedgeRowDialog" xml:space="preserve">
+    <value>&amp;Hedge Row</value>
+  </data>
+  <data name="ADAStallWidthGenericModelFamilyParameter" xml:space="preserve">
+    <value>ADA Stall Width</value>
+  </data>
+  <data name="SelectedFileHasLengthMessage" xml:space="preserve">
+    <value>Selected file has length fields. Please choose the appropriate unit format.</value>
+  </data>
+  <data name="Import_AMP_ToposurfacesInXMLImportXMLDialog" xml:space="preserve">
+    <value>Import &amp;toposurfaces found in LandXML file</value>
+  </data>
+  <data name="GrowthSimulationNoLandCaddFamilyMessage" xml:space="preserve">
+    <value>No Plants were found in the project that match LANDCADD growth simulation criteria.</value>
+  </data>
+  <data name="ParkingLotPavementDepthParameter" xml:space="preserve">
+    <value>Pavement Depth</value>
+  </data>
+  <data name="DestinationOverWrite" xml:space="preserve">
+    <value>Destination File Name already exists. Do you wish to overwrite the file?</value>
+  </data>
+  <data name="SelectionMethodsDialog" xml:space="preserve">
+    <value>Selection Methods</value>
+  </data>
+  <data name="WorksetPermissionErrorDialog" xml:space="preserve">
+    <value>Workset Permission Error</value>
+  </data>
+  <data name="ImportDWGTitle" xml:space="preserve">
+    <value>Import DWG</value>
+  </data>
+  <data name="InvalidFenceHeightMessage" xml:space="preserve">
+    <value>Fence Height should be greater than zero.</value>
+  </data>
+  <data name="CreateLineSubCategoriesTransaction" xml:space="preserve">
+    <value>Create Line Sub Categories</value>
+  </data>
+  <data name="NoSurfacesToExportString" xml:space="preserve">
+    <value>No TopoSurfaces in the current project to Export to LandXML file.</value>
+  </data>
+  <data name="AddParametersToFamilyTransaction" xml:space="preserve">
+    <value>Added Parameter(s) to Family</value>
+  </data>
+  <data name="UnableCreateFamilyString" xml:space="preserve">
+    <value>Unable to Create Family.</value>
+  </data>
+  <data name="CurrentGradeDialog" xml:space="preserve">
+    <value>Current Grade:</value>
+  </data>
+  <data name="ProgressPlacingFenceMessage" xml:space="preserve">
+    <value>Placing fence .........</value>
+  </data>
+  <data name="AMP_RemoveDialog" xml:space="preserve">
+    <value>&lt;-- &amp;Remove</value>
+  </data>
+  <data name="SurfaceNameString" xml:space="preserve">
+    <value>Surface</value>
+  </data>
+  <data name="PickRotationPointPrompt" xml:space="preserve">
+    <value>Pick rotation point.</value>
+  </data>
+  <data name="AMP_SegmentDialog" xml:space="preserve">
+    <value>&amp;Segment</value>
+  </data>
+  <data name="S_AMP_quareDialog" xml:space="preserve">
+    <value>S&amp;quare</value>
+  </data>
+  <data name="NoAlignmentToExportString" xml:space="preserve">
+    <value>No Alignments in the current project to Export to LandXML file.</value>
+  </data>
+  <data name="SWStreetLineNameString" xml:space="preserve">
+    <value>SW Street</value>
+  </data>
+  <data name="LoadCurbFamilyTransaction" xml:space="preserve">
+    <value>Load Curb Family: </value>
+  </data>
+  <data name="FamilyNotFenceMessage" xml:space="preserve">
+    <value>Family loaded was not a Fence (Generic Model with LandcaddID </value>
+  </data>
+  <data name="SlopeProjectionTabString" xml:space="preserve">
+    <value>Slope Projection</value>
+  </data>
+  <data name="NotAvailableString" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="CurbGutterTabString" xml:space="preserve">
+    <value>Curb/Gutter</value>
+  </data>
+  <data name="IslandSurfaceIdFamilyParameter" xml:space="preserve">
+    <value>Island Surface Id</value>
+  </data>
+  <data name="PlantGrowthAgeDialog" xml:space="preserve">
+    <value>Plant Growth Age</value>
+  </data>
+  <data name="R_AMP_etainingWallNameDialog" xml:space="preserve">
+    <value>R&amp;etaining Wall Name:</value>
+  </data>
+  <data name="SurfaceCleanUpTransaction" xml:space="preserve">
+    <value>Surface Clean Up</value>
+  </data>
+  <data name="LocatePointWipeoutDialog" xml:space="preserve">
+    <value>Locate Point Wipeout</value>
+  </data>
+  <data name="PickLeaderElbowPointPrompt" xml:space="preserve">
+    <value>Pick Leader Elbow Point.</value>
+  </data>
+  <data name="ComponentFamilyNotLoadedMessage" xml:space="preserve">
+    <value>Component (Generic Model, Site, Entourage, Furniture, Lighting Fixtures, Columns, or Electrical Equipment) Family not loaded.</value>
+  </data>
+  <data name="O_AMP_riginToOriginDialog" xml:space="preserve">
+    <value>O&amp;rigin-to-Origin</value>
+  </data>
+  <data name="MassingFamilyNameAlreadyUsedMessage" xml:space="preserve">
+    <value>The component name has to be different from the family name.</value>
+  </data>
+  <data name="CurbNameDialog" xml:space="preserve">
+    <value>Curb Na&amp;me:</value>
+  </data>
+  <data name="IslandEclipsePickMessage" xml:space="preserve">
+    <value>Island picked cannot be an Ellipse. Pick again.</value>
+  </data>
+  <data name="LocateFeatureLineTransaction" xml:space="preserve">
+    <value>Locate Feature Line</value>
+  </data>
+  <data name="PleaseSelectCurbFamilyFileMessage" xml:space="preserve">
+    <value>Please select Site Designer Curb Family File.</value>
+  </data>
+  <data name="SpecifyFolderFileNameMessage" xml:space="preserve">
+    <value>Please specify the folder and file name.</value>
+  </data>
+  <data name="ManagerDialog" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="StreetString" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="TwoDDWGSymbolDimensionType" xml:space="preserve">
+    <value>2D DWG Symbol</value>
+  </data>
+  <data name="MaintenanceTransplantPlantFamilyParameter" xml:space="preserve">
+    <value>Maintenance Transplant</value>
+  </data>
+  <data name="SiteComponentPromptForStartingSide" xml:space="preserve">
+    <value>Site Component Prompt For Starting Side</value>
+  </data>
+  <data name="ValidTypeMessage" xml:space="preserve">
+    <value>Need to add at least one type in the family before saving.</value>
+  </data>
+  <data name="CoarseDetailLevel" xml:space="preserve">
+    <value>Coarse</value>
+  </data>
+  <data name="CantObtainPermissionToEditElementMessage" xml:space="preserve">
+    <value>Can't obtain permission to edit the element(s):  The Central File {0} is inaccessible.</value>
+  </data>
+  <data name="LinearUnitFeetString_Upper" xml:space="preserve">
+    <value>Feet</value>
+  </data>
+  <data name="PleaseSelectComponentFamilyFileMessage" xml:space="preserve">
+    <value>Please select Component Family File.</value>
+  </data>
+  <data name="ModifyPointWipeoutRibbonToolTip" xml:space="preserve">
+    <value>Moves, modifies, or deletes a defined area where points were removed to smooth the terrain.</value>
+  </data>
+  <data name="ModifyPlantsTransaction" xml:space="preserve">
+    <value>Modify Plants</value>
+  </data>
+  <data name="Family_AMP_Name_NewFamilyDialog" xml:space="preserve">
+    <value>Family &amp;Name </value>
+  </data>
+  <data name="AreaRegionParameter" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="C_AMP_omponentNameDialog" xml:space="preserve">
+    <value>C&amp;omponent Name:</value>
+  </data>
+  <data name="ADASpacingDialog" xml:space="preserve">
+    <value>ADA Spacing</value>
+  </data>
+  <data name="AMP_LevelDialog" xml:space="preserve">
+    <value>&amp;Level:</value>
+  </data>
+  <data name="SiteComponentsFoundInProjectMessage" xml:space="preserve">
+    <value>Site Component(s) were found in project. Do you want to add them to the new Proposed Surface?</value>
+  </data>
+  <data name="ProgressbarSavingModifiedPlantsMessage" xml:space="preserve">
+    <value>Saving modified plants .......</value>
+  </data>
+  <data name="Created_AMP_ByExportXMLDialog" xml:space="preserve">
+    <value>Created &amp;by</value>
+  </data>
+  <data name="CurbGutterSlopeParameter" xml:space="preserve">
+    <value>Gutter slope</value>
+  </data>
+  <data name="ProgressBarPlacingSidewalkMassMessage" xml:space="preserve">
+    <value>Placing Sidewalk...</value>
+  </data>
+  <data name="LandcaddRibbonTab" xml:space="preserve">
+    <value>LANDCADD</value>
+  </data>
+  <data name="PlantMixFamilyNotLoadedMessage" xml:space="preserve">
+    <value>Plant Mix Family not loaded in project.</value>
+  </data>
+  <data name="AboutSiteworksRibbonToolTip" xml:space="preserve">
+    <value>Identifies the installed version of Site Designer.</value>
+  </data>
+  <data name="EqualComparator" xml:space="preserve">
+    <value>Equal</value>
+  </data>
+  <data name="ColumnDisplayFormDialog" xml:space="preserve">
+    <value>Column Display</value>
+  </data>
+  <data name="NewFamilyToolTip" xml:space="preserve">
+    <value>New Family</value>
+  </data>
+  <data name="PrimaryFormIDFamilyParameter" xml:space="preserve">
+    <value>Primary Form ID</value>
+  </data>
+  <data name="LoadParkingBumperFamilyTransaction" xml:space="preserve">
+    <value>Load Parking Bumper Family: </value>
+  </data>
+  <data name="MassCreationOnlyMode" xml:space="preserve">
+    <value>Only Create Masses</value>
+  </data>
+  <data name="InvalidTypeNameMessage_" xml:space="preserve">
+    <value>Name Cannot Contain any of the following characters: </value>
+  </data>
+  <data name="SpecifyPlantWidthMessage" xml:space="preserve">
+    <value>Please specify the Plant Width</value>
+  </data>
+  <data name="AssignPatioWalkTransaction" xml:space="preserve">
+    <value>Assign Patio/Walk</value>
+  </data>
+  <data name="Add_AMP_BreaklineDialog" xml:space="preserve">
+    <value>Add &amp;Breakline</value>
+  </data>
+  <data name="InvalidDirectoryMessage" xml:space="preserve">
+    <value>Invalid Directory</value>
+  </data>
+  <data name="PlantCommentsPlantFamilyParameter" xml:space="preserve">
+    <value>Plant Comments</value>
+  </data>
+  <data name="CommonNamePlantMixFamilyParameter" xml:space="preserve">
+    <value>Plant Common Name</value>
+  </data>
+  <data name="CurbLineSubCategoryColor" xml:space="preserve">
+    <value>Curb Sub Category Color</value>
+  </data>
+  <data name="CurrentViewScaleDialog" xml:space="preserve">
+    <value>Current View Scale:</value>
+  </data>
+  <data name="AboutSiteDesignerForRevitDialog" xml:space="preserve">
+    <value>About Site Designer for Revit</value>
+  </data>
+  <data name="CreateNewToposurfaceOption" xml:space="preserve">
+    <value>New toposurface will create a new toposurface and append a number to the end of the name</value>
+  </data>
+  <data name="DistBetweenLinesString" xml:space="preserve">
+    <value>Distance Between Centerlines</value>
+  </data>
+  <data name="Unassign_Message" xml:space="preserve">
+    <value>Do you wish to unassign </value>
+  </data>
+  <data name="P_AMP_lantNameDialog" xml:space="preserve">
+    <value>P&amp;lant Name:</value>
+  </data>
+  <data name="PickLeaderStartPointPrompt" xml:space="preserve">
+    <value>Pick Leader Start Point.</value>
+  </data>
+  <data name="PickStartingDirectionMessage" xml:space="preserve">
+    <value>Pick starting direction</value>
+  </data>
+  <data name="NewSoftTerrain" xml:space="preserve">
+    <value>New Soft Terrain</value>
+  </data>
+  <data name="PleaseSelectSoftTerrainFamilyFileMessage" xml:space="preserve">
+    <value>Please select Site Designer Soft Terrain Family File.</value>
+  </data>
+  <data name="StreetNumberOfLanesParameter" xml:space="preserve">
+    <value>Number of lanes</value>
+  </data>
+  <data name="GrowthGrowthRatePlantFamilyParameter" xml:space="preserve">
+    <value>Growth Growth Rate</value>
+  </data>
+  <data name="RadiusParameter" xml:space="preserve">
+    <value>Radius</value>
+  </data>
+  <data name="PickToposurfaceInformationDialog" xml:space="preserve">
+    <value>Please highlight the individual toposurface that you want to use to associate your site component to.</value>
+  </data>
+  <data name="PlantingDefinitionGroup" xml:space="preserve">
+    <value>LC Planting</value>
+  </data>
+  <data name="PrimaryStationParameter" xml:space="preserve">
+    <value>Primary Station</value>
+  </data>
+  <data name="VersionDialog" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="BumperOffsetGenericModelFamilyParameter" xml:space="preserve">
+    <value>Bumper Offset</value>
+  </data>
+  <data name="LoadPlantFamilyTransaction" xml:space="preserve">
+    <value>Load Plant Family: </value>
+  </data>
+  <data name="TopoDrawOrderFamilyParameter" xml:space="preserve">
+    <value>Topo Draw Order</value>
+  </data>
+  <data name="PlantMixFamilyDialog" xml:space="preserve">
+    <value>Plant Mix Family</value>
+  </data>
+  <data name="NoRFAExtforDestinationMessage" xml:space="preserve">
+    <value>Destination File must have .rfa extension.</value>
+  </data>
+  <data name="ModifySidewalkRibbonToolTipLongDescription" xml:space="preserve">
+    <value>Select the host line of the sidewalk to modify.</value>
+  </data>
+  <data name="AMP_CompanyExportXMLDialog" xml:space="preserve">
+    <value>&amp;Company</value>
+  </data>
+  <data name="SoftTerrainString" xml:space="preserve">
+    <value>Soft Terrain</value>
+  </data>
+  <data name="DescriptionPlantFamilyParameter" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ProjectInnerSlopesFamilyParameter" xml:space="preserve">
+    <value>Project Inner Slopes</value>
+  </data>
+  <data name="RetainingWallFamilyManagerToolTip" xml:space="preserve">
+    <value>Customizes families for retaining walls and landscaping walls.</value>
+  </data>
+  <data name="BaseSurfaceLinkBrokenMessage" xml:space="preserve">
+    <value>The link to the Base Surface has been broken. Please reselect the surface from the following list.</value>
+  </data>
+  <data name="AMP_FenceFamilyDialog" xml:space="preserve">
+    <value>&amp;Fence Family:</value>
+  </data>
+  <data name="AMP_NewFamilyDialog" xml:space="preserve">
+    <value>&amp;New Family:</value>
+  </data>
+  <data name="UseInchUnitsOption" xml:space="preserve">
+    <value>Use inch units</value>
+  </data>
+  <data name="CreateMassFormTransaction" xml:space="preserve">
+    <value>Create Mass Form</value>
+  </data>
+  <data name="LoadFenceFamilyTransaction" xml:space="preserve">
+    <value>Load Fence Family: </value>
+  </data>
+  <data name="InvalidSetbackMessage" xml:space="preserve">
+    <value>Setback should be greater than or equal to zero.</value>
+  </data>
+  <data name="RetainingWallTemplateNotMassTypeMessage" xml:space="preserve">
+    <value>Retaining Wall Template file is not Mass Family Type. Go to Settings Command and change the Retaining Wall Mass Template File Name.</value>
+  </data>
+  <data name="InvalidXMLFileName" xml:space="preserve">
+    <value>Please select a valid LandXML file.</value>
+  </data>
+  <data name="PickToposurfacePrompt" xml:space="preserve">
+    <value>Pick Toposurface</value>
+  </data>
+  <data name="SurfaceNameDialog" xml:space="preserve">
+    <value>Surface Name</value>
+  </data>
+  <data name="CurbString" xml:space="preserve">
+    <value>Curb</value>
+  </data>
+  <data name="LicenseReturnedToNetworkMessage" xml:space="preserve">
+    <value>License returned to Network</value>
+  </data>
+  <data name="SiteComponentNameFamilyParameter" xml:space="preserve">
+    <value>Site Component Name</value>
+  </data>
+  <data name="ManufacturerPlantFamilyParameter" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="PositioningDialog" xml:space="preserve">
+    <value>Positioning</value>
+  </data>
+  <data name="PickSideForGradeToPlaceMessage" xml:space="preserve">
+    <value>Pick side for grade to be placed</value>
+  </data>
+  <data name="KeynoteGenericFamilyParameter" xml:space="preserve">
+    <value>Keynote</value>
+  </data>
+  <data name="_Family_" xml:space="preserve">
+    <value> Family </value>
+  </data>
+  <data name="ModifyFeatureLineDialog" xml:space="preserve">
+    <value>Modify Feature Line</value>
+  </data>
+  <data name="SideString" xml:space="preserve">
+    <value>Side</value>
+  </data>
+  <data name="DuplicateTypeAppendMessage" xml:space="preserve">
+    <value>Duplicate Type Found. Do you wish to append on number to duplicates?</value>
+  </data>
+  <data name="IsoMetricViewDirection" xml:space="preserve">
+    <value>Iso Metric</value>
+  </data>
+  <data name="RetainingWallMaterialParameter" xml:space="preserve">
+    <value>Wall material</value>
+  </data>
+  <data name="CurbMassSubCategoryName" xml:space="preserve">
+    <value>Curb Mass Sub Category Name</value>
+  </data>
+  <data name="ModifySidewalkRibbonButton" xml:space="preserve">
+    <value>Sidewalk</value>
+  </data>
+  <data name="CurrentSlopeUnitString" xml:space="preserve">
+    <value>Slope Inputs units:</value>
+  </data>
+  <data name="ScientificNamePlantMixFamilyParameter" xml:space="preserve">
+    <value>Plant Scientific Name</value>
+  </data>
+  <data name="RetainingWallLineSubCategoryLineWeight" xml:space="preserve">
+    <value>Retaining Wall Line Sub Category Line Weight</value>
+  </data>
+  <data name="AboutLANDCADDForRevitDialog" xml:space="preserve">
+    <value>About LANDCADD for Revit</value>
+  </data>
+  <data name="GrowthSimulationTransaction" xml:space="preserve">
+    <value>Growth Simulation</value>
+  </data>
+  <data name="PositioningManualCenter" xml:space="preserve">
+    <value>Manual Center</value>
+  </data>
+  <data name="ExportLandXMLString" xml:space="preserve">
+    <value>Export to LandXML</value>
+  </data>
+  <data name="NotValidLANDCADDPlantMixFamilyMessage" xml:space="preserve">
+    <value>Not a valid LANDCADD Plant Mix family</value>
+  </data>
+  <data name="Sea_AMP_rchDialog" xml:space="preserve">
+    <value>Sea&amp;rch</value>
+  </data>
+  <data name="NewConstructionString" xml:space="preserve">
+    <value>New Construction</value>
+  </data>
+  <data name="SideWalkLocationLineParameter" xml:space="preserve">
+    <value>Location Line</value>
+  </data>
+  <data name="MaterialString" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="C_AMP_enterDialog" xml:space="preserve">
+    <value>C&amp;enter</value>
+  </data>
+  <data name="ContainsComparator" xml:space="preserve">
+    <value>Contains</value>
+  </data>
+  <data name="LocateCurbTransaction" xml:space="preserve">
+    <value>Locate Curb</value>
+  </data>
+  <data name="DuplicateTypeNameMessage" xml:space="preserve">
+    <value>The type name is already in use.</value>
+  </data>
+  <data name="FileExistsOverwriteMessage" xml:space="preserve">
+    <value>File aleady exists. Do you wish to overwrite?</value>
+  </data>
+  <data name="CreatePlant_AMP_GroupTagDialog" xml:space="preserve">
+    <value>Create Plant &amp;Group Tag</value>
+  </data>
+  <data name="ValidFields" xml:space="preserve">
+    <value>Field(s) must be present</value>
+  </data>
+  <data name="LinearPointIntervalParameter" xml:space="preserve">
+    <value>Linear Point Interval</value>
+  </data>
+  <data name="PickPlantTagMessage" xml:space="preserve">
+    <value>Pick Plant to Tag.</value>
+  </data>
+  <data name="ParkingLotDialog" xml:space="preserve">
+    <value>Parking Lot</value>
+  </data>
+  <data name="FeatureLineLineSubCategoryColor" xml:space="preserve">
+    <value>Feature Line Sub Category Color</value>
+  </data>
+  <data name="ConditionsTolerancesPlantFamilyParameter" xml:space="preserve">
+    <value>Conditions Tolerances</value>
+  </data>
+  <data name="VolumeString" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="SecondaryStationParameter" xml:space="preserve">
+    <value>Secondary Station</value>
+  </data>
+  <data name="ProgressBarCreatingNewBaseToposurfaceMessage" xml:space="preserve">
+    <value>Creating New Base Toposurface .........</value>
+  </data>
+  <data name="De_AMP_leteBreaklineDialog" xml:space="preserve">
+    <value>De&amp;lete Breakline</value>
+  </data>
+  <data name="AMP_NewViewScaleDialog" xml:space="preserve">
+    <value>&amp;New View Scale:</value>
+  </data>
+  <data name="_ParametersNotPartOfFamilyMessage" xml:space="preserve">
+    <value> parameters is not part of this family.</value>
+  </data>
+  <data name="ProgressBarProcessingCogoPointsMessage" xml:space="preserve">
+    <value>Processing Cogo Points...</value>
+  </data>
+  <data name="WidthVarianceGenericFamilyParameter" xml:space="preserve">
+    <value>Width Variance</value>
+  </data>
+  <data name="NewStreet" xml:space="preserve">
+    <value>New Street</value>
+  </data>
+  <data name="ConvertObjectToToposurfaceRibbonToolTipLongDescription" xml:space="preserve">
+    <value>When using this tool, you can open a 3D view and the site plan view, and tile them to see the views side-by-side. (To tile the view windows, type the keyboard shortcut WT.) Make sure the mass is visible in both views.</value>
+  </data>
+  <data name="AddBuildingPadsToProposedSurfaceMessage" xml:space="preserve">
+    <value>One or more of the selected toposurfaces contain building pads. Do you wish to make a copy of them into the resulting proposed toposurface? Please note that this will result in duplicate building pads that may affect your schedules.</value>
+  </data>
+  <data name="DefaultLineColor" xml:space="preserve">
+    <value>0-0-255</value>
+  </data>
+  <data name="InvalidViewForImportString" xml:space="preserve">
+    <value>You cannot run this command on this view. Please change to a floor plan, site, or 3D view.</value>
+  </data>
+  <data name="ModifyStreetRibbonToolTipLongDescription" xml:space="preserve">
+    <value>Select the host line of the street to modify.</value>
+  </data>
+  <data name="Nu_AMP_mberOfSpacesDialog" xml:space="preserve">
+    <value>Nu&amp;mber of Spaces:</value>
+  </data>
+  <data name="NoSurfacesSelectedMessage" xml:space="preserve">
+    <value>No Surfaces selected.</value>
+  </data>
+  <data name="NoAreaSpacingMethod" xml:space="preserve">
+    <value>Cannot Specify Planting spacing with Area as Spacing method.</value>
+  </data>
+  <data name="A_AMP_ddDialog" xml:space="preserve">
+    <value>A&amp;dd --&gt;</value>
+  </data>
+  <data name="ModifyPlantsInProjDialog" xml:space="preserve">
+    <value>Modify Plant(s) in Project</value>
+  </data>
+  <data name="RelativeElevationFromToposurfaceDialog" xml:space="preserve">
+    <value>Re&amp;lative Elevation from Toposurface</value>
+  </data>
+  <data name="S_AMP_ymbolFileDialog" xml:space="preserve">
+    <value>S&amp;ymbol File:</value>
+  </data>
+  <data name="ExportSurfaceLandXMLCompleteString" xml:space="preserve">
+    <value>Export Completed.</value>
+  </data>
+  <data name="Linear_AMP_PointIntervalDialog" xml:space="preserve">
+    <value>Linear &amp;Point Interval:</value>
+  </data>
+  <data name="ElevationBasePointParameter" xml:space="preserve">
+    <value>Elev</value>
+  </data>
+  <data name="StreetTypeDialog" xml:space="preserve">
+    <value>Street T&amp;ype:</value>
+  </data>
+  <data name="ConvertRibbonPanel" xml:space="preserve">
+    <value>Convert</value>
+  </data>
+  <data name="PlantsDialog" xml:space="preserve">
+    <value>Plants</value>
+  </data>
+  <data name="Select__String" xml:space="preserve">
+    <value>Please select  </value>
+  </data>
+  <data name="InvalidFamilyNameMessage" xml:space="preserve">
+    <value>Invalid Family Name.</value>
+  </data>
+  <data name="RetainingWallTypeDialog" xml:space="preserve">
+    <value>Retaining &amp;Wall Type:</value>
+  </data>
+  <data name="SidewalkString" xml:space="preserve">
+    <value>Sidewalk</value>
+  </data>
+  <data name="InvalidRadiusForStreetMessage" xml:space="preserve">
+    <value>Radius is invalid and must be more than the street curb and gutter width.</value>
+  </data>
+  <data name="SpecifyDestinationFileMessage" xml:space="preserve">
+    <value>Please specify the Destination File</value>
+  </data>
+  <data name="ENU-MetricTemplateFolderName" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="InvalidFileNameLocationMessageString" xml:space="preserve">
+    <value>Please specify a file name and location.</value>
+  </data>
+  <data name="FamilyManagerLblCurbText" xml:space="preserve">
+    <value>Create, add, or modify the curb families for your projects.</value>
+  </data>
+  <data name="NoCSVTXT" xml:space="preserve">
+    <value>File Name must have CSV/TXT extension.</value>
+  </data>
+  <data name="NoFamilySelectedMessage" xml:space="preserve">
+    <value>No Family selected.</value>
+  </data>
+  <data name="SWSoftTerrainLineNameString" xml:space="preserve">
+    <value>SW Soft Terrain</value>
+  </data>
+  <data name="NeedValidEdgeWidth" xml:space="preserve">
+    <value>Need a valid Edge Width.</value>
+  </data>
+  <data name="NumberOfPntsString" xml:space="preserve">
+    <value>Number of Points</value>
+  </data>
+  <data name="PlantingMetricTemplate" xml:space="preserve">
+    <value>Metric Planting</value>
+  </data>
+  <data name="Plan_AMP_tSpacingDialog" xml:space="preserve">
+    <value>Plan&amp;t Spacing:</value>
+  </data>
+  <data name="SingleFileNoCSVTXTMessage" xml:space="preserve">
+    <value>Single File Name must have .csv or .txt extension.</value>
+  </data>
+  <data name="PositionDistanceLandXMLSurfacePlacementFamilyInstanceParameter" xml:space="preserve">
+    <value>Position Distance</value>
+  </data>
+  <data name="UseSharedElevation" xml:space="preserve">
+    <value>Use Shared Elevation</value>
+  </data>
+  <data name="ModifyPointWipeoutDialog" xml:space="preserve">
+    <value>Modify Point Wipeout</value>
+  </data>
+  <data name="AllignmentString" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="UnableToCeateBlendGeometry" xml:space="preserve">
+    <value>Unable to create blend. Please try and pick less complex geometry to create blend.</value>
+  </data>
+  <data name="_FamilyNotLoaded_Message" xml:space="preserve">
+    <value>Family Not Loaded. Please select</value>
+  </data>
+  <data name="TransitioningDistanceParameter" xml:space="preserve">
+    <value>Transitioning Distance</value>
+  </data>
+  <data name="_TypeParameterString" xml:space="preserve">
+    <value> Type Parameter) Family File.</value>
+  </data>
+  <data name="PlantViewSearchTitle" xml:space="preserve">
+    <value>Plant View Search</value>
+  </data>
+  <data name="Sho_AMP_wAllDialog" xml:space="preserve">
+    <value>Sho&amp;w All</value>
+  </data>
+  <data name="Create_" xml:space="preserve">
+    <value>Create </value>
+  </data>
+  <data name="YesString" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="ProgressbarLoadingFilesMessage" xml:space="preserve">
+    <value>Loading files .....</value>
+  </data>
+  <data name="Plant_AMP_NameDialog" xml:space="preserve">
+    <value>Plant &amp;Name:</value>
+  </data>
+  <data name="StepsMaterialParameter" xml:space="preserve">
+    <value>Step material</value>
+  </data>
+  <data name="RetainingWallMassSubCategoryName" xml:space="preserve">
+    <value>Retaining Wall Mass Sub Category Name</value>
+  </data>
+  <data name="NoPlantTypePickedMessage" xml:space="preserve">
+    <value>No plants exist for type picked.</value>
+  </data>
+  <data name="FeatureLineRibbonButton" xml:space="preserve">
+    <value>Feature Line</value>
+  </data>
+  <data name="Plant_AMP_WidthDialog" xml:space="preserve">
+    <value>Plant &amp;Width:</value>
+  </data>
+  <data name="CurbGutterHeightParameter" xml:space="preserve">
+    <value>Gutter height</value>
+  </data>
+  <data name="FilterString" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="PickSideForFaceOfCurbMessage" xml:space="preserve">
+    <value>Pick side for face of curb</value>
+  </data>
+  <data name="SoftTerrainFillSlopeParameter" xml:space="preserve">
+    <value>Fill Slope</value>
+  </data>
+  <data name="AllString" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="ParkingLotLineSubCategoryName" xml:space="preserve">
+    <value>Parking Lot Line Sub Category Name</value>
+  </data>
+  <data name="ParkingFamilyCantBeLoadedMessage" xml:space="preserve">
+    <value>Family cannot be loaded. Please pick another Parking ( LancaddID </value>
+  </data>
+  <data name="CircleAlreadyPickedMessage" xml:space="preserve">
+    <value>Circle has already been picked. Pick again.</value>
+  </data>
+  <data name="LaunchPlantMixFamilyManagerOption" xml:space="preserve">
+    <value>Launch Plant Mix Family Manager</value>
+  </data>
+  <data name="RetainingWallBaseSurfaceParameter" xml:space="preserve">
+    <value>Retaining Wall Base depth</value>
+  </data>
+  <data name="CurbLineSubCategoryLineWeight" xml:space="preserve">
+    <value>Curb Line Sub Category Line Weight</value>
+  </data>
+  <data name="RGBString" xml:space="preserve">
+    <value>RGB</value>
+  </data>
+  <data name="MassTemplateFileNameString" xml:space="preserve">
+    <value>Mass Template File Name</value>
+  </data>
+  <data name="MediumDetailLevel" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="CharacteristicsFoliageSizePlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Foliage Size</value>
+  </data>
+  <data name="RetainingWallHeightParameter" xml:space="preserve">
+    <value>Wall Height</value>
+  </data>
+  <data name="StreetPavementDepthParameter" xml:space="preserve">
+    <value>Pavement Depth</value>
+  </data>
+  <data name="PreviewDialog" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="NoObject" xml:space="preserve">
+    <value>Nothing was selected.</value>
+  </data>
+  <data name="AMP_OKDialog" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="SlopeUnitPercentage" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="FamilyNameFamilyParameter" xml:space="preserve">
+    <value>Family Name</value>
+  </data>
+  <data name="LessThanOrEqualToComparator" xml:space="preserve">
+    <value>Less Than Or Equal To</value>
+  </data>
+  <data name="ExistingEle_AMP_mentDialog" xml:space="preserve">
+    <value>Existing Ele&amp;ment</value>
+  </data>
+  <data name="InValidNewFamily_Message" xml:space="preserve">
+    <value>The family you selected is not a </value>
+  </data>
+  <data name="AMP_ChangeElevationDialog" xml:space="preserve">
+    <value>&amp;Change Elevation</value>
+  </data>
+  <data name="ToposurfaceConversionRibbonButton" xml:space="preserve">
+    <value>Toposurface Conversion</value>
+  </data>
+  <data name="DestinationDialog" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="SideWalkFillSlopeParameter" xml:space="preserve">
+    <value>Fill Slope</value>
+  </data>
+  <data name="SWFeatureLineLineNameString" xml:space="preserve">
+    <value>SW Feature Line</value>
+  </data>
+  <data name="New_AMP_TypeDialog" xml:space="preserve">
+    <value>New &amp;Type:</value>
+  </data>
+  <data name="PhaseCreatedDialog" xml:space="preserve">
+    <value>Phase Created</value>
+  </data>
+  <data name="SymbolNoRFAExtension" xml:space="preserve">
+    <value>Symbol Name must have .rfa extension.</value>
+  </data>
+  <data name="ProgressbarGrowingPlantsMessage" xml:space="preserve">
+    <value>Growing Plants .........</value>
+  </data>
+  <data name="ModifyCurbRibbonButton" xml:space="preserve">
+    <value>Curb</value>
+  </data>
+  <data name="SideWalkFamilyDialog" xml:space="preserve">
+    <value>Side&amp;walk Family:</value>
+  </data>
+  <data name="ModelGenericFamilyParameter" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="SymbolIDGenericFamilyParameter" xml:space="preserve">
+    <value>Symbol ID</value>
+  </data>
+  <data name="NoPointPickedMessage" xml:space="preserve">
+    <value>No point was picked.</value>
+  </data>
+  <data name="SlopeUnitRiseMM" xml:space="preserve">
+    <value>Rise / 1000 mm</value>
+  </data>
+  <data name="EaglePointLANDCADDForRevitDialog" xml:space="preserve">
+    <value>Eagle Point LANDCADD for Revit</value>
+  </data>
+  <data name="URLPlantFamilyParameter" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="SidewalkIntersectionNotOnStraightLinesMessage" xml:space="preserve">
+    <value>An intersection was found that can't be created. Please make sure that the new sidewalk intersects other sidewalks only on straight line segments.</value>
+  </data>
+  <data name="MinimumValueIsMessage_" xml:space="preserve">
+    <value>Minimum Value is </value>
+  </data>
+  <data name="AMP_FileDialog" xml:space="preserve">
+    <value>&amp;File:</value>
+  </data>
+  <data name="ParametersUsedDialog" xml:space="preserve">
+    <value>Parameters Used</value>
+  </data>
+  <data name="SlopeUnitDegrees" xml:space="preserve">
+    <value>Decimal degrees</value>
+  </data>
+  <data name="UnnamedSurfaceDialog" xml:space="preserve">
+    <value>Unnamed Surface</value>
+  </data>
+  <data name="FamilyCannotbeLoadedPickanother_Message" xml:space="preserve">
+    <value>Family cannot be loaded. Please pick another</value>
+  </data>
+  <data name="PickCircleMessage" xml:space="preserve">
+    <value>Pick Circle(s)</value>
+  </data>
+  <data name="ModifyRetainingWallDialog" xml:space="preserve">
+    <value>Modify Retaining Wall</value>
+  </data>
+  <data name="AMP_PreserveColorsDialog" xml:space="preserve">
+    <value>&amp;Preserve Colors</value>
+  </data>
+  <data name="PlantGrowthSimulationDialog" xml:space="preserve">
+    <value>Plant Growth Simulation</value>
+  </data>
+  <data name="AMP_SelectionSetDialog" xml:space="preserve">
+    <value>&amp;Selection Set</value>
+  </data>
+  <data name="ToposurfaceSameNameAndPhaseMessage" xml:space="preserve">
+    <value>A toposurface with the same name and in the same phase already exists. Do you want to overwrite or to add new toposurface to the model?</value>
+  </data>
+  <data name="TypeNameGenericModelFamilyParameter" xml:space="preserve">
+    <value>Type Name</value>
+  </data>
+  <data name="ConvertPlantSearchTitle" xml:space="preserve">
+    <value>Convert Plant Search</value>
+  </data>
+  <data name="CurbMaterialParameter" xml:space="preserve">
+    <value>Curb material</value>
+  </data>
+  <data name="The_String" xml:space="preserve">
+    <value>The </value>
+  </data>
+  <data name="NewRetainingWall" xml:space="preserve">
+    <value>New Retaining Wall</value>
+  </data>
+  <data name="PositioningBySurveyPoints" xml:space="preserve">
+    <value>By Survey Point</value>
+  </data>
+  <data name="TemplateNotLoadedErrorMessage" xml:space="preserve">
+    <value>Template Not Loaded. Please select Template File.</value>
+  </data>
+  <data name="LandcaddSitesRibbonTab" xml:space="preserve">
+    <value>Site Designer</value>
+  </data>
+  <data name="CharacteristicsFragrancePlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Fragrance</value>
+  </data>
+  <data name="_FamiliesInModelString" xml:space="preserve">
+    <value> families in model</value>
+  </data>
+  <data name="PlantUsesPlantFamilyParameter" xml:space="preserve">
+    <value>Plant Uses</value>
+  </data>
+  <data name="AlignmentSelectionDialog" xml:space="preserve">
+    <value>Alignment Selection</value>
+  </data>
+  <data name="StreetCurbMaterialParameter" xml:space="preserve">
+    <value>Curb material</value>
+  </data>
+  <data name="PointWipeoutLineSubCategoryName" xml:space="preserve">
+    <value>Point Wipeout Sub Category Name</value>
+  </data>
+  <data name="AisleWidthString" xml:space="preserve">
+    <value>Aisle Width</value>
+  </data>
+  <data name="ImportDrawingTransaction" xml:space="preserve">
+    <value>Import Drawing: </value>
+  </data>
+  <data name="StallOnLineMessage" xml:space="preserve">
+    <value>Placing stalls on line</value>
+  </data>
+  <data name="PointWipeoutBoundaryClosedChainMessage" xml:space="preserve">
+    <value>Point Wipeout boundary picked must be a closed chain.</value>
+  </data>
+  <data name="TransitioningDistanceAndRadiusInvalidMessage" xml:space="preserve">
+    <value>Cannot resolve intersections because no default radius or transitioing distance has been set.</value>
+  </data>
+  <data name="StreetLineSubCategoryLineWeight" xml:space="preserve">
+    <value>Street Line Sub Category Line Weight</value>
+  </data>
+  <data name="Constant_AMP_ElevationsDialog" xml:space="preserve">
+    <value>Constant &amp;Elevations</value>
+  </data>
+  <data name="AMP_NewGradeDialog" xml:space="preserve">
+    <value>&amp;New Grade:</value>
+  </data>
+  <data name="UniqueIDGenericModelFamilyParameter" xml:space="preserve">
+    <value>UniqueID</value>
+  </data>
+  <data name="BorrowLicenseRibbonButton" xml:space="preserve">
+    <value>Borrow License</value>
+  </data>
+  <data name="AMP_ElevationsDialog" xml:space="preserve">
+    <value>Constant &amp;Elevations</value>
+  </data>
+  <data name="FenceFamilyNotLoadedWithIDMessage" xml:space="preserve">
+    <value>Fence (Generic Model with LandcaddID </value>
+  </data>
+  <data name="ProgressbarSettingParametersMessage" xml:space="preserve">
+    <value>Setting up Parameters .........</value>
+  </data>
+  <data name="AMP_ParkingLotFamilyDialog" xml:space="preserve">
+    <value>&amp;Parking Lot Family:</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="RetainingWallFillSlopeParameter" xml:space="preserve">
+    <value>Fill Slope</value>
+  </data>
+  <data name="ProgressbarCreatingFamilyMessage" xml:space="preserve">
+    <value>Creating Family document ............</value>
+  </data>
+  <data name="ImportLandXMLRibbonToolTip" xml:space="preserve">
+    <value>Uses a LandXML file from AutoCAD Civil 3D to create the toposurface that you will modify using Site Designer.</value>
+  </data>
+  <data name="FenceRightVisiability" xml:space="preserve">
+    <value>Right Post Visible</value>
+  </data>
+  <data name="ProgressbarConvertingPlantsMessage" xml:space="preserve">
+    <value>Converting plants .......</value>
+  </data>
+  <data name="Copy_" xml:space="preserve">
+    <value>Copy </value>
+  </data>
+  <data name="PlantFamilyManagerDialog" xml:space="preserve">
+    <value>Plant Family Manager</value>
+  </data>
+  <data name="NoTag" xml:space="preserve">
+    <value>Tag Family Not Loaded. Please select Tag Family File.</value>
+  </data>
+  <data name="Ele_AMP_vationDialog" xml:space="preserve">
+    <value>Ele&amp;vation:</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="InvertColorsColorMode" xml:space="preserve">
+    <value>Invert colors</value>
+  </data>
+  <data name="ModifyRetainingWallRibbonButton" xml:space="preserve">
+    <value>Retaining Wall</value>
+  </data>
+  <data name="SoftTerrainFamilyNotLoadedWithIDMessage" xml:space="preserve">
+    <value>Soft Terrain (Site with Siteworks ID </value>
+  </data>
+  <data name="Plant" xml:space="preserve">
+    <value>Plant</value>
+  </data>
+  <data name="ModifyRibbonPanel" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <data name="ADAStallSharedAccessibleAisleGenericModelFamilyParameter" xml:space="preserve">
+    <value>ADA Stall Shared Accessible Aisle</value>
+  </data>
+  <data name="_And_" xml:space="preserve">
+    <value> And </value>
+  </data>
+  <data name="ChangeView_AMP_ScaleDialog" xml:space="preserve">
+    <value>Change View &amp;Scale</value>
+  </data>
+  <data name="SubRegionsInProposedSurfaceMessage" xml:space="preserve">
+    <value>There are subregion(s) on the proposed surface, running the command will delete the subregion(s).</value>
+  </data>
+  <data name="FenceFamilySpanParameter" xml:space="preserve">
+    <value>Span</value>
+  </data>
+  <data name="NoSurfacesInLandXMLString" xml:space="preserve">
+    <value>The selected LandXML file does not contain any surfaces. Please click OK to continue.</value>
+  </data>
+  <data name="NoFamiliesGenericMessage" xml:space="preserve">
+    <value>No families in this category were found in the project. Use the Load Family button provided in this command to load a family to proceed.</value>
+  </data>
+  <data name="SiteComponentHasGradeAnnotationParameter" xml:space="preserve">
+    <value>Has Grade Annotation</value>
+  </data>
+  <data name="SpacingMethodPlantMixFamilyParameter" xml:space="preserve">
+    <value>Spacing Method</value>
+  </data>
+  <data name="ProposedToposurfaceString" xml:space="preserve">
+    <value>Proposed Toposurface</value>
+  </data>
+  <data name="ExportLandXMLRibbonButton" xml:space="preserve">
+    <value>Export LandXML</value>
+  </data>
+  <data name="AnnotateTitleDialog" xml:space="preserve">
+    <value>Annotate Site Components</value>
+  </data>
+  <data name="IntersectionLineSubCategoryLineWeight" xml:space="preserve">
+    <value>Intersection Line Sub Category Line Weight</value>
+  </data>
+  <data name="SourceDialog" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="NoExportOptionsSelectedString" xml:space="preserve">
+    <value>Please toggle one of the export options to proceed.</value>
+  </data>
+  <data name="RetainingWallCutSlopeParameter" xml:space="preserve">
+    <value>Cut Slope</value>
+  </data>
+  <data name="S_AMP_haredAccessibleAisleDialog" xml:space="preserve">
+    <value>S&amp;hared Accessible Aisle</value>
+  </data>
+  <data name="AMP_BlackAndWhiteDialog" xml:space="preserve">
+    <value>&amp;Black and White</value>
+  </data>
+  <data name="DuplicateFamilyInFamilyManagerMessage" xml:space="preserve">
+    <value>This family is already loaded into the model.</value>
+  </data>
+  <data name="NewFami_AMP_lySymbolDialog" xml:space="preserve">
+    <value>New Fami&amp;ly Symbol:</value>
+  </data>
+  <data name="AMP_PlaceAlongDialog" xml:space="preserve">
+    <value>&amp;Place Along</value>
+  </data>
+  <data name="CharacteristicsCrownDensityPlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Crown Density</value>
+  </data>
+  <data name="BackViewDirection" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="NoProjectMessage" xml:space="preserve">
+    <value>Please make sure you have opened a Project.</value>
+  </data>
+  <data name="ContentInstalledName" xml:space="preserve">
+    <value>[ContentInstalled]</value>
+  </data>
+  <data name="StreetCrossSlopeParameter" xml:space="preserve">
+    <value>Cross-slope</value>
+  </data>
+  <data name="SettingRibbonToolTip" xml:space="preserve">
+    <value>Defines default values and sets options for Site Designer.</value>
+  </data>
+  <data name="PositioningAutoCenterToCenter" xml:space="preserve">
+    <value>Auto Center to Center</value>
+  </data>
+  <data name="RadiusMakesArcLengthMoreThanHostLineMessage" xml:space="preserve">
+    <value>With the Radius specified the arc length exceeds the length of host line selected. Please decrease the Radius.</value>
+  </data>
+  <data name="LinearUnitfootString_Lower" xml:space="preserve">
+    <value>foot</value>
+  </data>
+  <data name="ObjectNotSupportforModifyingPlantMessage" xml:space="preserve">
+    <value>Object selected not supported for modifying plants.</value>
+  </data>
+  <data name="GreaterThanOrEqualToComparator" xml:space="preserve">
+    <value>Greater Than Or Equal To</value>
+  </data>
+  <data name="_HostLineString" xml:space="preserve">
+    <value> host line.</value>
+  </data>
+  <data name="NoExistingSurfacesString" xml:space="preserve">
+    <value>There are currently no toposurfaces in the model. The toposurface you want to import will need to be imported using the Add as a New Toposurface option.</value>
+  </data>
+  <data name="AreaRowCountGenericModelFamilyParameter" xml:space="preserve">
+    <value>Area Row Count</value>
+  </data>
+  <data name="ToposurfaceIDFamilyParameter" xml:space="preserve">
+    <value>Toposurface ID</value>
+  </data>
+  <data name="ModifySiteComponentTransaction" xml:space="preserve">
+    <value>Modify Site Component</value>
+  </data>
+  <data name="CurbLineSubCategoryName" xml:space="preserve">
+    <value>Curb Line Sub Category Name</value>
+  </data>
+  <data name="TrunkRadiusPlantParameter" xml:space="preserve">
+    <value>Trunk Radius</value>
+  </data>
+  <data name="PositionPlantsMessage" xml:space="preserve">
+    <value>The position of the Plants</value>
+  </data>
+  <data name="PathWalkFamilyDialog" xml:space="preserve">
+    <value>Patio/Walk Family</value>
+  </data>
+  <data name="ProgressBarGradingToposurfaceMessage" xml:space="preserve">
+    <value>Grading the Toposurface .........</value>
+  </data>
+  <data name="SameSourceAndDestinationFileMessage" xml:space="preserve">
+    <value>Destination File Name cannot be the same as Source File Name</value>
+  </data>
+  <data name="PatioWalkReportDialog" xml:space="preserve">
+    <value>Patio/Walk Report</value>
+  </data>
+  <data name="ProgressBarPlacingPlantsMessage" xml:space="preserve">
+    <value>Placing Plants .........</value>
+  </data>
+  <data name="D_AMP_WGSymbolDialog" xml:space="preserve">
+    <value>D&amp;WG Symbol</value>
+  </data>
+  <data name="FamilyNotParkingMessage" xml:space="preserve">
+    <value>Family loaded was not a Parking ( LancaddID </value>
+  </data>
+  <data name="ObjectSelectedNotOnSideMessage" xml:space="preserve">
+    <value>Object selected not on side. Pick again.</value>
+  </data>
+  <data name="LabelFamilyInstanceParameter" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="AMP_ParameterDialog" xml:space="preserve">
+    <value>&amp;Parameter:</value>
+  </data>
+  <data name="SideWalkFamilyNotLoadedMessage" xml:space="preserve">
+    <value>There is no Sidewalk Family currently loaded in this project. Do you want to:</value>
+  </data>
+  <data name="ScalingDialog" xml:space="preserve">
+    <value>Scaling</value>
+  </data>
+  <data name="AMP_OffsetDialog" xml:space="preserve">
+    <value>&amp;Offset:</value>
+  </data>
+  <data name="TypeParameterFamilyNotLoadedMessage" xml:space="preserve">
+    <value> Type Parameter) Family not loaded.</value>
+  </data>
+  <data name="StreetIntersectionDefaultTransitioningDistance" xml:space="preserve">
+    <value>Street Intersection Default Transtioning Distance</value>
+  </data>
+  <data name="SoftTerrainLineSubCategoryName" xml:space="preserve">
+    <value>Soft Terrain Line Sub Category Name</value>
+  </data>
+  <data name="CurbT_AMP_ypeDialog" xml:space="preserve">
+    <value>Curb T&amp;ype:</value>
+  </data>
+  <data name="InvalidSurfaceNameString" xml:space="preserve">
+    <value>Need a valid name for surface.</value>
+  </data>
+  <data name="IslandHeightGenericModelFamilyParameter" xml:space="preserve">
+    <value>Island Height</value>
+  </data>
+  <data name="PlantDWGCreatorDialog" xml:space="preserve">
+    <value>Plant DWG Creator</value>
+  </data>
+  <data name="LeftViewDirection" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="WallCantBePlacedWithDaylightingMessage" xml:space="preserve">
+    <value>Wall will not be placed because in some places along the host line, the assigned elevation is not sufficient to make it daylight.</value>
+  </data>
+  <data name="AMP_AddAllDialog" xml:space="preserve">
+    <value>&amp;Add All &gt;&gt;&gt;</value>
+  </data>
+  <data name="AllGeometryString" xml:space="preserve">
+    <value>&lt;All Geometry&gt;</value>
+  </data>
+  <data name="StreetFamilyNotLoadedMessage" xml:space="preserve">
+    <value>There is no Street Family currently loaded in this project. Do you want to:</value>
+  </data>
+  <data name="NoString" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="LoadStreetFamilyTransaction" xml:space="preserve">
+    <value>Load Street Family: </value>
+  </data>
+  <data name="CurbMassTemplateFileNameString" xml:space="preserve">
+    <value>Curb Mass Template File Name</value>
+  </data>
+  <data name="Plant_AMP_FamilyDialog" xml:space="preserve">
+    <value>Plant &amp;Family:</value>
+  </data>
+  <data name="LocateSoftTerrainRibbonButton" xml:space="preserve">
+    <value>Soft Terrain</value>
+  </data>
+  <data name="ParkingLotIslandToposurfaceMaterialParameter" xml:space="preserve">
+    <value>Parking Lot Island Toposurface material</value>
+  </data>
+  <data name="ColumnOrderString" xml:space="preserve">
+    <value>ColumnOrder</value>
+  </data>
+  <data name="LocateCurbRibbonToolTip" xml:space="preserve">
+    <value>Adds curbs or islands to a parking lot, or adds free-standing curbs.</value>
+  </data>
+  <data name="SubRegionElement" xml:space="preserve">
+    <value>Subregion</value>
+  </data>
+  <data name="SiteComponentFamilyManagerToolTip" xml:space="preserve">
+    <value>Customizes family types used by Site Designer to create site elements.</value>
+  </data>
+  <data name="FieldsFoundWithLengthMessage" xml:space="preserve">
+    <value>Fields found that have lengths. Please choose the appropriate unit format to export.</value>
+  </data>
+  <data name="AMP_DoubleRowDialog" xml:space="preserve">
+    <value>&amp;Double Row</value>
+  </data>
+  <data name="SharedParametersDontExistDialog" xml:space="preserve">
+    <value>Shared Parameter File does not exist.  Please save file below to be able to report Landcadd parameters to a schedule.</value>
+  </data>
+  <data name="FamilyNotPlantingTagMessage" xml:space="preserve">
+    <value>Family loaded was not a Planting Tag Family.</value>
+  </data>
+  <data name="VarianceMoreThanPlantHeightMessage" xml:space="preserve">
+    <value>Plant Height Variance cannot be greater than or equal to Plant Height</value>
+  </data>
+  <data name="InvalidAgeMessage" xml:space="preserve">
+    <value>Age should be greater than zero.</value>
+  </data>
+  <data name="NoRegion" xml:space="preserve">
+    <value>Region not selected.</value>
+  </data>
+  <data name="ExportLandXMLComponentsCompleteString" xml:space="preserve">
+    <value>Export Completed.</value>
+  </data>
+  <data name="ModifyPlantSearchTitle" xml:space="preserve">
+    <value>Modify Plant Search</value>
+  </data>
+  <data name="BeginningElevationFamilyParameter" xml:space="preserve">
+    <value>Beginning Elevation</value>
+  </data>
+  <data name="SoftTerrainTypeDialog" xml:space="preserve">
+    <value>So&amp;ft Terrain Type:</value>
+  </data>
+  <data name="NeedValidInputMessage" xml:space="preserve">
+    <value>Need Valid Input</value>
+  </data>
+  <data name="Place_AMP_IslandsDialog" xml:space="preserve">
+    <value>Place &amp;Islands</value>
+  </data>
+  <data name="_From_Message" xml:space="preserve">
+    <value> from </value>
+  </data>
+  <data name="FeatureLineLineSubCategoryName" xml:space="preserve">
+    <value>Feature Line Sub Category Name</value>
+  </data>
+  <data name="UseCentimeterUnitsOption" xml:space="preserve">
+    <value>Use centimeter units</value>
+  </data>
+  <data name="StreetCurbWidthParameter" xml:space="preserve">
+    <value>Curb width</value>
+  </data>
+  <data name="PlantMixSpacingMethodSquare" xml:space="preserve">
+    <value>Square</value>
+  </data>
+  <data name="PlantingSymbolPlantFamilyParameter" xml:space="preserve">
+    <value>Planting Symbol</value>
+  </data>
+  <data name="DifferentPhasingForBuildingPadsMessage" xml:space="preserve">
+    <value>One or more of the selected toposurfaces contain building pads. The phase created and/or phase demolished for one or more of these building pads and/or perimeter toposurfaces is different from the selected toposurfaces. If you continue, the proposed toposurface will not include these building pads. Do you wish to continue?</value>
+  </data>
+  <data name="NameString" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ParameterString" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="DuplicateFamilySymbolMessage" xml:space="preserve">
+    <value>There is family already loaded with the same name.</value>
+  </data>
+  <data name="AMP_MoveDialog" xml:space="preserve">
+    <value>&amp;Move</value>
+  </data>
+  <data name="AMP_ElevationDialog" xml:space="preserve">
+    <value>&amp;Elevation:</value>
+  </data>
+  <data name="S_AMP_howAffectedPointsDialog" xml:space="preserve">
+    <value>S&amp;how Affected Point(s)</value>
+  </data>
+  <data name="MassSubBaseVolume" xml:space="preserve">
+    <value>Sub Base Volume</value>
+  </data>
+  <data name="RetainingWallNameDialog" xml:space="preserve">
+    <value>R&amp;etaining Wall Name:</value>
+  </data>
+  <data name="ProgressBarCreatingStreetMassMessage" xml:space="preserve">
+    <value>Creating Street. This process may take a few moments...</value>
+  </data>
+  <data name="DisplayAnd_AMP_UseExistingHostLineDialog" xml:space="preserve">
+    <value>Display and &amp;Use an Existing Host Line</value>
+  </data>
+  <data name="FamilyNotComponentMessage" xml:space="preserve">
+    <value>Family loaded was not a Component (Generic Model, Site, Entourage, Furniture, Lighting Fixtures, Columns, or Electrical Equipment) Family.</value>
+  </data>
+  <data name="ChangeViewScaleDialog" xml:space="preserve">
+    <value>Change View Scale</value>
+  </data>
+  <data name="R_AMP_emoveAllDialog" xml:space="preserve">
+    <value>&lt;&lt;&lt; R&amp;emove All</value>
+  </data>
+  <data name="_PlacedWontUpdateWithHost_Message" xml:space="preserve">
+    <value> being placed will not be updated with changes to the host line as the </value>
+  </data>
+  <data name="QuantityOfString" xml:space="preserve">
+    <value>Quantity Of</value>
+  </data>
+  <data name="AvailableParametersDialog" xml:space="preserve">
+    <value>Available Parameters</value>
+  </data>
+  <data name="PointWipeoutLineSubCategoryColor" xml:space="preserve">
+    <value>Point Wipeout Sub Category Color</value>
+  </data>
+  <data name="FamilyManagerLblStepsText" xml:space="preserve">
+    <value>Create, add, or modify the steps families for your projects.</value>
+  </data>
+  <data name="ByN_AMP_umberDialog" xml:space="preserve">
+    <value>By N&amp;umber</value>
+  </data>
+  <data name="LoadingFamilyProblemLoadNewMessage" xml:space="preserve">
+    <value>Family cannot be loaded. Please pick another Tag Family File.</value>
+  </data>
+  <data name="SWCurbLineNameString" xml:space="preserve">
+    <value>SW Curb</value>
+  </data>
+  <data name="PlantMixMessage" xml:space="preserve">
+    <value>Plant Mix</value>
+  </data>
+  <data name="StreetLineSubCategoryName" xml:space="preserve">
+    <value>Street Line Sub Category Name</value>
+  </data>
+  <data name="StreetFamilyManagerToolTip" xml:space="preserve">
+    <value>Customizes families for streets, including settings for associated gutters, curbs, and boulevard clearing zones.</value>
+  </data>
+  <data name="InvalidRadiusValueString" xml:space="preserve">
+    <value>Radius should be greater than or equal to 0.0</value>
+  </data>
+  <data name="MetricTemplateCabName" xml:space="preserve">
+    <value>MetTempl.cab</value>
+  </data>
+  <data name="PickFirstPointForRotationPrompt" xml:space="preserve">
+    <value>Pick first point to define rotation base.</value>
+  </data>
+  <data name="SamplePath" xml:space="preserve">
+    <value>Sample Path</value>
+  </data>
+  <data name="ElevationFamilyParameter" xml:space="preserve">
+    <value>Elevation</value>
+  </data>
+  <data name="SubregionBuildingPadBoundaryErrorMessage" xml:space="preserve">
+    <value>Subregion(s) and/or Building Pad(s) boundaries were found that have incorrect data. Please recreate Subregion(s) and/or Building Pad(s).</value>
+  </data>
+  <data name="InvalidSlopeValue" xml:space="preserve">
+    <value>Not a valid slope.</value>
+  </data>
+  <data name="InstallUpdate1ToRunLANDCADDMessage" xml:space="preserve">
+    <value>To run LANDCADD for Revit you will need to apply Update 1 or higher to this version of Revit 2011. You can find the latest updates to Revit at http://www.autodesk.com.</value>
+  </data>
+  <data name="ADAStallSymbolIDGenericFamilyParameter" xml:space="preserve">
+    <value>ADA Stall Symbol ID</value>
+  </data>
+  <data name="ModifyCurbRibbonToolTip" xml:space="preserve">
+    <value>Moves, modifies, or deletes a curb or changes its elevation or family type.</value>
+  </data>
+  <data name="NoPreviousPositionAvailableMessage" xml:space="preserve">
+    <value>No previous instance found. Pick different method.</value>
+  </data>
+  <data name="ModifyPlantsDialog" xml:space="preserve">
+    <value>Modify Plants</value>
+  </data>
+  <data name="SelectExportTopoAlignmentLabelString" xml:space="preserve">
+    <value>Highlight the Alignment(s) that you wish to export into your model</value>
+  </data>
+  <data name="PickIslandsMessage" xml:space="preserve">
+    <value>Pick Island(s) to ignore.</value>
+  </data>
+  <data name="MaintenanceFertilizingTimePlantFamilyParameter" xml:space="preserve">
+    <value>Maintenance Fertilizing Time</value>
+  </data>
+  <data name="AMP_AlternateDialog" xml:space="preserve">
+    <value>&amp;Alternate</value>
+  </data>
+  <data name="MowingStripPathWalkFamilyParameter" xml:space="preserve">
+    <value>Mowing Strip</value>
+  </data>
+  <data name="LoadPlantingTagFamilyTransaction" xml:space="preserve">
+    <value>Load Planting Tag Family: </value>
+  </data>
+  <data name="InvalidCutFillSlopeValue" xml:space="preserve">
+    <value>Cut Fill Slopes cannot be less than </value>
+  </data>
+  <data name="IsSecondaryLeftParameter" xml:space="preserve">
+    <value>Is Secondary Left</value>
+  </data>
+  <data name="CurveIncrementParameter" xml:space="preserve">
+    <value>Projection Radial Increment</value>
+  </data>
+  <data name="AMP_EqualDialog" xml:space="preserve">
+    <value>&amp;Equal</value>
+  </data>
+  <data name="AMP_RetainingWallFamilyDialog" xml:space="preserve">
+    <value>&amp;Retaining Wall Family:</value>
+  </data>
+  <data name="SoftTerrainLineSubCategoryColor" xml:space="preserve">
+    <value>Soft Terrain Line Sub Category Color</value>
+  </data>
+  <data name="SameTypeNameAsFamilyNameMessage" xml:space="preserve">
+    <value>Cannot have Type name as Family name.</value>
+  </data>
+  <data name="NoFamiliesGenericCreateMessage" xml:space="preserve">
+    <value> family manager to create one.</value>
+  </data>
+  <data name="RadiusSettingsGroupTitle" xml:space="preserve">
+    <value>Radius Settings</value>
+  </data>
+  <data name="StreetMassTemplateFileNameString" xml:space="preserve">
+    <value>Street Mass Template File Name</value>
+  </data>
+  <data name="PlantPlaceTagNotPlacedMessage" xml:space="preserve">
+    <value>Plants placed. Tags Family cannot be placed.</value>
+  </data>
+  <data name="DeleteSiteComponentLineMessage" xml:space="preserve">
+    <value>Are you sure you want to delete the site component?</value>
+  </data>
+  <data name="AMP_AddDialog" xml:space="preserve">
+    <value>&amp;Add</value>
+  </data>
+  <data name="UpdatingFamilyTransaction" xml:space="preserve">
+    <value>Updating Family Document</value>
+  </data>
+  <data name="ColumnMisMatchMessage" xml:space="preserve">
+    <value>Number of columns in file don't match.</value>
+  </data>
+  <data name="AMP_WidthDialog" xml:space="preserve">
+    <value>&amp;Width:</value>
+  </data>
+  <data name="RunLocateSiteComponentsMessage" xml:space="preserve">
+    <value>You must have Locate Site Components to run this command.</value>
+  </data>
+  <data name="RPCRenderAppearancePropertiesFamilyParameter" xml:space="preserve">
+    <value>Render Appearance Properties</value>
+  </data>
+  <data name="LoadDefaultFamilyOption" xml:space="preserve">
+    <value>Load default family</value>
+  </data>
+  <data name="ComparisonTypeString" xml:space="preserve">
+    <value>Comparison Type</value>
+  </data>
+  <data name="PlantingSizePlantFamilyParameter" xml:space="preserve">
+    <value>Planting Size</value>
+  </data>
+  <data name="IncorrectLevelMessage" xml:space="preserve">
+    <value>The selected level is null or incorrect.</value>
+  </data>
+  <data name="LocateParkingLotRibbonButton" xml:space="preserve">
+    <value>Parking Lot</value>
+  </data>
+  <data name="PickAddVertexPointPrompt" xml:space="preserve">
+    <value>Pick Point to Add a Vertex.</value>
+  </data>
+  <data name="ExistingPlantsInProjDialog" xml:space="preserve">
+    <value>Existing Plant(s) in Project</value>
+  </data>
+  <data name="AMP_FileNameExportXMLDialog" xml:space="preserve">
+    <value>&amp;File Name:</value>
+  </data>
+  <data name="FenceFamilyHeightParameter" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="NoAlignmentSelectedToExportString" xml:space="preserve">
+    <value>No alignment was selected for export.</value>
+  </data>
+  <data name="FamilyLoadedNotA_Message" xml:space="preserve">
+    <value>Family loaded was not a </value>
+  </data>
+  <data name="LoadSoftTerrainFamilyTransaction" xml:space="preserve">
+    <value>Load Soft Terrain Family: </value>
+  </data>
+  <data name="SetBaseToposurfaceDialog" xml:space="preserve">
+    <value>Set Base Toposurface</value>
+  </data>
+  <data name="UnassignDialog" xml:space="preserve">
+    <value>Unassign</value>
+  </data>
+  <data name="FamilyManagerRibbonPanel" xml:space="preserve">
+    <value>Family Managers</value>
+  </data>
+  <data name="CurrentFamilyDialog" xml:space="preserve">
+    <value>Current Family:</value>
+  </data>
+  <data name="Fi_AMP_leDialog" xml:space="preserve">
+    <value>Fi&amp;le:</value>
+  </data>
+  <data name="StreetPavementSurfaceParameter" xml:space="preserve">
+    <value>Pavement material</value>
+  </data>
+  <data name="DuplicateEdgeString" xml:space="preserve">
+    <value>Edging has already been assigned to family.</value>
+  </data>
+  <data name="ValidPlantWidthVarianceMessage" xml:space="preserve">
+    <value>Plant Width Variance must be a valid number 0.0 or greater</value>
+  </data>
+  <data name="StreetNameDialog" xml:space="preserve">
+    <value>Street Na&amp;me:</value>
+  </data>
+  <data name="LocateSidewalkRibbonToolTip" xml:space="preserve">
+    <value>Creates sidewalks in the site design.</value>
+  </data>
+  <data name="InstallUpdate1ToRunSiteworksMessage" xml:space="preserve">
+    <value>To run Site Designer for Revit you will need to apply Update 1 or higher to this version of Revit 2011. You can find the latest updates to Revit at http://www.autodesk.com.</value>
+  </data>
+  <data name="IsBreaklineFamilyParameter" xml:space="preserve">
+    <value>Is Breakline</value>
+  </data>
+  <data name="AMP_DetailLevelDialog" xml:space="preserve">
+    <value>&amp;Detail Level:</value>
+  </data>
+  <data name="Family_AMP_Name_CopyFamilyDialog" xml:space="preserve">
+    <value>Copy Family &amp;Name </value>
+  </data>
+  <data name="FamilyString" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="GenericModelSymbolPlantFamilyParameter" xml:space="preserve">
+    <value>Generic Model Symbol</value>
+  </data>
+  <data name="AMP_CloseDialog" xml:space="preserve">
+    <value>&amp;Close</value>
+  </data>
+  <data name="SWParkingLotLineNameString" xml:space="preserve">
+    <value>SW Parking Lot</value>
+  </data>
+  <data name="CharacteristicsFoliageSurfacePlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Foliage Surface</value>
+  </data>
+  <data name="ErrorParsingXMLFileString" xml:space="preserve">
+    <value>Error Parsing Land XML file.</value>
+  </data>
+  <data name="NoXMLExtension" xml:space="preserve">
+    <value>File Name must have .xml extension.</value>
+  </data>
+  <data name="StreetLaneWidthParameter" xml:space="preserve">
+    <value>Lane width</value>
+  </data>
+  <data name="SidewalkIntersectionDefaultTransitioningDistance" xml:space="preserve">
+    <value>Sidewalk Intersection Default Transtioning Distance</value>
+  </data>
+  <data name="PleaseSelectRetainingWallFamilyFileMessage" xml:space="preserve">
+    <value>Please select Site Designer Retaining Wall Family File.</value>
+  </data>
+  <data name="PlantMixString" xml:space="preserve">
+    <value>PlantMix</value>
+  </data>
+  <data name="D_AMP_eleteVertexDialog" xml:space="preserve">
+    <value>D&amp;elete Vertex</value>
+  </data>
+  <data name="NoAlignmentInLandXMLString" xml:space="preserve">
+    <value>The selected LandXML file does not contain any alignments. Please click OK to continue.</value>
+  </data>
+  <data name="AllSymbolsString" xml:space="preserve">
+    <value>&lt;All Symbols&gt;</value>
+  </data>
+  <data name="ImportLandTitleString" xml:space="preserve">
+    <value>Import LandXML</value>
+  </data>
+  <data name="GetFamilyInformationTransaction" xml:space="preserve">
+    <value>Get Family Information</value>
+  </data>
+  <data name="I_AMP_nvertColorsDialog" xml:space="preserve">
+    <value>I&amp;nvert Colors</value>
+  </data>
+  <data name="InvalidServiceLifeMessage" xml:space="preserve">
+    <value>Service Life should be greater than zero.</value>
+  </data>
+  <data name="ConvertObjectToToposurfaceTitle" xml:space="preserve">
+    <value>Convert Object To Toposurface</value>
+  </data>
+  <data name="ModifyPointWipeoutRibbonToolTipLongDescription" xml:space="preserve">
+    <value>Select the host line of the point wipeout area to modify.</value>
+  </data>
+  <data name="PlantSearchDialog" xml:space="preserve">
+    <value>Plant Search</value>
+  </data>
+  <data name="LocateFeatureLineDialog" xml:space="preserve">
+    <value>Locate Feature Line</value>
+  </data>
+  <data name="OriginToOriginPlacement" xml:space="preserve">
+    <value>Origin-to-origin</value>
+  </data>
+  <data name="NoRFAExtension" xml:space="preserve">
+    <value>File Name must have .rfa extension.</value>
+  </data>
+  <data name="TypeParameterFamilyFileMessage" xml:space="preserve">
+    <value> Type Parameter) Family File.</value>
+  </data>
+  <data name="RevitExceptionError" xml:space="preserve">
+    <value>Revit can't complete the task.</value>
+  </data>
+  <data name="SubRegionString" xml:space="preserve">
+    <value>Subregion</value>
+  </data>
+  <data name="InvalidComponentSpacingMessage" xml:space="preserve">
+    <value>Component Spacing must be a valid number greater than 0.00001.</value>
+  </data>
+  <data name="MassBaseVolume" xml:space="preserve">
+    <value>Base Volume</value>
+  </data>
+  <data name="AMP_ToposurfaceNameDialog" xml:space="preserve">
+    <value>&amp;Toposurface Name:</value>
+  </data>
+  <data name="ValidPlantWidthMessage" xml:space="preserve">
+    <value>Plant Width must be a valid number greater than 0.00001</value>
+  </data>
+  <data name="PickCenterPointPrompt" xml:space="preserve">
+    <value>Pick Center Point.</value>
+  </data>
+  <data name="Characteristics" xml:space="preserve">
+    <value>Characteristics</value>
+  </data>
+  <data name="FailedCreatingSharedParameterMessage" xml:space="preserve">
+    <value>Shared parameter creation failed.</value>
+  </data>
+  <data name="AMP_FileNameImportXMLDialog" xml:space="preserve">
+    <value>&amp;File Name:</value>
+  </data>
+  <data name="BumperWidthGenericModelFamilyParameter" xml:space="preserve">
+    <value>Bumper Width</value>
+  </data>
+  <data name="LocateSidewalkDialog" xml:space="preserve">
+    <value>Locate Sidewalk</value>
+  </data>
+  <data name="PickDeleteVertexPointPrompt" xml:space="preserve">
+    <value>Pick Point to Delete a Vertex.</value>
+  </data>
+  <data name="_FamilyTypeNotFoundDeleteMessage" xml:space="preserve">
+    <value> families are currently loaded in the project. Do you want to delete the selected component?</value>
+  </data>
+  <data name="ModifyFeatureLineRibbonToolTipLongDescription" xml:space="preserve">
+    <value>Select the host line of the feature to modify.</value>
+  </data>
+  <data name="SoftTerrainFamilyNotLoadedMessage" xml:space="preserve">
+    <value>There is no Soft Terrain Family currently loaded in this project. Do you want to:</value>
+  </data>
+  <data name="ReloadFamilyTransaction" xml:space="preserve">
+    <value>Reload Family: </value>
+  </data>
+  <data name="InvalidOffsetMessage" xml:space="preserve">
+    <value>Offset should be greater than zero.</value>
+  </data>
+  <data name="ProgressBarPlacingRetainingWallMassMessage" xml:space="preserve">
+    <value>Placing Retaining Wall...</value>
+  </data>
+  <data name="CreateSharedParameterFileDialog" xml:space="preserve">
+    <value>Create Shared Parameters File</value>
+  </data>
+  <data name="ModifySidewalkRibbonToolTip" xml:space="preserve">
+    <value>Moves, modifies, or deletes a sidewalk, or changes its elevation or family type.</value>
+  </data>
+  <data name="PleaseSelectPlantingFamilyFileMessage" xml:space="preserve">
+    <value>Please select Planting Family File.</value>
+  </data>
+  <data name="GetPlantSymbolTransaction" xml:space="preserve">
+    <value>Get Plant Symbol</value>
+  </data>
+  <data name="BumperSetbackGenericModelFamilyParameter" xml:space="preserve">
+    <value>Bumper Setback</value>
+  </data>
+  <data name="Retaining_AMP_WallTypeDialog" xml:space="preserve">
+    <value>Retaining &amp;Wall Type:</value>
+  </data>
+  <data name="SlopeUnitRatio12" xml:space="preserve">
+    <value>Ratio : 12</value>
+  </data>
+  <data name="SlopeUnitRatio10" xml:space="preserve">
+    <value>Ratio : 10</value>
+  </data>
+  <data name="UseFeetUnitsOption" xml:space="preserve">
+    <value>Use feet units</value>
+  </data>
+  <data name="AMP_ImageTypeDialog" xml:space="preserve">
+    <value>&amp;Image Type:</value>
+  </data>
+  <data name="MassGrossSurfaceAreaParameter" xml:space="preserve">
+    <value>Gross Surface Area</value>
+  </data>
+  <data name="Co_AMP_nstantElevationDialog" xml:space="preserve">
+    <value>Co&amp;nstant Elevation</value>
+  </data>
+  <data name="CreatedBy_AMP_EmailExportXMLDialog" xml:space="preserve">
+    <value>Created by &amp;Email</value>
+  </data>
+  <data name="Import_AMP_AligmentsInXMLImportXMLDialog" xml:space="preserve">
+    <value>Import &amp;alignments found in LandXML file</value>
+  </data>
+  <data name="ValidEdgeWidth" xml:space="preserve">
+    <value>Edge Width cannot me more than</value>
+  </data>
+  <data name="SpecifySymbolFileNameMessage" xml:space="preserve">
+    <value>Please specify the Symbol File Name</value>
+  </data>
+  <data name="_FamilyTypeNotFoundMessage" xml:space="preserve">
+    <value> family type used to create this component is no longer loaded in the project. Do you want to:</value>
+  </data>
+  <data name="ProposedSurfaceLinkBrokenMessage" xml:space="preserve">
+    <value>The link to the Proposed Surface has been broken. Please reselect the surface from the following list.</value>
+  </data>
+  <data name="ModifySoftTerrainRibbonToolTipLongDescription" xml:space="preserve">
+    <value>Select the host line of the feature to modify.</value>
+  </data>
+  <data name="CodeNamePlantMixFamilyParameter" xml:space="preserve">
+    <value>Plant Code Name</value>
+  </data>
+  <data name="AMP_TabFileDialog" xml:space="preserve">
+    <value>&amp;Tab Delimited(Text File)</value>
+  </data>
+  <data name="NoSiteComponentsInProjectMessage" xml:space="preserve">
+    <value>No Site Components were found in the project.</value>
+  </data>
+  <data name="DetailFilledRegionElementName" xml:space="preserve">
+    <value>Detail Filled Region</value>
+  </data>
+  <data name="LinearUnitfeetString_Lower" xml:space="preserve">
+    <value>feet</value>
+  </data>
+  <data name="AMP_CopyDialog" xml:space="preserve">
+    <value>&amp;Copy</value>
+  </data>
+  <data name="LibraryPath" xml:space="preserve">
+    <value>Library Path</value>
+  </data>
+  <data name="LocateRetainingWallDialog" xml:space="preserve">
+    <value>Locate Retaining Wall</value>
+  </data>
+  <data name="ExportAlignmentLandXMLCompleteString" xml:space="preserve">
+    <value>Export Completed.</value>
+  </data>
+  <data name="FamilyNameString" xml:space="preserve">
+    <value>FamilyName</value>
+  </data>
+  <data name="StepsHeightParameter" xml:space="preserve">
+    <value>Step height</value>
+  </data>
+  <data name="AMP_New_NewFamilyDialog" xml:space="preserve">
+    <value> &amp;New </value>
+  </data>
+  <data name="LinearUnitFootString_Upper" xml:space="preserve">
+    <value>Foot</value>
+  </data>
+  <data name="TypeManagerDialog" xml:space="preserve">
+    <value>Type Manager</value>
+  </data>
+  <data name="ImportingToposurfaceString" xml:space="preserve">
+    <value>Importing LandXML Toposurfaces.</value>
+  </data>
+  <data name="FamilyManagerLblStreetText" xml:space="preserve">
+    <value>Create, add, or modify the streets families for your projects.</value>
+  </data>
+  <data name="PointsNotInParkingLotBoundaryMessage" xml:space="preserve">
+    <value>Points picked not within the Parking Lot Toposurface Boundary.</value>
+  </data>
+  <data name="LoadFileToolTip" xml:space="preserve">
+    <value>Load File</value>
+  </data>
+  <data name="SiteComponentLineCreationString" xml:space="preserve">
+    <value>Site Component Line Creation</value>
+  </data>
+  <data name="Plant_AMP_HeightDialog" xml:space="preserve">
+    <value>Plant &amp;Height:</value>
+  </data>
+  <data name="PickOffsetSideMessage" xml:space="preserve">
+    <value>Pick offset side</value>
+  </data>
+  <data name="_InvalidTypeNameMessage" xml:space="preserve">
+    <value> or any of the non-printable characters</value>
+  </data>
+  <data name="AboutRibbonButton" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="C_AMP_hangeIntervalDialog" xml:space="preserve">
+    <value>C&amp;hange Interval</value>
+  </data>
+  <data name="Assign_Message" xml:space="preserve">
+    <value>Assign </value>
+  </data>
+  <data name="PositioningUsePreviousValues" xml:space="preserve">
+    <value>Use Previous Values</value>
+  </data>
+  <data name="AMP_CurbFamilyDialog" xml:space="preserve">
+    <value>&amp;Curb Family:</value>
+  </data>
+  <data name="AddSubRegionsToProposedSurfaceMessage" xml:space="preserve">
+    <value>One or more of the selected toposurfaces contain subregions. Do you wish to make a copy of them into the resulting proposed toposurface?</value>
+  </data>
+  <data name="AMP_RotateDialog" xml:space="preserve">
+    <value>&amp;Rotate</value>
+  </data>
+  <data name="LocateSoftTerrainDialog" xml:space="preserve">
+    <value>Locate Soft Terrain</value>
+  </data>
+  <data name="_TypeString" xml:space="preserve">
+    <value> Type</value>
+  </data>
+  <data name="LocateStreetRibbonToolTip" xml:space="preserve">
+    <value>Creates streets, including associated gutters, curbs, and boulevard clearing zones.</value>
+  </data>
+  <data name="PercentageError" xml:space="preserve">
+    <value>Plant Mix Percentages should not be more than 100%.</value>
+  </data>
+  <data name="AMP_ComponentFamilyDialog" xml:space="preserve">
+    <value>&amp;Component Family:</value>
+  </data>
+  <data name="FenceS_AMP_panDialog" xml:space="preserve">
+    <value>Fence S&amp;pan:</value>
+  </data>
+  <data name="NoMassRFTMessage" xml:space="preserve">
+    <value>Could not find Mass.rft in your Revit template folder.</value>
+  </data>
+  <data name="SiteComponentAnnotationBeginElevationIDParameter" xml:space="preserve">
+    <value>Annotation Begin Elevation ID</value>
+  </data>
+  <data name="LocateCurbDialog" xml:space="preserve">
+    <value>Locate Curb</value>
+  </data>
+  <data name="ValidPlantHeightVarianceMessage" xml:space="preserve">
+    <value>Plant Height Variance must be a valid number 0.0 or greater</value>
+  </data>
+  <data name="RevitLevelString" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="ConvertObjectToToposurfaceRibbonToolTip" xml:space="preserve">
+    <value>Converts a conceptual mass to a toposurface for use with Site Designer.</value>
+  </data>
+  <data name="EndingEle_AMP_vationDialog" xml:space="preserve">
+    <value>Ending Ele&amp;vation:</value>
+  </data>
+  <data name="IsPrimaryLeftParameter" xml:space="preserve">
+    <value>Is Primary Left</value>
+  </data>
+  <data name="CurbFamilyManagerToolTip" xml:space="preserve">
+    <value>Customizes families for curbs, including parking lot islands.</value>
+  </data>
+  <data name="ConditionsExposurePlantFamilyParameter" xml:space="preserve">
+    <value>Conditions Exposure</value>
+  </data>
+  <data name="PickEndPointPrompt" xml:space="preserve">
+    <value>Pick End Point.</value>
+  </data>
+  <data name="NotAllObjectsAppearDialog" xml:space="preserve">
+    <value>Not all objects may appear on the preview.</value>
+  </data>
+  <data name="ModifySiteComponentInformationDialog" xml:space="preserve">
+    <value>Please select the edit type you want to do. Press ESC or right-click and Cancel to complete the action.</value>
+  </data>
+  <data name="SWPointWipeoutLineNameString" xml:space="preserve">
+    <value>SW Point Wipeout</value>
+  </data>
+  <data name="PickObjectMessage" xml:space="preserve">
+    <value>Pick a Object.</value>
+  </data>
+  <data name="AMP_CSVFileDialog" xml:space="preserve">
+    <value>&amp;Comma Delimited(Text File)</value>
+  </data>
+  <data name="SetBaseToposurfaceTransaction" xml:space="preserve">
+    <value>Set Base Toposurface</value>
+  </data>
+  <data name="OverWrite_Message" xml:space="preserve">
+    <value>Do you wish to overwrite the </value>
+  </data>
+  <data name="FenceLeftVisiability" xml:space="preserve">
+    <value>Left Post Visible</value>
+  </data>
+  <data name="PlantMixReportDialog" xml:space="preserve">
+    <value>Plant Mix Report</value>
+  </data>
+  <data name="ToposurfaceAssociationDialog" xml:space="preserve">
+    <value>Toposurface Association</value>
+  </data>
+  <data name="PickPlantsMessage" xml:space="preserve">
+    <value>Pick plant(s)</value>
+  </data>
+  <data name="ProgressBarCreatingRetainingWallMassMessage" xml:space="preserve">
+    <value>Creating Retaining Wall. This process may take a few moments...</value>
+  </data>
+  <data name="LoadPatioWalkFamilyTransaction" xml:space="preserve">
+    <value>Load Patio/Walk Family: </value>
+  </data>
+  <data name="AMP_NameDialog" xml:space="preserve">
+    <value>&amp;Name:</value>
+  </data>
+  <data name="SiteImperialTemplate" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="AlignToGenericFamilyParameter" xml:space="preserve">
+    <value>Align To</value>
+  </data>
+  <data name="PlantScientificNamePlantFamilyParameter" xml:space="preserve">
+    <value>Plant Scientific Name</value>
+  </data>
+  <data name="ExportOptionsDialog" xml:space="preserve">
+    <value>Export Options</value>
+  </data>
+  <data name="FeatureLineLineSubCategoryLineWeight" xml:space="preserve">
+    <value>Feature Line Sub Category Line Weight</value>
+  </data>
+  <data name="SetFamilyTypeForSiteComponentOption" xml:space="preserve">
+    <value>Assign a new type to the component and continue</value>
+  </data>
+  <data name="BreaklinesNotInParkingLotBoundaryMessage" xml:space="preserve">
+    <value>Breakline(s) found outside Parking Lot Boundary will be removed.</value>
+  </data>
+  <data name="AreaBidirectionalAislesGenericModelFamilyParameter" xml:space="preserve">
+    <value>Area Bidirectional Aisles</value>
+  </data>
+  <data name="ToposurfaceAlreadyPickedMessage" xml:space="preserve">
+    <value>Toposurface has already been picked. Pick again.</value>
+  </data>
+  <data name="IslandWidthGenericModelFamilyParameter" xml:space="preserve">
+    <value>Island Width</value>
+  </data>
+  <data name="IsFirstPlacementSegmentGenericFamilyParameter" xml:space="preserve">
+    <value>Is First Placement Segment</value>
+  </data>
+  <data name="MetricTemplatesDirectory" xml:space="preserve">
+    <value>Metric Templates</value>
+  </data>
+  <data name="ParkingLotSurfaceIDFamilyParameter" xml:space="preserve">
+    <value>Parking Lot Surface ID</value>
+  </data>
+  <data name="MassTemplatesString" xml:space="preserve">
+    <value>Mass Templates</value>
+  </data>
+  <data name="PlantMixSpacingMethodTriangular" xml:space="preserve">
+    <value>Triangular</value>
+  </data>
+  <data name="StreetCurbDisplayParameter" xml:space="preserve">
+    <value>Curb</value>
+  </data>
+  <data name="Component_AMP_SpacingDialog" xml:space="preserve">
+    <value>Component &amp;Spacing:</value>
+  </data>
+  <data name="LoadPlantMixFamilyTransaction" xml:space="preserve">
+    <value>Load Plant Mix Family: </value>
+  </data>
+  <data name="PointWipeoutRibbonButton" xml:space="preserve">
+    <value>Point Wipeout</value>
+  </data>
+  <data name="ThereAreNoString_" xml:space="preserve">
+    <value>There are no </value>
+  </data>
+  <data name="AMP_HeightDialog" xml:space="preserve">
+    <value>&amp;Height:</value>
+  </data>
+  <data name="ToposurfaceString" xml:space="preserve">
+    <value>Toposurface</value>
+  </data>
+  <data name="TypeCommentsGenericFamilyParameter" xml:space="preserve">
+    <value>Type Comments</value>
+  </data>
+  <data name="ManufacturerGenericFamilyParameter" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="ChangeElevationDialog" xml:space="preserve">
+    <value>Change Elevation</value>
+  </data>
+  <data name="PleaseSelectSidewalkFamilyFileMessage" xml:space="preserve">
+    <value>Please select Site Designer Sidewalk Family File.</value>
+  </data>
+  <data name="_FamilyCannotBePlaceMessage" xml:space="preserve">
+    <value>Family cannot be placed.</value>
+  </data>
+  <data name="LocateRetainingWallRibbonToolTip" xml:space="preserve">
+    <value>Creates retaining walls and landscaping walls to the site design.</value>
+  </data>
+  <data name="NotValidLANDCADDPatioWalkFamilyMessage" xml:space="preserve">
+    <value>Not a valid LANDCADD Patio/Walk family</value>
+  </data>
+  <data name="AMP_TextTypeDialog" xml:space="preserve">
+    <value>&amp;Text Type:</value>
+  </data>
+  <data name="NoSiteRFTMessage" xml:space="preserve">
+    <value>Could not find Site.rft in your Revit template folder.</value>
+  </data>
+  <data name="TopViewDirection" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="UnableToCreateMassMessage" xml:space="preserve">
+    <value>Unable to create site component. Please try and pick less complex geometry.</value>
+  </data>
+  <data name="ParkingFamilyNotLoadedMessage" xml:space="preserve">
+    <value>Parking ( LancaddID </value>
+  </data>
+  <data name="SaveFamilyMessage" xml:space="preserve">
+    <value>Do you really want to close without saving any changes to the families?</value>
+  </data>
+  <data name="GetFamilyTypesTransaction" xml:space="preserve">
+    <value>Get Family Types</value>
+  </data>
+  <data name="LoadADAParkingFamilyTransaction" xml:space="preserve">
+    <value>Load ADA Parking Family: </value>
+  </data>
+  <data name="UseRightSideGenericFamilyParameter" xml:space="preserve">
+    <value>Use Right Side</value>
+  </data>
+  <data name="LoadFamilyToolTip" xml:space="preserve">
+    <value>Load Family</value>
+  </data>
+  <data name="AssignDialog" xml:space="preserve">
+    <value>Assign</value>
+  </data>
+  <data name="AMP_SearchDialog" xml:space="preserve">
+    <value>&amp;Search</value>
+  </data>
+  <data name="RetainingwallRelativeElevationFromToposurfaceDialog" xml:space="preserve">
+    <value>Wall Exposure Re&amp;lative to Toposurface</value>
+  </data>
+  <data name="EastWestBasePointParameter" xml:space="preserve">
+    <value>E/W</value>
+  </data>
+  <data name="SidewalkIntersectionDefaultRadius" xml:space="preserve">
+    <value>Sidewalk Intersection Default Radius</value>
+  </data>
+  <data name="LocateStreetDialog" xml:space="preserve">
+    <value>Locate Street</value>
+  </data>
+  <data name="LocateComponentsDialog" xml:space="preserve">
+    <value>Locate Components</value>
+  </data>
+  <data name="ThicknessPathWalkFamilyParameter" xml:space="preserve">
+    <value>Thickness</value>
+  </data>
+  <data name="Fi_AMP_lterDialog" xml:space="preserve">
+    <value>Fi&amp;lter:</value>
+  </data>
+  <data name="RightVisibleParameter" xml:space="preserve">
+    <value>Right Visible</value>
+  </data>
+  <data name="DestinationPlantFamilyParametersFormDialog" xml:space="preserve">
+    <value>Destination Plant Family Parameters</value>
+  </data>
+  <data name="_LeadingAndTrailingSpacesMessage" xml:space="preserve">
+    <value> cannot start or end with empty spaces.</value>
+  </data>
+  <data name="DescriptionGenericFamilyParameter" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="AMP_RadiusDialog" xml:space="preserve">
+    <value>&amp;Radius:</value>
+  </data>
+  <data name="LocateStreetRibbonButton" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="AMP_VarianceDialog" xml:space="preserve">
+    <value>&amp;Variance:</value>
+  </data>
+  <data name="IDString" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ProgressbarSearchingMessage" xml:space="preserve">
+    <value>Searching ......</value>
+  </data>
+  <data name="AssemblyCodeGenericFamilyParameter" xml:space="preserve">
+    <value>Assembly Code</value>
+  </data>
+  <data name="PlantSizePlantMixFamilyParameter" xml:space="preserve">
+    <value>Planting Size</value>
+  </data>
+  <data name="ModifyStepsDialog" xml:space="preserve">
+    <value>Modify Steps</value>
+  </data>
+  <data name="ProgressBarCreatingSidewalkMassMessage" xml:space="preserve">
+    <value>Creating Sidewalk. This process may take a few moments...</value>
+  </data>
+  <data name="StallCountGenericModelFamilyParameter" xml:space="preserve">
+    <value>Stall Count</value>
+  </data>
+  <data name="AssignPlantMixTransaction" xml:space="preserve">
+    <value>Assign Plant Mix</value>
+  </data>
+  <data name="CreatingFamilyTypeMessage" xml:space="preserve">
+    <value>Creating Family Type:</value>
+  </data>
+  <data name="AreaAisleWidthGenericModelFamilyParameter" xml:space="preserve">
+    <value>Area Aisle Width</value>
+  </data>
+  <data name="AMP_SideDialog" xml:space="preserve">
+    <value>&amp;Side</value>
+  </data>
+  <data name="SpacingGenericFamilyParameter" xml:space="preserve">
+    <value>Spacing</value>
+  </data>
+  <data name="RetainingWallSubbaseSurfaceParameter" xml:space="preserve">
+    <value>Retaining Wall Sub-base depth</value>
+  </data>
+  <data name="ExportLandXMLRibbonToolTip" xml:space="preserve">
+    <value>Exports the site design to a LandXML file so you can import it into AutoCAD Civil 3D for further development.</value>
+  </data>
+  <data name="VisibleString" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="WallCantBePlacedWithGreaterElevationMessage" xml:space="preserve">
+    <value> Wall cannot be placed because the wall will be fully underground with the elevation selected.</value>
+  </data>
+  <data name="SoftTerrainManagerString" xml:space="preserve">
+    <value>Soft Terrain</value>
+  </data>
+  <data name="HeightGenericFamilyParameter" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="IntersectionLineSubCategoryName" xml:space="preserve">
+    <value>Intersection Line Sub Category Name</value>
+  </data>
+  <data name="PickToposurfacesPrompt" xml:space="preserve">
+    <value>Pick Toposurface(s)</value>
+  </data>
+  <data name="PatioWalkFamilyNotLoadedMessage" xml:space="preserve">
+    <value>Patio/Walk Family not loaded in project.</value>
+  </data>
+  <data name="SurfaceNotSelectedString" xml:space="preserve">
+    <value>Surface not selected.</value>
+  </data>
+  <data name="ValidPlantHeightMessage" xml:space="preserve">
+    <value>Plant Height must be a valid number greater than 0.00001</value>
+  </data>
+  <data name="NewSidewalk" xml:space="preserve">
+    <value>New Sidewalk</value>
+  </data>
+  <data name="StallLengthGenericModelFamilyParameter" xml:space="preserve">
+    <value>Stall Length</value>
+  </data>
+  <data name="S_AMP_treetFamilyDialog" xml:space="preserve">
+    <value>S&amp;treet Family:</value>
+  </data>
+  <data name="GrowthPatternPlantFamilyParameter" xml:space="preserve">
+    <value>Growth Pattern</value>
+  </data>
+  <data name="DestinationFamilyOverWrite" xml:space="preserve">
+    <value>Destination File Name is the same as currently open Family. Do you wish to continue?</value>
+  </data>
+  <data name="PlantWidthPlantFamilyParameter" xml:space="preserve">
+    <value>Plant Width</value>
+  </data>
+  <data name="NoPlantSymbolSelectedMessage" xml:space="preserve">
+    <value>No Plant Symbol(s) Selected</value>
+  </data>
+  <data name="SpecifySharedParameterFileNameMessage" xml:space="preserve">
+    <value>Please specify the Shared Parameter File Name</value>
+  </data>
+  <data name="CenterString" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="CurbTypeDialog" xml:space="preserve">
+    <value>Curb T&amp;ype:</value>
+  </data>
+  <data name="PointNotInProposedBoundaryMessage" xml:space="preserve">
+    <value>Point picked not within the Proposed Toposurface Boundary.</value>
+  </data>
+  <data name="AMP_ScaleFactorDialog" xml:space="preserve">
+    <value>&amp;Scale Factor:</value>
+  </data>
+  <data name="MaintenancePlantingTimePlantFamilyParameter" xml:space="preserve">
+    <value>Maintenance Planting Time</value>
+  </data>
+  <data name="ParkingLotFamilyManagerToolTip" xml:space="preserve">
+    <value>Customizes families for parking lots.</value>
+  </data>
+  <data name="AMP_Select" xml:space="preserve">
+    <value>&amp;Select</value>
+  </data>
+  <data name="CurbBaseSurfaceParameter" xml:space="preserve">
+    <value>Curb Base depth</value>
+  </data>
+  <data name="StartingDistanceGreaterThanLineLengthMessage" xml:space="preserve">
+    <value>Starting Distance exceeds length of Model/Detail Line picked.</value>
+  </data>
+  <data name="Specify_Message" xml:space="preserve">
+    <value>Please specify the </value>
+  </data>
+  <data name="LineSegmentsOutsideToposurfaceMessage" xml:space="preserve">
+    <value>Cannot create the site component because one or more of the line segments that you selected or drawn fall outside of the toposurface boundary.</value>
+  </data>
+  <data name="ParkingLotBoundaryClosedChainMessage" xml:space="preserve">
+    <value>Parking Lot boundary picked must be a closed chain.</value>
+  </data>
+  <data name="CreatePlantMixFamilyTransaction" xml:space="preserve">
+    <value>Create Plant Mix Family</value>
+  </data>
+  <data name="CurrentLinearDialog" xml:space="preserve">
+    <value>Current Interval:</value>
+  </data>
+  <data name="SelectTopoAlignmentLabelString" xml:space="preserve">
+    <value>Highlight the Alignment(s) that you wish to import into your model</value>
+  </data>
+  <data name="IslandClosedChainMessage" xml:space="preserve">
+    <value>Island picked must be a closed chain. Pick again.</value>
+  </data>
+  <data name="AMP_ViewDirectionDialog" xml:space="preserve">
+    <value>&amp;View Direction:</value>
+  </data>
+  <data name="NoPlantsMatchingCriteriaMessage" xml:space="preserve">
+    <value>No plants found matching criteria.</value>
+  </data>
+  <data name="AMP_SingleRowDialog" xml:space="preserve">
+    <value>&amp;Single Row</value>
+  </data>
+  <data name="NoFenceHeightMessage" xml:space="preserve">
+    <value>Need a valid Fence Height.</value>
+  </data>
+  <data name="AMP_ModifyDialog" xml:space="preserve">
+    <value>&amp;Modify</value>
+  </data>
+  <data name="PlantMixPlantSearchTitle" xml:space="preserve">
+    <value>Plant Mix Plant Search</value>
+  </data>
+  <data name="PickClosedBoundaryMessage" xml:space="preserve">
+    <value>Pick a Closed Boundary.</value>
+  </data>
+  <data name="ThreeDDWGSymbolDimensionType" xml:space="preserve">
+    <value>3D DWG Symbol</value>
+  </data>
+  <data name="PickStartingSideMessage" xml:space="preserve">
+    <value>Pick starting side</value>
+  </data>
+  <data name="FenceFamilyAngleParameter" xml:space="preserve">
+    <value>Angle</value>
+  </data>
+  <data name="SidewalkLineSubCategoryName" xml:space="preserve">
+    <value>Sidewalk Line Sub Category Name</value>
+  </data>
+  <data name="MaintenancePruningTimePlantFamilyParameter" xml:space="preserve">
+    <value>Maintenance Pruning Time</value>
+  </data>
+  <data name="ToposurfaceDialog" xml:space="preserve">
+    <value>Toposurface</value>
+  </data>
+  <data name="PlantMixDialog" xml:space="preserve">
+    <value>Plant Mix</value>
+  </data>
+  <data name="_FamilyManagerString" xml:space="preserve">
+    <value> Family Manager</value>
+  </data>
+  <data name="IsLastLegSegmentGenericFamilyParameter" xml:space="preserve">
+    <value>Is Last Leg Segment</value>
+  </data>
+  <data name="E_AMP_xportDialog" xml:space="preserve">
+    <value>E&amp;xport</value>
+  </data>
+  <data name="SurfaceAreaSubRegionParameter" xml:space="preserve">
+    <value>Surface Area</value>
+  </data>
+  <data name="PickElevationGradePointPrompt" xml:space="preserve">
+    <value>Pick Point to change Elevation or Grade.</value>
+  </data>
+  <data name="ParentSurfaceIDFamilyParameter" xml:space="preserve">
+    <value>Parent Surface ID</value>
+  </data>
+  <data name="SidewalkFamilyManagerToolTip" xml:space="preserve">
+    <value>Customizes families for sidewalks.</value>
+  </data>
+  <data name="Re_AMP_lativeElevationsDialog" xml:space="preserve">
+    <value>Re&amp;lative Elevations</value>
+  </data>
+  <data name="ModifyParkingLotDialog" xml:space="preserve">
+    <value>Modify Parking Lot</value>
+  </data>
+  <data name="ParkingLotParkingPavementSurfaceParameter" xml:space="preserve">
+    <value>Parking Pavement material</value>
+  </data>
+  <data name="Import_AMP_UnitsDialog" xml:space="preserve">
+    <value>Import &amp;Units:</value>
+  </data>
+  <data name="ADAStallCountGenericModelFamilyParameter" xml:space="preserve">
+    <value>ADA Stall Count</value>
+  </data>
+  <data name="ImperialTemplatesDirectory" xml:space="preserve">
+    <value>Imperial Templates</value>
+  </data>
+  <data name="LicenseBorrowedFromNetworkMessage" xml:space="preserve">
+    <value>License borrowed from Network</value>
+  </data>
+  <data name="LoadParkingIslandFamilyTransaction" xml:space="preserve">
+    <value>Load Parking Island Family: </value>
+  </data>
+  <data name="LocateParkingLotRibbonToolTipLongDescription" xml:space="preserve">
+    <value>To add parking lot islands, use the Locate Curb tool.</value>
+  </data>
+  <data name="EdgeWidthPathWalkFamilyParameter" xml:space="preserve">
+    <value>Mowing Strip Width</value>
+  </data>
+  <data name="PickPointElevationToolTip" xml:space="preserve">
+    <value>Pick Point Elevation</value>
+  </data>
+  <data name="AMP_FinishDialog" xml:space="preserve">
+    <value>&amp;Finish</value>
+  </data>
+  <data name="Sym_AMP_bolNameDialog" xml:space="preserve">
+    <value>Sym&amp;bol Name:</value>
+  </data>
+  <data name="ObjectPickedPlantMessage" xml:space="preserve">
+    <value>Object picked must be a plant just placed. Pick again.</value>
+  </data>
+  <data name="CurbTypeManagerString" xml:space="preserve">
+    <value>Curb</value>
+  </data>
+  <data name="LineSegmentsInsideBuildingPadMessage" xml:space="preserve">
+    <value>The site component cannot be placed because one or more of the segments would affect a building pad. To place the component in this location, you will need to delete the building pad first.</value>
+  </data>
+  <data name="Se_AMP_ttingsDialog" xml:space="preserve">
+    <value>Se&amp;ttings</value>
+  </data>
+  <data name="S_AMP_urfaceDialog" xml:space="preserve">
+    <value>S&amp;urface Dialog</value>
+  </data>
+  <data name="AMP_CurrentRadiusDialog" xml:space="preserve">
+    <value>&amp;Current Radius</value>
+  </data>
+  <data name="GenericImperialTemplate" xml:space="preserve">
+    <value>Generic Model</value>
+  </data>
+  <data name="AMP_PositioningDialog" xml:space="preserve">
+    <value>&amp;Positioning:</value>
+  </data>
+  <data name="StreetGutterWidthParameter" xml:space="preserve">
+    <value>Gutter width</value>
+  </data>
+  <data name="NoPatioWalkSelected" xml:space="preserve">
+    <value>No Material Selected</value>
+  </data>
+  <data name="ModifyCurbRibbonToolTipLongDescription" xml:space="preserve">
+    <value>Select the host line of the curb to modify.</value>
+  </data>
+  <data name="PreserveColorsColorMode" xml:space="preserve">
+    <value>Preserve colors</value>
+  </data>
+  <data name="IsReverseGenericFamilyParameter" xml:space="preserve">
+    <value>Is Reverse</value>
+  </data>
+  <data name="LocateFenceDialog" xml:space="preserve">
+    <value>Locate Fence</value>
+  </data>
+  <data name="StreetFamilyManagerRibbonButton" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="LocateTypeGenericFamilyParameter" xml:space="preserve">
+    <value>Locate Type</value>
+  </data>
+  <data name="BaseToposurfaceCreatedFamilyParameter" xml:space="preserve">
+    <value>Base Toposurface Created</value>
+  </data>
+  <data name="AMP_AllCirclesDialog" xml:space="preserve">
+    <value>&amp;All Circles</value>
+  </data>
+  <data name="StreetFamilyDialog" xml:space="preserve">
+    <value>S&amp;treet Family:</value>
+  </data>
+  <data name="SpecifySourceFileNameMessage" xml:space="preserve">
+    <value>Please specify the Source File Name.</value>
+  </data>
+  <data name="AnnotateSiteComponentTransaction" xml:space="preserve">
+    <value>Annotate Site Component</value>
+  </data>
+  <data name="AMP_OverwriteExistingSurfaceSurfaceInfoDialog" xml:space="preserve">
+    <value>&amp;Overwrite existing Toposurface</value>
+  </data>
+  <data name="MassImperialTemplate" xml:space="preserve">
+    <value>Mass</value>
+  </data>
+  <data name="PlantCodeNamePlantFamilyParameter" xml:space="preserve">
+    <value>Plant Code Name</value>
+  </data>
+  <data name="PlantExportDialog" xml:space="preserve">
+    <value>Plant Export</value>
+  </data>
+  <data name="AddBuildingPadsToSurfaceTransaction" xml:space="preserve">
+    <value>Add Building Pad(s) to Surface</value>
+  </data>
+  <data name="PositioningAutoOriginToOrigin" xml:space="preserve">
+    <value>Auto Origin to Origin</value>
+  </data>
+  <data name="PlaceIn_AMP_AreaDialog" xml:space="preserve">
+    <value>Place in &amp;Area</value>
+  </data>
+  <data name="GeneralString" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Parki_AMP_ngLotNameDialog" xml:space="preserve">
+    <value>Parki&amp;ng Lot Name:</value>
+  </data>
+  <data name="ENU-ImperialTemplateFolderName" xml:space="preserve">
+    <value>English_I</value>
+  </data>
+  <data name="PlantingImperialTemplate" xml:space="preserve">
+    <value>Planting</value>
+  </data>
+  <data name="NoToposurfaceCanBeModifiedMessage" xml:space="preserve">
+    <value>Project does not contain any toposurfaces that can be modified.</value>
+  </data>
+  <data name="ReadOnlySaveAsMessage" xml:space="preserve">
+    <value>The file is read-only, do you want to save as a new file?</value>
+  </data>
+  <data name="WidthGenericFamilyParameter" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="SidewalkTypeManagerString" xml:space="preserve">
+    <value>Sidewalk</value>
+  </data>
+  <data name="AreaPlantMixFamilyParameter" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="RetainingWallWidthParameter" xml:space="preserve">
+    <value>Wall Width</value>
+  </data>
+  <data name="FenceFamilyNotLoadedMessage" xml:space="preserve">
+    <value>Fence Family not loaded in project.</value>
+  </data>
+  <data name="MiddleStallPlacementGenericFamilyParameter" xml:space="preserve">
+    <value>Middle Stall Placement</value>
+  </data>
+  <data name="Re_AMP_lativeElevationFromToposurfaceDialog" xml:space="preserve">
+    <value>Re&amp;lative Elevation from Toposurface</value>
+  </data>
+  <data name="Mo_AMP_difyPlantWidthDialog" xml:space="preserve">
+    <value>Mo&amp;dify Plant Height</value>
+  </data>
+  <data name="AMP_BeginningElevationDialog" xml:space="preserve">
+    <value>&amp;Beginning Elevation:</value>
+  </data>
+  <data name="AreaDistanceBetweenCenterlinesGenericModelFamilyParameter" xml:space="preserve">
+    <value>Area Distance Between Centerlines</value>
+  </data>
+  <data name="LicensingRibbonPanel" xml:space="preserve">
+    <value>Licensing</value>
+  </data>
+  <data name="SideWalkPavementDepthParameter" xml:space="preserve">
+    <value>Pavement depth</value>
+  </data>
+  <data name="LinearIncrementParameter" xml:space="preserve">
+    <value>Projection Linear Increment</value>
+  </data>
+  <data name="PlantGrowthDialog" xml:space="preserve">
+    <value>Plant Growth</value>
+  </data>
+  <data name="MaintenanceWaterRequirementsPlantFamilyParameter" xml:space="preserve">
+    <value>Maintenance Water Requirements</value>
+  </data>
+  <data name="SiteMetricTemplate" xml:space="preserve">
+    <value>Metric Site</value>
+  </data>
+  <data name="SetbackGenericFamilyParameter" xml:space="preserve">
+    <value>Setback</value>
+  </data>
+  <data name="StreetMassSubCategoryName" xml:space="preserve">
+    <value>Street Mass Sub Category Name</value>
+  </data>
+  <data name="F_AMP_enceNameDialog" xml:space="preserve">
+    <value>F&amp;ence Name:</value>
+  </data>
+  <data name="PlaceBumperGenericModelFamilyParameter" xml:space="preserve">
+    <value>Place Bumper</value>
+  </data>
+  <data name="NameSubRegionParameter" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="CurrentElevationDialog" xml:space="preserve">
+    <value>Current Elevation:</value>
+  </data>
+  <data name="StreetTemplateNotMassTypeMessage" xml:space="preserve">
+    <value>Street Template file is not Mass Family Type. Go to Settings Command and change the Street Mass Template File Name.</value>
+  </data>
+  <data name="PositionHzDirectionLandXMLSurfacePlacementFamilyInstanceParameter" xml:space="preserve">
+    <value>Position Horizontal Direction</value>
+  </data>
+  <data name="IslandSymbolIDGenericFamilyParameter" xml:space="preserve">
+    <value>Island Symbol ID</value>
+  </data>
+  <data name="StreetGutterSlopeParameter" xml:space="preserve">
+    <value>Gutter slope</value>
+  </data>
+  <data name="WarningDialog" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="_FeaturesInThisModelString" xml:space="preserve">
+    <value> features in this model.</value>
+  </data>
+  <data name="StartingDistanceGenericFamilyParameter" xml:space="preserve">
+    <value>Starting Distance</value>
+  </data>
+  <data name="ParkingLotParkingSubBaseDepthParameter" xml:space="preserve">
+    <value>Parking sub-base Depth</value>
+  </data>
+  <data name="RetainingWallMassTemplateFileNameString" xml:space="preserve">
+    <value>Retaining Wall Mass Template File Name</value>
+  </data>
+  <data name="PlantBookletDialog" xml:space="preserve">
+    <value>Plant Booklet</value>
+  </data>
+  <data name="Cr_AMP_eateSymbolDWGDialog" xml:space="preserve">
+    <value>Cr&amp;eate Symbol From DWG(s)</value>
+  </data>
+  <data name="ModifyParkingLotRibbonToolTip" xml:space="preserve">
+    <value>Moves, modifies, or deletes a parking lot, changes its elevation or family type, or adds or deletes breaklines.</value>
+  </data>
+  <data name="PickStartPointPrompt" xml:space="preserve">
+    <value>Pick Start Point.</value>
+  </data>
+  <data name="Mo_AMP_veDownDialog" xml:space="preserve">
+    <value>Mo&amp;ve Down</value>
+  </data>
+  <data name="SitesReportRibbonToolTipLongDescription" xml:space="preserve">
+    <value>To calculate cut-and-fill volumes, create a Revit topography schedule that includes cut, fill, and net cut/fill values.</value>
+  </data>
+  <data name="RegionNameGenericModelFamilyParameter" xml:space="preserve">
+    <value>Region Name</value>
+  </data>
+  <data name="PlantTypePlantFamilyParameter" xml:space="preserve">
+    <value>Plant Type</value>
+  </data>
+  <data name="LocatePlantsTransaction" xml:space="preserve">
+    <value>Locate Plants</value>
+  </data>
+  <data name="BaseToposurfaceString" xml:space="preserve">
+    <value>Base Toposurface</value>
+  </data>
+  <data name="Condition" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="Par_AMP_kingLotTypeDialog" xml:space="preserve">
+    <value>Par&amp;king Lot Type:</value>
+  </data>
+  <data name="SiteComponentIsRelativeElevationParameter" xml:space="preserve">
+    <value>Is Relative Elevation</value>
+  </data>
+  <data name="Varianc_AMP_eDialog" xml:space="preserve">
+    <value>Varianc&amp;e:</value>
+  </data>
+  <data name="StreetT_AMP_ypeDialog" xml:space="preserve">
+    <value>Street T&amp;ype:</value>
+  </data>
+  <data name="ChainIDGenericFamilyParameter" xml:space="preserve">
+    <value>Chain ID</value>
+  </data>
+  <data name="AMP_LayersDialog" xml:space="preserve">
+    <value>&amp;Layers</value>
+  </data>
+  <data name="IsStartingParameter" xml:space="preserve">
+    <value>Is Starting</value>
+  </data>
+  <data name="Place_AMP_ADAParkingSpacesDialog" xml:space="preserve">
+    <value>Place &amp;ADA Parking Spaces</value>
+  </data>
+  <data name="PlantingFamilyNotLoadedMessage" xml:space="preserve">
+    <value>Planting Family not loaded in project.</value>
+  </data>
+  <data name="PointsInBoundaryWillBeRemovedMessage" xml:space="preserve">
+    <value>Point(s) indicated in boundary will be removed. Do you wish to continue?</value>
+  </data>
+  <data name="ValidPlantSpacingMessage" xml:space="preserve">
+    <value>Plant Spacing must be a valid number greater than 0.00001</value>
+  </data>
+  <data name="CantEditElementsUntilUserResavesMessage" xml:space="preserve">
+    <value>Can't edit the element(s) until '{0}' resaves the element(s) to central and relinquishes it and you Reload Latest.</value>
+  </data>
+  <data name="SiteString" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="ModifySoftTerrainRibbonToolTip" xml:space="preserve">
+    <value>Modifies soft terrain features, including building pads, berms, and swales.</value>
+  </data>
+  <data name="BaseToposurfaceAlreadySeteMessage" xml:space="preserve">
+    <value>A base toposurface has already been set for this model. Changing the selection of the base toposurface will affect the resulting Proposed Toposurface.</value>
+  </data>
+  <data name="S_AMP_oftTerrainNameDialog" xml:space="preserve">
+    <value>S&amp;oft Terrain Name:</value>
+  </data>
+  <data name="ExternalComponentExceptionMessage" xml:space="preserve">
+    <value>External component has thrown an exception.</value>
+  </data>
+  <data name="SoftTerrainLeftOffsetWidthParameter" xml:space="preserve">
+    <value>Left Offset Width</value>
+  </data>
+  <data name="InvalidInputString" xml:space="preserve">
+    <value>Invalid Input</value>
+  </data>
+  <data name="LocateSidewalkTransaction" xml:space="preserve">
+    <value>Locate Sidewalk</value>
+  </data>
+  <data name="StreetInfoTabString" xml:space="preserve">
+    <value>Street Info</value>
+  </data>
+  <data name="ThreeDString" xml:space="preserve">
+    <value>{3D}</value>
+  </data>
+  <data name="So_AMP_ftTerrainTypeDialog" xml:space="preserve">
+    <value>So&amp;ft Terrain Type:</value>
+  </data>
+  <data name="AMP_RegionNameDialog" xml:space="preserve">
+    <value>&amp;Region Name:</value>
+  </data>
+  <data name="AreaString" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="ContinueWOLoadFamilyOption" xml:space="preserve">
+    <value>Continue without loading a default family</value>
+  </data>
+  <data name="CharacteristicsBloomPeriodPlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Bloom Period</value>
+  </data>
+  <data name="_AssignTo_Message" xml:space="preserve">
+    <value> assigned to </value>
+  </data>
+  <data name="LineSubCategoryLineWeight" xml:space="preserve">
+    <value>Line Sub Category Line Weight</value>
+  </data>
+  <data name="CheckForUpdateNotification" xml:space="preserve">
+    <value>Check for Update Notification</value>
+  </data>
+  <data name="PatiowalkReportNoFamilyMessage" xml:space="preserve">
+    <value>No Patio/Walk family instances were found in the project.</value>
+  </data>
+  <data name="SitesReportDialog" xml:space="preserve">
+    <value>Site Component Reports</value>
+  </data>
+  <data name="ProgressbarLoadingFamilyMessage" xml:space="preserve">
+    <value>Loading Family ..........</value>
+  </data>
+  <data name="SiteComponentAnnotationGradeIDParameter" xml:space="preserve">
+    <value>Annotation Grade ID</value>
+  </data>
+  <data name="Pic_AMP_kPlantDialog" xml:space="preserve">
+    <value>Pic&amp;k Plant</value>
+  </data>
+  <data name="CharacteristicsFoliageColorPlantFamilyParameter" xml:space="preserve">
+    <value>Characteristics Foliage Color</value>
+  </data>
+  <data name="FamilyTypeString" xml:space="preserve">
+    <value>Family Types</value>
+  </data>
+  <data name="AutomaticallyPlaceDialog" xml:space="preserve">
+    <value>Automatically place</value>
+  </data>
+  <data name="ProgressBarPlacingStreetMassMessage" xml:space="preserve">
+    <value>Placing Street...</value>
+  </data>
+  <data name="FrontViewDirection" xml:space="preserve">
+    <value>Front</value>
+  </data>
+  <data name="AMP_ToposurfaceToOverwriteSurfaceInfoDialog" xml:space="preserve">
+    <value>&amp;Select toposurface to Overwrite</value>
+  </data>
+  <data name="ProgressBarUpdatingModelMessage" xml:space="preserve">
+    <value>Updating the Model. This process may take a few moments...</value>
+  </data>
+  <data name="LicenseBorrowedFromNetworkMessageError" xml:space="preserve">
+    <value>License already borrowed from Network</value>
+  </data>
+  <data name="__GenericModelFamilyString" xml:space="preserve">
+    <value>(Generic Model) Family File.</value>
+  </data>
+  <data name="TopographySurfaceArcPointInterval" xml:space="preserve">
+    <value>Topography Surface Arc Point Interval</value>
+  </data>
+  <data name="ParkingLotLineSubCategoryLineWeight" xml:space="preserve">
+    <value>Parking Lot Line Sub Category Line Weight</value>
+  </data>
+  <data name="PointWipeoutLineSubCategoryLineWeight" xml:space="preserve">
+    <value>Point Wipeout Sub Category Line Weight</value>
+  </data>
+  <data name="NoFamiliesSitesMessage" xml:space="preserve">
+    <value> Families were found in the default Site Designer library folder. Use the Load Family button in the command to manually load a family if they are stored in a different folder or use the </value>
+  </data>
+  <data name="PercentagePlantMixFamilyParameter" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="RadiusPlantParameter" xml:space="preserve">
+    <value>Radius</value>
+  </data>
+  <data name="NoSelectionMadeMessage" xml:space="preserve">
+    <value>No selection was made</value>
+  </data>
+  <data name="PointWipeoutString" xml:space="preserve">
+    <value>Point Wipeout</value>
+  </data>
+  <data name="ImportExportRibbonPanel" xml:space="preserve">
+    <value>Import/Export</value>
+  </data>
+  <data name="AlignmentToExportDialog" xml:space="preserve">
+    <value>Alignment to Export</value>
+  </data>
+  <data name="Side_AMP_WalkFamilyDialog" xml:space="preserve">
+    <value>Side&amp;walk Family:</value>
+  </data>
+  <data name="ObjectNotSupportConvertPlantMessage" xml:space="preserve">
+    <value>Object selected not supported for converting to plants.</value>
+  </data>
+  <data name="ProgressBarPlacingCurbMassMessage" xml:space="preserve">
+    <value>Placing Curb...</value>
+  </data>
+  <data name="CustomUnit" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="LocateSoftTerrainRibbonToolTip" xml:space="preserve">
+    <value>Grades the toposurface and creates soft terrain features, including building pads, berms, and swales.</value>
+  </data>
+  <data name="SiteworksIDFamilyParameter" xml:space="preserve">
+    <value>Siteworks ID</value>
+  </data>
+  <data name="ChangeRadiusDialogTitle" xml:space="preserve">
+    <value>Change Radius</value>
+  </data>
+  <data name="ChangeFamilyTypeDialog" xml:space="preserve">
+    <value>Change Family Type</value>
+  </data>
+  <data name="Create_AMP_ACopyDialog" xml:space="preserve">
+    <value>Create &amp;A Copy</value>
+  </data>
+  <data name="A_AMP_geDialog" xml:space="preserve">
+    <value>A&amp;ge:</value>
+  </data>
+  <data name="CreatePlantFamilyTransaction" xml:space="preserve">
+    <value>Create Plant Family</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="ParkingLotLineSubCategoryColor" xml:space="preserve">
+    <value>Parking Lot Line Sub Category Color</value>
+  </data>
+  <data name="GreaterThanComparator" xml:space="preserve">
+    <value>Greater Than</value>
+  </data>
+  <data name="SpecifyFileNameMessage" xml:space="preserve">
+    <value>Please specify the  File Name.</value>
+  </data>
+  <data name="PleaseSelectFenceFamilyFileMessage" xml:space="preserve">
+    <value>Please select Fence (Generic Model) Family File.</value>
+  </data>
+  <data name="StreetLineSubCategoryColor" xml:space="preserve">
+    <value>Street Line Sub Category Color</value>
+  </data>
+  <data name="RevitINIFileMissingMessage" xml:space="preserve">
+    <value>Unable to get Template location due to Revit.ini file missing. Please restart Revit.</value>
+  </data>
+  <data name="LocateCurbRibbonButton" xml:space="preserve">
+    <value>Curb</value>
+  </data>
+  <data name="TransitioningDistanceMakesDistanceMoreThanHostLineMessage" xml:space="preserve">
+    <value>With the Transitioning Distance specified the distance exceeds the length of host line selected.  Please decrease the Transitioning Distance in Settings.</value>
+  </data>
+  <data name="OverwriteToposurfaceOption" xml:space="preserve">
+    <value>Overwrite would delete the toposurface currently in the model and replace it with new data</value>
+  </data>
+  <data name="RightViewDirection" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="ModifyRetainingWallRibbonToolTipLongDescription" xml:space="preserve">
+    <value>Select the host line of the wall to modify.</value>
+  </data>
+  <data name="ModifyFeatureLineRibbonToolTip" xml:space="preserve">
+    <value>Modifies additional contours and graded lines to refine the toposurface.</value>
+  </data>
+  <data name="AMP_UseExistingHostLineDialog" xml:space="preserve">
+    <value>&amp;Use an Existing Host Line</value>
+  </data>
+  <data name="CurbFamilyDialog" xml:space="preserve">
+    <value>&amp;Curb Family:</value>
+  </data>
+  <data name="Soft_AMP_TerrainFamilyDialog" xml:space="preserve">
+    <value>Soft &amp;Terrain Family:</value>
+  </data>
+  <data name="FamilyManagerLblRetainingWallText" xml:space="preserve">
+    <value>Create, add, or modify the retaining wall families for your projects.</value>
+  </data>
+  <data name="RowSpacingDialog" xml:space="preserve">
+    <value>Row Spacing</value>
+  </data>
+  <data name="PlantingFamilyCantBeLoadedMessage" xml:space="preserve">
+    <value>Family cannot be loaded. Please pick another Planting Family File.</value>
+  </data>
+  <data name="UndefinedDetailLevel" xml:space="preserve">
+    <value>Undefined</value>
+  </data>
+  <data name="ViewNameString" xml:space="preserve">
+    <value>ViewName</value>
+  </data>
+  <data name="ParameterNotSelectedMessage" xml:space="preserve">
+    <value>Parameter not selected.</value>
+  </data>
+  <data name="SoftTerrainFamilyManagerRibbonToolTip" xml:space="preserve">
+    <value>Customizes families for soft terrain, including building pads, berms, and swales.</value>
+  </data>
+  <data name="New_" xml:space="preserve">
+    <value>New </value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="AMP_NewLinearDialog" xml:space="preserve">
+    <value>&amp;New Interval:</value>
+  </data>
+  <data name="SoftTerrainLineSubCategoryLineWeight" xml:space="preserve">
+    <value>Soft Terrain Line Sub Category Line Weight</value>
+  </data>
+  <data name="ChangeLinearIntervalDialog" xml:space="preserve">
+    <value>Change Linear Interval</value>
+  </data>
+  <data name="PlantClimateAndZonePlantFamilyParameter" xml:space="preserve">
+    <value>Plant Climate and Zone</value>
+  </data>
+  <data name="StreetSubbaseSurfaceParameter" xml:space="preserve">
+    <value>Street Sub-base depth</value>
+  </data>
+  <data name="AutoDetectUnit" xml:space="preserve">
+    <value>Auto-Detect</value>
+  </data>
+  <data name="TemperatureRangePlantFamilyParameter" xml:space="preserve">
+    <value>Temperature Range</value>
+  </data>
+  <data name="IsFirstLegSegmentGenericFamilyParameter" xml:space="preserve">
+    <value>Is First Leg Segment</value>
+  </data>
+  <data name="PlantHeightPlantFamilyParameter" xml:space="preserve">
+    <value>Plant Height</value>
+  </data>
+  <data name="URLGenericFamilyParameter" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="AMP_DownloadNow" xml:space="preserve">
+    <value>&amp;Download Now</value>
+  </data>
+  <data name="PositionVzDirectionLandXMLSurfacePlacementFamilyInstanceParameter" xml:space="preserve">
+    <value>Position Vertical Direction</value>
+  </data>
+  <data name="CurrentFamilyNameString" xml:space="preserve">
+    <value>Current Family Name</value>
+  </data>
+  <data name="SWRetainingWallLineNameString" xml:space="preserve">
+    <value>SW Retaining Wall</value>
+  </data>
+  <data name="InvalidRadiusString" xml:space="preserve">
+    <value>Cannot create the site component form because host line has one or more arcs whose radius is smaller than the width of the component you are trying to place.</value>
+  </data>
+  <data name="CurbSubbaseSurfaceParameter" xml:space="preserve">
+    <value>Curb Sub-base depth</value>
+  </data>
+  <data name="StreetNa_AMP_meDialog" xml:space="preserve">
+    <value>Street Na&amp;me:</value>
+  </data>
+</root>

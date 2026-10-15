@@ -1,0 +1,4 @@
+Dim Jrn
+Set Jrn = CrsJournalScript
+Jrn.Data "TaskDialogResult", "The publisher of this add-in could not be verified. What do you want to do?", "Load Once", 1002
+Jrn.Data "TaskDialogResult", "The publisher of this add-in could not be verified. What do you want to do?", "Load Once", 1002

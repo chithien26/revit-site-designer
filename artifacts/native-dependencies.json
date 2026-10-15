@@ -1,0 +1,19 @@
+{
+  "original_source": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release2025\\2025\\net8.0-windows",
+  "build_source": "D:\\WIPRevitAPI\\SiteDesigner\\Dependencies\\Native",
+  "sha256": {
+    "SitesDLLWrapper.dll": "6392ca7f4d0322e60103d1eb83f91cf255a41677f1ff91b58d9d543baf466450",
+    "whitelist.xml": "131dc52001cec4db4d3ef5713c137bfef00810cd9168a204aad00cc1c61c3beb"
+  },
+  "verified_folders": [
+    "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2022\\net48",
+    "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2023\\net48",
+    "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2024\\net48",
+    "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2025\\net8.0-windows",
+    "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2026\\net8.0-windows",
+    "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2027\\net10.0-windows",
+    "D:\\WIPRevitAPI\\SiteDesigner\\Dependencies\\Native",
+    "C:\\Users\\vinhp\\AppData\\Roaming\\Autodesk\\Revit\\Addins\\2025\\SiteDesigner",
+    "C:\\Users\\vinhp\\AppData\\Roaming\\Autodesk\\Revit\\Addins\\2027\\SiteDesigner"
+  ]
+}
