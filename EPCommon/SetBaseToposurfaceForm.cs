@@ -83,7 +83,7 @@ public class SetBaseToposurfaceForm : EPForm
 		m_ToposurfaceListView.SelectedIndices.Clear();
 		foreach (Element item in m_dataBuffer.InstanceSet)
 		{
-			if (item is TopographySurface { Category: not null } topographySurface && topographySurface.Category.Id.Value64() == BuiltInCategory.OST_Topography.GetHashCode())
+			if (TerrainApi.AsSurface(item) is { Category: not null } topographySurface && topographySurface.Category.Id.Value64() == TerrainApi.Category.GetHashCode())
 			{
 				int num = m_ToposurfaceListView.Items.IndexOfKey(topographySurface.UniqueId);
 				if (num >= 0)
@@ -103,7 +103,7 @@ public class SetBaseToposurfaceForm : EPForm
 		m_ToposurfaceListView.Items.Clear();
 		for (int i = 0; i < m_dataBuffer.SurfaceList.Count; i++)
 		{
-			parameter = ((Element)m_dataBuffer.SurfaceList[i].TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+			parameter = TerrainApi.NameParameter(((Element)m_dataBuffer.SurfaceList[i].TopographySurface));
 			if (parameter != null)
 			{
 				text = parameter.AsString();

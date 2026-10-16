@@ -131,10 +131,10 @@ public class ExportLandXMLTypeList : EPForm
 	{
 		FilteredElementCollector filteredElementCollector = new FilteredElementCollector(m_CurrentDocument);
 		filteredElementCollector = new FilteredElementCollector(m_CurrentDocument);
-		IList<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+		IList<Element> list = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToElements();
 		foreach (Element item in list)
 		{
-			TopographySurface topographySurface = item as TopographySurface;
+			TopographySurface topographySurface = TerrainApi.AsSurface(item);
 			m_SurfaceList.Add(new TopographySurfaceContainer(m_CurrentDocument.Application, topographySurface, _bFindMinMaxPoints: true));
 		}
 	}
@@ -398,7 +398,7 @@ public class ExportLandXMLTypeList : EPForm
 			{
 				ListViewItem listViewItem = new ListViewItem();
 				string text = string.Empty;
-				Parameter parameter = ((Element)surface.TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+				Parameter parameter = TerrainApi.NameParameter(((Element)surface.TopographySurface));
 				if (parameter != null && parameter.AsString() != null && parameter.AsString() != string.Empty)
 				{
 					text = parameter.AsString();

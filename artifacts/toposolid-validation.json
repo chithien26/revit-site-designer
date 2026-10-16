@@ -1,0 +1,126 @@
+{
+  "recorded": "2026-10-16T13:17:14.3384210+07:00",
+  "terrainApi": {
+    "nativeToposolid": [
+      2024,
+      2025,
+      2026,
+      2027
+    ],
+    "legacy": [
+      2022,
+      2023
+    ]
+  },
+  "builds": [
+    {
+      "year": 2022,
+      "framework": "net48",
+      "assembly": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2022\\net48\\SiteDesigner.dll",
+      "sha256": "25684523DA1A3880E2B3F0BDEA1184A1D7049622EFA175E1342CB7DA8B57796A",
+      "build": "passed",
+      "errors": 0
+    },
+    {
+      "year": 2023,
+      "framework": "net48",
+      "assembly": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2023\\net48\\SiteDesigner.dll",
+      "sha256": "5F60E47A5EC0C4B26FC46E58948CC7C4AA21AA00402E6888A9C1DFBB9DC11E22",
+      "build": "passed",
+      "errors": 0
+    },
+    {
+      "year": 2024,
+      "framework": "net48",
+      "assembly": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2024\\net48\\SiteDesigner.dll",
+      "sha256": "7AEA08E2EFF216CE137D489096A05F4807FCF7DBF229FB5D32983BA5A5557870",
+      "build": "passed",
+      "errors": 0
+    },
+    {
+      "year": 2025,
+      "framework": "net8.0-windows",
+      "assembly": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2025\\net8.0-windows\\SiteDesigner.dll",
+      "sha256": "1AEDED67C69F872819F926914AD6F24AADF7A4D2B6E63C210AC9AB638D8F0478",
+      "build": "passed",
+      "errors": 0
+    },
+    {
+      "year": 2026,
+      "framework": "net8.0-windows",
+      "assembly": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2026\\net8.0-windows\\SiteDesigner.dll",
+      "sha256": "0CB2108359E7C1A7DE012E15B7CDA16A89E8223D2BA15B3E469D196B8238D590",
+      "build": "passed",
+      "errors": 0
+    },
+    {
+      "year": 2027,
+      "framework": "net10.0-windows",
+      "assembly": "D:\\WIPRevitAPI\\SiteDesigner\\bin\\Release\\2027\\net10.0-windows\\SiteDesigner.dll",
+      "sha256": "7E5EEFC57E0656E5CEE1FE587168EBBD58A1EF8F91D2D29BA5C159CCBC2905D9",
+      "build": "passed",
+      "errors": 0
+    }
+  ],
+  "uiTests": [
+    {
+      "year": 2022,
+      "report": "D:\\WIPRevitAPI\\SiteDesigner\\artifacts\\toposolid-ui-smoke-2022.log",
+      "passed": true,
+      "checks": 100
+    },
+    {
+      "year": 2025,
+      "report": "D:\\WIPRevitAPI\\SiteDesigner\\artifacts\\toposolid-ui-smoke-2025.log",
+      "passed": true,
+      "checks": 100
+    },
+    {
+      "year": 2027,
+      "report": "D:\\WIPRevitAPI\\SiteDesigner\\artifacts\\toposolid-ui-smoke-2027.log",
+      "passed": true,
+      "checks": 100
+    }
+  ],
+  "hostedRevit2025": {
+    "exitObservation": "artifacts/terrain-revit-2025-exit.json",
+    "scope": "Representative native terrain and original placement-family integration; not every placement command or project",
+    "report": "artifacts/terrain-revit-2025.txt",
+    "normalShutdown": true,
+    "engine": "Engine: C:\\Users\\vinhp\\AppData\\Roaming\\Autodesk\\Revit\\Addins\\2025\\SiteDesigner\\SiteDesigner.dll; build=e3bedb2f-9065-4675-a190-99235619b479",
+    "observedResponsiveSecondsAfterTests": 147,
+    "status": "passed on installed production assembly",
+    "checks": 30,
+    "newFatalMarkers": false
+  },
+  "developmentCrash": {
+    "fixes": [
+      "Ignore and detach callbacks from closed WPF windows",
+      "Guard after Shown handlers which can close the window",
+      "Suppress native hidden-controller Shown callbacks",
+      "Document.Equals for terrain transaction matching",
+      "Roll back and dispose failed terrain scopes"
+    ],
+    "resolved": true,
+    "dump": "journal.0080.0001.dmp",
+    "method": "SiteDesigner.UI.WpfForm queued ContentRendered callback",
+    "priorRun": "artifacts/terrain-revit-2025-before-wpf-fix.txt",
+    "exception": "System.NullReferenceException",
+    "evidence": [
+      "artifacts/terrain-crash-managed-stack.txt",
+      "artifacts/terrain-crash-callback-source.txt"
+    ]
+  },
+  "hostedRevit2024": {
+    "note": "Compile coverage retained; user selected Revit 2025 runtime testing",
+    "status": "skipped at user request"
+  },
+  "deployment": {
+    "backup": "D:\\WIPRevitAPI\\SiteDesigner\\artifacts\\installed-before-toposolid-20261016-130946.zip",
+    "defaultBuild": "bin/Release2025/2025/net8.0-windows/SiteDesigner.dll",
+    "installedCopyUpdated": true,
+    "installedAssembly": "C:\\Users\\vinhp\\AppData\\Roaming\\Autodesk\\Revit\\Addins\\2025\\SiteDesigner\\SiteDesigner.dll",
+    "sha256": "1AEDED67C69F872819F926914AD6F24AADF7A4D2B6E63C210AC9AB638D8F0478",
+    "installLog": "artifacts/toposolid-install-2025.log"
+  }
+}

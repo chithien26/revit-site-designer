@@ -3573,11 +3573,11 @@ public class ModifySiteComponent
 				if (PointXYZList.Count > 0)
 				{
 					TopographySurfaceManagement.RemoveDuplicateXY(ref PointXYZList);
-					TopographySurface topographySurface6 = TopographySurface.Create(m_Document, PointXYZList);
+					TopographySurface topographySurface6 = TerrainApi.Create(m_Document, PointXYZList, _ParkingLotSurface.TopographySurface);
+					TerrainApi.CopyMaterial(_ParkingLotSurface.TopographySurface, topographySurface6);
 					m_Document.Regenerate();
 					progressBarForm.UpdateProgressBar(7);
-					parameter2 = ((Element)topographySurface6).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-					if (parameter2 != null)
+					if (topographySurface6 != null)
 					{
 						ElementId elementId = null;
 						long _nReturnValue = -1;
@@ -3602,16 +3602,12 @@ public class ModifySiteComponent
 						}
 						if (_nReturnValue == -1)
 						{
-							parameter = ((Element)_ParkingLotSurface.TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-							if (parameter != null)
-							{
-								elementId = parameter.AsElementId();
-								_nReturnValue = elementId.Value64();
-							}
+							elementId = TerrainApi.GetMaterialId(_ParkingLotSurface.TopographySurface);
+							_nReturnValue = elementId.Value64();
 						}
 						if (_nReturnValue != -1)
 						{
-							parameter2.Set(elementId);
+							TerrainApi.SetMaterialId(topographySurface6, elementId);
 						}
 					}
 					parameter = ((Element)_ParkingLotSurface.TopographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
@@ -3634,10 +3630,10 @@ public class ModifySiteComponent
 							parameter2.Set(value5);
 						}
 					}
-					parameter = ((Element)_ParkingLotSurface.TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+					parameter = TerrainApi.NameParameter(((Element)_ParkingLotSurface.TopographySurface));
 					if (parameter != null && parameter.AsString() != null && parameter.AsString() != string.Empty)
 					{
-						parameter2 = ((Element)topographySurface6).get_Parameter(BuiltInParameter.ROOM_NAME);
+						parameter2 = TerrainApi.NameParameter(((Element)topographySurface6));
 						if (parameter2 != null && !parameter2.IsReadOnly)
 						{
 							parameter2.Set(parameter.AsString());

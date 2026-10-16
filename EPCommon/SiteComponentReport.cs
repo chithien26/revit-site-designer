@@ -161,7 +161,7 @@ public class SiteComponentReport : EPForm
 		filteredElementCollector = new FilteredElementCollector(m_CurrentDocument);
 		IList<Element> list3 = filteredElementCollector.OfClass(typeof(DirectShape)).ToElements();
 		filteredElementCollector = new FilteredElementCollector(m_CurrentDocument);
-		IList<Element> list4 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+		IList<Element> list4 = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToElements();
 		string empty = string.Empty;
 		string empty2 = string.Empty;
 		string empty3 = string.Empty;
@@ -293,7 +293,7 @@ public class SiteComponentReport : EPForm
 			}
 			foreach (Element item6 in list4)
 			{
-				if (item6 is TopographySurface topographySurface && string.Compare(empty7, topographySurface.UniqueId, ignoreCase: true) == 0)
+				if (TerrainApi.AsSurface(item6) is {} topographySurface && string.Compare(empty7, topographySurface.UniqueId, ignoreCase: true) == 0)
 				{
 					m_AllSiteComponentList[i].ParkingLotTopographySurface = new TopographySurfaceContainer(m_CurApplication, topographySurface, _bFindMinMaxPoints: true);
 					break;

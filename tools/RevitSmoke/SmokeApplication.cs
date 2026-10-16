@@ -14,6 +14,10 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Events;
 using EPCommon;
 using SiteDesigner.UI;
+#if !REVIT2022 && !REVIT2023
+using TopographySurface = EPCommon.ToposolidSurface;
+using TopographyEditScope = EPCommon.TerrainEditScope;
+#endif
 
 namespace RevitSmoke;
 
@@ -71,10 +75,10 @@ public class SmokeApplication : IExternalApplication
             using (var transaction = new Transaction(document, "Site Designer smoke terrain"))
             {
                 transaction.Start();
-                surface = TopographySurface.Create(document, new List<XYZ> { new XYZ(0,0,0), new XYZ(100,0,0), new XYZ(100,100,1), new XYZ(0,100,0), new XYZ(50,50,0.5) });
+                surface = TerrainApi.Create(document, new List<XYZ> { new XYZ(0,0,0), new XYZ(100,0,0), new XYZ(100,100,1), new XYZ(0,100,0), new XYZ(50,50,0.5) });
                 transaction.Commit();
             }
-            Check(surface.GetPoints().Count == 5, "Legacy topography creation in Revit " + ui.Application.VersionNumber);
+            Check(surface.GetPoints().Count == 5, "Native terrain creation in Revit " + ui.Application.VersionNumber);
             var container = new TopographySurfaceContainer(document.Application, surface);
             container.FindMinMaxPointsOfTopographySurface();
             Check(container.Triangles != null && container.Triangles.Count > 0, "Terrain mesh and geometry container");

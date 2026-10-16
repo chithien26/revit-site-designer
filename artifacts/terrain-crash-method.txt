@@ -1,0 +1,10 @@
+Loading core dump: C:\Users\vinhp\AppData\Local\Autodesk\Revit\Autodesk Revit 2025\Journals\journal.0080.0001.dmp ...
+MethodDesc:   00007ffc755dc2e0
+Method Name:          UNKNOWN
+Class:                00007ffc755dc200
+MethodTable:          00007ffc755dc310
+mdToken:              0000000006000CB6
+Module:               00007ffc74e3c060
+IsJitted:             yes
+Current CodeAddr:     00007ffc75544120
+Version History:

@@ -204,6 +204,7 @@ public class TopographySurfaceContainer
 			{
 				return TopographySurfaceType.Subregion;
 			}
+			if (TerrainApi.UsesToposolids) return TopographySurfaceType.MainSurface;
 			if (_TopographySurface.Location == null)
 			{
 				return TopographySurfaceType.BuildingPad;
@@ -233,12 +234,7 @@ public class TopographySurfaceContainer
 			List<Eps_Point> list = new List<Eps_Point>();
 			List<Eps_Point> list2 = new List<Eps_Point>();
 			List<TopoPoint> list3 = new List<TopoPoint>();
-			GeometryElement geometryElement = ((Element)m_TopographySurface).get_Geometry(options);
-			List<GeometryObject> list4 = new List<GeometryObject>();
-			if (geometryElement != null)
-			{
-				list4 = ElementSetConverter.ToGeometryObjectList(geometryElement.GetEnumerator());
-			}
+			List<GeometryObject> list4 = TerrainApi.GetSurfaceMeshes(m_TopographySurface).Cast<GeometryObject>().ToList();
 			pMinPnt.x = double.MaxValue;
 			pMaxPnt.x = double.MinValue;
 			pMinPnt.y = double.MaxValue;
@@ -638,6 +634,10 @@ public class TopographySurfaceContainer
 
 	public List<Eps_Point> GetAllVertices()
 	{
+		// Subdivision elevations include their thickness. The native host already
+		// carries the terrain shape, so merging child meshes would raise that shape.
+		if (TerrainApi.UsesToposolids && m_TopographySurface != null)
+			return m_TopographySurface.GetPoints().Select(point => new Eps_Point(point)).ToList();
 		List<Eps_Point> list = new List<Eps_Point>();
 		List<Eps_Point> paPntList = new List<Eps_Point>();
 		List<Eps_Point> list2 = new List<Eps_Point>();

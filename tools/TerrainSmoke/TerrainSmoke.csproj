@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework Condition="$(RevitVersion) &lt;= 2024">net48</TargetFramework>
+    <TargetFramework Condition="$(RevitVersion) == 2025 Or $(RevitVersion) == 2026">net8.0-windows</TargetFramework>
+    <TargetFramework Condition="$(RevitVersion) == 2027">net10.0-windows</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+    <NoWarn>$(NoWarn);WFO1000</NoWarn>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+    <TerrainRoot>$(MSBuildProjectDirectory)\..\..</TerrainRoot>
+    <DefineConstants>$(DefineConstants);REVIT$(RevitVersion)</DefineConstants>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AssemblyName Condition="'$(UseInstalledAssembly)' == 'true'">InstalledTerrainSmoke</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="TerrainSmokeCommand.cs" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).0.0" IncludeAssets="build;compile" PrivateAssets="all" />
+    <PackageReference Include="System.Resources.Extensions" Version="8.0.0" Condition="$(RevitVersion) &lt;= 2026" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseInstalledAssembly)' == 'true'">
+    <ProjectReference Include="..\..\SiteDesigner.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseInstalledAssembly)' != 'true'">
+    <!-- Compile the same production sources into the test assembly so Add-in
+         Manager cannot bind the test to an older SiteDesigner already in Revit. -->
+    <Compile Include="$(TerrainRoot)\AssemblyInfo.cs;$(TerrainRoot)\EPCommon\**\*.cs;$(TerrainRoot)\SITES\**\*.cs;$(TerrainRoot)\Compatibility\**\*.cs;$(TerrainRoot)\UI\**\*.cs" />
+    <EmbeddedResource Include="$(TerrainRoot)\UI\DialogWindow.xaml" LogicalName="SiteDesigner.UI.DialogWindow.xaml" />
+    <EmbeddedResource Include="$(TerrainRoot)\EPCommon\*.resx"><LogicalName>EPCommon.%(Filename).resources</LogicalName><ManifestResourceName>EPCommon.%(Filename)</ManifestResourceName></EmbeddedResource>
+    <EmbeddedResource Include="$(TerrainRoot)\SITES\WinFormStrings.resx" LogicalName="SITES.WinFormStrings.resources" ManifestResourceName="SITES.WinFormStrings" />
+    <EmbeddedResource Include="$(TerrainRoot)\SITES\Properties\Resources.resx" LogicalName="SITES.Properties.Resources.resources" ManifestResourceName="SITES.Properties.Resources" />
+    <EmbeddedResource Include="$(TerrainRoot)\SITES\Sites_Core\Resources.resx" LogicalName="SITES.Sites_Core.Resources.resources" ManifestResourceName="SITES.Sites_Core.Resources" />
+    <Content Include="$(TerrainRoot)\Defaults\SitesRevit.ini" Link="Defaults\SitesRevit.ini" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="$(TerrainRoot)\Dependencies\Native\SitesDLLWrapper.dll;$(TerrainRoot)\Dependencies\Native\whitelist.xml" Link="%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="GenerateRuntimeDirectory" BeforeTargets="CoreCompile">
+    <ItemGroup>
+      <RuntimeDirectoryAttribute Include="System.Reflection.AssemblyMetadataAttribute"><_Parameter1>SiteDesigner.BuildDirectory</_Parameter1><_Parameter2>$(TargetDir)</_Parameter2></RuntimeDirectoryAttribute>
+    </ItemGroup>
+    <WriteCodeFragment AssemblyAttributes="@(RuntimeDirectoryAttribute)" Language="C#" OutputFile="$(IntermediateOutputPath)RuntimeDirectory.g.cs"><Output TaskParameter="OutputFile" ItemName="Compile" /></WriteCodeFragment>
+  </Target>
+</Project>

@@ -56,7 +56,7 @@ public sealed class WpfDialogPresenter : IDisposable
         syncing = true;
         try
         {
-            window.Title = form.Text;
+            window.Title = TerrainText.ForDisplay(form.Text);
             foreach (var update in updates.ToArray()) update();
         }
         finally { syncing = false; }
@@ -98,7 +98,7 @@ public sealed class WpfDialogPresenter : IDisposable
         var type = method.GetParameters()[0].ParameterType;
         return (bool)method.Invoke(control, new[] { type.IsEnum ? Enum.ToObject(type, 2) : (object)2 });
     }
-    private static string Label(string value) => (value ?? "").Replace("&&", "\u0001").Replace("&", "_").Replace("\u0001", "&");
+    private static string Label(string value) => TerrainText.ForDisplay(value ?? "").Replace("&&", "\u0001").Replace("&", "_").Replace("\u0001", "&");
     private Canvas Panel(Forms.Control source)
     {
         var canvas = new Canvas { ClipToBounds = true };
@@ -179,7 +179,7 @@ public sealed class WpfDialogPresenter : IDisposable
         else if (source is Forms.Label label)
         {
             var box = new TextBlock { TextWrapping = TextWrapping.Wrap, VerticalAlignment = VerticalAlignment.Center };
-            updates.Add(() => box.Text = (label.Text ?? "").Replace("&", ""));
+            updates.Add(() => box.Text = TerrainText.ForDisplay(label.Text ?? "").Replace("&", ""));
             target = box;
         }
         else if (source is EPCommon.ProgressBar progress)
@@ -256,7 +256,7 @@ public sealed class WpfDialogPresenter : IDisposable
             if (form is EPForm ep)
             {
                 var tip = ep.EPToolTip.GetToolTip(source);
-                if (!string.IsNullOrEmpty(tip)) target.ToolTip = tip;
+                if (!string.IsNullOrEmpty(tip)) target.ToolTip = TerrainText.ForDisplay(tip);
             }
         });
         return target;
@@ -404,6 +404,7 @@ public sealed class WpfDialogPresenter : IDisposable
         if (disposed) return;
         disposed = true;
         timer.Stop();
+        timer.Tick -= Tick;
         window.SizeChanged -= Resize;
         updates.Clear();
         foreach (var control in controls.Keys) WpfFocus.Unregister(control);

@@ -49,7 +49,7 @@ public class PlantMixPatioWalkUpdater : IUpdater
 			{
 				list = new List<Element>();
 				filteredElementCollector = new FilteredElementCollector(document);
-				IList<Element> list2 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+				IList<Element> list2 = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToElements();
 				foreach (Element item in list2)
 				{
 					if (item != null && string.Compare(item.Name, EPShared.LocalRM.GetString("SubRegionElement"), ignoreCase: true) == 0 && !m_RegionElementList.Contains(new KeyValuePair<string, Element>(item.UniqueId, item)))
@@ -181,7 +181,7 @@ public class PlantMixPatioWalkUpdater : IUpdater
 		Parameter parameter = null;
 		bool flag = false;
 		filteredElementCollector = new FilteredElementCollector(_CurrentDocument);
-		IList<Element> list3 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+		IList<Element> list3 = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToElements();
 		filteredElementCollector = new FilteredElementCollector(_CurrentDocument);
 		IList<Element> list4 = filteredElementCollector.WherePasses(new ElementCategoryFilter(BuiltInCategory.OST_DetailComponents)).ToElements();
 		foreach (Element item in list2)

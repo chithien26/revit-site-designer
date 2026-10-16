@@ -1,0 +1,752 @@
+EPCommon\Annotation.cs:26:	private TopographySurfaceContainer m_BaseSurface;
+EPCommon\Annotation.cs:28:	private TopographySurfaceContainer m_ProposedSurface;
+EPCommon\Annotation.cs:63:		TopographySurfaceManagement.FindBaseLandcaddTopographySurface(m_Document, ref m_BaseSurface, ref _BasePlacementFamilyInstance, ref m_ProposedSurface, ref m_TopoPlacementFamilyInstance);
+EPCommon\Annotation.cs:279:				TopographySurfaceContainer topographySurfaceContainer = null;
+EPCommon\Annotation.cs:310:					TopographySurface topographySurface = TopographySurfaceManagement.FindTopoSurfaceInstance(m_Document, strFormUniqueId);
+EPCommon\Annotation.cs:313:						topographySurfaceContainer = new TopographySurfaceContainer(m_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\Annotation.cs:316:				m_AllSiteComponentList[i].ParkingLotTopographySurface = topographySurfaceContainer;
+SITES\LocateCurbCommand.cs:35:					TopographySurfaceContainer _BaseSurfaceContainer = null;
+SITES\LocateCurbCommand.cs:37:					TopographySurfaceContainer _ProposedSurfaceContainer = null;
+SITES\LocateCurbCommand.cs:39:					TopographySurfaceManagement.FindAndCreateProposedLandcaddTopographySurface(document, ref _BaseSurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateCurbCommand.cs:50:							TopographySurfaceManagement.FindBaseLandcaddTopographySurface(document, _bIsProposedSurface: true, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateFeatureLineCommand.cs:35:					TopographySurfaceContainer _BaseSurfaceContainer = null;
+SITES\LocateFeatureLineCommand.cs:37:					TopographySurfaceContainer _ProposedSurfaceContainer = null;
+SITES\LocateFeatureLineCommand.cs:39:					TopographySurfaceManagement.FindAndCreateProposedLandcaddTopographySurface(document, ref _BaseSurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateFeatureLineCommand.cs:50:							TopographySurfaceManagement.FindBaseLandcaddTopographySurface(document, _bIsProposedSurface: true, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateParkingLotCommand.cs:35:					TopographySurfaceContainer _BaseSurfaceContainer = null;
+SITES\LocateParkingLotCommand.cs:37:					TopographySurfaceContainer _ProposedSurfaceContainer = null;
+SITES\LocateParkingLotCommand.cs:39:					TopographySurfaceManagement.FindAndCreateProposedLandcaddTopographySurface(document, ref _BaseSurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateParkingLotCommand.cs:50:							TopographySurfaceManagement.FindBaseLandcaddTopographySurface(document, _bIsProposedSurface: true, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocatePointWipeoutCommand.cs:35:					TopographySurfaceContainer _BaseSurfaceContainer = null;
+SITES\LocatePointWipeoutCommand.cs:37:					TopographySurfaceContainer _ProposedSurfaceContainer = null;
+SITES\LocatePointWipeoutCommand.cs:39:					TopographySurfaceManagement.FindAndCreateProposedLandcaddTopographySurface(document, ref _BaseSurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocatePointWipeoutCommand.cs:50:							TopographySurfaceManagement.FindBaseLandcaddTopographySurface(document, _bIsProposedSurface: true, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateRetainingWallCommand.cs:35:					TopographySurfaceContainer _BaseSurfaceContainer = null;
+SITES\LocateRetainingWallCommand.cs:37:					TopographySurfaceContainer _ProposedSurfaceContainer = null;
+SITES\LocateRetainingWallCommand.cs:39:					TopographySurfaceManagement.FindAndCreateProposedLandcaddTopographySurface(document, ref _BaseSurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateRetainingWallCommand.cs:50:							TopographySurfaceManagement.FindBaseLandcaddTopographySurface(document, _bIsProposedSurface: true, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateSoftTerrainCommand.cs:35:					TopographySurfaceContainer _BaseSurfaceContainer = null;
+SITES\LocateSoftTerrainCommand.cs:37:					TopographySurfaceContainer _ProposedSurfaceContainer = null;
+SITES\LocateSoftTerrainCommand.cs:39:					TopographySurfaceManagement.FindAndCreateProposedLandcaddTopographySurface(document, ref _BaseSurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateSoftTerrainCommand.cs:50:							TopographySurfaceManagement.FindBaseLandcaddTopographySurface(document, _bIsProposedSurface: true, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateSideWalkCommand.cs:35:					TopographySurfaceContainer _BaseSurfaceContainer = null;
+SITES\LocateSideWalkCommand.cs:37:					TopographySurfaceContainer _ProposedSurfaceContainer = null;
+SITES\LocateSideWalkCommand.cs:39:					TopographySurfaceManagement.FindAndCreateProposedLandcaddTopographySurface(document, ref _BaseSurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateSideWalkCommand.cs:50:							TopographySurfaceManagement.FindBaseLandcaddTopographySurface(document, _bIsProposedSurface: true, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateStreetCommand.cs:35:					TopographySurfaceContainer _BaseSurfaceContainer = null;
+SITES\LocateStreetCommand.cs:37:					TopographySurfaceContainer _ProposedSurfaceContainer = null;
+SITES\LocateStreetCommand.cs:39:					TopographySurfaceManagement.FindAndCreateProposedLandcaddTopographySurface(document, ref _BaseSurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+SITES\LocateStreetCommand.cs:50:							TopographySurfaceManagement.FindBaseLandcaddTopographySurface(document, _bIsProposedSurface: true, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+EPCommon\ConvertToToposurface.cs:103:		TopographySurface topographySurface = null;
+EPCommon\ConvertToToposurface.cs:113:		topographySurface = FindTopographySurfaceStartingNumberName(m_DisplayForm.ToposurfaceName, phase, ref nBeginningIndex);
+EPCommon\ConvertToToposurface.cs:145:		TopographySurface topographySurface2 = ConvertObjectToToposurface(strSurfaceName);
+EPCommon\ConvertToToposurface.cs:151:				TopographySurfaceContainer _ProposedTopographySurfaceContainer = null;
+EPCommon\ConvertToToposurface.cs:152:				TopographySurfaceContainer _BaseTopographySurfaceContainer = null;
+EPCommon\ConvertToToposurface.cs:155:				TopographySurfaceManagement.FindBaseLandcaddTopographySurface(m_Document, ref _BaseTopographySurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedTopographySurfaceContainer, ref _ProposedPlacementFamilyInstance, m_TransactionContainer);
+EPCommon\ConvertToToposurface.cs:156:				if (_ProposedTopographySurfaceContainer != null && _ProposedTopographySurfaceContainer.TopographySurface != null && _ProposedPlacementFamilyInstance != null && string.Compare(_ProposedTopographySurfaceContainer.TopographySurface.UniqueId, topographySurface.UniqueId, ignoreCase: true) == 0)
+EPCommon\ConvertToToposurface.cs:160:				if (_BaseTopographySurfaceContainer != null && _BaseTopographySurfaceContainer.TopographySurface != null && _BasePlacementFamilyInstance != null && string.Compare(_BaseTopographySurfaceContainer.TopographySurface.UniqueId, topographySurface.UniqueId, ignoreCase: true) == 0)
+EPCommon\ConvertToToposurface.cs:177:	private TopographySurface FindTopographySurfaceStartingNumberName(string _strFindName, Phase SelectedPhase, ref int nBeginningIndex)
+EPCommon\ConvertToToposurface.cs:179:		TopographySurface topographySurface = null;
+EPCommon\ConvertToToposurface.cs:181:		TopographySurface result = null;
+EPCommon\ConvertToToposurface.cs:183:		List<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToList();
+EPCommon\ConvertToToposurface.cs:194:			if (!(item is TopographySurface topographySurface2))
+EPCommon\ConvertToToposurface.cs:284:	private TopographySurface ConvertObjectToToposurface(string _strSurfaceName)
+EPCommon\ConvertToToposurface.cs:286:		TopographySurface topographySurface = null;
+EPCommon\ConvertToToposurface.cs:317:					TopographySurfaceManagement.RemoveDuplicateXY(ref PointXYZList);
+EPCommon\ConvertToToposurface.cs:318:					topographySurface = TopographySurface.Create(m_Document, PointXYZList);
+EPCommon\ChangeIntersectionRadiusForm.cs:317:		bool intersectionProfiles = TopographySurfaceManagement.GetIntersectionProfiles(m_CurLocateType, m_LeftExistingOffsetLeg, m_RightExistingOffsetLeg, m_LeftOffsetLeg, m_dExistingAdjustSubgradeElev, m_bIsFirstIntersectionFourWay, m_RightIntersectionStations, ref m_LeftIntersectionStations);
+EPCommon\ChangeIntersectionRadiusForm.cs:318:		bool intersectionProfiles2 = TopographySurfaceManagement.GetIntersectionProfiles(m_CurLocateType, m_LeftExistingOffsetLeg, m_RightExistingOffsetLeg, m_RightOffsetLeg, m_dExistingAdjustSubgradeElev, m_bIsFirstIntersectionFourWay, intersectionProfiles, m_LeftIntersectionStations, ref m_RightIntersectionStations);
+EPCommon\ChangeIntersectionRadiusForm.cs:394:				TopographySurfaceManagement.GetIntersectionProfiles(m_CurLocateType, m_LeftExistingOffsetLeg, m_RightExistingOffsetLeg, m_RightOffsetLeg, m_dExistingAdjustSubgradeElev, m_bIsFirstIntersectionFourWay, m_nIntersectionStationContainerIndex, m_nIntersectionStationIndex, m_LeftIntersectionStations, ref m_RightIntersectionStations);
+EPCommon\ChangeIntersectionRadiusForm.cs:399:				TopographySurfaceManagement.GetIntersectionProfiles(m_CurLocateType, m_LeftExistingOffsetLeg, m_RightExistingOffsetLeg, m_LeftOffsetLeg, m_dExistingAdjustSubgradeElev, m_bIsFirstIntersectionFourWay, m_nIntersectionStationContainerIndex, m_nIntersectionStationIndex, m_RightIntersectionStations, ref m_LeftIntersectionStations);
+EPCommon\Eps_Leg.cs:457:	public void ConvertLegToLineArcArrays(ref Eps_Line[] aLines, ref int nLineCount, ref Eps_Arc[] aArcs, ref int nArcCount, ref int[] aLegOrder, TopographySurfaceContainer _SurfaceContainer, bool _bUseToposurfaceElevation, bool _bUseConstantElevation, double _dElevation, bool _bExtendLeg)
+EPCommon\Eps_Leg.cs:459:		List<TopographySurfaceContainer> list = new List<TopographySurfaceContainer>();
+EPCommon\Eps_Leg.cs:467:	public void ConvertLegToLineArcArrays(ref Eps_Line[] aLines, ref int nLineCount, ref Eps_Arc[] aArcs, ref int nArcCount, ref int[] aLegOrder, TopographySurfaceContainer _SurfaceContainer, bool _bUseToposurfaceElevation, bool _bUseConstantElevation, double _dElevation, bool _bExtendLeg, List<Eps_Point> _ApplySurfaceElevationPoints)
+EPCommon\Eps_Leg.cs:469:		List<TopographySurfaceContainer> list = new List<TopographySurfaceContainer>();
+EPCommon\Eps_Leg.cs:477:	public void ConvertLegToLineArcArrays(ref Eps_Line[] aLines, ref int nLineCount, ref Eps_Arc[] aArcs, ref int nArcCount, ref int[] aLegOrder, List<TopographySurfaceContainer> _SurfaceList, bool _bUseToposurfaceElevation, bool _bUseConstantElevation, double _dElevation, Phase _CurPhase, bool _bExtendLeg, List<Eps_Point> _ApplySurfaceElevationPoints)
+EPCommon\Eps_Leg.cs:940:	public Eps_Leg ApplyElevationsToLeg(TopographySurfaceContainer _SurfaceContainer, bool _bUseToposurfaceElevation, bool _bUseConstantElevation, double _dConstElevation)
+EPCommon\Eps_Leg.cs:942:		List<TopographySurfaceContainer> list = new List<TopographySurfaceContainer>();
+EPCommon\Eps_Leg.cs:947:	public Eps_Leg ApplyElevationsToLeg(List<TopographySurfaceContainer> _SurfaceList, bool _bUseToposurfaceElevation, bool _bUseConstantElevation, double _dConstElevation, Phase _CurPhase)
+EPCommon\Eps_Leg.cs:952:	public Eps_Leg ApplyElevationsToLeg(TopographySurfaceContainer _SurfaceContainer, bool _bUseToposurfaceElevation, bool _bUseConstantElevation, double _dConstElevation, List<Eps_Point> _ApplySurfaceElevationPoints)
+EPCommon\Eps_Leg.cs:954:		List<TopographySurfaceContainer> list = new List<TopographySurfaceContainer>();
+EPCommon\Eps_Leg.cs:962:	public Eps_Leg ApplyElevationsToLeg(List<TopographySurfaceContainer> _SurfaceList, bool _bUseToposurfaceElevation, bool _bUseConstantElevation, double _dConstElevation, Phase _CurPhase, List<Eps_Point> _ApplySurfaceElevationPoints)
+EPCommon\Eps_Leg.cs:1198:	public Eps_Leg TopographySurfaceLeg(List<TopographySurfaceContainer> _SurfaceList, Phase _CurPhase)
+EPCommon\Eps_Leg.cs:1348:	private bool FindSurfaceElevationAtPoint(int nOffset, Eps_Leg LegSection, List<TopographySurfaceContainer> _SurfaceList, Phase _CurPhase, ref double dPointElevation)
+EPCommon\Eps_Leg.cs:1386:	public bool FindMinAndMaxElevationOfLeg(TopographySurfaceContainer _SurfaceContainer, double _dLineInterval, double _dArcInterval, ref double _dMinElevation, ref double _dMaxElevation)
+EPCommon\Eps_Leg.cs:1388:		List<TopographySurfaceContainer> list = new List<TopographySurfaceContainer>();
+EPCommon\Eps_Leg.cs:1393:	public bool FindMinAndMaxElevationOfLeg(List<TopographySurfaceContainer> _SurfaceList, Phase _CurPhase, double _dLineInterval, double _dArcInterval, ref double _dMinElevation, ref double _dMaxElevation)
+EPCommon\EPTransactionContainer.cs:17:	private TopographyEditScope m_TopographyEditScope;
+EPCommon\EPTransactionContainer.cs:73:	public bool StartTopographyEditScope(string transName, ElementId topoID)
+EPCommon\EPTransactionContainer.cs:77:			if (m_TopographyEditScope == null)
+EPCommon\EPTransactionContainer.cs:79:				m_TopographyEditScope = new TopographyEditScope(m_Document, transName);
+EPCommon\EPTransactionContainer.cs:81:			if (!m_TopographyEditScope.IsActive && m_TopographyEditScope.IsPermitted)
+EPCommon\EPTransactionContainer.cs:83:				m_TopographyEditScope.Start(topoID);
+EPCommon\EPTransactionContainer.cs:93:	public bool CommitTopographyEditScope(ref TopographyEditFailuresPreprocessor failuresPreprocessor)
+EPCommon\EPTransactionContainer.cs:97:			if (m_TopographyEditScope != null && m_TopographyEditScope.IsActive)
+EPCommon\EPTransactionContainer.cs:99:				m_TopographyEditScope.Commit(failuresPreprocessor);
+EPCommon\EPTransactionContainer.cs:109:	public bool DisposeTopographyEditScope()
+EPCommon\EPTransactionContainer.cs:113:			if (m_TopographyEditScope != null && !m_TopographyEditScope.IsActive)
+EPCommon\EPTransactionContainer.cs:115:				m_TopographyEditScope.Dispose();
+EPCommon\ExportLandXMLManager.cs:139:		List<TopographySurfaceContainer> _SurfaceList = new List<TopographySurfaceContainer>();
+EPCommon\ExportLandXMLManager.cs:349:				foreach (TopographySurfaceContainer item in _SurfaceList)
+EPCommon\ExportLandXMLManager.cs:352:					Parameter parameter = ((Element)item.TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+EPCommon\ExportLandXMLManager.cs:358:					parameter = ((Element)item.TopographySurface).get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
+EPCommon\ExportLandXMLManager.cs:365:					parameter = ((Element)item.TopographySurface).get_Parameter(BuiltInParameter.PHASE_DEMOLISHED);
+EPCommon\ExportLandXMLManager.cs:379:						parameter = ((Element)item.TopographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
+EPCommon\ExportLandXMLManager.cs:416:						FamilyInstance siteComponentPlacementFamilyInstance = ImportLandXMLClass.GetSiteComponentPlacementFamilyInstance(m_CurrentDocument, item.TopographySurface.UniqueId, _bCheckForSurface: true);
+EPCommon\ExportLandXMLTypeList.cs:21:	private List<TopographySurfaceContainer> m_SurfaceList;
+EPCommon\ExportLandXMLTypeList.cs:23:	private List<TopographySurfaceContainer> m_SelectedSurfaceList;
+EPCommon\ExportLandXMLTypeList.cs:57:	public ExportLandXMLTypeList(LandXMLElementType _CurrentType, Document _CurrentDocument, ref List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\ExportLandXMLTypeList.cs:62:		m_SurfaceList = new List<TopographySurfaceContainer>();
+EPCommon\ExportLandXMLTypeList.cs:134:		IList<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+EPCommon\ExportLandXMLTypeList.cs:137:			TopographySurface topographySurface = item as TopographySurface;
+EPCommon\ExportLandXMLTypeList.cs:138:			m_SurfaceList.Add(new TopographySurfaceContainer(m_CurrentDocument.Application, topographySurface, _bFindMinMaxPoints: true));
+EPCommon\ExportLandXMLTypeList.cs:397:			foreach (TopographySurfaceContainer surface in m_SurfaceList)
+EPCommon\ExportLandXMLTypeList.cs:401:				Parameter parameter = ((Element)surface.TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+EPCommon\FamilyInstanceComponentWrapper.cs:34:	private TopographySurfaceContainer m_ParkingLotTopographySurface;
+EPCommon\FamilyInstanceComponentWrapper.cs:169:	public TopographySurfaceContainer ParkingLotTopographySurface
+EPCommon\FamilyInstanceComponentWrapper.cs:173:			return m_ParkingLotTopographySurface;
+EPCommon\FamilyInstanceComponentWrapper.cs:177:			m_ParkingLotTopographySurface = value;
+EPCommon\FamilyInstanceComponentWrapper.cs:364:		m_ParkingLotTopographySurface = null;
+EPCommon\FamilyInstanceComponentWrapper.cs:395:		m_ParkingLotTopographySurface = null;
+EPCommon\FamilyInstanceComponentWrapper.cs:414:	public void CreateOriginalLeg(TopographySurfaceContainer _Surface)
+EPCommon\FamilyInstanceComponentWrapper.cs:416:		List<TopographySurfaceContainer> list = new List<TopographySurfaceContainer>();
+EPCommon\FamilyInstanceComponentWrapper.cs:421:	public void CreateOriginalLeg(List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\FamilyInstanceComponentWrapper.cs:426:	public void CreateOriginalLeg(List<TopographySurfaceContainer> _SurfaceList, Phase _CurPhase)
+EPCommon\FamilyInstanceComponentWrapper.cs:431:	public void CreateOriginalOrProposedLeg(List<TopographySurfaceContainer> _SurfaceList, Phase _CurPhase, bool _bIsOriginalLeg)
+EPCommon\FamilyInstanceComponentWrapper.cs:699:				m_OriginalLeg = _CurrentLeg.TopographySurfaceLeg(_SurfaceList, _CurPhase);
+EPCommon\FamilyInstanceComponentWrapper.cs:708:			m_ProposedLeg = _CurrentLeg.TopographySurfaceLeg(_SurfaceList, _CurPhase);
+EPCommon\FamilyInstanceComponentWrapper.cs:716:	public void CreateProposedLeg(TopographySurfaceContainer _Surface)
+EPCommon\FamilyInstanceComponentWrapper.cs:718:		List<TopographySurfaceContainer> list = new List<TopographySurfaceContainer>();
+EPCommon\FamilyInstanceComponentWrapper.cs:723:	public void CreateProposedLeg(List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\FamilyInstanceComponentWrapper.cs:728:	public void CreateProposedLeg(List<TopographySurfaceContainer> _SurfaceList, Phase _CurPhase)
+EPCommon\FamilyInstanceComponentWrapper.cs:1039:	public void CreateParkingLotBreaklineLegs(TopographySurfaceContainer _Surface)
+EPCommon\FamilyInstanceComponentWrapper.cs:1041:		List<TopographySurfaceContainer> list = new List<TopographySurfaceContainer>();
+EPCommon\FamilyInstanceComponentWrapper.cs:1046:	public void CreateParkingLotBreaklineLegs(List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\FamilyInstanceComponentWrapper.cs:1051:	public void CreateParkingLotBreaklineLegs(List<TopographySurfaceContainer> _SurfaceList, Phase _CurPhase)
+EPCommon\FamilyInstanceComponentWrapper.cs:1164:			m_ParkingLotBreaklineList[k] = m_ParkingLotBreaklineList[k].TopographySurfaceLeg(_SurfaceList, _CurPhase);
+EPCommon\ImportLandXMLManager.cs:19:	private List<TopographySurface> m_ListOfTopoSurfaces = new List<TopographySurface>();
+EPCommon\ImportLandXMLManager.cs:518:	private TopographySurface AddSurfaceToDocument(EPTransactionContainer _TransactionContainer, LandXMLSurface _CurSurface)
+EPCommon\ImportLandXMLManager.cs:520:		TopographySurface topographySurface = null;
+EPCommon\ImportLandXMLManager.cs:525:			TopographySurfaceManagement.RemoveDuplicateXY(ref _RevitPntList);
+EPCommon\ImportLandXMLManager.cs:526:			topographySurface = TopographySurface.Create(m_CurrentDocument, _RevitPntList);
+EPCommon\ImportLandXMLManager.cs:543:	private void LoadLandXMLSurfaceFamily(EPTransactionContainer _TransactionContainer, TopographySurface _Surface)
+EPCommon\ImportLandXMLManager.cs:649:		TopographySurface topographySurface = AddSurfaceToDocument(_TransactionContainer, _CurSurface);
+EPCommon\ImportLandXMLManager.cs:652:			TopographySurfaceContainer _ProposedTopographySurfaceContainer = null;
+EPCommon\ImportLandXMLManager.cs:653:			TopographySurfaceContainer _BaseTopographySurfaceContainer = null;
+EPCommon\ImportLandXMLManager.cs:656:			TopographySurfaceManagement.FindBaseLandcaddTopographySurface(m_CurrentDocument, ref _BaseTopographySurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedTopographySurfaceContainer, ref _ProposedPlacementFamilyInstance, _TransactionContainer);
+EPCommon\ImportLandXMLManager.cs:657:			if (_ProposedTopographySurfaceContainer != null && _ProposedTopographySurfaceContainer.TopographySurface != null && _ProposedPlacementFamilyInstance != null && string.Compare(_ProposedTopographySurfaceContainer.TopographySurface.UniqueId, _CurSurface.OverwriteSurfaceID, ignoreCase: true) == 0)
+EPCommon\ImportLandXMLManager.cs:661:			if (_BaseTopographySurfaceContainer != null && _BaseTopographySurfaceContainer.TopographySurface != null && _BasePlacementFamilyInstance != null && string.Compare(_BaseTopographySurfaceContainer.TopographySurface.UniqueId, _CurSurface.OverwriteSurfaceID, ignoreCase: true) == 0)
+EPCommon\LandcaddID.cs:25:	BuildingPadPlacement = 112,
+EPCommon\ModifySiteComponent.cs:19:	private TopographySurfaceContainer m_BaseSurface;
+EPCommon\ModifySiteComponent.cs:21:	private TopographySurfaceContainer m_ProposedSurface;
+EPCommon\ModifySiteComponent.cs:127:		if (!ApplicationUtility.Settings.eplSetE_GetSetting("TopographySurfaceArcPointInterval", ref m_dArcPointInterval))
+EPCommon\ModifySiteComponent.cs:130:			ApplicationUtility.Settings.eplSetE_SetSetting("TopographySurfaceArcPointInterval", m_dArcPointInterval);
+EPCommon\ModifySiteComponent.cs:350:					TopographySurfaceManagement.RemoveAllIntersectionStationsForCommonSiteComponents(ref m_AllSiteComponentList);
+EPCommon\ModifySiteComponent.cs:359:					TopographySurfaceManagement.RemoveAllIntersectionStationsForCommonSiteComponents(ref m_AllSiteComponentList);
+EPCommon\ModifySiteComponent.cs:505:		TopographySurfaceManagement.FindBaseLandcaddTopographySurface(m_Document, ref m_BaseSurface, ref _BasePlacementFamilyInstance, ref m_ProposedSurface, ref m_TopoPlacementFamilyInstance);
+EPCommon\ModifySiteComponent.cs:883:				TopographySurfaceContainer topographySurfaceContainer = null;
+EPCommon\ModifySiteComponent.cs:899:						TopographySurface topographySurface = TopographySurfaceManagement.FindTopoSurfaceInstance(m_Document, strFormUniqueId);
+EPCommon\ModifySiteComponent.cs:902:							topographySurfaceContainer = new TopographySurfaceContainer(m_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\ModifySiteComponent.cs:905:					m_SiteCategoryComponentList[i].ParkingLotTopographySurface = topographySurfaceContainer;
+EPCommon\ModifySiteComponent.cs:1038:						TopographySurfaceManagement.GetIntersections(m_Document, item3.UniqueId, ref _SiteFamilyInstanceList, ref _LeftIntersectionStations, ref _RightIntersectionStations);
+EPCommon\ModifySiteComponent.cs:1097:			if (m_FamilyInstanceComponentWrapper.ParkingLotTopographySurface != null && m_FamilyInstanceComponentWrapper.ParkingLotBreaklineElementList != null && m_FamilyInstanceComponentWrapper.ParkingLotBreaklineElementList.Count > 0)
+EPCommon\ModifySiteComponent.cs:1099:				m_FamilyInstanceComponentWrapper.CreateParkingLotBreaklineLegs(m_FamilyInstanceComponentWrapper.ParkingLotTopographySurface);
+EPCommon\ModifySiteComponent.cs:1116:		if (m_FamilyInstanceComponentWrapper.ParkingLotTopographySurface != null)
+EPCommon\ModifySiteComponent.cs:1131:								if (parameter != null && parameter.AsString() != string.Empty && string.Compare(m_strParentTopoSurfaceID = parameter.AsString(), m_FamilyInstanceComponentWrapper.ParkingLotTopographySurface.TopographySurface.UniqueId, ignoreCase: true) == 0)
+EPCommon\ModifySiteComponent.cs:1139:									m_ParkingLotCurbSiteCompList[0].CreateProposedLeg(m_FamilyInstanceComponentWrapper.ParkingLotTopographySurface);
+EPCommon\ModifySiteComponent.cs:1475:		TopographySurfaceManagement.FindAllGradeAndElevationPointsInIntersection(m_Document, m_ProposedSurface, m_TransactionContainer, m_bFindIntersectionStations, m_FamilyInstanceComponentWrapper, m_AllSiteComponentList, ref _GradeAndElevationPnts);
+EPCommon\ModifySiteComponent.cs:2060:				TopographySurfaceContainer topographySurfaceContainer = m_FamilyInstanceComponentWrapper.ParkingLotTopographySurface;
+EPCommon\ModifySiteComponent.cs:2407:				_EvalLeg = ((!addBreaklineForm.RelativeElevationChecked) ? _EvalLeg.ApplyElevationsToLeg(addBreaklineForm.BeginningElevation, addBreaklineForm.GetGrade(RevitGeometry.eplGeoE_CalcLegListLength(_EvalLeg))) : _EvalLeg.ApplyElevationsToLeg(m_FamilyInstanceComponentWrapper.ParkingLotTopographySurface, _bUseToposurfaceElevation: true, _bUseConstantElevation: false, addBreaklineForm.BeginningElevation));
+EPCommon\ModifySiteComponent.cs:2505:		TopographySurfaceContainer _ParkingLotSurface = null;
+EPCommon\ModifySiteComponent.cs:2594:				TopographySurface topographySurface = TopographySurfaceManagement.FindTopoSurfaceInstance(m_Document, text4);
+EPCommon\ModifySiteComponent.cs:2602:				TopographySurface topographySurface2 = TopographySurfaceManagement.FindTopoSurfaceInstance(m_Document, text5);
+EPCommon\ModifySiteComponent.cs:2616:			if (m_ProposedSurface.TopographySurface != null)
+EPCommon\ModifySiteComponent.cs:2618:				list5.Insert(0, m_ProposedSurface.TopographySurface);
+EPCommon\ModifySiteComponent.cs:2620:			if (list5 != null && list5.Count > 0 && !TopographySurfaceManagement.VerifyUserCanManipulateElements(m_Document, list5))
+EPCommon\ModifySiteComponent.cs:2683:			TopographySurfaceManagement.SetupAllIntersectionStationsForSelectedSiteComponent(m_Document, m_ProposedSurface, m_TransactionContainer, m_bFindIntersectionStations, ref m_FamilyInstanceComponentWrapper, ref m_AllSiteComponentList);
+EPCommon\ModifySiteComponent.cs:2684:			TopographySurfaceManagement.SetupAllIntersectionStationsForAllSiteComponents(m_Document, m_ProposedSurface, m_TransactionContainer, m_FamilyInstanceComponentWrapper.ChainID, ref m_AllSiteComponentList);
+EPCommon\ModifySiteComponent.cs:2685:			TopographySurfaceContainer topographySurfaceContainer = TopographySurfaceManagement.FindParentSurfaceAndRemovePointsForSelectedCurbComponent(m_Document, m_ProposedSurface, m_FamilyInstanceComponentWrapper, ref _TopoPointList);
+EPCommon\ModifySiteComponent.cs:2686:			TopographySurfaceContainer topographySurfaceContainer2;
+EPCommon\ModifySiteComponent.cs:2687:			if (topographySurfaceContainer != null && topographySurfaceContainer.TopographySurface != null && string.Compare(m_ProposedSurface.TopographySurface.UniqueId, topographySurfaceContainer.TopographySurface.UniqueId, ignoreCase: true) != 0)
+EPCommon\ModifySiteComponent.cs:2865:						TopographySurface topographySurface3 = TopographySurfaceManagement.FindTopoSurfaceInstance(m_Document, sitePlacementSettings.IslandSurfaceID);
+EPCommon\ModifySiteComponent.cs:2873:						TopographySurface topographySurface4 = TopographySurfaceManagement.FindTopoSurfaceInstance(m_Document, sitePlacementSettings.ParkingLotSurfaceID);
+EPCommon\ModifySiteComponent.cs:2917:					if (sitePlacementSettings.LocateType == LandcaddID.Curb && sitePlacementSettings.ParentTopoSurfaceID != string.Empty && string.Compare(sitePlacementSettings.ParentTopoSurfaceID, topographySurfaceContainer2.TopographySurface.UniqueId, ignoreCase: true) != 0)
+EPCommon\ModifySiteComponent.cs:3064:						if (!TopographySurfaceManagement.RebuildProposedTopographySurface(m_Document, sitePlacementSettings, m_dArcPointInterval, eps_Leg, topographySurfaceContainer2, list6, flag3, m_AllSiteComponentList[m].ParkingLotBreaklineList, m_AllSiteComponentList[m].ParkingLotBreaklineElementList, m_AllSiteComponentList[m].ParkingLotBreaklineLinearPointIntervals, list, list2, list3, list4, ref _TopoPointList, ref _CrownPointList))
+EPCommon\ModifySiteComponent.cs:3073:						if (!TopographySurfaceManagement.RebuildProposedTopographySurface(m_Document, sitePlacementSettings, m_dArcPointInterval, eps_Leg, topographySurfaceContainer2, list6, flag3, m_AllSiteComponentList[m].ParkingLotBreaklineList, m_AllSiteComponentList[m].ParkingLotBreaklineElementList, m_AllSiteComponentList[m].ParkingLotBreaklineLinearPointIntervals, list, list2, list3, list4, ref _TopoPointList, ref _CrownPointList, ref _ParkingLotSurface, ref _ParkingLotTopoPointList, ref _FamilyInstanceList))
+EPCommon\ModifySiteComponent.cs:3141:					for (int num13 = 0; num13 < topographySurfaceContainer2.SubregionBuildingPadList.Count; num13++)
+EPCommon\ModifySiteComponent.cs:3143:						if (topographySurfaceContainer2.SubregionBuildingPadList[num13] == null)
+EPCommon\ModifySiteComponent.cs:3147:						if (topographySurfaceContainer2.SubregionBuildingPadList[num13].BoundaryLeg != null && RevitGeometry.eplGeoE_CalcStationOffsetAlongLegList(_TopoPointList[num12], topographySurfaceContainer2.SubregionBuildingPadList[num13].BoundaryLeg, ref _dStation, ref _dOffset) == 1700 && Math.Abs(_dOffset) <= 0.001)
+EPCommon\ModifySiteComponent.cs:3152:						if (topographySurfaceContainer2.SubregionBuildingPadList[num13].GetSurfaceContainerContainingPoint(_TopoPointList[num12]) != null)
+EPCommon\ModifySiteComponent.cs:3154:							if (topographySurfaceContainer2.SubregionBuildingPadList[num13].TopographySurfaceType == TopographySurfaceType.Subregion)
+EPCommon\ModifySiteComponent.cs:3181:				list8.AddRange(topographySurfaceContainer2.TopographySurface.GetBoundaryPoints().ToList());
+EPCommon\ModifySiteComponent.cs:3182:				TopographySurfaceManagement.RemoveDuplicateXY(ref PointXYZList);
+EPCommon\ModifySiteComponent.cs:3183:				TopographySurfaceManagement.RemoveOriginalTopoPoints(list8, ref PointXYZList);
+EPCommon\ModifySiteComponent.cs:3187:				list9 = topographySurfaceContainer2.TopographySurface.GetInteriorPoints();
+EPCommon\ModifySiteComponent.cs:3188:				m_TransactionContainer.StartTopographyEditScope(name, topographySurfaceContainer2.TopographySurface.Id);
+EPCommon\ModifySiteComponent.cs:3209:						topographySurfaceContainer2.TopographySurface.MovePoint(item10, PointXYZList[num15]);
+EPCommon\ModifySiteComponent.cs:3219:						topographySurfaceContainer2.TopographySurface.AddPoints(list10);
+EPCommon\ModifySiteComponent.cs:3231:							topographySurfaceContainer2.TopographySurface.MovePoint(item11, PointXYZList[num16]);
+EPCommon\ModifySiteComponent.cs:3241:						topographySurfaceContainer2.TopographySurface.DeletePoints(list11);
+EPCommon\ModifySiteComponent.cs:3247:				m_TransactionContainer.CommitTopographyEditScope(ref failuresPreprocessor);
+EPCommon\ModifySiteComponent.cs:3252:				if (topographySurfaceContainer2.SubregionBuildingPadList != null && topographySurfaceContainer2.SubregionBuildingPadList.Count > 0)
+EPCommon\ModifySiteComponent.cs:3254:					List<TopographySurfaceContainer> surfaceList = TopographySurfaceManagement.FindAllMainSurfaces(m_Document, _bFindMinMaxPoints: true);
+EPCommon\ModifySiteComponent.cs:3255:					Eps_Point eps_Point = TopographySurfaceManagement.FindToposurfaceAdjustmentPoint(m_ProposedSurface, surfaceList);
+EPCommon\ModifySiteComponent.cs:3256:					ElementTransformUtils.MoveElement(m_Document, m_ProposedSurface.TopographySurface.Id, eps_Point.XY);
+EPCommon\ModifySiteComponent.cs:3257:					List<TopographySurfaceContainer> list12 = new List<TopographySurfaceContainer>();
+EPCommon\ModifySiteComponent.cs:3259:					for (int num17 = 0; num17 < topographySurfaceContainer2.SubregionBuildingPadList.Count; num17++)
+EPCommon\ModifySiteComponent.cs:3261:						if (topographySurfaceContainer2.SubregionBuildingPadList[num17] == null)
+EPCommon\ModifySiteComponent.cs:3265:						if (topographySurfaceContainer2.SubregionBuildingPadList[num17].TopographySurface != null)
+EPCommon\ModifySiteComponent.cs:3267:							list13.Add(topographySurfaceContainer2.SubregionBuildingPadList[num17].TopographySurface.Id);
+EPCommon\ModifySiteComponent.cs:3268:							if (topographySurfaceContainer2.SubregionBuildingPadList[num17].TopographySurfaceType == TopographySurfaceType.Subregion)
+EPCommon\ModifySiteComponent.cs:3270:								list12.Add(topographySurfaceContainer2.SubregionBuildingPadList[num17]);
+EPCommon\ModifySiteComponent.cs:3273:						else if (topographySurfaceContainer2.SubregionBuildingPadList[num17].BuildingPad != null)
+EPCommon\ModifySiteComponent.cs:3275:							list13.Add(topographySurfaceContainer2.SubregionBuildingPadList[num17].BuildingPad.Id);
+EPCommon\ModifySiteComponent.cs:3278:					List<KeyValuePair<FamilyInstance, TopographySurfaceContainer>> updateGenericModelList = TopographySurfaceManagement.FindPlantMixGenericModelList(m_Document, list12);
+EPCommon\ModifySiteComponent.cs:3291:							RevitMessageBox.Show(EPShared.LocalRM.GetString("SubregionBuildingPadBoundaryErrorMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
+EPCommon\ModifySiteComponent.cs:3295:					ElementTransformUtils.MoveElement(m_Document, m_ProposedSurface.TopographySurface.Id, new XYZ(0.0 - eps_Point.x, 0.0 - eps_Point.y, 0.0));
+EPCommon\ModifySiteComponent.cs:3298:						m_ProposedSurface.TopographySurface.AddPoints(list7);
+EPCommon\ModifySiteComponent.cs:3300:					List<TopographySurfaceContainer> list14 = null;
+EPCommon\ModifySiteComponent.cs:3301:					list14 = TopographySurfaceManagement.FindNewTopographySurfaceContainers(m_Document, newElementIds);
+EPCommon\ModifySiteComponent.cs:3302:					TopographySurfaceManagement.UpdatePlantMixGenericModelList(updateGenericModelList, list14);
+EPCommon\ModifySiteComponent.cs:3305:						m_ProposedSurface.SubregionBuildingPadList.AddRange(list14);
+EPCommon\ModifySiteComponent.cs:3315:						parameter.Set(m_ProposedSurface.TopographySurface.UniqueId);
+EPCommon\ModifySiteComponent.cs:3355:								parameter.Set(m_ProposedSurface.TopographySurface.UniqueId);
+EPCommon\ModifySiteComponent.cs:3502:						TopographySurface topographySurface5 = TopographySurfaceManagement.FindTopoSurfaceInstance(m_Document, sitePlacementSettings.IslandSurfaceID);
+EPCommon\ModifySiteComponent.cs:3551:						if (!TopographySurfaceManagement.RebuildProposedTopographySurface(m_Document, sitePlacementSettings, m_dArcPointInterval, eps_Leg, _ParkingLotSurface, list15, bDrawForm, null, null, null, null, null, null, null, ref _ParkingLotTopoPointList))
+EPCommon\ModifySiteComponent.cs:3575:					TopographySurfaceManagement.RemoveDuplicateXY(ref PointXYZList);
+EPCommon\ModifySiteComponent.cs:3576:					TopographySurface topographySurface6 = TopographySurface.Create(m_Document, PointXYZList);
+EPCommon\ModifySiteComponent.cs:3605:							parameter = ((Element)_ParkingLotSurface.TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
+EPCommon\ModifySiteComponent.cs:3617:					parameter = ((Element)_ParkingLotSurface.TopographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
+EPCommon\ModifySiteComponent.cs:3627:					parameter = ((Element)_ParkingLotSurface.TopographySurface).get_Parameter(BuiltInParameter.PHASE_DEMOLISHED);
+EPCommon\ModifySiteComponent.cs:3637:					parameter = ((Element)_ParkingLotSurface.TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+EPCommon\ModifySiteComponent.cs:3652:							if (parameter != null && !parameter.IsReadOnly && string.Compare(parameter.AsString(), _ParkingLotSurface.TopographySurface.UniqueId, ignoreCase: true) == 0)
+EPCommon\ModifySiteComponent.cs:3658:					m_Document.Delete(_ParkingLotSurface.TopographySurface.Id);
+EPCommon\PlacementSettings.cs:26:	private List<TopographySurfaceContainer> m_SurfaceList;
+EPCommon\PlacementSettings.cs:184:	public List<TopographySurfaceContainer> SurfaceList
+EPCommon\PlacementSettings.cs:430:	public PlacementSettings(LocateType _LocateType, PlacementType _PlantPlacementType, bool _bDeleteExistingChecked, bool _bExistingElementChecked, bool _bPlaceGroupTagChecked, Level _Level, View _View, FamilySymbol _Type, List<TopographySurfaceContainer> _SurfaceList, double _dSetbackSpacing, double _dHeight, double _dHeightVariance, double _dWidth, double _dWidthVariance, double _dPlantSpacing, double _dRotationAngle, double _dStartingDistance, FamilySymbol _PlacementSymbol, EPTransactionContainer _TransactionContainer)
+EPCommon\PlantMixPatioWalkUpdater.cs:52:				IList<Element> list2 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+EPCommon\PlantMixPatioWalkUpdater.cs:184:		IList<Element> list3 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+EPCommon\ProjectPointsTopoSurfaceContainer.cs:7:	private TopographySurfaceContainer m_TopographySurfaceContainer;
+EPCommon\ProjectPointsTopoSurfaceContainer.cs:11:	public TopographySurfaceContainer TopographySurfaceContainer => m_TopographySurfaceContainer;
+EPCommon\ProjectPointsTopoSurfaceContainer.cs:25:	public ProjectPointsTopoSurfaceContainer(TopographySurfaceContainer _TopographySurfaceContainer)
+EPCommon\ProjectPointsTopoSurfaceContainer.cs:27:		m_TopographySurfaceContainer = _TopographySurfaceContainer;
+EPCommon\ProjectPointsTopoSurfaceContainer.cs:31:	public ProjectPointsTopoSurfaceContainer(TopographySurfaceContainer _TopographySurfaceContainer, Eps_Point _CurPoint)
+EPCommon\ProjectPointsTopoSurfaceContainer.cs:33:		m_TopographySurfaceContainer = _TopographySurfaceContainer;
+EPCommon\RevitUtility.cs:88:	public static Element GetSurfaceContainingPoint(Eps_Point _FindPoint, List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\RevitUtility.cs:130:	public static Element GetSurfaceContainingPoint(Eps_Point _FindPoint, List<TopographySurfaceContainer> _SurfaceList, ref double _dElevation)
+EPCommon\RevitUtility.cs:135:	public static Element GetSurfaceContainingPoint(Eps_Point _FindPoint, List<TopographySurfaceContainer> _SurfaceList, Phase _CurPhase, ref double _dElevation)
+EPCommon\RevitUtility.cs:1467:						parameter.Set(_PlacementSettings.SurfaceList[0].TopographySurface.UniqueId);
+EPCommon\SettingsForm.cs:398:			m_ParametersStringList.Add("TopographySurfaceArcPointInterval");
+EPCommon\SettingsForm.cs:399:			empty = GetDoubleSetting("TopographySurfaceArcPointInterval");
+EPCommon\SettingsForm.cs:708:			list.Add(EPShared.LocalRM.GetString("TopographySurfaceArcPointInterval"));
+EPCommon\SettingsForm.cs:727:				if (string.Compare(list[i], EPShared.LocalRM.GetString("TopographySurfaceArcPointInterval"), ignoreCase: true) == 0)
+EPCommon\SettingsForm.cs:876:				m_ParameterList.Add(EPShared.LocalRM.GetString("TopographySurfaceArcPointInterval"));
+EPCommon\SettingsForm.cs:901:				if (string.Compare(m_ParameterList[i], EPShared.LocalRM.GetString("TopographySurfaceArcPointInterval"), ignoreCase: true) == 0)
+EPCommon\SettingsForm.cs:1264:					if (string.Compare(empty, EPShared.LocalRM.GetString("TopographySurfaceArcPointInterval"), ignoreCase: true) == 0)
+EPCommon\SettingsForm.cs:1276:						m_Fields.Add("TopographySurfaceArcPointInterval");
+EPCommon\SettingsForm.cs:1439:				if (string.Compare(m_Fields[num], "TopographySurfaceArcPointInterval", ignoreCase: true) == 0)
+EPCommon\SettingsForm.cs:1542:			if (string.Compare(EPShared.LocalRM.GetString("TopographySurfaceArcPointInterval"), strB, ignoreCase: true) == 0)
+EPCommon\SetBaseToposurfaceForm.cs:15:	private List<TopographySurfaceContainer> m_SelectedSurfaceList;
+EPCommon\SetBaseToposurfaceForm.cs:31:	public List<TopographySurfaceContainer> SelectedSurfaceList => m_SelectedSurfaceList;
+EPCommon\SetBaseToposurfaceForm.cs:86:			if (item is TopographySurface { Category: not null } topographySurface && topographySurface.Category.Id.Value64() == BuiltInCategory.OST_Topography.GetHashCode())
+EPCommon\SetBaseToposurfaceForm.cs:106:			parameter = ((Element)m_dataBuffer.SurfaceList[i].TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+EPCommon\SetBaseToposurfaceForm.cs:116:			listViewItem = m_ToposurfaceListView.Items.Insert(i, m_dataBuffer.SurfaceList[i].TopographySurface.UniqueId, text, string.Empty);
+EPCommon\SetBaseToposurfaceForm.cs:117:			listViewItem.Tag = m_dataBuffer.SurfaceList[i].TopographySurface.UniqueId;
+EPCommon\SetBaseToposurfaceForm.cs:118:			parameter = ((Element)m_dataBuffer.SurfaceList[i].TopographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
+EPCommon\SetBaseToposurfaceForm.cs:166:		m_SelectedSurfaceList = new List<TopographySurfaceContainer>();
+EPCommon\SetBaseToposurfaceForm.cs:176:					if (string.Compare((string)m_ToposurfaceListView.SelectedItems[num2].Tag, m_dataBuffer.SurfaceList[num3].TopographySurface.UniqueId, ignoreCase: true) == 0)
+EPCommon\SetBaseToposurfaceForm.cs:178:						m_dataBuffer.SurfaceList[num3].FindMinMaxPointsOfTopographySurface();
+EPCommon\SetBaseToposurface.cs:27:	private List<TopographySurfaceContainer> m_SurfaceList;
+EPCommon\SetBaseToposurface.cs:29:	private TopographySurface m_ProposedSurface;
+EPCommon\SetBaseToposurface.cs:31:	private TopographySurface m_OriginalGroundSurface;
+EPCommon\SetBaseToposurface.cs:43:	public ReadOnlyCollection<TopographySurfaceContainer> SurfaceList => new ReadOnlyCollection<TopographySurfaceContainer>(m_SurfaceList);
+EPCommon\SetBaseToposurface.cs:68:		m_SurfaceList = new List<TopographySurfaceContainer>();
+EPCommon\SetBaseToposurface.cs:88:		IList<Element> list2 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+EPCommon\SetBaseToposurface.cs:90:		IList<Element> list3 = filteredElementCollector.OfClass(typeof(CeilingAndFloor)).OfCategory(BuiltInCategory.OST_BuildingPad).ToElements();
+EPCommon\SetBaseToposurface.cs:91:		List<TopographySurface> list4 = new List<TopographySurface>();
+EPCommon\SetBaseToposurface.cs:92:		List<TopographySurfaceContainer> list5 = new List<TopographySurfaceContainer>();
+EPCommon\SetBaseToposurface.cs:95:			TopographySurface topographySurface = item as TopographySurface;
+EPCommon\SetBaseToposurface.cs:137:			TopographySurfaceType topographySurfaceType = TopographySurfaceContainer.FindTopographySurfaceType(m_Document.Application, list4[num]);
+EPCommon\SetBaseToposurface.cs:140:			case TopographySurfaceType.MainSurface:
+EPCommon\SetBaseToposurface.cs:141:				m_SurfaceList.Add(new TopographySurfaceContainer(m_Document.Application, list4[num]));
+EPCommon\SetBaseToposurface.cs:143:			case TopographySurfaceType.Subregion:
+EPCommon\SetBaseToposurface.cs:144:			case TopographySurfaceType.BuildingPad:
+EPCommon\SetBaseToposurface.cs:145:				list5.Add(new TopographySurfaceContainer(m_Document.Application, list4[num], _bFindMinMaxPoints: true, topographySurfaceType));
+EPCommon\SetBaseToposurface.cs:153:				list5.Add(new TopographySurfaceContainer(m_Document.Application, buildingPad, _bFindMinMaxPoints: true));
+EPCommon\SetBaseToposurface.cs:156:		TopographySurfaceManagement.AddSubRegionBuildingPadsToMainSurfaceList(m_Document, list5, ref m_SurfaceList);
+EPCommon\SetBaseToposurface.cs:252:	private bool PickTopographySurfaces(ref ElementSet _InstanceSet)
+EPCommon\SetBaseToposurface.cs:266:		TopographySurface topographySurface = null;
+EPCommon\SetBaseToposurface.cs:270:			if (item is TopographySurface { Category: not null } topographySurface2 && topographySurface2.Category.Id.Value64() == BuiltInCategory.OST_Topography.GetHashCode())
+EPCommon\SetBaseToposurface.cs:274:					if (string.Compare(topographySurface2.UniqueId, m_SurfaceList[i].TopographySurface.UniqueId, ignoreCase: true) == 0)
+EPCommon\SetBaseToposurface.cs:279:					for (int j = 0; j < m_SurfaceList[i].SubregionBuildingPadList.Count; j++)
+EPCommon\SetBaseToposurface.cs:281:						if (string.Compare(topographySurface2.UniqueId, m_SurfaceList[i].SubregionBuildingPadList[j].TopographySurface.UniqueId, ignoreCase: true) == 0)
+EPCommon\SetBaseToposurface.cs:319:				m_InstanceSet.Insert(m_DisplayForm.SelectedSurfaceList[0].TopographySurface);
+EPCommon\SetBaseToposurface.cs:330:			if (!PickTopographySurfaces(ref _InstanceSet))
+EPCommon\SetBaseToposurface.cs:341:	public bool CreateBaseToposurface(List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\SetBaseToposurface.cs:347:				if (_SurfaceList[i].BuildingPadPresentInDiffentPhase)
+EPCommon\SetBaseToposurface.cs:349:					DialogResult dialogResult = RevitMessageBox.Show(EPShared.LocalRM.GetString("DifferentPhasingForBuildingPadsMessage"), EPShared.LocalRM.GetString("Warning"), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+EPCommon\SetBaseToposurface.cs:357:			List<Eps_Point> surfacePoints = TopographySurfaceManagement.GetSurfacePoints(_SurfaceList);
+EPCommon\SetBaseToposurface.cs:360:				List<TopographySurfaceContainer> list = new List<TopographySurfaceContainer>();
+EPCommon\SetBaseToposurface.cs:367:					if (!flag && _SurfaceList[j].IsTopographySurfaceTypePresent(TopographySurfaceType.Subregion))
+EPCommon\SetBaseToposurface.cs:376:					if (!flag2 && _SurfaceList[j].IsTopographySurfaceTypePresent(TopographySurfaceType.BuildingPad))
+EPCommon\SetBaseToposurface.cs:379:						DialogResult dialogResult3 = RevitMessageBox.Show(EPShared.LocalRM.GetString("AddBuildingPadsToProposedSurfaceMessage"), EPShared.LocalRM.GetString("Warning"), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+EPCommon\SetBaseToposurface.cs:385:					for (int k = 0; k < _SurfaceList[j].SubregionBuildingPadList.Count; k++)
+EPCommon\SetBaseToposurface.cs:387:						if (_SurfaceList[j].SubregionBuildingPadList[k] != null && ((_SurfaceList[j].SubregionBuildingPadList[k].TopographySurfaceType == TopographySurfaceType.Subregion && flag3) || (_SurfaceList[j].SubregionBuildingPadList[k].TopographySurfaceType == TopographySurfaceType.BuildingPad && flag4)) && (_SurfaceList[j].SubregionBuildingPadList[k].TopographySurface != null || _SurfaceList[j].SubregionBuildingPadList[k].BuildingPad != null))
+EPCommon\SetBaseToposurface.cs:389:							list.Add(_SurfaceList[j].SubregionBuildingPadList[k]);
+EPCommon\SetBaseToposurface.cs:420:				if (m_OriginalGroundSurface != null && (_SurfaceList.Count > 1 || (_SurfaceList.Count == 1 && string.Compare(_SurfaceList[0].TopographySurface.UniqueId, m_OriginalGroundSurface.UniqueId, ignoreCase: true) != 0)))
+EPCommon\SetBaseToposurface.cs:428:				if (m_ProposedSurface != null && (_SurfaceList.Count > 1 || (_SurfaceList.Count == 1 && string.Compare(_SurfaceList[0].TopographySurface.UniqueId, m_ProposedSurface.UniqueId, ignoreCase: true) != 0)))
+EPCommon\SetBaseToposurface.cs:436:				if (!TopographySurfaceManagement.VerifyUserCanManipulateElements(m_Document, list2))
+EPCommon\SetBaseToposurface.cs:463:							if (list[l].TopographySurfaceType == TopographySurfaceType.Subregion)
+EPCommon\SetBaseToposurface.cs:501:				TopographySurface topographySurface = null;
+EPCommon\SetBaseToposurface.cs:524:					parameter = ((Element)_SurfaceList[0].TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
+EPCommon\SetBaseToposurface.cs:534:					TopographySurfaceManagement.RemoveDuplicateXY(ref PointXYZList);
+EPCommon\SetBaseToposurface.cs:535:					topographySurface = TopographySurface.Create(m_Document, PointXYZList);
+EPCommon\SetBaseToposurface.cs:551:					topographySurface = _SurfaceList[0].TopographySurface;
+EPCommon\SetBaseToposurface.cs:578:				TopographySurface _ProposedTopographySurface = null;
+EPCommon\SetBaseToposurface.cs:580:				TopographySurfaceManagement.CreateProposedSurface(m_Document, m_TransactionContainer, m_PlacementSymbol, surfacePoints, strToposurfaceName, elementId, phaseCreated, phaseDemolished, ref _ProposedTopographySurface, ref _PlacementFamilyInstance);
+EPCommon\SetBaseToposurface.cs:584:					TopographySurfaceContainer curTopoSurfaceContainer = new TopographySurfaceContainer(m_Document.Application, _ProposedTopographySurface, _bFindMinMaxPoints: true);
+EPCommon\SetBaseToposurface.cs:585:					eps_Point = TopographySurfaceManagement.FindToposurfaceAdjustmentPoint(curTopoSurfaceContainer, m_SurfaceList);
+EPCommon\SetBaseToposurface.cs:589:						if (list[m].TopographySurface != null)
+EPCommon\SetBaseToposurface.cs:591:							list5.Add(list[m].TopographySurface.Id);
+EPCommon\SetBaseToposurface.cs:593:						else if (list[m].BuildingPad != null)
+EPCommon\SetBaseToposurface.cs:595:							list5.Add(list[m].BuildingPad.Id);
+EPCommon\SetBaseToposurface.cs:598:					ElementTransformUtils.MoveElement(m_Document, _ProposedTopographySurface.Id, eps_Point.XY);
+EPCommon\SetBaseToposurface.cs:607:							RevitMessageBox.Show(EPShared.LocalRM.GetString("SubregionBuildingPadBoundaryErrorMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
+EPCommon\SetBaseToposurface.cs:620:						if (list[num2] == null || list[num2].TopographySurfaceType != TopographySurfaceType.Subregion || list[num2].TopographySurface == null || list[num2].BoundaryLeg == null)
+EPCommon\SetBaseToposurface.cs:636:						m_TransactionContainer.StartTopographyEditScope(m_TransactionContainer.GetName(), _ProposedTopographySurface.Id);
+EPCommon\SetBaseToposurface.cs:638:						_ProposedTopographySurface.AddPoints(PointXYZList);
+EPCommon\SetBaseToposurface.cs:641:						m_TransactionContainer.CommitTopographyEditScope(ref failuresPreprocessor);
+EPCommon\SetBaseToposurface.cs:645:				if (m_OriginalGroundSurface != null && (_SurfaceList.Count > 1 || (_SurfaceList.Count == 1 && string.Compare(_SurfaceList[0].TopographySurface.UniqueId, m_OriginalGroundSurface.UniqueId, ignoreCase: true) != 0)))
+EPCommon\SetBaseToposurface.cs:657:				if (m_ProposedSurface != null && (_SurfaceList.Count > 1 || (_SurfaceList.Count == 1 && string.Compare(_SurfaceList[0].TopographySurface.UniqueId, m_ProposedSurface.UniqueId, ignoreCase: true) != 0)))
+EPCommon\SetBaseToposurface.cs:672:					ElementTransformUtils.MoveElement(m_Document, _ProposedTopographySurface.Id, new XYZ(0.0 - eps_Point.x, 0.0 - eps_Point.y, 0.0));
+EPCommon\SiteComponentCreation.cs:27:	private TopographySurfaceContainer m_BaseSurface;
+EPCommon\SiteComponentCreation.cs:29:	private TopographySurfaceContainer m_ProposedSurface;
+EPCommon\SiteComponentCreation.cs:69:	public SiteComponentCreation(Document _CurDocument, TopographySurfaceContainer _BaseSurface, FamilyInstance _BasePlacementFamilyInstance, TopographySurfaceContainer _ProposedSurface, FamilyInstance _ProposedPlacementFamilyInstance, LandcaddID _CurrentLandcaddID)
+EPCommon\SiteComponentCreation.cs:523:		ApplicationUtility.Settings.eplSetE_GetSetting("TopographySurfaceArcPointInterval", ref _dReturnValue);
+EPCommon\SiteComponentCreation.cs:527:			ApplicationUtility.Settings.eplSetE_SetSetting("TopographySurfaceArcPointInterval", _dReturnValue);
+EPCommon\SiteComponentCreation.cs:1141:						TopographySurfaceContainer _ProposedSurface = null;
+EPCommon\SiteComponentCreation.cs:1145:							if (item6 is TopographySurface topographySurface)
+EPCommon\SiteComponentCreation.cs:1147:								_ProposedSurface = new TopographySurfaceContainer(m_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\SiteComponentCreation.cs:1150:						if (_ProposedSurface == null || string.Compare(_ProposedSurface.TopographySurface.UniqueId, m_ProposedSurface.TopographySurface.UniqueId) == 0)
+EPCommon\SiteComponentCreation.cs:1156:						else if (m_BaseSurface != null && string.Compare(_ProposedSurface.TopographySurface.UniqueId, m_BaseSurface.TopographySurface.UniqueId) == 0)
+EPCommon\SiteComponentCreation.cs:1164:						if (!TopographySurfaceManagement.CreateTopographySurfaceUpdate(m_Document, eps_Leg3, sitePlacementSettings, _dReturnValue, list6, ref _ProposedSurface, ref _TopoPlacementFamilyInstance, ref m_nMaxExistingTopoDrawOrder, list4))
+EPCommon\SiteComponentCreation.cs:1218:						if (!TopographySurfaceManagement.CreateTopographySurfaceUpdate(m_Document, eps_Leg3, sitePlacementSettings, _dReturnValue, list6, ref m_ProposedSurface, ref m_ProposedPlacementFamilyInstance, ref m_nMaxExistingTopoDrawOrder, list4))
+EPCommon\SiteComponentCreation.cs:1229:						if (!TopographySurfaceManagement.CreateTopographySurfaceUpdate(m_Document, eps_Leg3, sitePlacementSettings, _dReturnValue, list6, ref m_ProposedSurface, ref m_ProposedPlacementFamilyInstance, ref m_nMaxExistingTopoDrawOrder, list4))
+EPCommon\SiteComponentCreation.cs:1238:						if (!TopographySurfaceManagement.CreateTopographySurfaceUpdate(m_Document, eps_Leg3, sitePlacementSettings, _dReturnValue, list6, ref m_ProposedSurface, ref m_ProposedPlacementFamilyInstance, ref m_nMaxExistingTopoDrawOrder, list4))
+EPCommon\SiteComponentCreation.cs:1518:						TopographySurfaceContainer _ProposedSurface = null;
+EPCommon\SiteComponentCreation.cs:1522:							if (item7 is TopographySurface topographySurface)
+EPCommon\SiteComponentCreation.cs:1524:								_ProposedSurface = new TopographySurfaceContainer(m_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\SiteComponentCreation.cs:1527:						if (_ProposedSurface == null || string.Compare(_ProposedSurface.TopographySurface.UniqueId, m_ProposedSurface.TopographySurface.UniqueId) == 0)
+EPCommon\SiteComponentCreation.cs:1533:						else if (m_BaseSurface != null && string.Compare(_ProposedSurface.TopographySurface.UniqueId, m_BaseSurface.TopographySurface.UniqueId) == 0)
+EPCommon\SiteComponentCreation.cs:1552:						if (!TopographySurfaceManagement.CreateTopographySurfaceUpdate(m_Document, _EvalLeg, _PlacementSettings, _dArcPointInterval, list, ref _ProposedSurface, ref _TopoPlacementFamilyInstance, ref m_nMaxExistingTopoDrawOrder, list2))
+EPCommon\SiteComponentCreation.cs:1630:						if (!TopographySurfaceManagement.CreateTopographySurfaceUpdate(m_Document, _EvalLeg, _PlacementSettings, _dArcPointInterval, list, ref m_ProposedSurface, ref m_ProposedPlacementFamilyInstance, ref m_nMaxExistingTopoDrawOrder, list2))
+EPCommon\SiteComponentCreation.cs:1658:						if (!TopographySurfaceManagement.CreateTopographySurfaceUpdate(m_Document, _EvalLeg, _PlacementSettings, _dArcPointInterval, list, ref m_ProposedSurface, ref m_ProposedPlacementFamilyInstance, ref m_nMaxExistingTopoDrawOrder, list2))
+EPCommon\SiteComponentCreation.cs:1684:						if (!TopographySurfaceManagement.CreateTopographySurfaceUpdate(m_Document, _EvalLeg, _PlacementSettings, _dArcPointInterval, list, ref m_ProposedSurface, ref m_ProposedPlacementFamilyInstance, ref m_nMaxExistingTopoDrawOrder, list2))
+EPCommon\SiteEditingUtils.cs:30:	public static IList<XYZ> GetPointsFromSubregionRough(TopographySurface subregion)
+EPCommon\SiteEditingUtils.cs:33:		TopographySurface topographySurfaceHost = GetTopographySurfaceHost(subregion);
+EPCommon\SiteEditingUtils.cs:38:	public static IList<XYZ> GetPointsFromSubregionExact(TopographySurface subregion)
+EPCommon\SiteEditingUtils.cs:43:	public static TopographySurface GetTopographySurfaceHost(TopographySurface subregion)
+EPCommon\SiteEditingUtils.cs:45:		return subregion.Document.GetElement(subregion.AsSiteSubRegion().HostId) as TopographySurface;
+EPCommon\SiteEditingUtils.cs:48:	public static IList<XYZ> GetNonBoundaryPoints(TopographySurface toposurface)
+EPCommon\SurfaceInformation.cs:18:	private List<TopographySurface> m_ExistingTopoSurfaces = new List<TopographySurface>();
+EPCommon\SurfaceInformation.cs:79:		IList<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+EPCommon\SurfaceInformation.cs:82:			TopographySurface item = item3 as TopographySurface;
+EPCommon\SurfaceInformation.cs:112:		foreach (TopographySurface existingTopoSurface in m_ExistingTopoSurfaces)
+EPCommon\SurfaceInformation.cs:160:			TopographySurface topographySurface = null;
+EPCommon\SurfaceInformation.cs:168:			topographySurface = FindTopographySurfaceStartingNumberName(m_NameTextBox.Text, selectedPhase, ref nBeginningIndex);
+EPCommon\SurfaceInformation.cs:206:			foreach (TopographySurface existingTopoSurface in m_ExistingTopoSurfaces)
+EPCommon\SurfaceInformation.cs:262:	public TopographySurface FindTopographySurfaceStartingNumberName(string _strFindName, Phase SelectedPhase, ref int nBeginningIndex)
+EPCommon\SurfaceInformation.cs:264:		TopographySurface topographySurface = null;
+EPCommon\SurfaceInformation.cs:266:		TopographySurface result = null;
+EPCommon\SurfaceInformation.cs:268:		List<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToList();
+EPCommon\SurfaceInformation.cs:279:			if (!(item is TopographySurface topographySurface2))
+EPCommon\SiteComponentReport.cs:62:	private TopographySurfaceContainer m_ProposedSurface;
+EPCommon\SiteComponentReport.cs:143:		TopographySurfaceManagement.FindBaseLandcaddTopographySurface(m_CurrentDocument, _bIsProposedSurface: true, ref m_ProposedSurface, ref _TopoPlacementFamilyInstance);
+EPCommon\SiteComponentReport.cs:164:		IList<Element> list4 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+EPCommon\SiteComponentReport.cs:296:				if (item6 is TopographySurface topographySurface && string.Compare(empty7, topographySurface.UniqueId, ignoreCase: true) == 0)
+EPCommon\SiteComponentReport.cs:298:					m_AllSiteComponentList[i].ParkingLotTopographySurface = new TopographySurfaceContainer(m_CurApplication, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\SiteComponentReport.cs:933:				if (_FamilyInstanceWrapperList[i].ParkingLotTopographySurface != null)
+EPCommon\SiteComponentReport.cs:935:					parameter = ((Element)_FamilyInstanceWrapperList[i].ParkingLotTopographySurface.TopographySurface).get_Parameter(BuiltInParameter.SURFACE_AREA);
+EPCommon\SiteComponentReport.cs:1080:				if (_FamilyInstanceWrapperList[j].ParkingLotTopographySurface != null)
+EPCommon\SiteComponentReport.cs:1082:					parameter = ((Element)_FamilyInstanceWrapperList[j].ParkingLotTopographySurface.TopographySurface).get_Parameter(BuiltInParameter.SURFACE_AREA);
+EPCommon\SymbolPlacementUpdater.cs:524:				TopographySurface topographySurface = TopographySurfaceManagement.FindTopoSurfaceInstance(_CurrentDocument, text);
+EPCommon\SymbolPlacementUpdater.cs:525:				TopographySurfaceContainer item = new TopographySurfaceContainer(_CurrentDocument.Application, topographySurface);
+EPCommon\SymbolPlacementUpdater.cs:528:					_PlacementSettings.SurfaceList = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceContainer.cs:9:public class TopographySurfaceContainer
+EPCommon\TopographySurfaceContainer.cs:11:	private TopographySurface m_TopographySurface;
+EPCommon\TopographySurfaceContainer.cs:13:	private CeilingAndFloor m_BuildingPad;
+EPCommon\TopographySurfaceContainer.cs:25:	private bool m_bBuildingPadPresentInDiffentPhase;
+EPCommon\TopographySurfaceContainer.cs:35:	private List<TopographySurfaceContainer> m_SubregionBuildingPadList;
+EPCommon\TopographySurfaceContainer.cs:37:	private List<TopographySurfaceContainer> m_BuildingPadPresentInDifferentPhaseList;
+EPCommon\TopographySurfaceContainer.cs:39:	private TopographySurfaceType m_TopographySurfaceType;
+EPCommon\TopographySurfaceContainer.cs:41:	private Eps_Leg m_BuildingPadLeg;
+EPCommon\TopographySurfaceContainer.cs:45:	private List<Eps_Point> m_BuildingPadPoints;
+EPCommon\TopographySurfaceContainer.cs:47:	public TopographySurface TopographySurface => m_TopographySurface;
+EPCommon\TopographySurfaceContainer.cs:49:	public CeilingAndFloor BuildingPad => m_BuildingPad;
+EPCommon\TopographySurfaceContainer.cs:53:	public List<TopographySurfaceContainer> SubregionBuildingPadList => m_SubregionBuildingPadList;
+EPCommon\TopographySurfaceContainer.cs:59:	public TopographySurfaceType TopographySurfaceType => m_TopographySurfaceType;
+EPCommon\TopographySurfaceContainer.cs:61:	public Eps_Leg BuildingPadLeg => m_BuildingPadLeg;
+EPCommon\TopographySurfaceContainer.cs:63:	public List<Eps_Point> BuildingPadPoints
+EPCommon\TopographySurfaceContainer.cs:67:			if (m_BuildingPadPoints == null && m_BuildingPadLeg != null)
+EPCommon\TopographySurfaceContainer.cs:69:				m_BuildingPadPoints = new List<Eps_Point>();
+EPCommon\TopographySurfaceContainer.cs:71:				for (eps_Leg = m_BuildingPadLeg; eps_Leg != null; eps_Leg = eps_Leg.Next)
+EPCommon\TopographySurfaceContainer.cs:73:					m_BuildingPadPoints.Add(eps_Leg.LegStartPnt);
+EPCommon\TopographySurfaceContainer.cs:76:						m_BuildingPadPoints.Add(eps_Leg.LegEndPnt);
+EPCommon\TopographySurfaceContainer.cs:80:			return m_BuildingPadPoints;
+EPCommon\TopographySurfaceContainer.cs:104:	public bool BuildingPadPresentInDiffentPhase
+EPCommon\TopographySurfaceContainer.cs:108:			return m_bBuildingPadPresentInDiffentPhase;
+EPCommon\TopographySurfaceContainer.cs:112:			m_bBuildingPadPresentInDiffentPhase = value;
+EPCommon\TopographySurfaceContainer.cs:116:	public List<TopographySurfaceContainer> BuildingPadPresentInDifferentPhaseList => m_BuildingPadPresentInDifferentPhaseList;
+EPCommon\TopographySurfaceContainer.cs:118:	public TopographySurfaceContainer(Application _CurApplication, TopographySurface _TopographySurface)
+EPCommon\TopographySurfaceContainer.cs:120:		m_TopographySurfaceType = TopographySurfaceType.MainSurface;
+EPCommon\TopographySurfaceContainer.cs:121:		SetupTopographySurfaceContainer(_CurApplication, _TopographySurface, _bFindMinMaxPoints: false);
+EPCommon\TopographySurfaceContainer.cs:124:	public TopographySurfaceContainer(Application _CurApplication, TopographySurface _TopographySurface, bool _bFindMinMaxPoints)
+EPCommon\TopographySurfaceContainer.cs:126:		m_TopographySurfaceType = TopographySurfaceType.MainSurface;
+EPCommon\TopographySurfaceContainer.cs:127:		SetupTopographySurfaceContainer(_CurApplication, _TopographySurface, _bFindMinMaxPoints);
+EPCommon\TopographySurfaceContainer.cs:130:	public TopographySurfaceContainer(Application _CurApplication, TopographySurface _TopographySurface, bool _bFindMinMaxPoints, TopographySurfaceType _TopographySurfaceType)
+EPCommon\TopographySurfaceContainer.cs:132:		m_TopographySurfaceType = _TopographySurfaceType;
+EPCommon\TopographySurfaceContainer.cs:133:		SetupTopographySurfaceContainer(_CurApplication, _TopographySurface, _bFindMinMaxPoints);
+EPCommon\TopographySurfaceContainer.cs:136:	private void SetupTopographySurfaceContainer(Application _CurApplication, TopographySurface _TopographySurface, bool _bFindMinMaxPoints)
+EPCommon\TopographySurfaceContainer.cs:138:		m_TopographySurface = _TopographySurface;
+EPCommon\TopographySurfaceContainer.cs:139:		m_BuildingPad = null;
+EPCommon\TopographySurfaceContainer.cs:141:		m_SubregionBuildingPadList = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceContainer.cs:142:		m_BuildingPadPresentInDifferentPhaseList = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceContainer.cs:143:		m_BuildingPadPoints = null;
+EPCommon\TopographySurfaceContainer.cs:146:			FindMinMaxPointsOfTopographySurface();
+EPCommon\TopographySurfaceContainer.cs:150:	public TopographySurfaceContainer(Application _CurApplication, FamilyInstance _FamilyInstance, bool _bFindMinMaxPoints)
+EPCommon\TopographySurfaceContainer.cs:153:		m_TopographySurface = null;
+EPCommon\TopographySurfaceContainer.cs:155:		m_SubregionBuildingPadList = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceContainer.cs:156:		m_BuildingPadPresentInDifferentPhaseList = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceContainer.cs:157:		m_BuildingPadPoints = null;
+EPCommon\TopographySurfaceContainer.cs:160:			FindMinMaxPointsOfTopographySurface();
+EPCommon\TopographySurfaceContainer.cs:164:	public TopographySurfaceContainer(Application _CurApplication, CeilingAndFloor _BuildingPad, bool _bFindMinMaxPoints)
+EPCommon\TopographySurfaceContainer.cs:166:		m_TopographySurfaceType = TopographySurfaceType.BuildingPad;
+EPCommon\TopographySurfaceContainer.cs:167:		m_BuildingPad = _BuildingPad;
+EPCommon\TopographySurfaceContainer.cs:168:		m_TopographySurface = null;
+EPCommon\TopographySurfaceContainer.cs:172:		m_SubregionBuildingPadList = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceContainer.cs:173:		m_BuildingPadPresentInDifferentPhaseList = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceContainer.cs:176:			FindMinMaxPointsOfTopographySurface();
+EPCommon\TopographySurfaceContainer.cs:184:			m_BuildingPad = null;
+EPCommon\TopographySurfaceContainer.cs:185:			m_SubregionBuildingPadList = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceContainer.cs:186:			m_BuildingPadPresentInDifferentPhaseList = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceContainer.cs:187:			m_BuildingPadPoints = null;
+EPCommon\TopographySurfaceContainer.cs:188:			FindMinMaxPointsOfTopographySurface();
+EPCommon\TopographySurfaceContainer.cs:197:	public static TopographySurfaceType FindTopographySurfaceType(Application _CurApplication, TopographySurface _TopographySurface)
+EPCommon\TopographySurfaceContainer.cs:201:		if (_TopographySurface != null)
+EPCommon\TopographySurfaceContainer.cs:203:			if (_TopographySurface.IsSiteSubRegion)
+EPCommon\TopographySurfaceContainer.cs:205:				return TopographySurfaceType.Subregion;
+EPCommon\TopographySurfaceContainer.cs:207:			if (_TopographySurface.Location == null)
+EPCommon\TopographySurfaceContainer.cs:209:				return TopographySurfaceType.BuildingPad;
+EPCommon\TopographySurfaceContainer.cs:212:		return TopographySurfaceType.MainSurface;
+EPCommon\TopographySurfaceContainer.cs:215:	public void FindMinMaxPointsOfTopographySurface()
+EPCommon\TopographySurfaceContainer.cs:217:		FindMinMaxPointsOfTopographySurface(null);
+EPCommon\TopographySurfaceContainer.cs:220:	public void FindMinMaxPointsOfTopographySurface(List<Eps_Point> _BuildingPadPoint)
+EPCommon\TopographySurfaceContainer.cs:225:		m_BuildingPadLeg = null;
+EPCommon\TopographySurfaceContainer.cs:231:		if (m_TopographySurface != null)
+EPCommon\TopographySurfaceContainer.cs:236:			GeometryElement geometryElement = ((Element)m_TopographySurface).get_Geometry(options);
+EPCommon\TopographySurfaceContainer.cs:273:							if (m_TopographySurfaceType == TopographySurfaceType.BuildingPad)
+EPCommon\TopographySurfaceContainer.cs:275:								if (m_BuildingPadLeg == null)
+EPCommon\TopographySurfaceContainer.cs:317:					if (m_TopographySurfaceType == TopographySurfaceType.BuildingPad && m_BuildingPadLeg == null && flag)
+EPCommon\TopographySurfaceContainer.cs:321:						List<Eps_Point> list5 = _BuildingPadPoint;
+EPCommon\TopographySurfaceContainer.cs:330:						BuildBuildingPadLeg(list5);
+EPCommon\TopographySurfaceContainer.cs:331:						if (m_BuildingPadLeg != null)
+EPCommon\TopographySurfaceContainer.cs:334:							RevitGeometry.OffsetLegList(m_BuildingPadLeg, 0.01, 1, ref ppOffsetLegList, TrimClosedObject: true);
+EPCommon\TopographySurfaceContainer.cs:336:							RevitGeometry.OffsetLegList(m_BuildingPadLeg, 0.01, 2, ref ppOffsetLegList2, TrimClosedObject: true);
+EPCommon\TopographySurfaceContainer.cs:426:		else if (m_BuildingPad != null)
+EPCommon\TopographySurfaceContainer.cs:430:			GeometryElement geometryElement3 = ((Element)m_BuildingPad).get_Geometry(options);
+EPCommon\TopographySurfaceContainer.cs:500:			FindMinMaxPointsOfTopographySurface();
+EPCommon\TopographySurfaceContainer.cs:519:	public TopographySurface GetSurfaceContainingPoint(Eps_Point _FindPoint, ref double _dElevation)
+EPCommon\TopographySurfaceContainer.cs:524:	public TopographySurface GetSurfaceContainingPoint(Eps_Point _FindPoint, Phase _CurPhase, ref double _dElevation)
+EPCommon\TopographySurfaceContainer.cs:526:		if (_CurPhase == null || (m_TopographySurface != null && m_TopographySurface.CreatedPhaseId != null && m_TopographySurface.CreatedPhaseId == _CurPhase.Id) || (m_BuildingPad != null && m_BuildingPad.CreatedPhaseId != null && m_BuildingPad.CreatedPhaseId == _CurPhase.Id))
+EPCommon\TopographySurfaceContainer.cs:537:					return m_TopographySurface;
+EPCommon\TopographySurfaceContainer.cs:540:			if (m_SubregionBuildingPadList != null && m_SubregionBuildingPadList.Count > 0)
+EPCommon\TopographySurfaceContainer.cs:542:				for (int num = m_SubregionBuildingPadList.Count - 1; num >= 0; num--)
+EPCommon\TopographySurfaceContainer.cs:544:					if (_CurPhase == null || (m_SubregionBuildingPadList[num].TopographySurface != null && m_SubregionBuildingPadList[num].TopographySurface.CreatedPhaseId != null && m_SubregionBuildingPadList[num].TopographySurface.CreatedPhaseId == _CurPhase.Id) || (m_SubregionBuildingPadList[num].BuildingPad != null && m_SubregionBuildingPadList[num].BuildingPad.CreatedPhaseId != null && m_SubregionBuildingPadList[num].BuildingPad.CreatedPhaseId == _CurPhase.Id))
+EPCommon\TopographySurfaceContainer.cs:546:						for (int j = 0; j < m_SubregionBuildingPadList[num].Triangles.Count; j++)
+EPCommon\TopographySurfaceContainer.cs:548:							if (m_SubregionBuildingPadList[num].Triangles[j].IsPointInside(_FindPoint))
+EPCommon\TopographySurfaceContainer.cs:550:								_dElevation = GetElevationFromPlane(m_SubregionBuildingPadList[num].Triangles[j].Verticies[0], m_SubregionBuildingPadList[num].Triangles[j].Verticies[1], m_SubregionBuildingPadList[num].Triangles[j].Verticies[2], _FindPoint);
+EPCommon\TopographySurfaceContainer.cs:551:								return m_TopographySurface;
+EPCommon\TopographySurfaceContainer.cs:570:	public TopographySurfaceContainer GetSurfaceContainerContainingPoint(Eps_Point _FindPoint)
+EPCommon\TopographySurfaceContainer.cs:575:	public TopographySurfaceContainer GetSurfaceContainerContainingPoint(Eps_Point _FindPoint, Phase _PhaseCreated, Phase _PhaseDemolished)
+EPCommon\TopographySurfaceContainer.cs:577:		if ((_PhaseCreated == null || (m_TopographySurface != null && m_TopographySurface.CreatedPhaseId != null && m_TopographySurface.CreatedPhaseId == _PhaseCreated.Id) || (m_BuildingPad != null && m_BuildingPad.CreatedPhaseId != null && m_BuildingPad.CreatedPhaseId == _PhaseCreated.Id)) && (_PhaseDemolished == null || (m_TopographySurface != null && m_TopographySurface.DemolishedPhaseId != null && m_TopographySurface.DemolishedPhaseId == _PhaseDemolished.Id) || (m_BuildingPad != null && m_BuildingPad.DemolishedPhaseId != null && m_BuildingPad.DemolishedPhaseId == _PhaseDemolished.Id)))
+EPCommon\TopographySurfaceContainer.cs:590:			if (m_TopographySurfaceType == TopographySurfaceType.BuildingPad && m_BuildingPadLeg != null)
+EPCommon\TopographySurfaceContainer.cs:594:				RevitGeometry.GetAllPointsInBoundary(ref paPntList, m_BuildingPadLeg, null);
+EPCommon\TopographySurfaceContainer.cs:600:			if (m_SubregionBuildingPadList != null && m_SubregionBuildingPadList.Count > 0)
+EPCommon\TopographySurfaceContainer.cs:602:				for (int num = m_SubregionBuildingPadList.Count - 1; num >= 0; num--)
+EPCommon\TopographySurfaceContainer.cs:604:					if ((_PhaseCreated == null || (m_SubregionBuildingPadList[num].TopographySurface != null && m_SubregionBuildingPadList[num].TopographySurface.CreatedPhaseId != null && m_SubregionBuildingPadList[num].TopographySurface.CreatedPhaseId == _PhaseCreated.Id) || (m_SubregionBuildingPadList[num].BuildingPad != null && m_SubregionBuildingPadList[num].BuildingPad.CreatedPhaseId != null && m_SubregionBuildingPadList[num].BuildingPad.CreatedPhaseId == _PhaseCreated.Id)) && (_PhaseDemolished == null || (m_SubregionBuildingPadList[num].TopographySurface != null && m_SubregionBuildingPadList[num].TopographySurface.DemolishedPhaseId != null && m_SubregionBuildingPadList[num].TopographySurface.DemolishedPhaseId == _PhaseDemolished.Id) || (m_SubregionBuildingPadList[num].BuildingPad != null && m_SubregionBuildingPadList[num].BuildingPad.DemolishedPhaseId != null && m_SubregionBuildingPadList[num].BuildingPad.DemolishedPhaseId == _PhaseDemolished.Id)))
+EPCommon\TopographySurfaceContainer.cs:606:						for (int j = 0; j < m_SubregionBuildingPadList[num].Triangles.Count; j++)
+EPCommon\TopographySurfaceContainer.cs:608:							if (m_SubregionBuildingPadList[num].Triangles[j].IsPointInside(_FindPoint))
+EPCommon\TopographySurfaceContainer.cs:610:								return m_SubregionBuildingPadList[num];
+EPCommon\TopographySurfaceContainer.cs:620:	public bool IsTopographySurfaceTypePresent(TopographySurfaceType _TopographySurfaceType)
+EPCommon\TopographySurfaceContainer.cs:622:		if (m_TopographySurfaceType == _TopographySurfaceType)
+EPCommon\TopographySurfaceContainer.cs:626:		if (m_SubregionBuildingPadList != null && m_SubregionBuildingPadList.Count > 0)
+EPCommon\TopographySurfaceContainer.cs:628:			for (int i = 0; i < m_SubregionBuildingPadList.Count; i++)
+EPCommon\TopographySurfaceContainer.cs:630:				if (m_SubregionBuildingPadList[i].TopographySurfaceType == _TopographySurfaceType)
+EPCommon\TopographySurfaceContainer.cs:646:		for (int num = m_SubregionBuildingPadList.Count - 1; num >= 0; num--)
+EPCommon\TopographySurfaceContainer.cs:650:				m_SubregionBuildingPadList[num].FindMinMaxPointsOfTopographySurface(m_SubregionBuildingPadList[num].BuildingPadPoints);
+EPCommon\TopographySurfaceContainer.cs:652:			if (m_SubregionBuildingPadList[num].BuildingPadLeg != null)
+EPCommon\TopographySurfaceContainer.cs:654:				RevitGeometry.RemoveAllPointsInBoundary(ref paPntList, m_SubregionBuildingPadList[num].BuildingPadLeg);
+EPCommon\TopographySurfaceContainer.cs:657:					if (m_SubregionBuildingPadList[num2].BuildingPadPoints != null && m_SubregionBuildingPadList[num2].BuildingPadPoints.Count != 0)
+EPCommon\TopographySurfaceContainer.cs:659:						for (int i = 0; i < m_SubregionBuildingPadList[num].BuildingPadPoints.Count; i++)
+EPCommon\TopographySurfaceContainer.cs:661:							for (int num3 = m_SubregionBuildingPadList[num2].BuildingPadPoints.Count - 1; num3 >= 0; num3--)
+EPCommon\TopographySurfaceContainer.cs:663:								if (EPShared.eplGeoE_ArePntsDuplicates2D(m_SubregionBuildingPadList[num].BuildingPadPoints[i], m_SubregionBuildingPadList[num2].BuildingPadPoints[num3]))
+EPCommon\TopographySurfaceContainer.cs:665:									m_SubregionBuildingPadList[num2].BuildingPadPoints.RemoveAt(num3);
+EPCommon\TopographySurfaceContainer.cs:676:			list2.AddRange(m_SubregionBuildingPadList[num].Vertices);
+EPCommon\TopographySurfaceContainer.cs:683:	private void BuildBuildingPadLeg(List<Eps_Point> _BuildingPadPoints)
+EPCommon\TopographySurfaceContainer.cs:688:		m_BuildingPadLeg = null;
+EPCommon\TopographySurfaceContainer.cs:689:		for (int i = 0; i < _BuildingPadPoints.Count; i++)
+EPCommon\TopographySurfaceContainer.cs:691:			eps_Point2 = new Eps_Point(_BuildingPadPoints[i]);
+EPCommon\TopographySurfaceContainer.cs:698:				if (m_BuildingPadLeg == null)
+EPCommon\TopographySurfaceContainer.cs:700:					m_BuildingPadLeg = Eps_Leg.SingleLeg(eps_Leg);
+EPCommon\TopographySurfaceContainer.cs:704:					m_BuildingPadLeg.Last.Next = Eps_Leg.SingleLeg(eps_Leg);
+EPCommon\TopographySurfaceContainer.cs:709:		if (m_BuildingPadLeg != null && !m_BuildingPadLeg.IsLegClosed())
+EPCommon\TopographySurfaceContainer.cs:713:			eps_Leg.Line.StartPnt = m_BuildingPadLeg.LegEndPnt;
+EPCommon\TopographySurfaceContainer.cs:714:			eps_Leg.Line.EndPnt = m_BuildingPadLeg.LegStartPnt;
+EPCommon\TopographySurfaceContainer.cs:715:			m_BuildingPadLeg.Last.Next = Eps_Leg.SingleLeg(eps_Leg);
+EPCommon\TopographySurfaceManagement.cs:20:public class TopographySurfaceManagement
+EPCommon\TopographySurfaceManagement.cs:115:	public static bool CreateTopographySurfaceUpdate(Document _Document, Eps_Leg _CurrentLeg, SitePlacementSettings _PlacementSettings, double _dArcPointInterval, List<Element> _LineElementList, ref TopographySurfaceContainer _ProposedSurface, ref FamilyInstance _TopoPlacementFamilyInstance, ref int _nTopoDrawOrder)
+EPCommon\TopographySurfaceManagement.cs:117:		return CreateTopographySurfaceUpdate(_Document, _CurrentLeg, _PlacementSettings, _dArcPointInterval, _LineElementList, ref _ProposedSurface, ref _TopoPlacementFamilyInstance, ref _nTopoDrawOrder, null);
+EPCommon\TopographySurfaceManagement.cs:120:	public static bool CreateTopographySurfaceUpdate(Document _Document, Eps_Leg _CurrentLeg, SitePlacementSettings _PlacementSettings, double _dArcPointInterval, List<Element> _LineElementList, ref TopographySurfaceContainer _ProposedSurface, ref FamilyInstance _TopoPlacementFamilyInstance, ref int _nTopoDrawOrder, List<Element> _VerifyElementList)
+EPCommon\TopographySurfaceManagement.cs:192:		if (_ProposedSurface.TopographySurface != null)
+EPCommon\TopographySurfaceManagement.cs:194:			list7.Add(_ProposedSurface.TopographySurface);
+EPCommon\TopographySurfaceManagement.cs:228:		list8.AddRange(_ProposedSurface.TopographySurface.GetBoundaryPoints().ToList());
+EPCommon\TopographySurfaceManagement.cs:913:			TopographySurfaceContainer topographySurfaceContainer = null;
+EPCommon\TopographySurfaceManagement.cs:937:				else if (topographySurfaceContainer.TopographySurfaceType == TopographySurfaceType.BuildingPad)
+EPCommon\TopographySurfaceManagement.cs:939:					RevitMessageBox.Show(EPShared.LocalRM.GetString("LineSegmentsInsideBuildingPadMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
+EPCommon\TopographySurfaceManagement.cs:1252:			List<FamilyInstance> siteComponentPlacementFamilyInstances = GetSiteComponentPlacementFamilyInstances(_Document, _ProposedSurface.TopographySurface.UniqueId);
+EPCommon\TopographySurfaceManagement.cs:1261:				TopographySurfaceContainer topographySurfaceContainer2 = _ProposedSurface;
+EPCommon\TopographySurfaceManagement.cs:1292:						for (int num42 = 0; num42 < topographySurfaceContainer2.SubregionBuildingPadList.Count; num42++)
+EPCommon\TopographySurfaceManagement.cs:1294:							if (topographySurfaceContainer2.SubregionBuildingPadList[num42] == null)
+EPCommon\TopographySurfaceManagement.cs:1298:							if (topographySurfaceContainer2.SubregionBuildingPadList[num42].BoundaryLeg != null && RevitGeometry.eplGeoE_CalcStationOffsetAlongLegList(list16[num41], topographySurfaceContainer2.SubregionBuildingPadList[num42].BoundaryLeg, ref _dStation, ref _dOffset) == 1700 && Math.Abs(_dOffset) <= 0.001)
+EPCommon\TopographySurfaceManagement.cs:1303:							if (topographySurfaceContainer2.SubregionBuildingPadList[num42].GetSurfaceContainerContainingPoint(list16[num41]) != null)
+EPCommon\TopographySurfaceManagement.cs:1305:								if (topographySurfaceContainer2.SubregionBuildingPadList[num42].TopographySurfaceType == TopographySurfaceType.Subregion)
+EPCommon\TopographySurfaceManagement.cs:1337:					list17 = _ProposedSurface.TopographySurface.GetInteriorPoints();
+EPCommon\TopographySurfaceManagement.cs:1338:					SDTimer sDTimer2 = new SDTimer("StartTopographyEditScope", _Document.Application);
+EPCommon\TopographySurfaceManagement.cs:1340:					_PlacementSettings.TransactionContainer.StartTopographyEditScope(name, _ProposedSurface.TopographySurface.Id);
+EPCommon\TopographySurfaceManagement.cs:1364:								_ProposedSurface.TopographySurface.MovePoint(item, PointXYZList[num44]);
+EPCommon\TopographySurfaceManagement.cs:1374:								_ProposedSurface.TopographySurface.AddPoints(list18);
+EPCommon\TopographySurfaceManagement.cs:1386:									_ProposedSurface.TopographySurface.MovePoint(item2, PointXYZList[num45]);
+EPCommon\TopographySurfaceManagement.cs:1396:								_ProposedSurface.TopographySurface.DeletePoints(list19);
+EPCommon\TopographySurfaceManagement.cs:1407:					SDTimer sDTimer5 = new SDTimer("CommitTopographyEditScope", _Document.Application);
+EPCommon\TopographySurfaceManagement.cs:1409:					_PlacementSettings.TransactionContainer.CommitTopographyEditScope(ref failuresPreprocessor);
+EPCommon\TopographySurfaceManagement.cs:1421:							parameter.Set(_ProposedSurface.TopographySurface.UniqueId);
+EPCommon\TopographySurfaceManagement.cs:1425:				if (topographySurfaceContainer2.SubregionBuildingPadList != null && topographySurfaceContainer2.SubregionBuildingPadList.Count > 0)
+EPCommon\TopographySurfaceManagement.cs:1427:					List<TopographySurfaceContainer> surfaceList = FindAllMainSurfaces(_Document, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:1429:					ElementTransformUtils.MoveElement(_Document, _ProposedSurface.TopographySurface.Id, eps_Point3.XY);
+EPCommon\TopographySurfaceManagement.cs:1430:					List<TopographySurfaceContainer> list20 = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceManagement.cs:1432:					for (int num46 = 0; num46 < topographySurfaceContainer2.SubregionBuildingPadList.Count; num46++)
+EPCommon\TopographySurfaceManagement.cs:1434:						if (topographySurfaceContainer2.SubregionBuildingPadList[num46] == null)
+EPCommon\TopographySurfaceManagement.cs:1438:						if (topographySurfaceContainer2.SubregionBuildingPadList[num46].TopographySurface != null)
+EPCommon\TopographySurfaceManagement.cs:1440:							list21.Add(topographySurfaceContainer2.SubregionBuildingPadList[num46].TopographySurface.Id);
+EPCommon\TopographySurfaceManagement.cs:1441:							if (topographySurfaceContainer2.SubregionBuildingPadList[num46].TopographySurfaceType == TopographySurfaceType.Subregion)
+EPCommon\TopographySurfaceManagement.cs:1443:								list20.Add(topographySurfaceContainer2.SubregionBuildingPadList[num46]);
+EPCommon\TopographySurfaceManagement.cs:1446:						else if (topographySurfaceContainer2.SubregionBuildingPadList[num46].BuildingPad != null)
+EPCommon\TopographySurfaceManagement.cs:1448:							list21.Add(topographySurfaceContainer2.SubregionBuildingPadList[num46].BuildingPad.Id);
+EPCommon\TopographySurfaceManagement.cs:1451:					List<KeyValuePair<FamilyInstance, TopographySurfaceContainer>> updateGenericModelList = FindPlantMixGenericModelList(_Document, list20);
+EPCommon\TopographySurfaceManagement.cs:1465:							RevitMessageBox.Show(EPShared.LocalRM.GetString("SubregionBuildingPadBoundaryErrorMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
+EPCommon\TopographySurfaceManagement.cs:1470:					_Document.Delete(topographySurfaceContainer2.TopographySurface.Id);
+EPCommon\TopographySurfaceManagement.cs:1471:					ElementTransformUtils.MoveElement(_Document, _ProposedSurface.TopographySurface.Id, new XYZ(0.0 - eps_Point3.x, 0.0 - eps_Point3.y, 0.0));
+EPCommon\TopographySurfaceManagement.cs:1474:						_ProposedSurface.TopographySurface.AddPoints(list);
+EPCommon\TopographySurfaceManagement.cs:1476:					List<TopographySurfaceContainer> list22 = null;
+EPCommon\TopographySurfaceManagement.cs:1477:					list22 = FindNewTopographySurfaceContainers(_Document, newElementIds);
+EPCommon\TopographySurfaceManagement.cs:1481:						_ProposedSurface.SubregionBuildingPadList.AddRange(list22);
+EPCommon\TopographySurfaceManagement.cs:1532:					familyInstance4.LookupParameter(RevitParameters.ParkingLotSurfaceIDFamilyParameter)?.Set(_ProposedSurface.TopographySurface.UniqueId);
+EPCommon\TopographySurfaceManagement.cs:1535:					familyInstance4.LookupParameter(RevitParameters.ParentSurfaceIDFamilyParameter)?.Set(_ProposedSurface.TopographySurface.UniqueId);
+EPCommon\TopographySurfaceManagement.cs:1541:				_PlacementSettings.ParentTopoSurfaceID = _ProposedSurface.TopographySurface.UniqueId;
+EPCommon\TopographySurfaceManagement.cs:1549:					TopographySurface topographySurface = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list23, _ProposedSurface);
+EPCommon\TopographySurfaceManagement.cs:1563:					TopographySurface topographySurface2 = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list23, _ProposedSurface);
+EPCommon\TopographySurfaceManagement.cs:3380:	private static List<Eps_Point> GetParkingLotTopoSurfacePoints(Eps_Leg _CurrentLeg, List<Eps_Point> _TopoPointList, double _dLinearInterval, double _dRadialInterval, double _dArcPointInterval, string _strPathName, TopographySurfaceContainer _ProposedSurface)
+EPCommon\TopographySurfaceManagement.cs:3429:	private static TopographySurface CreateAdditionalTopoSurface(Document _Document, SitePlacementSettings _PlacementSettings, List<Eps_Point> _NewSurfacePoints, TopographySurfaceContainer _ProposedSurface)
+EPCommon\TopographySurfaceManagement.cs:3457:				parameter = ((Element)_ProposedSurface.TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
+EPCommon\TopographySurfaceManagement.cs:3476:	private static TopographySurface CreateAdditionalTopoSurface(Document _Document, SitePlacementSettings _PlacementSettings, List<Eps_Point> _NewSurfacePoints, TopographySurfaceContainer _ProposedSurface, long _nMaterialId)
+EPCommon\TopographySurfaceManagement.cs:3478:		TopographySurface topographySurface = null;
+EPCommon\TopographySurfaceManagement.cs:3489:				topographySurface = TopographySurface.Create(_Document, PointXYZList);
+EPCommon\TopographySurfaceManagement.cs:3554:		IList<Element> list3 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+EPCommon\TopographySurfaceManagement.cs:3637:	public static bool RebuildProposedTopographySurface(Document _Document, SitePlacementSettings _PlacementSettings, double _dArcPointInterval, Eps_Leg _CurrentLeg, TopographySurfaceContainer _ProposedSurface, List<Element> _ElementList, bool _bDrawForm, List<Eps_Leg> _ParkingLotBreaklineList, List<Element> _ParkingLotBreaklineElementList, List<double> _dParkingLotBreaklineLinearPointIntervals, List<IntersectionStationContainer> _LeftIntersectionStations, List<IntersectionStationContainer> _CenterIntersectionStations, List<IntersectionStationContainer> _RightIntersectionStations, List<IntersectionContainer> _IntersectionContainers, ref List<Eps_Point> _TopoPointList)
+EPCommon\TopographySurfaceManagement.cs:3639:		TopographySurfaceContainer _ParkingLotSurface = null;
+EPCommon\TopographySurfaceManagement.cs:3643:		return RebuildProposedTopographySurface(_Document, _PlacementSettings, _dArcPointInterval, _CurrentLeg, _ProposedSurface, _ElementList, _bDrawForm, _ParkingLotBreaklineList, _ParkingLotBreaklineElementList, _dParkingLotBreaklineLinearPointIntervals, _LeftIntersectionStations, _CenterIntersectionStations, _RightIntersectionStations, _IntersectionContainers, ref _TopoPointList, ref _CrownPointList, ref _ParkingLotSurface, ref _ParkingLotTopoPointList, ref _FamilyInstanceList);
+EPCommon\TopographySurfaceManagement.cs:3646:	public static bool RebuildProposedTopographySurface(Document _Document, SitePlacementSettings _PlacementSettings, double _dArcPointInterval, Eps_Leg _CurrentLeg, TopographySurfaceContainer _ProposedSurface, List<Element> _ElementList, bool _bDrawForm, List<Eps_Leg> _ParkingLotBreaklineList, List<Element> _ParkingLotBreaklineElementList, List<double> _dParkingLotBreaklineLinearPointIntervals, List<IntersectionStationContainer> _LeftIntersectionStations, List<IntersectionStationContainer> _CenterIntersectionStations, List<IntersectionStationContainer> _RightIntersectionStations, List<IntersectionContainer> _IntersectionContainers, ref List<Eps_Point> _TopoPointList, ref List<Eps_Point> _CrownPointList)
+EPCommon\TopographySurfaceManagement.cs:3648:		TopographySurfaceContainer _ParkingLotSurface = null;
+EPCommon\TopographySurfaceManagement.cs:3651:		return RebuildProposedTopographySurface(_Document, _PlacementSettings, _dArcPointInterval, _CurrentLeg, _ProposedSurface, _ElementList, _bDrawForm, _ParkingLotBreaklineList, _ParkingLotBreaklineElementList, _dParkingLotBreaklineLinearPointIntervals, _LeftIntersectionStations, _CenterIntersectionStations, _RightIntersectionStations, _IntersectionContainers, ref _TopoPointList, ref _CrownPointList, ref _ParkingLotSurface, ref _ParkingLotTopoPointList, ref _FamilyInstanceList);
+EPCommon\TopographySurfaceManagement.cs:3666:	public static bool RebuildProposedTopographySurface(Document _Document, SitePlacementSettings _PlacementSettings, double _dArcPointInterval, Eps_Leg _CurrentLeg, TopographySurfaceContainer _ProposedSurface, List<Element> _ElementList, bool _bModifiedSiteComponent, List<Eps_Leg> _ParkingLotBreaklineList, List<Element> _ParkingLotBreaklineElementList, List<double> _dParkingLotBreaklineLinearPointIntervals, List<IntersectionStationContainer> _LeftIntersectionStations, List<IntersectionStationContainer> _CenterIntersectionStations, List<IntersectionStationContainer> _RightIntersectionStations, List<IntersectionContainer> _IntersectionContainers, ref List<Eps_Point> _TopoPointList, ref List<Eps_Point> _CrownPointList, ref TopographySurfaceContainer _ParkingLotSurface, ref List<Eps_Point> _ParkingLotTopoPointList, ref List<FamilyInstance> _FamilyInstanceList)
+EPCommon\TopographySurfaceManagement.cs:4081:				TopographySurfaceContainer topographySurfaceContainer = null;
+EPCommon\TopographySurfaceManagement.cs:4104:					else if (topographySurfaceContainer.TopographySurfaceType == TopographySurfaceType.BuildingPad)
+EPCommon\TopographySurfaceManagement.cs:4106:						RevitMessageBox.Show(EPShared.LocalRM.GetString("LineSegmentsInsideBuildingPadMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
+EPCommon\TopographySurfaceManagement.cs:4318:						TopographySurface topographySurface = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list4, _ProposedSurface);
+EPCommon\TopographySurfaceManagement.cs:4388:						TopographySurface topographySurface2 = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list4, _ProposedSurface);
+EPCommon\TopographySurfaceManagement.cs:4392:							_ParkingLotSurface = new TopographySurfaceContainer(_Document.Application, topographySurface2, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:4398:					_PlacementSettings.ParentTopoSurfaceID = _ProposedSurface.TopographySurface.UniqueId;
+EPCommon\TopographySurfaceManagement.cs:4469:	public static void FindAllGradeAndElevationPointsInIntersection(Document _Document, TopographySurfaceContainer _ProposedSurface, EPTransactionContainer _TransactionContainer, bool _bFindIntersectionStations, FamilyInstanceComponentWrapper _CurrentFamilyInstanceComponentWrapper, List<FamilyInstanceComponentWrapper> _CommonFamilyInstanceComponentWrappers, ref List<Eps_Point> _GradeAndElevationPnts)
+EPCommon\TopographySurfaceManagement.cs:4840:	public static void SetupAllIntersectionStationsForSelectedSiteComponent(Document _Document, TopographySurfaceContainer _ProposedSurface, EPTransactionContainer _TransactionContainer, bool _bFindIntersectionStations, ref FamilyInstanceComponentWrapper _CurrentFamilyInstanceComponentWrapper, ref List<FamilyInstanceComponentWrapper> _CommonFamilyInstanceComponentWrappers)
+EPCommon\TopographySurfaceManagement.cs:5295:	public static void SetupAllIntersectionStationsForAllSiteComponents(Document _Document, TopographySurfaceContainer _ProposedSurface, EPTransactionContainer _TransactionContainer, string _IgnoreChainID, ref List<FamilyInstanceComponentWrapper> _CommonFamilyInstanceComponentWrappers)
+EPCommon\TopographySurfaceManagement.cs:5591:	public static void SetupIntersectionStationsOnlyForSelectedSiteComponent(Document _Document, TopographySurfaceContainer _ProposedSurface, EPTransactionContainer _TransactionContainer, bool _bFindIntersectionStations, List<FamilyInstanceComponentWrapper> _CommonFamilyInstanceComponentWrappers, ref FamilyInstanceComponentWrapper _CurrentFamilyInstanceComponentWrapper)
+EPCommon\TopographySurfaceManagement.cs:5596:	private static void SetupIntersectionStationsOnlyForSelectedSiteComponent(Document _Document, TopographySurfaceContainer _ProposedSurface, EPTransactionContainer _TransactionContainer, string _IgnoreChainID, List<FamilyInstanceComponentWrapper> _CommonFamilyInstanceComponentWrappers, ref FamilyInstanceComponentWrapper _CurrentFamilyInstanceComponentWrapper)
+EPCommon\TopographySurfaceManagement.cs:6041:	private static void SetupIntersectionContainersForSiteComponent(Document _Document, EPTransactionContainer _TransactionContainer, TopographySurfaceContainer _ProposedSurface, List<FamilyInstanceComponentWrapper> _CommonFamilyInstanceComponentWrappers, ref FamilyInstanceComponentWrapper _CurFamilyInstanceComponentWrapper)
+EPCommon\TopographySurfaceManagement.cs:6046:	private static void SetupIntersectionContainersForSiteComponent(Document _Document, EPTransactionContainer _TransactionContainer, TopographySurfaceContainer _ProposedSurface, string _IgnoreChainID, List<FamilyInstanceComponentWrapper> _CommonFamilyInstanceComponentWrappers, ref FamilyInstanceComponentWrapper _CurFamilyInstanceComponentWrapper)
+EPCommon\TopographySurfaceManagement.cs:6148:	public static TopographySurfaceContainer FindParentSurfaceAndRemovePointsForSelectedCurbComponent(Document _Document, TopographySurfaceContainer _ProposedSurface, FamilyInstanceComponentWrapper _CurrentFamilyInstanceComponentWrapper, ref List<Eps_Point> _TopoPointList)
+EPCommon\TopographySurfaceManagement.cs:6150:		TopographySurfaceContainer topographySurfaceContainer = null;
+EPCommon\TopographySurfaceManagement.cs:6177:		if (landcaddID != LandcaddID.Curb || text == string.Empty || _ProposedSurface == null || _ProposedSurface.TopographySurface == null || string.Compare(_ProposedSurface.TopographySurface.UniqueId, text, ignoreCase: true) == 0)
+EPCommon\TopographySurfaceManagement.cs:6181:		TopographySurface topographySurface = FindTopoSurfaceInstance(_Document, text);
+EPCommon\TopographySurfaceManagement.cs:6184:			topographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:6452:	public static void RefreshSurface(Document _Document, EPTransactionContainer _TransactionContainer, ref TopographySurfaceContainer _NewPointsSurface, ref FamilyInstance _PlacementFamilyInstance)
+EPCommon\TopographySurfaceManagement.cs:6472:			TopographySurface topographySurface = TopographySurface.Create(_Document, PointXYZList);
+EPCommon\TopographySurfaceManagement.cs:6475:			parameter = ((Element)_NewPointsSurface.TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
+EPCommon\TopographySurfaceManagement.cs:6485:			parameter = ((Element)_NewPointsSurface.TopographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
+EPCommon\TopographySurfaceManagement.cs:6495:			parameter = ((Element)_NewPointsSurface.TopographySurface).get_Parameter(BuiltInParameter.PHASE_DEMOLISHED);
+EPCommon\TopographySurfaceManagement.cs:6505:			parameter = ((Element)_NewPointsSurface.TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+EPCommon\TopographySurfaceManagement.cs:6514:			_Document.Delete(_NewPointsSurface.TopographySurface.Id);
+EPCommon\TopographySurfaceManagement.cs:6516:			_NewPointsSurface = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:6534:		TopographySurface _ProposedTopographySurface = null;
+EPCommon\TopographySurfaceManagement.cs:6536:		CreateProposedSurface(_Document, _TransactionContainer, _PlacementSymbol, _PointList, _strToposurfaceName, _MaterialId, _PhaseCreated, _PhaseDemolished, ref _ProposedTopographySurface, ref _PlacementFamilyInstance);
+EPCommon\TopographySurfaceManagement.cs:6539:	public static void CreateProposedSurface(Document _Document, EPTransactionContainer _TransactionContainer, FamilySymbol _PlacementSymbol, List<Eps_Point> _PointList, ElementId _MaterialId, ref TopographySurface _ProposedTopographySurface, ref FamilyInstance _PlacementFamilyInstance)
+EPCommon\TopographySurfaceManagement.cs:6543:		CreateProposedSurface(_Document, _TransactionContainer, _PlacementSymbol, _PointList, string.Empty, _MaterialId, phaseCreated, phaseDemolished, ref _ProposedTopographySurface, ref _PlacementFamilyInstance);
+EPCommon\TopographySurfaceManagement.cs:6546:	public static void CreateProposedSurface(Document _Document, EPTransactionContainer _TransactionContainer, FamilySymbol _PlacementSymbol, List<Eps_Point> _PointList, string _strToposurfaceName, ElementId _MaterialId, ElementId _PhaseCreated, ElementId _PhaseDemolished, ref TopographySurface _ProposedTopographySurface, ref FamilyInstance _PlacementFamilyInstance)
+EPCommon\TopographySurfaceManagement.cs:6564:		_ProposedTopographySurface = TopographySurface.Create(_Document, PointXYZList);
+EPCommon\TopographySurfaceManagement.cs:6568:			((Element)_ProposedTopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM)?.Set(_MaterialId);
+EPCommon\TopographySurfaceManagement.cs:6572:			((Element)_ProposedTopographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED)?.Set(_PhaseCreated);
+EPCommon\TopographySurfaceManagement.cs:6576:			((Element)_ProposedTopographySurface).get_Parameter(BuiltInParameter.PHASE_DEMOLISHED)?.Set(_PhaseDemolished);
+EPCommon\TopographySurfaceManagement.cs:6578:		parameter2 = ((Element)_ProposedTopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+EPCommon\TopographySurfaceManagement.cs:6593:			_PlacementFamilyInstance = RevitUtility.NewFamilyInstance(_Document, new XYZ(0.0, 0.0, 0.0), _PlacementSymbol, _ProposedTopographySurface, _Document.ActiveView.GenLevel, StructuralType.NonStructural, ref _TransactionContainer);
+EPCommon\TopographySurfaceManagement.cs:6597:				parameter.Set(_ProposedTopographySurface.UniqueId);
+EPCommon\TopographySurfaceManagement.cs:6613:	public static void FindAndCreateProposedLandcaddTopographySurface(Document _Document, ref TopographySurfaceContainer _BaseSurfaceContainer, ref FamilyInstance _BasePlacementFamilyInstance, ref TopographySurfaceContainer _ProposedSurfaceContainer, ref FamilyInstance _ProposedPlacementFamilyInstance)
+EPCommon\TopographySurfaceManagement.cs:6615:		FindBaseLandcaddTopographySurface(_Document, ref _BaseSurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
+EPCommon\TopographySurfaceManagement.cs:6632:			Parameter parameter = ((Element)_BaseSurfaceContainer.TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
+EPCommon\TopographySurfaceManagement.cs:6637:			TopographySurface _ProposedTopographySurface = null;
+EPCommon\TopographySurfaceManagement.cs:6638:			CreateProposedSurface(_Document, ePTransactionContainer, _BasePlacementFamilyInstance.Symbol, _BaseSurfaceContainer.GetAllVertices(), materialId, ref _ProposedTopographySurface, ref _ProposedPlacementFamilyInstance);
+EPCommon\TopographySurfaceManagement.cs:6639:			_ProposedSurfaceContainer = new TopographySurfaceContainer(_Document.Application, _ProposedTopographySurface, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:6659:	public static void FindBaseLandcaddTopographySurface(Document _Document, bool _bIsProposedSurface, ref TopographySurfaceContainer _SiteTopographySurfaceContainer, ref FamilyInstance _TopoPlacementFamilyInstance)
+EPCommon\TopographySurfaceManagement.cs:6661:		TopographySurfaceContainer _BaseTopographySurfaceContainer = null;
+EPCommon\TopographySurfaceManagement.cs:6662:		TopographySurfaceContainer _ProposedTopographySurfaceContainer = null;
+EPCommon\TopographySurfaceManagement.cs:6665:		FindBaseLandcaddTopographySurface(_Document, ref _BaseTopographySurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedTopographySurfaceContainer, ref _ProposedPlacementFamilyInstance);
+EPCommon\TopographySurfaceManagement.cs:6668:			_SiteTopographySurfaceContainer = _ProposedTopographySurfaceContainer;
+EPCommon\TopographySurfaceManagement.cs:6673:			_SiteTopographySurfaceContainer = _BaseTopographySurfaceContainer;
+EPCommon\TopographySurfaceManagement.cs:6678:	public static void FindBaseLandcaddTopographySurface(Document _Document, ref TopographySurfaceContainer _BaseTopographySurfaceContainer, ref FamilyInstance _BasePlacementFamilyInstance, ref TopographySurfaceContainer _ProposedTopographySurfaceContainer, ref FamilyInstance _ProposedPlacementFamilyInstance)
+EPCommon\TopographySurfaceManagement.cs:6680:		FindBaseLandcaddTopographySurface(_Document, ref _BaseTopographySurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedTopographySurfaceContainer, ref _ProposedPlacementFamilyInstance, null);
+EPCommon\TopographySurfaceManagement.cs:6683:	public static void FindBaseLandcaddTopographySurface(Document _Document, ref TopographySurfaceContainer _BaseTopographySurfaceContainer, ref FamilyInstance _BasePlacementFamilyInstance, ref TopographySurfaceContainer _ProposedTopographySurfaceContainer, ref FamilyInstance _ProposedPlacementFamilyInstance, EPTransactionContainer _TransactionContainer)
+EPCommon\TopographySurfaceManagement.cs:6694:		IList<Element> list2 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+EPCommon\TopographySurfaceManagement.cs:6696:		IList<Element> list3 = filteredElementCollector.OfClass(typeof(CeilingAndFloor)).OfCategory(BuiltInCategory.OST_BuildingPad).ToElements();
+EPCommon\TopographySurfaceManagement.cs:6697:		List<TopographySurfaceContainer> list4 = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceManagement.cs:6719:			if (item2 == null || item2.Category == null || item2.Category.Id.Value64() != BuiltInCategory.OST_Topography.GetHashCode() || !(item2 is TopographySurface topographySurface))
+EPCommon\TopographySurfaceManagement.cs:6742:										_BaseTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:6748:										_ProposedTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:6763:											_BaseTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:6773:											_ProposedTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:6786:				TopographySurfaceType topographySurfaceType = TopographySurfaceContainer.FindTopographySurfaceType(_Document.Application, topographySurface);
+EPCommon\TopographySurfaceManagement.cs:6789:					list4.Add(new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true, topographySurfaceType));
+EPCommon\TopographySurfaceManagement.cs:6802:				list4.Add(new TopographySurfaceContainer(_Document.Application, buildingPad, _bFindMinMaxPoints: true));
+EPCommon\TopographySurfaceManagement.cs:6811:					if (_BasePlacementFamilyInstance != null && _BaseTopographySurfaceContainer != null)
+EPCommon\TopographySurfaceManagement.cs:6816:							parameter2.Set(_BaseTopographySurfaceContainer.TopographySurface.UniqueId);
+EPCommon\TopographySurfaceManagement.cs:6830:							if (!(item4 is TopographySurface topographySurface2))
+EPCommon\TopographySurfaceManagement.cs:6834:							_BaseTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface2, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:6865:					if (_ProposedPlacementFamilyInstance != null && _ProposedTopographySurfaceContainer != null)
+EPCommon\TopographySurfaceManagement.cs:6870:							parameter2.Set(_ProposedTopographySurfaceContainer.TopographySurface.UniqueId);
+EPCommon\TopographySurfaceManagement.cs:6884:							if (!(item5 is TopographySurface topographySurface3))
+EPCommon\TopographySurfaceManagement.cs:6888:							_ProposedTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface3, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:6921:		bool _bIssueBuildingPadWarning = true;
+EPCommon\TopographySurfaceManagement.cs:6922:		if (_BasePlacementFamilyInstance != null && _BaseTopographySurfaceContainer != null)
+EPCommon\TopographySurfaceManagement.cs:6924:			flag7 = AddSubRegionBuildingPadsToMainSurface(_Document, list4, ref _BaseTopographySurfaceContainer, _bAddBuildingPadsIfPresent: false, ref _bIssueBuildingPadWarning);
+EPCommon\TopographySurfaceManagement.cs:6927:				ePTransactionContainer.SetName(EPShared.LocalRM.GetString("AddBuildingPadsToSurfaceTransaction"));
+EPCommon\TopographySurfaceManagement.cs:6928:				List<TopographySurfaceContainer> subregionBuildingPadList = _BaseTopographySurfaceContainer.SubregionBuildingPadList;
+EPCommon\TopographySurfaceManagement.cs:6929:				RefreshSurface(_Document, ePTransactionContainer, ref _BaseTopographySurfaceContainer, ref _BasePlacementFamilyInstance);
+EPCommon\TopographySurfaceManagement.cs:6930:				for (int num2 = subregionBuildingPadList.Count - 1; num2 >= 0; num2--)
+EPCommon\TopographySurfaceManagement.cs:6932:					if (subregionBuildingPadList[num2].TopographySurfaceType == TopographySurfaceType.BuildingPad && subregionBuildingPadList[num2].TopographySurface != null)
+EPCommon\TopographySurfaceManagement.cs:6936:							string uniqueId = subregionBuildingPadList[num2].TopographySurface.UniqueId;
+EPCommon\TopographySurfaceManagement.cs:6937:							_Document.Delete(subregionBuildingPadList[num2].TopographySurface.Id);
+EPCommon\TopographySurfaceManagement.cs:6947:		if (_ProposedPlacementFamilyInstance != null && _ProposedTopographySurfaceContainer != null)
+EPCommon\TopographySurfaceManagement.cs:6949:			flag8 = AddSubRegionBuildingPadsToMainSurface(_Document, list4, ref _ProposedTopographySurfaceContainer, flag7, ref _bIssueBuildingPadWarning);
+EPCommon\TopographySurfaceManagement.cs:6952:				ePTransactionContainer.SetName(EPShared.LocalRM.GetString("AddBuildingPadsToSurfaceTransaction"));
+EPCommon\TopographySurfaceManagement.cs:6957:				for (int num3 = _ProposedTopographySurfaceContainer.SubregionBuildingPadList.Count - 1; num3 >= 0; num3--)
+EPCommon\TopographySurfaceManagement.cs:6959:					if (_ProposedTopographySurfaceContainer.SubregionBuildingPadList[num3].TopographySurfaceType == TopographySurfaceType.BuildingPad && _ProposedTopographySurfaceContainer.SubregionBuildingPadList[num3].TopographySurface != null)
+EPCommon\TopographySurfaceManagement.cs:6964:							ModelCurveArray modelCurveArray = RevitUtility.NewModelCurveArray(_Document, _ProposedTopographySurfaceContainer.SubregionBuildingPadList[num3].BuildingPadLeg);
+EPCommon\TopographySurfaceManagement.cs:6977:							SitePlacementSettings sitePlacementSettings = new SitePlacementSettings(LandcaddID.SoftTerrain, _Document.ActiveView.GenLevel, siteComponentSymbol, siteComponentPlacementSymbol, EPShared.LocalRM.GetString("BuildingPadString"), nTopoDrawOrder, ePTransactionContainer);
+EPCommon\TopographySurfaceManagement.cs:6984:							string uniqueId2 = _ProposedTopographySurfaceContainer.SubregionBuildingPadList[num3].TopographySurface.UniqueId;
+EPCommon\TopographySurfaceManagement.cs:6985:							_Document.Delete(_ProposedTopographySurfaceContainer.SubregionBuildingPadList[num3].TopographySurface.Id);
+EPCommon\TopographySurfaceManagement.cs:6992:				RefreshSurface(_Document, ePTransactionContainer, ref _ProposedTopographySurfaceContainer, ref _ProposedPlacementFamilyInstance);
+EPCommon\TopographySurfaceManagement.cs:7168:	public static TopographySurface FindTopoSurfaceInstance(Document _Document, string _strFormUniqueId)
+EPCommon\TopographySurfaceManagement.cs:7170:		TopographySurface topographySurface = null;
+EPCommon\TopographySurfaceManagement.cs:7172:		List<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToList();
+EPCommon\TopographySurfaceManagement.cs:7176:			if (item is TopographySurface { Category: not null } topographySurface2 && string.Compare(_strFormUniqueId, topographySurface2.UniqueId, ignoreCase: true) == 0)
+EPCommon\TopographySurfaceManagement.cs:7184:	public static bool AddSubRegionBuildingPadsToMainSurface(Document _Document, List<TopographySurfaceContainer> _SubRegionBuildingPadList, ref TopographySurfaceContainer _SurfaceContainer, bool _bAddBuildingPadsIfPresent, ref bool _bIssueBuildingPadWarning)
+EPCommon\TopographySurfaceManagement.cs:7186:		List<TopographySurfaceContainer> _SurfaceList = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceManagement.cs:7188:		return AddSubRegionBuildingPadsToMainSurfaceList(_Document, _SubRegionBuildingPadList, ref _SurfaceList, _bAddBuildingPadsIfPresent, ref _bIssueBuildingPadWarning);
+EPCommon\TopographySurfaceManagement.cs:7191:	public static bool AddSubRegionBuildingPadsToMainSurfaceList(Document _Document, List<TopographySurfaceContainer> _SubRegionBuildingPadList, ref List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\TopographySurfaceManagement.cs:7193:		bool _bIssueBuildingPadWarning = false;
+EPCommon\TopographySurfaceManagement.cs:7194:		return AddSubRegionBuildingPadsToMainSurfaceList(_Document, _SubRegionBuildingPadList, ref _SurfaceList, _bAddBuildingPadsIfPresent: true, ref _bIssueBuildingPadWarning);
+EPCommon\TopographySurfaceManagement.cs:7197:	public static bool AddSubRegionBuildingPadsToMainSurfaceList(Document _Document, List<TopographySurfaceContainer> _SubRegionBuildingPadList, ref List<TopographySurfaceContainer> _SurfaceList, bool _bAddBuildingPadsIfPresent, ref bool _bIssueBuildingPadWarning)
+EPCommon\TopographySurfaceManagement.cs:7199:		bool result = _bAddBuildingPadsIfPresent;
+EPCommon\TopographySurfaceManagement.cs:7200:		if (_SurfaceList != null && _SurfaceList.Count > 0 && _SubRegionBuildingPadList != null && _SubRegionBuildingPadList.Count > 0)
+EPCommon\TopographySurfaceManagement.cs:7202:			List<TopographySurfaceContainer> list = null;
+EPCommon\TopographySurfaceManagement.cs:7205:			List<TopographySurfaceContainer> list2 = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceManagement.cs:7206:			list2.AddRange(_SubRegionBuildingPadList);
+EPCommon\TopographySurfaceManagement.cs:7209:				if (list2[i].TopographySurface != null)
+EPCommon\TopographySurfaceManagement.cs:7211:					elementId = list2[i].TopographySurface.CreatedPhaseId;
+EPCommon\TopographySurfaceManagement.cs:7212:					elementId2 = list2[i].TopographySurface.DemolishedPhaseId;
+EPCommon\TopographySurfaceManagement.cs:7214:				else if (list2[i].BuildingPad != null)
+EPCommon\TopographySurfaceManagement.cs:7216:					elementId = list2[i].BuildingPad.CreatedPhaseId;
+EPCommon\TopographySurfaceManagement.cs:7217:					elementId2 = list2[i].BuildingPad.DemolishedPhaseId;
+EPCommon\TopographySurfaceManagement.cs:7228:						if ((elementId == null || (list[k].TopographySurface != null && list[k].TopographySurface.CreatedPhaseId != null && list[k].TopographySurface.CreatedPhaseId == elementId) || (list[k].BuildingPad != null && list[k].BuildingPad.CreatedPhaseId != null && list[k].BuildingPad.CreatedPhaseId == elementId)) && (elementId2 == null || (list[k].TopographySurface != null && list[k].TopographySurface.DemolishedPhaseId != null && list[k].TopographySurface.DemolishedPhaseId == elementId2) || (list[k].BuildingPad != null && list[k].BuildingPad.DemolishedPhaseId != null && list[k].BuildingPad.DemolishedPhaseId == elementId2)))
+EPCommon\TopographySurfaceManagement.cs:7230:							list[k].SubregionBuildingPadList.Add(list2[i]);
+EPCommon\TopographySurfaceManagement.cs:7232:						else if (list2[i].TopographySurfaceType == TopographySurfaceType.BuildingPad)
+EPCommon\TopographySurfaceManagement.cs:7234:							list[k].BuildingPadPresentInDiffentPhase = true;
+EPCommon\TopographySurfaceManagement.cs:7235:							list[k].BuildingPadPresentInDifferentPhaseList.Add(list2[i]);
+EPCommon\TopographySurfaceManagement.cs:7243:			if (!_bIssueBuildingPadWarning)
+EPCommon\TopographySurfaceManagement.cs:7245:				List<TopographySurfaceContainer> list3 = null;
+EPCommon\TopographySurfaceManagement.cs:7250:					if (!list[l].BuildingPadPresentInDiffentPhase)
+EPCommon\TopographySurfaceManagement.cs:7254:					list3 = list[l].BuildingPadPresentInDifferentPhaseList;
+EPCommon\TopographySurfaceManagement.cs:7260:							for (int num = list[l].SubregionBuildingPadList.Count - 1; num >= 0; num--)
+EPCommon\TopographySurfaceManagement.cs:7262:								if (list[l].SubregionBuildingPadList[num].TopographySurfaceType == TopographySurfaceType.BuildingPad && list[l].SubregionBuildingPadList[num].GetSurfaceContainerContainingPoint(eps_Point) != null)
+EPCommon\TopographySurfaceManagement.cs:7264:									list[l].SubregionBuildingPadList.RemoveAt(num);
+EPCommon\TopographySurfaceManagement.cs:7283:	public static TopographySurfaceContainer GetSurfaceContainerContainingPoint(Eps_Point _FindPoint, List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\TopographySurfaceManagement.cs:7288:	public static TopographySurfaceContainer GetSurfaceContainerContainingPoint(Eps_Point _FindPoint, List<TopographySurfaceContainer> _SurfaceList, Phase _PhaseCreated)
+EPCommon\TopographySurfaceManagement.cs:7293:	public static TopographySurfaceContainer GetSurfaceContainerContainingPoint(Eps_Point _FindPoint, List<TopographySurfaceContainer> _SurfaceList, Phase _PhaseCreated, Phase _PhaseDemolished)
+EPCommon\TopographySurfaceManagement.cs:7295:		TopographySurfaceContainer topographySurfaceContainer = null;
+EPCommon\TopographySurfaceManagement.cs:7310:	public static List<Eps_Point> GetSurfacePoints(List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\TopographySurfaceManagement.cs:7326:	public static List<Eps_Point> GetAllDistinctSurfacePoints(List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\TopographySurfaceManagement.cs:7331:	public static List<Eps_Point> GetAllDistinctSurfacePoints(List<TopographySurfaceContainer> _SurfaceList, Phase _CurPhase)
+EPCommon\TopographySurfaceManagement.cs:7339:				if (_CurPhase == null || (_SurfaceList[i].TopographySurface != null && _SurfaceList[i].TopographySurface.CreatedPhaseId != null && _SurfaceList[i].TopographySurface.CreatedPhaseId == _CurPhase.Id) || (_SurfaceList[i].BuildingPad != null && _SurfaceList[i].BuildingPad.CreatedPhaseId != null && _SurfaceList[i].BuildingPad.CreatedPhaseId == _CurPhase.Id))
+EPCommon\TopographySurfaceManagement.cs:7350:	public static List<TopographySurfaceContainer> GetSurfaceContainerListContainingPoint(Eps_Point _FindPoint, List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\TopographySurfaceManagement.cs:7355:	public static List<TopographySurfaceContainer> GetSurfaceContainerListContainingPoint(Eps_Point _FindPoint, List<TopographySurfaceContainer> _SurfaceList, Phase _PhaseCreated)
+EPCommon\TopographySurfaceManagement.cs:7360:	public static List<TopographySurfaceContainer> GetSurfaceContainerListContainingPoint(Eps_Point _FindPoint, List<TopographySurfaceContainer> _SurfaceList, Phase _PhaseCreated, Phase _PhaseDemolished)
+EPCommon\TopographySurfaceManagement.cs:7362:		TopographySurfaceContainer topographySurfaceContainer = null;
+EPCommon\TopographySurfaceManagement.cs:7363:		List<TopographySurfaceContainer> list = null;
+EPCommon\TopographySurfaceManagement.cs:7373:						list = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceManagement.cs:7547:	private static bool RefreshAllSiteComponents(Document _Document, EPTransactionContainer _TransactionContainer, List<FamilyInstanceComponentWrapper> _AllSiteComponentList, TopographySurfaceContainer _BaseSurface, TopographySurfaceContainer _ProposedSurface, FamilyInstance _TopoPlacementFamilyInstance)
+EPCommon\TopographySurfaceManagement.cs:7563:			if (!ApplicationUtility.Settings.eplSetE_GetSetting("TopographySurfaceArcPointInterval", ref _dReturnValue))
+EPCommon\TopographySurfaceManagement.cs:7566:				ApplicationUtility.Settings.eplSetE_SetSetting("TopographySurfaceArcPointInterval", _dReturnValue);
+EPCommon\TopographySurfaceManagement.cs:7682:				if (sitePlacementSettings.LocateType == LandcaddID.Curb && sitePlacementSettings.ParentTopoSurfaceID != string.Empty && string.Compare(sitePlacementSettings.ParentTopoSurfaceID, _ProposedSurface.TopographySurface.UniqueId, ignoreCase: true) != 0)
+EPCommon\TopographySurfaceManagement.cs:7715:					if (!RebuildProposedTopographySurface(_Document, sitePlacementSettings, _dReturnValue, eps_Leg, _ProposedSurface, elementList, bDrawForm, _AllSiteComponentList[i].ParkingLotBreaklineList, _AllSiteComponentList[i].ParkingLotBreaklineElementList, _AllSiteComponentList[i].ParkingLotBreaklineLinearPointIntervals, list, list2, list3, list4, ref list5, ref _CrownPointList))
+EPCommon\TopographySurfaceManagement.cs:7744:				TopographySurface topographySurface = TopographySurface.Create(_Document, PointXYZList);
+EPCommon\TopographySurfaceManagement.cs:7747:				parameter = ((Element)_ProposedSurface.TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
+EPCommon\TopographySurfaceManagement.cs:7757:				parameter = ((Element)_ProposedSurface.TopographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
+EPCommon\TopographySurfaceManagement.cs:7767:				parameter = ((Element)_ProposedSurface.TopographySurface).get_Parameter(BuiltInParameter.PHASE_DEMOLISHED);
+EPCommon\TopographySurfaceManagement.cs:7777:				parameter = ((Element)_ProposedSurface.TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+EPCommon\TopographySurfaceManagement.cs:7786:				InvokeUpdaters(_ProposedSurface.TopographySurface.UniqueId, topographySurface.UniqueId, _Document);
+EPCommon\TopographySurfaceManagement.cs:7787:				_Document.Delete(_ProposedSurface.TopographySurface.Id);
+EPCommon\TopographySurfaceManagement.cs:7789:				_ProposedSurface = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+EPCommon\TopographySurfaceManagement.cs:7806:	public static List<TopographySurfaceContainer> FindAllMainSurfaces(Document _Document, bool _bFindMinMaxPoints)
+EPCommon\TopographySurfaceManagement.cs:7809:		IList<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+EPCommon\TopographySurfaceManagement.cs:7810:		List<TopographySurface> list2 = new List<TopographySurface>();
+EPCommon\TopographySurfaceManagement.cs:7811:		List<TopographySurfaceContainer> list3 = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceManagement.cs:7814:			TopographySurface item = item2 as TopographySurface;
+EPCommon\TopographySurfaceManagement.cs:7819:			if (TopographySurfaceContainer.FindTopographySurfaceType(_Document.Application, list2[i]) == TopographySurfaceType.MainSurface)
+EPCommon\TopographySurfaceManagement.cs:7821:				list3.Add(new TopographySurfaceContainer(_Document.Application, list2[i], _bFindMinMaxPoints));
+EPCommon\TopographySurfaceManagement.cs:7827:	public static Eps_Point FindToposurfaceAdjustmentPoint(TopographySurfaceContainer _CurTopoSurfaceContainer, List<TopographySurfaceContainer> _SurfaceList)
+EPCommon\TopographySurfaceManagement.cs:7834:	public static Eps_Point FindToposurfaceAdjustmentPoint(TopographySurfaceContainer _CurTopoSurfaceContainer, List<TopographySurfaceContainer> _SurfaceList, double _dAdjustmentX, double _dAdjustmentY)
+EPCommon\TopographySurfaceManagement.cs:7904:	public static List<KeyValuePair<FamilyInstance, TopographySurfaceContainer>> FindPlantMixGenericModelList(Document _Document, List<TopographySurfaceContainer> _SubregionList)
+EPCommon\TopographySurfaceManagement.cs:7918:		List<KeyValuePair<FamilyInstance, TopographySurfaceContainer>> list2 = new List<KeyValuePair<FamilyInstance, TopographySurfaceContainer>>();
+EPCommon\TopographySurfaceManagement.cs:7937:				if (string.Compare(parameter.AsString(), _SubregionList[num].TopographySurface.UniqueId, ignoreCase: true) == 0)
+EPCommon\TopographySurfaceManagement.cs:7939:					list2.Add(new KeyValuePair<FamilyInstance, TopographySurfaceContainer>(familyInstance, _SubregionList[num]));
+EPCommon\TopographySurfaceManagement.cs:7952:	public static List<TopographySurfaceContainer> FindNewTopographySurfaceContainers(Document _Document, List<ElementId> _NewElementIds)
+EPCommon\TopographySurfaceManagement.cs:7955:		TopographySurface topographySurface = null;
+EPCommon\TopographySurfaceManagement.cs:7956:		List<TopographySurfaceContainer> list = new List<TopographySurfaceContainer>();
+EPCommon\TopographySurfaceManagement.cs:7965:			if (element is TopographySurface topographySurface2)
+EPCommon\TopographySurfaceManagement.cs:7970:					list.Add(new TopographySurfaceContainer(_Document.Application, topographySurface2, _bFindMinMaxPoints: true));
+EPCommon\TopographySurfaceManagement.cs:7981:					list.Add(new TopographySurfaceContainer(_Document.Application, ceilingAndFloor2, _bFindMinMaxPoints: true));
+EPCommon\TopographySurfaceManagement.cs:7991:	public static void UpdatePlantMixGenericModelList(List<KeyValuePair<FamilyInstance, TopographySurfaceContainer>> _UpdateGenericModelList, List<TopographySurfaceContainer> NewToposurfaceList)
+EPCommon\TopographySurfaceManagement.cs:8011:					if (NewToposurfaceList[num].TopographySurface != null && NewToposurfaceList[num].GetSurfaceContainerContainingPoint(eps_Point) != null)
+EPCommon\TopographySurfaceManagement.cs:8018:								parameter.Set(NewToposurfaceList[num].TopographySurface.UniqueId);
+EPCommon\TopographySurfaceManagement.cs:8038:		if (TopographySurface.ArePointsDistinct(PointXYZList))
+EPCommon\ToposurfaceItem.cs:7:	public TopographySurfaceContainer Value;
+EPCommon\ToposurfaceItem.cs:9:	public ToposurfaceItem(string name, TopographySurfaceContainer value)
+EPCommon\TopographySurfaceType.cs:3:public enum TopographySurfaceType
+EPCommon\TopographySurfaceType.cs:7:	BuildingPad

@@ -42,7 +42,7 @@ internal class SiteEditingUtils
 
 	public static TopographySurface GetTopographySurfaceHost(TopographySurface subregion)
 	{
-		return subregion.Document.GetElement(subregion.AsSiteSubRegion().HostId) as TopographySurface;
+		return TerrainApi.AsSurface(subregion.Document.GetElement(TerrainApi.HostId(subregion)));
 	}
 
 	public static IList<XYZ> GetNonBoundaryPoints(TopographySurface toposurface)

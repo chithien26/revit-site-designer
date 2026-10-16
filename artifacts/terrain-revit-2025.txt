@@ -1,0 +1,32 @@
+Engine: C:\Users\vinhp\AppData\Roaming\Autodesk\Revit\Addins\2025\SiteDesigner\SiteDesigner.dll; build=e3bedb2f-9065-4675-a190-99235619b479
+PASS: Version-specific native terrain element type
+PASS: Terrain collector discovers the native element
+PASS: Creation preserves the six terrain points
+PASS: Creation preserves world Z above a nonzero level
+PASS: Terrain name persists
+PASS: Original terrain placement family loads in the current Revit version
+PASS: Placement family associates with the native terrain element
+PASS: Geometry container uses the top surface, excluding solid bottom and sides
+PASS: Point editing preserves terrain element ID
+PASS: Batched add/move/delete points and world elevation
+PASS: Point editing preserves boundary elevations
+PASS: Uncommitted terrain scope rolls back
+PASS: Production transaction commits the Toposolid point batch
+PASS: Production terrain scope persists grading points
+PASS: Native subdivision retains its host relationship
+PASS: Material edits isolate the terrain type from other instances
+PASS: Proposed terrain creation preserves profile openings
+PASS: Proposed terrain creation preserves subdivisions
+PASS: Proposed terrain preserves subdivision height and material
+PASS: Main-surface discovery includes native Toposolids
+PASS: Native subdivision discovery does not request legacy host replacement
+PASS: Host grading excludes subdivision thickness from terrain points
+PASS: Point editing preserves openings and requested elevation
+PASS: Point in profile opening is rejected and rolled back
+PASS: Production grading failure rolls back transaction and terrain scope
+PASS: Point edits preserve user breaklines
+PASS: Production proposed terrain preserves breaklines and terrain name
+PASS: Terrain test leaves no open transaction
+PASS: Terrain test document closes without open groups
+PASS: Dedicated test session has no remaining documents
+SUCCESS: 30 terrain checks

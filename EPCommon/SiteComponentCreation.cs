@@ -1142,7 +1142,7 @@ public class SiteComponentCreation
 						FamilyInstance _TopoPlacementFamilyInstance = null;
 						foreach (Element item6 in elementSet3)
 						{
-							if (item6 is TopographySurface topographySurface)
+							if (TerrainApi.AsSurface(item6) is {} topographySurface)
 							{
 								_ProposedSurface = new TopographySurfaceContainer(m_Document.Application, topographySurface, _bFindMinMaxPoints: true);
 							}
@@ -1519,7 +1519,7 @@ public class SiteComponentCreation
 						FamilyInstance _TopoPlacementFamilyInstance = null;
 						foreach (Element item7 in _Elements)
 						{
-							if (item7 is TopographySurface topographySurface)
+							if (TerrainApi.AsSurface(item7) is {} topographySurface)
 							{
 								_ProposedSurface = new TopographySurfaceContainer(m_Document.Application, topographySurface, _bFindMinMaxPoints: true);
 							}

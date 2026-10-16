@@ -85,14 +85,14 @@ public class SetBaseToposurface
 		IEnumerable<Element> source = filteredElementCollector.Where((Element CurrentElement) => (FindFamilyInstance = CurrentElement as FamilyInstance) != null && (SiteworksIDParameter = FindFamilyInstance.Symbol.LookupParameter(RevitParameters.SiteworksIDFamilyParameter)) != null && string.Compare(SiteworksIDParameter.AsString(), Convert.ToInt32(LandcaddID.TopoSurfacePlacement).ToString("000"), ignoreCase: true) == 0 && CurrentElement.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter) != null);
 		list = source.ToList();
 		filteredElementCollector = new FilteredElementCollector(m_Document);
-		IList<Element> list2 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+		IList<Element> list2 = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToElements();
 		filteredElementCollector = new FilteredElementCollector(m_Document);
 		IList<Element> list3 = filteredElementCollector.OfClass(typeof(CeilingAndFloor)).OfCategory(BuiltInCategory.OST_BuildingPad).ToElements();
 		List<TopographySurface> list4 = new List<TopographySurface>();
 		List<TopographySurfaceContainer> list5 = new List<TopographySurfaceContainer>();
 		foreach (Element item in list2)
 		{
-			TopographySurface topographySurface = item as TopographySurface;
+			TopographySurface topographySurface = TerrainApi.AsSurface(item);
 			if (!m_bPickIndividualSurface)
 			{
 				foreach (Element item2 in list)
@@ -267,7 +267,7 @@ public class SetBaseToposurface
 		bool flag = false;
 		foreach (Element item in _Elements)
 		{
-			if (item is TopographySurface { Category: not null } topographySurface2 && topographySurface2.Category.Id.Value64() == BuiltInCategory.OST_Topography.GetHashCode())
+			if (TerrainApi.AsSurface(item) is { Category: not null } topographySurface2 && topographySurface2.Category.Id.Value64() == TerrainApi.Category.GetHashCode())
 			{
 				for (int i = 0; i < m_SurfaceList.Count; i++)
 				{
@@ -340,6 +340,11 @@ public class SetBaseToposurface
 
 	public bool CreateBaseToposurface(List<TopographySurfaceContainer> _SurfaceList)
 	{
+		if (TerrainApi.UsesToposolids && _SurfaceList != null && _SurfaceList.Count > 1)
+		{
+			RevitMessageBox.Show("Select one Toposolid as the base terrain. Combine or edit its native sketch in Revit before setting the base terrain.", "Site Designer");
+			return false;
+		}
 		if (_SurfaceList != null && _SurfaceList.Count > 0)
 		{
 			for (int i = 0; i < _SurfaceList.Count; i++)
@@ -362,7 +367,7 @@ public class SetBaseToposurface
 				bool flag2 = false;
 				bool flag3 = false;
 				bool flag4 = false;
-				for (int j = 0; j < _SurfaceList.Count; j++)
+				for (int j = 0; !TerrainApi.UsesToposolids && j < _SurfaceList.Count; j++)
 				{
 					if (!flag && _SurfaceList[j].IsTopographySurfaceTypePresent(TopographySurfaceType.Subregion))
 					{
@@ -390,6 +395,9 @@ public class SetBaseToposurface
 						}
 					}
 				}
+				// Native subdivisions are copied with their host; the legacy detached
+				// subregion/array workflow would duplicate them and alter host points.
+				if (TerrainApi.UsesToposolids) list.Clear();
 				ElementId elementId = null;
 				ElementId phaseCreated = null;
 				ElementId phaseDemolished = null;
@@ -521,26 +529,18 @@ public class SetBaseToposurface
 				}
 				if (_nReturnValue == -1 && _SurfaceList.Count > 0)
 				{
-					parameter = ((Element)_SurfaceList[0].TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-					if (parameter != null)
-					{
-						elementId = parameter.AsElementId();
-						_nReturnValue = elementId.Value64();
-					}
+					elementId = TerrainApi.GetMaterialId(_SurfaceList[0].TopographySurface);
+					_nReturnValue = elementId.Value64();
 				}
 				if (_SurfaceList.Count > 1)
 				{
 					value = true;
 					TopographySurfaceManagement.RemoveDuplicateXY(ref PointXYZList);
-					topographySurface = TopographySurface.Create(m_Document, PointXYZList);
+					topographySurface = TerrainApi.Create(m_Document, PointXYZList);
 					m_Document.Regenerate();
 					elementSet.Insert(topographySurface);
-					parameter2 = ((Element)topographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-					if (parameter2 != null && _nReturnValue != -1)
-					{
-						parameter2.Set(elementId);
-					}
-					parameter2 = ((Element)topographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+					TerrainApi.SetMaterialId(topographySurface, elementId);
+					parameter2 = TerrainApi.NameParameter(((Element)topographySurface));
 					if (parameter2 != null && !parameter2.IsReadOnly)
 					{
 						parameter2.Set(EPShared.LocalRM.GetString("BaseToposurfaceString"));
@@ -577,7 +577,7 @@ public class SetBaseToposurface
 				m_TransactionContainer.EndTransaction();
 				TopographySurface _ProposedTopographySurface = null;
 				FamilyInstance _PlacementFamilyInstance = null;
-				TopographySurfaceManagement.CreateProposedSurface(m_Document, m_TransactionContainer, m_PlacementSymbol, surfacePoints, strToposurfaceName, elementId, phaseCreated, phaseDemolished, ref _ProposedTopographySurface, ref _PlacementFamilyInstance);
+				TopographySurfaceManagement.CreateProposedSurface(m_Document, m_TransactionContainer, m_PlacementSymbol, surfacePoints, strToposurfaceName, elementId, phaseCreated, phaseDemolished, ref _ProposedTopographySurface, ref _PlacementFamilyInstance, topographySurface);
 				Eps_Point eps_Point = null;
 				if (list != null && list.Count > 0)
 				{

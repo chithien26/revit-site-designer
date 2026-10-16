@@ -523,12 +523,12 @@ public class ImportLandXMLManager : EPForm
 		if (_RevitPntList.Count > 0)
 		{
 			TopographySurfaceManagement.RemoveDuplicateXY(ref _RevitPntList);
-			topographySurface = TopographySurface.Create(m_CurrentDocument, _RevitPntList);
+			topographySurface = TerrainApi.Create(m_CurrentDocument, _RevitPntList);
 			m_CurrentDocument.Regenerate();
 		}
 		if (topographySurface != null)
 		{
-			((Element)topographySurface).get_Parameter(BuiltInParameter.ROOM_NAME)?.Set(_CurSurface.SurfaceName);
+			TerrainApi.NameParameter(((Element)topographySurface))?.Set(_CurSurface.SurfaceName);
 			Parameter parameter = ((Element)topographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
 			if (parameter != null && _CurSurface.Phase != null)
 			{

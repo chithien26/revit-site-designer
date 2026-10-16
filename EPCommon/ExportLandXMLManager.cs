@@ -349,7 +349,7 @@ public class ExportLandXMLManager : EPForm
 				foreach (TopographySurfaceContainer item in _SurfaceList)
 				{
 					string value3 = string.Empty;
-					Parameter parameter = ((Element)item.TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+					Parameter parameter = TerrainApi.NameParameter(((Element)item.TopographySurface));
 					if (parameter != null && parameter.AsString() != null && parameter.AsString() != string.Empty)
 					{
 						value3 = parameter.AsString();

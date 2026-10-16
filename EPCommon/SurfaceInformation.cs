@@ -76,10 +76,10 @@ public class SurfaceInformation : EPForm
 	{
 		FilteredElementCollector filteredElementCollector = new FilteredElementCollector(m_CurrentDocument);
 		filteredElementCollector = new FilteredElementCollector(m_CurrentDocument);
-		IList<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+		IList<Element> list = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToElements();
 		foreach (Element item3 in list)
 		{
-			TopographySurface item = item3 as TopographySurface;
+			TopographySurface item = TerrainApi.AsSurface(item3);
 			m_ExistingTopoSurfaces.Add(item);
 		}
 		foreach (Phase phase in m_CurrentDocument.Phases)
@@ -111,7 +111,7 @@ public class SurfaceInformation : EPForm
 		Parameter parameter = null;
 		foreach (TopographySurface existingTopoSurface in m_ExistingTopoSurfaces)
 		{
-			parameter = ((Element)existingTopoSurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+			parameter = TerrainApi.NameParameter(((Element)existingTopoSurface));
 			if (parameter != null && parameter.AsString() != null && parameter.AsString() != string.Empty)
 			{
 				m_ExistingSurfaceCombo.Items.Add(parameter.AsString());
@@ -205,7 +205,7 @@ public class SurfaceInformation : EPForm
 			int num = 1;
 			foreach (TopographySurface existingTopoSurface in m_ExistingTopoSurfaces)
 			{
-				parameter = ((Element)existingTopoSurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+				parameter = TerrainApi.NameParameter(((Element)existingTopoSurface));
 				if (parameter != null && parameter.AsString() != null && parameter.AsString() != string.Empty)
 				{
 					if (string.Compare(parameter.AsString(), m_ExistingSurfaceCombo.SelectedItem.ToString(), ignoreCase: true) == 0)
@@ -265,7 +265,7 @@ public class SurfaceInformation : EPForm
 		Parameter parameter = null;
 		TopographySurface result = null;
 		FilteredElementCollector filteredElementCollector = new FilteredElementCollector(m_CurrentDocument);
-		List<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToList();
+		List<Element> list = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToList();
 		nBeginningIndex = 0;
 		int num = -1;
 		bool flag = true;
@@ -276,7 +276,7 @@ public class SurfaceInformation : EPForm
 		int num2 = 1;
 		foreach (Element item in list)
 		{
-			if (!(item is TopographySurface topographySurface2))
+			if (!(TerrainApi.AsSurface(item) is {} topographySurface2))
 			{
 				continue;
 			}
@@ -285,7 +285,7 @@ public class SurfaceInformation : EPForm
 			{
 				continue;
 			}
-			parameter = ((Element)topographySurface2).get_Parameter(BuiltInParameter.ROOM_NAME);
+			parameter = TerrainApi.NameParameter(((Element)topographySurface2));
 			empty3 = string.Empty;
 			if (parameter != null && parameter.AsString() != null && parameter.AsString() != string.Empty)
 			{

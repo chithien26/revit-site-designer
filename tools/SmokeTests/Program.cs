@@ -31,6 +31,7 @@ class Program
                 if (property.PropertyType == typeof(System.Drawing.Bitmap) || property.PropertyType == typeof(System.Drawing.Icon))
                 { var value = property.GetValue(null); Check(value != null, "Resource " + property.Name); (value as IDisposable)?.Dispose(); }
             CheckMemoryLoadedAssembly();
+            CheckQueuedWindowClosing();
             using (var dialog = new WpfForm { Text = "Site Designer · WPF", ClientSize = new System.Drawing.Size(380,145) })
             {
                 var label = new Forms.Label { Text = "Define a name for this site element.", Location = new System.Drawing.Point(12,12), Size = new System.Drawing.Size(350,24) };
@@ -147,6 +148,27 @@ class Program
             }));
             var result = formType.GetMethod("ShowDialog", Type.EmptyTypes).Invoke(dialog, null);
             Check((Forms.DialogResult)result == Forms.DialogResult.Cancel, "Byte-loaded WPF dialog closes normally");
+        }
+    }
+    static void CheckQueuedWindowClosing()
+    {
+        using (var dialog = new WpfForm { Text = "Close before first render" })
+        {
+            int shown = 0;
+            dialog.Shown += (_, _) => shown++;
+            dialog.Show();
+            int shownBeforeClose = shown;
+            dialog.Close();
+            var frame = new DispatcherFrame();
+            Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new Action(() => frame.Continue = false));
+            Dispatcher.PushFrame(frame);
+            Check(shown == shownBeforeClose && !dialog.IsWpfOpen, "Queued render callback ignores a closed progress window");
+        }
+        using (var dialog = new WpfForm { Text = "Close from Shown" })
+        {
+            dialog.Shown += (_, _) => dialog.Close();
+            Check(dialog.ShowDialog() == Forms.DialogResult.Cancel && !dialog.IsWpfOpen,
+                "Shown callback can close a dialog before presenter refresh");
         }
     }
     static void Queue(WpfForm form, Action<Window> action) => Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new Action(() => { try { action(form.WpfWindow); } catch (Exception ex) { Console.Error.WriteLine(ex); Environment.Exit(1); } }));

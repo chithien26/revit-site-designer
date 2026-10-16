@@ -18,6 +18,7 @@ public class WpfForm : Forms.Form
     private bool initialized;
     private bool closing;
     private bool modal;
+    private bool raisingShown;
     public Window WpfWindow => window;
     public bool IsWpfOpen => window != null;
 
@@ -87,13 +88,27 @@ public class WpfForm : Forms.Form
                 e.Handled = true;
             }
         };
-        window.ContentRendered += (_, _) =>
-        {
-            EPCommon.RuntimeDiagnostics.Write("Displayed WPF dialog " + GetType().FullName + "; owner=" + (owner?.Handle ?? IntPtr.Zero));
-            OnShown(EventArgs.Empty);
-            presenter.Refresh();
-            window?.Activate();
-        };
+        window.ContentRendered += WindowContentRendered;
+    }
+    private void WindowContentRendered(object sender, EventArgs e)
+    {
+        // WPF posts this event to the dispatcher. Short-lived progress windows
+        // can close before that queued callback runs, or from an OnShown handler.
+        if (!ReferenceEquals(sender, window) || closing || IsDisposed || presenter == null) return;
+        var openedWindow = window;
+        EPCommon.RuntimeDiagnostics.Write("Displayed WPF dialog " + GetType().FullName + "; owner=" + new WindowInteropHelper(openedWindow).Owner);
+        raisingShown = true;
+        try { OnShown(EventArgs.Empty); }
+        finally { raisingShown = false; }
+        if (!ReferenceEquals(openedWindow, window) || closing || IsDisposed) return;
+        presenter?.Refresh();
+        if (ReferenceEquals(openedWindow, window)) openedWindow.Activate();
+    }
+    protected override void OnShown(EventArgs e)
+    {
+        // Form.OnLoad can post a native Shown callback for its hidden controller.
+        // Only the active WPF window may deliver the public Shown event.
+        if (raisingShown && window != null && !closing && !IsDisposed) base.OnShown(e);
     }
     private bool IsResizable => FormBorderStyle == Forms.FormBorderStyle.Sizable || FormBorderStyle == Forms.FormBorderStyle.SizableToolWindow;
     private static void CreateControllerHandles(Forms.Control control)
@@ -134,6 +149,7 @@ public class WpfForm : Forms.Form
     }
     private void WindowClosed(object sender, EventArgs e)
     {
+        if (sender is Window closedWindow) closedWindow.ContentRendered -= WindowContentRendered;
         EPCommon.RuntimeDiagnostics.Write("Closed WPF dialog " + GetType().FullName);
         presenter?.Dispose();
         presenter = null;

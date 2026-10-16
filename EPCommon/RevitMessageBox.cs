@@ -19,6 +19,8 @@ public class RevitMessageBox
 
 	public static DialogResult Show(string _strText, string _strCaption, MessageBoxButtons _Buttons, MessageBoxIcon _Icon)
 	{
+		_strText = TerrainText.ForDisplay(_strText);
+		_strCaption = TerrainText.ForDisplay(_strCaption);
 		TaskDialogCommonButtons commonButtons = TaskDialogCommonButtons.None;
 		TaskDialogResult defaultButton = TaskDialogResult.None;
 		switch (_Buttons)

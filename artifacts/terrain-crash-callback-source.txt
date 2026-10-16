@@ -1,0 +1,10 @@
+using System;
+using EPCommon;
+
+internal void <Open>b__1(object? _, EventArgs _)
+{
+	RuntimeDiagnostics.Write("Displayed WPF dialog " + <>4__this.GetType().FullName + "; owner=" + (IntPtr)(owner?.Handle ?? IntPtr.Zero));
+	<>4__this.OnShown(EventArgs.Empty);
+	<>4__this.presenter.Refresh();
+	<>4__this.window?.Activate();
+}

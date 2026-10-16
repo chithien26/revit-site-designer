@@ -180,7 +180,7 @@ public class ConvertToToposurface
 		Parameter parameter = null;
 		TopographySurface result = null;
 		FilteredElementCollector filteredElementCollector = new FilteredElementCollector(m_Document);
-		List<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToList();
+		List<Element> list = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToList();
 		nBeginningIndex = 0;
 		int num = -1;
 		bool flag = true;
@@ -191,7 +191,7 @@ public class ConvertToToposurface
 		int num2 = 1;
 		foreach (Element item in list)
 		{
-			if (!(item is TopographySurface topographySurface2))
+			if (!(TerrainApi.AsSurface(item) is {} topographySurface2))
 			{
 				continue;
 			}
@@ -200,7 +200,7 @@ public class ConvertToToposurface
 			{
 				continue;
 			}
-			parameter = ((Element)topographySurface2).get_Parameter(BuiltInParameter.ROOM_NAME);
+			parameter = TerrainApi.NameParameter(((Element)topographySurface2));
 			empty3 = string.Empty;
 			if (parameter != null && parameter.AsString() != null && parameter.AsString() != string.Empty)
 			{
@@ -315,12 +315,12 @@ public class ConvertToToposurface
 				if (PointXYZList.Count > 0)
 				{
 					TopographySurfaceManagement.RemoveDuplicateXY(ref PointXYZList);
-					topographySurface = TopographySurface.Create(m_Document, PointXYZList);
+					topographySurface = TerrainApi.Create(m_Document, PointXYZList);
 					m_Document.Regenerate();
 				}
 				if (topographySurface != null)
 				{
-					((Element)topographySurface).get_Parameter(BuiltInParameter.ROOM_NAME)?.Set(_strSurfaceName);
+					TerrainApi.NameParameter(((Element)topographySurface))?.Set(_strSurfaceName);
 					Parameter parameter = ((Element)topographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
 					if (parameter != null && m_DisplayForm.SelectedPhase != null)
 					{

@@ -1289,7 +1289,7 @@ public class TopographySurfaceManagement
 				{
 					if (list16[num41] != null)
 					{
-						for (int num42 = 0; num42 < topographySurfaceContainer2.SubregionBuildingPadList.Count; num42++)
+						for (int num42 = 0; !TerrainApi.UsesToposolids && num42 < topographySurfaceContainer2.SubregionBuildingPadList.Count; num42++)
 						{
 							if (topographySurfaceContainer2.SubregionBuildingPadList[num42] == null)
 							{
@@ -1422,7 +1422,7 @@ public class TopographySurfaceManagement
 						}
 					}
 				}
-				if (topographySurfaceContainer2.SubregionBuildingPadList != null && topographySurfaceContainer2.SubregionBuildingPadList.Count > 0)
+				if (!TerrainApi.UsesToposolids && topographySurfaceContainer2.SubregionBuildingPadList != null && topographySurfaceContainer2.SubregionBuildingPadList.Count > 0)
 				{
 					List<TopographySurfaceContainer> surfaceList = FindAllMainSurfaces(_Document, _bFindMinMaxPoints: true);
 					Eps_Point eps_Point3 = FindToposurfaceAdjustmentPoint(_ProposedSurface, surfaceList);
@@ -3454,12 +3454,8 @@ public class TopographySurfaceManagement
 			}
 			if (_nReturnValue == -1)
 			{
-				parameter = ((Element)_ProposedSurface.TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-				if (parameter != null)
-				{
-					elementId = parameter.AsElementId();
-					_nReturnValue = elementId.Value64();
-				}
+				elementId = TerrainApi.GetMaterialId(_ProposedSurface.TopographySurface);
+				_nReturnValue = elementId.Value64();
 			}
 		}
 		else if (_PlacementSettings.LocateType == LandcaddID.ParkingLot)
@@ -3486,7 +3482,8 @@ public class TopographySurfaceManagement
 			if (PointXYZList.Count > 0)
 			{
 				RemoveDuplicateXY(ref PointXYZList);
-				topographySurface = TopographySurface.Create(_Document, PointXYZList);
+				topographySurface = TerrainApi.Create(_Document, PointXYZList);
+				TerrainApi.SetMaterialId(topographySurface, RevitIds.Create(_nMaterialId));
 				_Document.Regenerate();
 			}
 			if (topographySurface != null)
@@ -3503,7 +3500,7 @@ public class TopographySurfaceManagement
 					int nBeginningIndex = 0;
 					string empty = string.Empty;
 					empty = ((!GetIslandFamiliesCount(_Document, _PlacementSettings.Name, ref nBeginningIndex)) ? _PlacementSettings.Name : (_PlacementSettings.Name + "-" + nBeginningIndex));
-					parameter = ((Element)topographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+					parameter = TerrainApi.NameParameter(((Element)topographySurface));
 					if (parameter != null && !parameter.IsReadOnly)
 					{
 						parameter.Set(empty);
@@ -3517,7 +3514,7 @@ public class TopographySurfaceManagement
 						ElementId value2 = RevitIds.Create(_nMaterialId);
 						parameter.Set(value2);
 					}
-					parameter = ((Element)topographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+					parameter = TerrainApi.NameParameter(((Element)topographySurface));
 					if (parameter != null && !parameter.IsReadOnly)
 					{
 						parameter.Set(_PlacementSettings.Name);
@@ -3551,12 +3548,12 @@ public class TopographySurfaceManagement
 		IEnumerable<Element> source = filteredElementCollector.Where((Element CurrentElement) => (FindFamilyInstance = CurrentElement as FamilyInstance) != null && (SiteworksIDParameter = FindFamilyInstance.Symbol.LookupParameter(RevitParameters.SiteworksIDFamilyParameter)) != null && string.Compare(SiteworksIDParameter.AsString(), Convert.ToInt32(LandcaddID.SiteComponentPlacement).ToString("000"), ignoreCase: true) == 0 && CurrentElement.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter) != null);
 		list = source.ToList();
 		filteredElementCollector = new FilteredElementCollector(_Document);
-		IList<Element> list3 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+		IList<Element> list3 = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToElements();
 		Parameter parameter = null;
 		string empty = string.Empty;
 		foreach (Element item in list3)
 		{
-			if (item == null || item.Category == null || item.Category.Id.Value64() != BuiltInCategory.OST_Topography.GetHashCode())
+			if (item == null || item.Category == null || item.Category.Id.Value64() != TerrainApi.Category.GetHashCode())
 			{
 				continue;
 			}
@@ -3575,7 +3572,7 @@ public class TopographySurfaceManagement
 				parameter = familyInstance.LookupParameter(RevitParameters.IslandSurfaceIdFamilyParameter);
 				if (parameter != null && string.Compare(empty, parameter.AsString(), ignoreCase: false) == 0)
 				{
-					parameter = item.get_Parameter(BuiltInParameter.ROOM_NAME);
+					parameter = TerrainApi.NameParameter(item);
 					if (parameter != null && parameter.AsString() != null && parameter.AsString() != string.Empty)
 					{
 						list2.Add(parameter.AsString());
@@ -6469,19 +6466,10 @@ public class TopographySurfaceManagement
 			_TransactionContainer.BeginTransaction();
 			Parameter parameter = null;
 			RemoveDuplicateXY(ref PointXYZList);
-			TopographySurface topographySurface = TopographySurface.Create(_Document, PointXYZList);
+			TopographySurface topographySurface = TerrainApi.Create(_Document, PointXYZList, _NewPointsSurface.TopographySurface);
 			_Document.Regenerate();
 			progressBarForm.UpdateProgressBar(7);
-			parameter = ((Element)_NewPointsSurface.TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-			if (parameter != null && parameter.AsElementId() != null && parameter.AsElementId() != ElementId.InvalidElementId)
-			{
-				Parameter parameter2 = ((Element)topographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-				if (parameter2 != null && !parameter2.IsReadOnly)
-				{
-					ElementId value = parameter.AsElementId();
-					parameter2.Set(value);
-				}
-			}
+			TerrainApi.CopyMaterial(_NewPointsSurface.TopographySurface, topographySurface);
 			parameter = ((Element)_NewPointsSurface.TopographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
 			if (parameter != null && parameter.AsElementId() != null && parameter.AsElementId() != ElementId.InvalidElementId)
 			{
@@ -6502,10 +6490,10 @@ public class TopographySurfaceManagement
 					parameter4.Set(value3);
 				}
 			}
-			parameter = ((Element)_NewPointsSurface.TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+			parameter = TerrainApi.NameParameter(((Element)_NewPointsSurface.TopographySurface));
 			if (parameter != null && parameter.AsString() != null && parameter.AsString() != string.Empty)
 			{
-				Parameter parameter5 = ((Element)topographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+				Parameter parameter5 = TerrainApi.NameParameter(((Element)topographySurface));
 				if (parameter5 != null && !parameter5.IsReadOnly)
 				{
 					parameter5.Set(parameter.AsString());
@@ -6536,14 +6524,14 @@ public class TopographySurfaceManagement
 		CreateProposedSurface(_Document, _TransactionContainer, _PlacementSymbol, _PointList, _strToposurfaceName, _MaterialId, _PhaseCreated, _PhaseDemolished, ref _ProposedTopographySurface, ref _PlacementFamilyInstance);
 	}
 
-	public static void CreateProposedSurface(Document _Document, EPTransactionContainer _TransactionContainer, FamilySymbol _PlacementSymbol, List<Eps_Point> _PointList, ElementId _MaterialId, ref TopographySurface _ProposedTopographySurface, ref FamilyInstance _PlacementFamilyInstance)
+	public static void CreateProposedSurface(Document _Document, EPTransactionContainer _TransactionContainer, FamilySymbol _PlacementSymbol, List<Eps_Point> _PointList, ElementId _MaterialId, ref TopographySurface _ProposedTopographySurface, ref FamilyInstance _PlacementFamilyInstance, TopographySurface template = null)
 	{
 		ElementId phaseCreated = null;
 		ElementId phaseDemolished = null;
-		CreateProposedSurface(_Document, _TransactionContainer, _PlacementSymbol, _PointList, string.Empty, _MaterialId, phaseCreated, phaseDemolished, ref _ProposedTopographySurface, ref _PlacementFamilyInstance);
+		CreateProposedSurface(_Document, _TransactionContainer, _PlacementSymbol, _PointList, string.Empty, _MaterialId, phaseCreated, phaseDemolished, ref _ProposedTopographySurface, ref _PlacementFamilyInstance, template);
 	}
 
-	public static void CreateProposedSurface(Document _Document, EPTransactionContainer _TransactionContainer, FamilySymbol _PlacementSymbol, List<Eps_Point> _PointList, string _strToposurfaceName, ElementId _MaterialId, ElementId _PhaseCreated, ElementId _PhaseDemolished, ref TopographySurface _ProposedTopographySurface, ref FamilyInstance _PlacementFamilyInstance)
+	public static void CreateProposedSurface(Document _Document, EPTransactionContainer _TransactionContainer, FamilySymbol _PlacementSymbol, List<Eps_Point> _PointList, string _strToposurfaceName, ElementId _MaterialId, ElementId _PhaseCreated, ElementId _PhaseDemolished, ref TopographySurface _ProposedTopographySurface, ref FamilyInstance _PlacementFamilyInstance, TopographySurface template = null)
 	{
 		Parameter parameter = null;
 		Parameter parameter2 = null;
@@ -6561,11 +6549,11 @@ public class TopographySurfaceManagement
 		progressBarForm.UpdateProgressBar(1);
 		_TransactionContainer.BeginTransaction();
 		RemoveDuplicateXY(ref PointXYZList);
-		_ProposedTopographySurface = TopographySurface.Create(_Document, PointXYZList);
+		_ProposedTopographySurface = TerrainApi.Create(_Document, PointXYZList, template);
 		_Document.Regenerate();
 		if (_MaterialId != null)
 		{
-			((Element)_ProposedTopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM)?.Set(_MaterialId);
+			TerrainApi.SetMaterialId(_ProposedTopographySurface, _MaterialId);
 		}
 		if (_PhaseCreated != null)
 		{
@@ -6575,7 +6563,7 @@ public class TopographySurfaceManagement
 		{
 			((Element)_ProposedTopographySurface).get_Parameter(BuiltInParameter.PHASE_DEMOLISHED)?.Set(_PhaseDemolished);
 		}
-		parameter2 = ((Element)_ProposedTopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+		parameter2 = TerrainApi.NameParameter(((Element)_ProposedTopographySurface));
 		if (parameter2 != null && !parameter2.IsReadOnly)
 		{
 			if (_strToposurfaceName != string.Empty)
@@ -6628,14 +6616,9 @@ public class TopographySurfaceManagement
 				_Document.Delete(_ProposedPlacementFamilyInstance.Id);
 				ePTransactionContainer.EndTransaction();
 			}
-			ElementId materialId = null;
-			Parameter parameter = ((Element)_BaseSurfaceContainer.TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-			if (parameter != null)
-			{
-				materialId = parameter.AsElementId();
-			}
+			ElementId materialId = TerrainApi.GetMaterialId(_BaseSurfaceContainer.TopographySurface);
 			TopographySurface _ProposedTopographySurface = null;
-			CreateProposedSurface(_Document, ePTransactionContainer, _BasePlacementFamilyInstance.Symbol, _BaseSurfaceContainer.GetAllVertices(), materialId, ref _ProposedTopographySurface, ref _ProposedPlacementFamilyInstance);
+			CreateProposedSurface(_Document, ePTransactionContainer, _BasePlacementFamilyInstance.Symbol, _BaseSurfaceContainer.GetAllVertices(), materialId, ref _ProposedTopographySurface, ref _ProposedPlacementFamilyInstance, _BaseSurfaceContainer.TopographySurface);
 			_ProposedSurfaceContainer = new TopographySurfaceContainer(_Document.Application, _ProposedTopographySurface, _bFindMinMaxPoints: true);
 		}
 		else if (_ProposedPlacementFamilyInstance != null || _BasePlacementFamilyInstance != null)
@@ -6691,7 +6674,7 @@ public class TopographySurfaceManagement
 		IEnumerable<Element> source = filteredElementCollector.Where((Element CurrentElement) => (FindFamilyInstance = CurrentElement as FamilyInstance) != null && (SiteworksIDParameter = FindFamilyInstance.Symbol.LookupParameter(RevitParameters.SiteworksIDFamilyParameter)) != null && string.Compare(SiteworksIDParameter.AsString(), Convert.ToInt32(LandcaddID.TopoSurfacePlacement).ToString("000"), ignoreCase: true) == 0 && CurrentElement.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter) != null);
 		list = source.ToList();
 		filteredElementCollector = new FilteredElementCollector(_Document);
-		IList<Element> list2 = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+		IList<Element> list2 = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToElements();
 		filteredElementCollector = new FilteredElementCollector(_Document);
 		IList<Element> list3 = filteredElementCollector.OfClass(typeof(CeilingAndFloor)).OfCategory(BuiltInCategory.OST_BuildingPad).ToElements();
 		List<TopographySurfaceContainer> list4 = new List<TopographySurfaceContainer>();
@@ -6716,7 +6699,7 @@ public class TopographySurfaceManagement
 		}
 		foreach (Element item2 in list2)
 		{
-			if (item2 == null || item2.Category == null || item2.Category.Id.Value64() != BuiltInCategory.OST_Topography.GetHashCode() || !(item2 is TopographySurface topographySurface))
+			if (item2 == null || item2.Category == null || item2.Category.Id.Value64() != TerrainApi.Category.GetHashCode() || !(TerrainApi.AsSurface(item2) is {} topographySurface))
 			{
 				continue;
 			}
@@ -6752,7 +6735,7 @@ public class TopographySurfaceManagement
 									flag = true;
 									break;
 								}
-								parameter2 = ((Element)topographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+								parameter2 = TerrainApi.NameParameter(((Element)topographySurface));
 								if (parameter2 != null && parameter2.AsString() != null && parameter2.AsString() != string.Empty)
 								{
 									if (!flag2 && !Convert.ToBoolean(parameter.AsInteger()) && parameter2.AsString().ToLower().Contains(EPShared.LocalRM.GetString("BaseToposurfaceString").ToLower()))
@@ -6827,7 +6810,7 @@ public class TopographySurfaceManagement
 						ElementSet instanceSet = setBaseToposurface.InstanceSet;
 						foreach (Element item4 in instanceSet)
 						{
-							if (!(item4 is TopographySurface topographySurface2))
+							if (!(TerrainApi.AsSurface(item4) is {} topographySurface2))
 							{
 								continue;
 							}
@@ -6881,7 +6864,7 @@ public class TopographySurfaceManagement
 						ElementSet instanceSet2 = setBaseToposurface2.InstanceSet;
 						foreach (Element item5 in instanceSet2)
 						{
-							if (!(item5 is TopographySurface topographySurface3))
+							if (!(TerrainApi.AsSurface(item5) is {} topographySurface3))
 							{
 								continue;
 							}
@@ -7169,11 +7152,11 @@ public class TopographySurfaceManagement
 	{
 		TopographySurface topographySurface = null;
 		FilteredElementCollector filteredElementCollector = new FilteredElementCollector(_Document);
-		List<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToList();
+		List<Element> list = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToList();
 		topographySurface = null;
 		foreach (Element item in list)
 		{
-			if (item is TopographySurface { Category: not null } topographySurface2 && string.Compare(_strFormUniqueId, topographySurface2.UniqueId, ignoreCase: true) == 0)
+			if (TerrainApi.AsSurface(item) is { Category: not null } topographySurface2 && string.Compare(_strFormUniqueId, topographySurface2.UniqueId, ignoreCase: true) == 0)
 			{
 				return topographySurface2;
 			}
@@ -7197,6 +7180,19 @@ public class TopographySurfaceManagement
 	public static bool AddSubRegionBuildingPadsToMainSurfaceList(Document _Document, List<TopographySurfaceContainer> _SubRegionBuildingPadList, ref List<TopographySurfaceContainer> _SurfaceList, bool _bAddBuildingPadsIfPresent, ref bool _bIssueBuildingPadWarning)
 	{
 		bool result = _bAddBuildingPadsIfPresent;
+		if (TerrainApi.UsesToposolids && _SurfaceList != null && _SubRegionBuildingPadList != null)
+		{
+			foreach (var subdivision in _SubRegionBuildingPadList)
+			{
+				if (subdivision.TopographySurface == null) continue;
+				var hostId = TerrainApi.HostId(subdivision.TopographySurface);
+				var host = _SurfaceList.FirstOrDefault(x => x.TopographySurface != null && x.TopographySurface.Id == hostId);
+				if (host != null && !host.SubregionBuildingPadList.Contains(subdivision)) host.SubregionBuildingPadList.Add(subdivision);
+			}
+			// Native subdivisions follow the host shape; no legacy point merge or
+			// replacement of the host is needed.
+			return false;
+		}
 		if (_SurfaceList != null && _SurfaceList.Count > 0 && _SubRegionBuildingPadList != null && _SubRegionBuildingPadList.Count > 0)
 		{
 			List<TopographySurfaceContainer> list = null;
@@ -7741,19 +7737,10 @@ public class TopographySurfaceManagement
 			if (PointXYZList.Count > 0)
 			{
 				RemoveDuplicateXY(ref PointXYZList);
-				TopographySurface topographySurface = TopographySurface.Create(_Document, PointXYZList);
+				TopographySurface topographySurface = TerrainApi.Create(_Document, PointXYZList, _ProposedSurface.TopographySurface);
 				_Document.Regenerate();
 				progressBarForm.UpdateProgressBar(7);
-				parameter = ((Element)_ProposedSurface.TopographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-				if (parameter != null && parameter.AsElementId() != null && parameter.AsElementId() != ElementId.InvalidElementId)
-				{
-					parameter2 = ((Element)topographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-					if (parameter2 != null && !parameter2.IsReadOnly)
-					{
-						ElementId value2 = parameter.AsElementId();
-						parameter2.Set(value2);
-					}
-				}
+				TerrainApi.CopyMaterial(_ProposedSurface.TopographySurface, topographySurface);
 				parameter = ((Element)_ProposedSurface.TopographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
 				if (parameter != null && parameter.AsElementId() != null && parameter.AsElementId() != ElementId.InvalidElementId)
 				{
@@ -7774,10 +7761,10 @@ public class TopographySurfaceManagement
 						parameter2.Set(value4);
 					}
 				}
-				parameter = ((Element)_ProposedSurface.TopographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+				parameter = TerrainApi.NameParameter(((Element)_ProposedSurface.TopographySurface));
 				if (parameter != null && parameter.AsString() != null && parameter.AsString() != string.Empty)
 				{
-					parameter2 = ((Element)topographySurface).get_Parameter(BuiltInParameter.ROOM_NAME);
+					parameter2 = TerrainApi.NameParameter(((Element)topographySurface));
 					if (parameter2 != null && !parameter2.IsReadOnly)
 					{
 						parameter2.Set(parameter.AsString());
@@ -7806,12 +7793,12 @@ public class TopographySurfaceManagement
 	public static List<TopographySurfaceContainer> FindAllMainSurfaces(Document _Document, bool _bFindMinMaxPoints)
 	{
 		FilteredElementCollector filteredElementCollector = new FilteredElementCollector(_Document);
-		IList<Element> list = filteredElementCollector.OfClass(typeof(TopographySurface)).OfCategory(BuiltInCategory.OST_Topography).ToElements();
+		IList<Element> list = filteredElementCollector.OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category).ToElements();
 		List<TopographySurface> list2 = new List<TopographySurface>();
 		List<TopographySurfaceContainer> list3 = new List<TopographySurfaceContainer>();
 		foreach (Element item2 in list)
 		{
-			TopographySurface item = item2 as TopographySurface;
+			TopographySurface item = TerrainApi.AsSurface(item2);
 			list2.Add(item);
 		}
 		for (int i = 0; i < list2.Count; i++)
@@ -7962,7 +7949,7 @@ public class TopographySurfaceManagement
 			{
 				continue;
 			}
-			if (element is TopographySurface topographySurface2)
+			if (TerrainApi.AsSurface(element) is {} topographySurface2)
 			{
 				try
 				{
