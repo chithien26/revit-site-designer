@@ -35,6 +35,12 @@ public class StreetForm : BaseForm
 
 	public FamilySymbol StreetFamilySymbol => m_StreetFamilySymbol;
 
+	public double PavementWidth
+	{
+		get => m_dWidth;
+		set { if (value > 0.0) m_dWidth = value; }
+	}
+
 	public StreetForm(FamilySymbol _FamilySymbol, Eps_Leg _CurrentLeg)
 		: base(_CurrentLeg)
 	{
@@ -179,6 +185,54 @@ public class StreetForm : BaseForm
 		return list;
 	}
 
+	private bool TrySweepTypeSection(List<Solid> pavement, List<Solid> leftCurbs, List<Solid> rightCurbs)
+	{
+		ElementId pavementMaterial = MaterialId(RevitParameters.StreetPavementSurfaceParameter);
+		double half = m_dWidth / 2.0;
+		double depth = Math.Max(m_dSubgradeDepth, 0.04);
+		Solid strip = SitePavementOverlay.CreateOffsetStrip(m_MassLeg, half, depth, pavementMaterial);
+		if (strip == null) return false;
+		pavement.Add(strip);
+		TrySweepCurbSections(leftCurbs, rightCurbs);
+		RuntimeDiagnostics.Write("Street continuous strip width=" + m_dWidth + " depth=" + depth + " ft; curbs=" + (leftCurbs.Count + rightCurbs.Count) + ".");
+		return true;
+	}
+
+	private void TrySweepCurbSections(List<Solid> leftCurbs, List<Solid> rightCurbs)
+	{
+		if (m_LeftCurbForm == null && m_RightCurbForm == null) return;
+		ElementId curbMaterial = MaterialId(RevitParameters.StreetCurbMaterialParameter);
+		double half = m_dWidth / 2.0;
+		double curbWidth = 1.0;
+		double curbHeight = 0.5;
+		double gutterWidth = 0.0;
+		Parameter parameter = StreetFamilySymbol?.LookupParameter(RevitParameters.StreetCurbWidthParameter);
+		if (parameter != null && parameter.AsDouble() > 0.0) curbWidth = parameter.AsDouble();
+		parameter = StreetFamilySymbol?.LookupParameter(RevitParameters.StreetCurbHeightParameter);
+		if (parameter != null && parameter.AsDouble() > 0.0) curbHeight = parameter.AsDouble();
+		parameter = StreetFamilySymbol?.LookupParameter(RevitParameters.StreetGutterWidthParameter);
+		if (parameter != null && parameter.AsDouble() > 0.0) gutterWidth = parameter.AsDouble();
+		double inner = half + gutterWidth;
+		double outer = inner + curbWidth;
+		if (m_LeftCurbForm != null)
+		{
+			Solid left = SitePavementOverlay.CreateOffsetBand(m_MassLeg, inner, outer, 1, curbHeight, curbMaterial);
+			if (left != null) leftCurbs.Add(left);
+		}
+		if (m_RightCurbForm != null)
+		{
+			Solid right = SitePavementOverlay.CreateOffsetBand(m_MassLeg, inner, outer, 2, curbHeight, curbMaterial);
+			if (right != null) rightCurbs.Add(right);
+		}
+	}
+
+	private ElementId MaterialId(string parameterName)
+	{
+		Parameter parameter = StreetFamilySymbol?.LookupParameter(parameterName);
+		if (parameter == null) return ElementId.InvalidElementId;
+		return RevitIds.Create(parameter.AsInteger());
+	}
+
 	private List<Solid> CreateBlends(ref List<Solid> _LeftCurbLoftFormList, ref List<Solid> _RightCurbLoftFormList)
 	{
 		List<Solid> list = new List<Solid>();
@@ -188,6 +242,28 @@ public class StreetForm : BaseForm
 		m_ProgressBarForm.Message = EPShared.LocalRM.GetString("ProgressBarCreatingStreetMassMessage");
 		m_ProgressBarForm.MinValue = 0;
 		m_ProgressBarForm.MaxValue = 0;
+		if (TrySweepTypeSection(list, _LeftCurbLoftFormList, _RightCurbLoftFormList))
+		{
+			m_ProgressBarForm.SetMaxValue();
+			Thread.Sleep(150);
+			m_ProgressBarForm.Close();
+			return list;
+		}
+		ElementId pavementMaterial = ElementId.InvalidElementId;
+		Parameter pavementParameter = StreetFamilySymbol?.LookupParameter(RevitParameters.StreetPavementSurfaceParameter);
+		if (pavementParameter != null)
+			pavementMaterial = RevitIds.Create(pavementParameter.AsInteger());
+		List<Solid> swept = SitePavementOverlay.SweepRibbon(m_MassLeg, m_dWidth, m_dSubgradeDepth, pavementMaterial);
+		if (swept != null && swept.Count > 0)
+		{
+			RuntimeDiagnostics.Write("Street ribbon sweep created " + swept.Count + " solid(s); width=" + m_dWidth + " depth=" + m_dSubgradeDepth + " ft.");
+			list.AddRange(swept);
+			TrySweepCurbSections(_LeftCurbLoftFormList, _RightCurbLoftFormList);
+			m_ProgressBarForm.SetMaxValue();
+			Thread.Sleep(150);
+			m_ProgressBarForm.Close();
+			return list;
+		}
 		List<List<CurveLoop>> _LeftCurbArrayArrayList = new List<List<CurveLoop>>();
 		List<List<CurveLoop>> _RightCurbArrayArrayList = new List<List<CurveLoop>>();
 		List<List<CurveLoop>> curveLoopArrayArray = GetCurveLoopArrayArray(ref _LeftCurbArrayArrayList, ref _RightCurbArrayArrayList);
@@ -279,6 +355,7 @@ public class StreetForm : BaseForm
 		}
 		catch (Exception ex)
 		{
+			RuntimeDiagnostics.Write("CreateLoftGeometry failed: " + ex.Message);
 			if (string.Compare(ex.Message, "The attempted operation is not permitted in this type of family.", ignoreCase: true) == 0)
 			{
 				_strErrorMessage = EPShared.LocalRM.GetString("StreetTemplateNotMassTypeMessage");

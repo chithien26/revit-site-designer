@@ -118,8 +118,20 @@ public class WpfForm : Forms.Form
     }
     public new void Close()
     {
-        if (window != null) { if (!closing) window.Close(); }
-        else base.Close();
+        var opened = window;
+        if (opened == null)
+        {
+            if (!IsDisposed) base.Close();
+            return;
+        }
+        try
+        {
+            if (opened.IsVisible) opened.Hide();
+            if (!closing && window != null) window.Close();
+        }
+        catch (InvalidOperationException)
+        {
+        }
     }
     public new void Hide() { if (window != null) window.Hide(); }
     public new void Refresh()

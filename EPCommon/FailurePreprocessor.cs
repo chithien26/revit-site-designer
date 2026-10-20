@@ -46,6 +46,7 @@ public class FailurePreprocessor : IFailuresPreprocessor
 				}
 			}
 		}
+		TerrainFailures.DeleteExpectedWarnings(FailuresAccessor);
 		return FailureProcessingResult.Continue;
 	}
 }

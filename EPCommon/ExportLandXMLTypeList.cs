@@ -135,6 +135,10 @@ public class ExportLandXMLTypeList : EPForm
 		foreach (Element item in list)
 		{
 			TopographySurface topographySurface = TerrainApi.AsSurface(item);
+			if (topographySurface == null || topographySurface.IsSiteSubRegion)
+			{
+				continue;
+			}
 			m_SurfaceList.Add(new TopographySurfaceContainer(m_CurrentDocument.Application, topographySurface, _bFindMinMaxPoints: true));
 		}
 	}

@@ -546,7 +546,7 @@ public class SettingsForm : EPForm
 			text = EPShared.LocalRM.GetString("LandcaddRibbonTab") + " " + EPShared.LocalRM.GetString("SettingRibbonButton");
 			break;
 		case RevitProduct.SITES:
-			text = EPShared.LocalRM.GetString("LandcaddSitesRibbonTab") + " " + EPShared.LocalRM.GetString("SettingRibbonButton");
+			text = EPShared.SitesRibbonTab + " " + EPShared.LocalRM.GetString("SettingRibbonButton");
 			break;
 		}
 		Text = text;

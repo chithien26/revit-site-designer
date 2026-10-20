@@ -77,15 +77,19 @@ public sealed class WpfDialogPresenter : IDisposable
     }
     internal void Click(Forms.Control control) => Run(() =>
     {
-        // Commit a focused editor before OK, matching dialog validation order.
-        Keyboard.ClearFocus();
-        var validation = new CancelEventArgs();
-        foreach (var pair in controls)
+        bool commitEditors = ReferenceEquals(form.AcceptButton, control)
+            || (control is Forms.Button accept && accept.DialogResult == Forms.DialogResult.OK);
+        if (commitEditors)
         {
-            if (!pair.Value.IsEnabled || !pair.Value.IsVisible) continue;
-            Raise(pair.Key, "OnValidating", validation);
-            if (validation.Cancel) { pair.Value.Focus(); return; }
-            Raise(pair.Key, "OnValidated", EventArgs.Empty);
+            Keyboard.ClearFocus();
+            var validation = new CancelEventArgs();
+            foreach (var pair in controls)
+            {
+                if (!pair.Value.IsEnabled || !pair.Value.IsVisible) continue;
+                Raise(pair.Key, "OnValidating", validation);
+                if (validation.Cancel) { pair.Value.Focus(); return; }
+                Raise(pair.Key, "OnValidated", EventArgs.Empty);
+            }
         }
         Raise(control, "OnClick", EventArgs.Empty);
         if (control is Forms.Button button && button.DialogResult != Forms.DialogResult.None && form.DialogResult == Forms.DialogResult.None)
@@ -356,8 +360,15 @@ public sealed class WpfDialogPresenter : IDisposable
                 var desired = ((IEnumerable<Row>)grid.ItemsSource).Where(x => x.Source.Selected).ToArray();
                 if (!grid.SelectedItems.Cast<Row>().SequenceEqual(desired))
                 {
-                    grid.SelectedItems.Clear();
-                    foreach (var item in desired) grid.SelectedItems.Add(item);
+                    if (grid.SelectionMode == DataGridSelectionMode.Single)
+                    {
+                        grid.SelectedItem = desired.FirstOrDefault();
+                    }
+                    else
+                    {
+                        grid.SelectedItems.Clear();
+                        foreach (var item in desired) grid.SelectedItems.Add(item);
+                    }
                 }
             }
         });

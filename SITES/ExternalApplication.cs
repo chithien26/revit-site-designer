@@ -148,7 +148,6 @@ public class ExternalApplication : IExternalApplication
 	private void ApplicationClosingHandler(object sender, ApplicationClosingEventArgs args)
 	{
 		m_RunCommands.epl_UnloadHelper(ApplicationUtility.Is64BitInstall);
-		EPShared.eplLicM_ReturnLicense();
 	}
 
 	private void DialogBoxShowingHandler(object sender, DialogBoxShowingEventArgs args)
@@ -215,7 +214,7 @@ public class ExternalApplication : IExternalApplication
 		for (int i = 0; i < ribbonControl.Tabs.Count; i++)
 		{
 			ribbonTab = ribbonControl.Tabs[i];
-			if (string.Compare(ribbonTab.Id, EPShared.LocalRM.GetString("LandcaddSitesRibbonTab"), ignoreCase: true) == 0)
+			if (string.Compare(ribbonTab.Id, EPShared.SitesRibbonTab, ignoreCase: true) == 0)
 			{
 				num = i;
 			}
@@ -258,9 +257,9 @@ public class ExternalApplication : IExternalApplication
 	private void CreateSitesRibbon(UIControlledApplication application, int _nLandcaddRibbonIndex)
 	{
 		string location = RuntimePaths.ManagedAssemblyPath;
-		application.CreateRibbonTab(EPShared.LocalRM.GetString("LandcaddSitesRibbonTab"));
+		application.CreateRibbonTab(EPShared.SitesRibbonTab);
 		Autodesk.Revit.UI.RibbonPanel ribbonPanel = null;
-		ribbonPanel = application.CreateRibbonPanel(EPShared.LocalRM.GetString("LandcaddSitesRibbonTab"), EPShared.LocalRM.GetString("ImportExportRibbonPanel"));
+		ribbonPanel = application.CreateRibbonPanel(EPShared.SitesRibbonTab, EPShared.LocalRM.GetString("ImportExportRibbonPanel"));
 		if (ribbonPanel == null)
 		{
 			return;
@@ -274,7 +273,7 @@ public class ExternalApplication : IExternalApplication
 		pushButtonData2.SetContextualHelp(new ContextualHelp(ContextualHelpType.ContextId, "HID_SDexportLandXML"));
 		pushButtonData2.Image = EPCommon.SafeResources.ToImageSource(Resources.ExportLandXML);
 		ribbonPanel.AddStackedItems(pushButtonData, pushButtonData2);
-		ribbonPanel = application.CreateRibbonPanel(EPShared.LocalRM.GetString("LandcaddSitesRibbonTab"), EPShared.LocalRM.GetString("ConvertRibbonPanel"));
+		ribbonPanel = application.CreateRibbonPanel(EPShared.SitesRibbonTab, EPShared.LocalRM.GetString("ConvertRibbonPanel"));
 		PushButtonData pushButtonData3 = new PushButtonData(EPShared.LocalRM.GetString("SetBaseTopoSurfaceRibbonButton"), TerrainText.ForDisplay(EPShared.LocalRM.GetString("SetBaseTopoSurfaceRibbonButton")), location, typeof(SetBaseToposurfaceCommand).FullName);
 		pushButtonData3.ToolTip = TerrainText.ForDisplay(EPShared.LocalRM.GetString("SetBaseTopoSurfaceRibbonToolTip"));
 		pushButtonData3.LongDescription = TerrainText.ForDisplay(EPShared.LocalRM.GetString("SetBaseTopoSurfaceRibbonToolTipLongDescription"));
@@ -286,7 +285,7 @@ public class ExternalApplication : IExternalApplication
 		pushButtonData4.SetContextualHelp(new ContextualHelp(ContextualHelpType.ContextId, "HID_SDtopoConversion"));
 		pushButtonData4.Image = EPCommon.SafeResources.ToImageSource(Resources.ToposurfaceConversion);
 		ribbonPanel.AddStackedItems(pushButtonData3, pushButtonData4);
-		ribbonPanel = application.CreateRibbonPanel(EPShared.LocalRM.GetString("LandcaddSitesRibbonTab"), EPShared.LocalRM.GetString("LocateRibbonPanel"));
+		ribbonPanel = application.CreateRibbonPanel(EPShared.SitesRibbonTab, EPShared.LocalRM.GetString("LocateRibbonPanel"));
 		if (ribbonPanel == null)
 		{
 			return;
@@ -338,7 +337,7 @@ public class ExternalApplication : IExternalApplication
 		pushButtonData12.SetContextualHelp(new ContextualHelp(ContextualHelpType.ContextId, "HID_SDcurbCreate"));
 		pushButtonData12.Image = EPCommon.SafeResources.ToImageSource(Resources.LocateCurb);
 		ribbonPanel.AddStackedItems(pushButtonData10, pushButtonData11, pushButtonData12);
-		ribbonPanel = application.CreateRibbonPanel(EPShared.LocalRM.GetString("LandcaddSitesRibbonTab"), EPShared.LocalRM.GetString("ModifyRibbonPanel"));
+		ribbonPanel = application.CreateRibbonPanel(EPShared.SitesRibbonTab, EPShared.LocalRM.GetString("ModifyRibbonPanel"));
 		if (ribbonPanel == null)
 		{
 			return;
@@ -386,7 +385,7 @@ public class ExternalApplication : IExternalApplication
 		pushButtonData20.SetContextualHelp(new ContextualHelp(ContextualHelpType.ContextId, "HID_SDcurbModify"));
 		pushButtonData20.Image = EPCommon.SafeResources.ToImageSource(Resources.ModifyCurb);
 		ribbonPanel.AddStackedItems(pushButtonData18, pushButtonData19, pushButtonData20);
-		ribbonPanel = application.CreateRibbonPanel(EPShared.LocalRM.GetString("LandcaddSitesRibbonTab"), EPShared.LocalRM.GetString("ReportRibbonPanel"));
+		ribbonPanel = application.CreateRibbonPanel(EPShared.SitesRibbonTab, EPShared.LocalRM.GetString("ReportRibbonPanel"));
 		if (ribbonPanel == null)
 		{
 			return;
@@ -401,7 +400,7 @@ public class ExternalApplication : IExternalApplication
 		pushButtonData22.SetContextualHelp(new ContextualHelp(ContextualHelpType.ContextId, "HID_SDreports"));
 		pushButtonData22.Image = EPCommon.SafeResources.ToImageSource(Resources.Report);
 		ribbonPanel.AddStackedItems(pushButtonData21, pushButtonData22);
-		ribbonPanel = application.CreateRibbonPanel(EPShared.LocalRM.GetString("LandcaddSitesRibbonTab"), EPShared.LocalRM.GetString("FamilyManagerRibbonPanel"));
+		ribbonPanel = application.CreateRibbonPanel(EPShared.SitesRibbonTab, EPShared.LocalRM.GetString("FamilyManagerRibbonPanel"));
 		if (ribbonPanel != null)
 		{
 			PulldownButtonData pulldownButtonData = new PulldownButtonData(EPShared.LocalRM.GetString("FamilyManagerRibbonPanel"), EPShared.LocalRM.GetString("FamilyManagerRibbonPanel"));
@@ -439,14 +438,14 @@ public class ExternalApplication : IExternalApplication
 			pushButtonData28.SetContextualHelp(new ContextualHelp(ContextualHelpType.ContextId, "HID_SDfamilyMgrCurb"));
 			pushButtonData28.LargeImage = EPCommon.SafeResources.ToImageSource(Resources.CurbFamilyManager);
 			pulldownButton.AddPushButton(pushButtonData28);
-			ribbonPanel = application.CreateRibbonPanel(EPShared.LocalRM.GetString("LandcaddSitesRibbonTab"), EPShared.LocalRM.GetString("SettingRibbonButton"));
+			ribbonPanel = application.CreateRibbonPanel(EPShared.SitesRibbonTab, EPShared.LocalRM.GetString("SettingRibbonButton"));
 			if (ribbonPanel != null)
 			{
-				PushButtonData pushButtonData29 = new PushButtonData(EPShared.LocalRM.GetString("LandcaddSitesRibbonTab") + " " + EPShared.LocalRM.GetString("AboutRibbonButton"), EPShared.LocalRM.GetString("AboutRibbonButton"), location, typeof(SitesAboutCommand).FullName);
+				PushButtonData pushButtonData29 = new PushButtonData(EPShared.SitesRibbonTab + " " + EPShared.LocalRM.GetString("AboutRibbonButton"), EPShared.LocalRM.GetString("AboutRibbonButton"), location, typeof(SitesAboutCommand).FullName);
 				pushButtonData29.ToolTip = EPShared.LocalRM.GetString("AboutSiteworksRibbonToolTip");
 				pushButtonData29.SetContextualHelp(new ContextualHelp(ContextualHelpType.ContextId, "HID_SDabout"));
 				pushButtonData29.Image = EPCommon.SafeResources.ToImageSource(Resources.About);
-				PushButtonData pushButtonData30 = new PushButtonData(EPShared.LocalRM.GetString("LandcaddSitesRibbonTab") + " " + EPShared.LocalRM.GetString("SettingRibbonButton"), EPShared.LocalRM.GetString("SettingRibbonButton"), location, typeof(SitesSettingsCommand).FullName);
+				PushButtonData pushButtonData30 = new PushButtonData(EPShared.SitesRibbonTab + " " + EPShared.LocalRM.GetString("SettingRibbonButton"), EPShared.LocalRM.GetString("SettingRibbonButton"), location, typeof(SitesSettingsCommand).FullName);
 				pushButtonData30.ToolTip = EPShared.LocalRM.GetString("SettingRibbonToolTip");
 				pushButtonData30.SetContextualHelp(new ContextualHelp(ContextualHelpType.ContextId, "HID_SDsettings"));
 				pushButtonData30.Image = EPCommon.SafeResources.ToImageSource(Resources.Settings);

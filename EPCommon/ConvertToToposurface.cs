@@ -153,13 +153,13 @@ public class ConvertToToposurface
 				FamilyInstance _ProposedPlacementFamilyInstance = null;
 				FamilyInstance _BasePlacementFamilyInstance = null;
 				TopographySurfaceManagement.FindBaseLandcaddTopographySurface(m_Document, ref _BaseTopographySurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedTopographySurfaceContainer, ref _ProposedPlacementFamilyInstance, m_TransactionContainer);
-				if (_ProposedTopographySurfaceContainer != null && _ProposedTopographySurfaceContainer.TopographySurface != null && _ProposedPlacementFamilyInstance != null && string.Compare(_ProposedTopographySurfaceContainer.TopographySurface.UniqueId, topographySurface.UniqueId, ignoreCase: true) == 0)
+				if (_ProposedTopographySurfaceContainer != null && _ProposedTopographySurfaceContainer.TopographySurface != null && _ProposedPlacementFamilyInstance != null && TerrainApi.MatchesLinkedId(topographySurface.UniqueId, _ProposedTopographySurfaceContainer.TopographySurface))
 				{
-					((Element)_ProposedPlacementFamilyInstance).get_Parameter(new Guid(RevitParameters.UniqueIDGenericModelFamilyParameter))?.Set(topographySurface2.UniqueId);
+					_ProposedPlacementFamilyInstance.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter)?.Set(topographySurface2.UniqueId);
 				}
-				if (_BaseTopographySurfaceContainer != null && _BaseTopographySurfaceContainer.TopographySurface != null && _BasePlacementFamilyInstance != null && string.Compare(_BaseTopographySurfaceContainer.TopographySurface.UniqueId, topographySurface.UniqueId, ignoreCase: true) == 0)
+				if (_BaseTopographySurfaceContainer != null && _BaseTopographySurfaceContainer.TopographySurface != null && _BasePlacementFamilyInstance != null && TerrainApi.MatchesLinkedId(topographySurface.UniqueId, _BaseTopographySurfaceContainer.TopographySurface))
 				{
-					((Element)_BasePlacementFamilyInstance).get_Parameter(new Guid(RevitParameters.UniqueIDGenericModelFamilyParameter))?.Set(topographySurface2.UniqueId);
+					_BasePlacementFamilyInstance.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter)?.Set(topographySurface2.UniqueId);
 				}
 			}
 			if (flag)
@@ -320,7 +320,7 @@ public class ConvertToToposurface
 				}
 				if (topographySurface != null)
 				{
-					TerrainApi.NameParameter(((Element)topographySurface))?.Set(_strSurfaceName);
+					TerrainApi.SetUniqueName(topographySurface, _strSurfaceName);
 					Parameter parameter = ((Element)topographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
 					if (parameter != null && m_DisplayForm.SelectedPhase != null)
 					{

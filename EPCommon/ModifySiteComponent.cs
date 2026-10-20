@@ -2862,19 +2862,11 @@ public class ModifySiteComponent
 					}
 					if (sitePlacementSettings.IslandSurfaceID != string.Empty)
 					{
-						TopographySurface topographySurface3 = TopographySurfaceManagement.FindTopoSurfaceInstance(m_Document, sitePlacementSettings.IslandSurfaceID);
-						if (topographySurface3 != null)
-						{
-							m_Document.Delete(topographySurface3.Id);
-						}
+						SitePavementOverlay.DeleteByUniqueId(m_Document, sitePlacementSettings.IslandSurfaceID);
 					}
 					if (sitePlacementSettings.ParkingLotSurfaceID != string.Empty)
 					{
-						TopographySurface topographySurface4 = TopographySurfaceManagement.FindTopoSurfaceInstance(m_Document, sitePlacementSettings.ParkingLotSurfaceID);
-						if (topographySurface4 != null)
-						{
-							m_Document.Delete(topographySurface4.Id);
-						}
+						SitePavementOverlay.DeleteByUniqueId(m_Document, sitePlacementSettings.ParkingLotSurfaceID);
 					}
 					if (sitePlacementSettings.ParentTopoSurfaceID != string.Empty)
 					{
@@ -3138,7 +3130,7 @@ public class ModifySiteComponent
 			{
 				if (_TopoPointList[num12] != null)
 				{
-					for (int num13 = 0; num13 < topographySurfaceContainer2.SubregionBuildingPadList.Count; num13++)
+					for (int num13 = 0; !TerrainApi.UsesToposolids && num13 < topographySurfaceContainer2.SubregionBuildingPadList.Count; num13++)
 					{
 						if (topographySurfaceContainer2.SubregionBuildingPadList[num13] == null)
 						{
@@ -3190,18 +3182,29 @@ public class ModifySiteComponent
 				sDTimer.Start();
 				SDTimer sDTimer2 = new SDTimer("Traverse_Point_Modify", m_Document.Application);
 				sDTimer2.Start();
+				bool toposolidOverlay = TerrainApi.UsesToposolids;
 				HashSet<XYZ> hashSet = new HashSet<XYZ>(list9, new XYZEqualityComparer());
-				for (int num14 = PointXYZList.Count - 1; num14 >= 0; num14--)
+				if (!toposolidOverlay)
 				{
-					if (hashSet.Contains(PointXYZList[num14]))
+					for (int num14 = PointXYZList.Count - 1; num14 >= 0; num14--)
 					{
-						hashSet.Remove(PointXYZList[num14]);
-						PointXYZList.RemoveAt(num14);
+						if (hashSet.Contains(PointXYZList[num14]))
+						{
+							hashSet.Remove(PointXYZList[num14]);
+							PointXYZList.RemoveAt(num14);
+						}
 					}
 				}
 				sDTimer2.Stop();
 				m_TransactionContainer.Start("Update Topo Points");
-				if (hashSet.Count <= PointXYZList.Count)
+				if (toposolidOverlay)
+				{
+					if (TopographySurfaceManagement.ReplacesInteriorPatch(m_CurrentFamilyType))
+					{
+						TopographySurfaceManagement.ApplyInteriorPointEdits(topographySurfaceContainer2.TopographySurface, PointXYZList, replaceUnmatched: true);
+					}
+				}
+				else if (hashSet.Count <= PointXYZList.Count)
 				{
 					int num15 = 0;
 					foreach (XYZ item10 in hashSet)
@@ -3249,7 +3252,7 @@ public class ModifySiteComponent
 				topographySurfaceContainer2.Refresh();
 				m_Document.Regenerate();
 				progressBarForm.UpdateProgressBar(7);
-				if (topographySurfaceContainer2.SubregionBuildingPadList != null && topographySurfaceContainer2.SubregionBuildingPadList.Count > 0)
+				if (!TerrainApi.UsesToposolids && topographySurfaceContainer2.SubregionBuildingPadList != null && topographySurfaceContainer2.SubregionBuildingPadList.Count > 0)
 				{
 					List<TopographySurfaceContainer> surfaceList = TopographySurfaceManagement.FindAllMainSurfaces(m_Document, _bFindMinMaxPoints: true);
 					Eps_Point eps_Point = TopographySurfaceManagement.FindToposurfaceAdjustmentPoint(m_ProposedSurface, surfaceList);
@@ -3499,11 +3502,7 @@ public class ModifySiteComponent
 					}
 					if (sitePlacementSettings.IslandSurfaceID != string.Empty)
 					{
-						TopographySurface topographySurface5 = TopographySurfaceManagement.FindTopoSurfaceInstance(m_Document, sitePlacementSettings.IslandSurfaceID);
-						if (topographySurface5 != null)
-						{
-							m_Document.Delete(topographySurface5.Id);
-						}
+						SitePavementOverlay.DeleteByUniqueId(m_Document, sitePlacementSettings.IslandSurfaceID);
 					}
 					m_TransactionContainer.EndTransaction();
 					if (m_ParkingLotCurbSiteCompList[num19].ProposedLeg != null && m_ParkingLotCurbSiteCompList[num19].ProposedElementSet != null)
@@ -3570,7 +3569,7 @@ public class ModifySiteComponent
 					PointXYZList.Add(_ParkingLotTopoPointList[num25].XYZ);
 				}
 				progressBarForm.UpdateProgressBar(1);
-				if (PointXYZList.Count > 0)
+				if (PointXYZList.Count > 0 && !TerrainApi.UsesToposolids && _ParkingLotSurface?.TopographySurface != null)
 				{
 					TopographySurfaceManagement.RemoveDuplicateXY(ref PointXYZList);
 					TopographySurface topographySurface6 = TerrainApi.Create(m_Document, PointXYZList, _ParkingLotSurface.TopographySurface);
@@ -3630,14 +3629,10 @@ public class ModifySiteComponent
 							parameter2.Set(value5);
 						}
 					}
-					parameter = TerrainApi.NameParameter(((Element)_ParkingLotSurface.TopographySurface));
-					if (parameter != null && parameter.AsString() != null && parameter.AsString() != string.Empty)
+					string previousIslandName = TerrainApi.NameParameter(((Element)_ParkingLotSurface.TopographySurface))?.AsString();
+					if (!string.IsNullOrEmpty(previousIslandName))
 					{
-						parameter2 = TerrainApi.NameParameter(((Element)topographySurface6));
-						if (parameter2 != null && !parameter2.IsReadOnly)
-						{
-							parameter2.Set(parameter.AsString());
-						}
+						TerrainApi.SetUniqueName(topographySurface6, previousIslandName);
 					}
 					elementSet = m_FamilyInstanceComponentWrapper.GetFamilyInstanceElementSet();
 					if (elementSet != null && elementSet.Size > 0)
@@ -3652,6 +3647,10 @@ public class ModifySiteComponent
 						}
 					}
 					m_Document.Delete(_ParkingLotSurface.TopographySurface.Id);
+					if (!string.IsNullOrEmpty(previousIslandName))
+					{
+						TerrainApi.SetUniqueName(topographySurface6, previousIslandName);
+					}
 					progressBarForm.UpdateProgressBar(3);
 				}
 				progressBarForm.SetMaxValue();

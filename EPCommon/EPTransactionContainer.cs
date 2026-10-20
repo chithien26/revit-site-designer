@@ -52,6 +52,7 @@ public class EPTransactionContainer : System.IDisposable
 			TransactionStatus transactionStatus = ((!(_strTransactionName != string.Empty)) ? m_Transaction.Start() : m_Transaction.Start(_strTransactionName));
 			if (transactionStatus == TransactionStatus.Started)
 			{
+				FailureHandlingOptions(TerrainFailures.ExpectedWarningIds());
 				return true;
 			}
 		}
@@ -75,12 +76,15 @@ public class EPTransactionContainer : System.IDisposable
 			{
 				return true;
 			}
-#if !REVIT2022 && !REVIT2023
-			if (m_TopographyEditScope != null)
+			if (m_Transaction.HasStarted() && !m_Transaction.HasEnded())
 			{
-				DisposeTopographyEditScope();
-				throw new System.InvalidOperationException("Revit rolled back the terrain changes.");
+				m_Transaction.RollBack();
 			}
+#if !REVIT2022 && !REVIT2023
+			DisposeTopographyEditScope();
+			throw new System.InvalidOperationException("Revit rolled back the terrain changes.");
+#else
+			DisposeTopographyEditScope();
 #endif
 		}
 		return false;

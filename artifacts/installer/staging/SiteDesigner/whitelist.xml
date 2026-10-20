@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WhiteList expiration="1650365365000">
+
+	<Custom>
+		<!-- Explicitly specify waypoint/state/attribute that needs to be included. RuntimeName is the name of a waypoint/state/attribute; Type is one of W/S/A: W - waypoint, S - state, A - attribute -->
+		<!-- Install-related -->
+		<Item Type="W" RuntimeName="wp.setup"/>
+		<Item Type="W" RuntimeName="wp.setup.initialization.begin"/>
+		<Item Type="W" RuntimeName="wp.setup.initialization.end"/>
+		<Item Type="W" RuntimeName="wp.setup.configuration.begin"/>
+		<Item Type="W" RuntimeName="wp.setup.configuration.end"/>
+		<Item Type="W" RuntimeName="wp.setup.installation.begin"/>
+		<Item Type="W" RuntimeName="wp.setup.installation.end"/>
+		<Item Type="A" RuntimeName="a.IsClientLogging"/>
+		<Item Type="A" RuntimeName="a.IsNetworkLogging"/>
+		<Item Type="A" RuntimeName="a.DeploymentMode"/>
+		<Item Type="A" RuntimeName="a.DeploymentUIMode"/>
+		<Item Type="A" RuntimeName="a.suitename"/>
+		<Item Type="A" RuntimeName="a.setupui.language"/>
+		<Item Type="A" RuntimeName="a.setupui.uimode"/>
+		<Item Type="A" RuntimeName="a.isSilent"/>
+		<Item Type="A" RuntimeName="a.sn"/>
+		<Item Type="A" RuntimeName="a.productkey"/>
+		<Item Type="A" RuntimeName="a.system.platform"/>
+		<Item Type="A" RuntimeName="a.deploy.platform"/>
+		<Item Type="A" RuntimeName="a.isMaintenance"/>
+		<Item Type="A" RuntimeName="a.isDeploymentCreation"/>
+		<Item Type="A" RuntimeName="a.UiDisplay"/>
+		<Item Type="A" RuntimeName="a.setup"/>
+		<Item Type="A" RuntimeName="a.IsRegLiteEnabled"/>
+		<Item Type="A" RuntimeName="a.LeveledAlertsCount"/>
+		<Item Type="A" RuntimeName="a.setup.webMode"/>
+		<Item Type="A" RuntimeName="a.isInstallFromDeployment"/>
+		<Item Type="A" RuntimeName="a.setup.version"/>
+		<Item Type="A" RuntimeName="a.installnow.SessionID"/>
+		<Item Type="A" RuntimeName="a.ProductLineCode"/>
+		<Item Type="A" RuntimeName="a.ProductRelease"/>
+		
+		<!-- Product-related -->
+		<Item Type="W" RuntimeName="wp.product"/>
+		<Item Type="W" RuntimeName="wp.custom"/>
+		<Item Type="A" RuntimeName="a.product.installtype"/>
+		<Item Type="A" RuntimeName="a.product.hasadditionalfiles"/>
+		<Item Type="A" RuntimeName="a.product.contentloctype"/>
+		<Item Type="A" RuntimeName="a.product.contentname"/>
+		<Item Type="A" RuntimeName="a.product.contentpath"/>
+		<Item Type="A" RuntimeName="a.product.name"/>
+		<Item Type="A" RuntimeName="a.product.lpmode"/>
+		<Item Type="A" RuntimeName="a.product.language"/>
+		<Item Type="A" RuntimeName="a.product.islanguagedownloaded"/>
+		<Item Type="A" RuntimeName="a.product.upi"/>
+		<Item Type="A" RuntimeName="a.product.installstate"/>
+		<Item Type="A" RuntimeName="a.product.installaction"/>
+		<Item Type="A" RuntimeName="a.product.installlocation"/>
+		<Item Type="A" RuntimeName="a.product.licensetype"/>
+		<Item Type="A" RuntimeName="a.product.standalonenetworktype"/>
+		<Item Type="A" RuntimeName="a.product.serverpath"/>
+		<Item Type="A" RuntimeName="a.product.serverfmtpath"/>
+		<Item Type="A" RuntimeName="a.product.servertype"/>
+		<Item Type="A" RuntimeName="a.product.licenseserverdistributed"/>
+		<Item Type="A" RuntimeName="a.product.isSPdownloaded"/>
+		<Item Type="A" RuntimeName="a.product.SPmethod"/>
+		<Item Type="A" RuntimeName="a.product.other"/>
+		<Item Type="A" RuntimeName="a.install.status"/>
+		<Item Type="A" RuntimeName="a.deploy.status"/>
+		<Item Type="A" RuntimeName="a.product"/>
+		<Item Type="A" RuntimeName="a.product.installfeature"/>
+		<Item Type="A" RuntimeName="a.product.IsFirstExperienceChecked"/>
+		<Item Type="A" RuntimeName="a.product.IsIERequired"/>
+		<Item Type="A" RuntimeName="a.product.IsDWFxDefaultPublishFormat"/>
+		<Item Type="A" RuntimeName="a.product.DefaultProfileName"/>
+		<Item Type="A" RuntimeName="a.product.IsLiveUpdateEnabled"/>
+		<Item Type="A" RuntimeName="a.product.IsInfoChannelEnabled"/>
+		<Item Type="A" RuntimeName="a.product.IsCadMgrChannelEnabled"/>
+		<Item Type="A" RuntimeName="a.product.IsRSSFeedEnabled"/>
+		<Item Type="A" RuntimeName="a.product.IsDCEnabled"/>
+		<Item Type="A" RuntimeName="a.product.IsSubscCtrEnabled"/>
+		<Item Type="A" RuntimeName="a.product.IsUseOnlineHelpEnabled"/>
+		<Item Type="A" RuntimeName="a.product.IsCERRoundTripEnabled"/>
+		<Item Type="A" RuntimeName="a.product.IsSendPCNameEnabled"/>
+		<Item Type="A" RuntimeName="a.product.IsSearchLocCustomizable"/>
+		<Item Type="A" RuntimeName="a.product.IsRSSFeedCustomEnabled"/>
+        <Item Type="A" RuntimeName="a.product.IsFailureIgnorable"/>
+		<Item Type="A" RuntimeName="a.product.leveled.alert.type"/>
+		<Item Type="A" RuntimeName="a.product.configured.name"/>
+		<Item Type="A" RuntimeName="a.product.configured.value"/>
+		<Item Type="A" RuntimeName="a.product.featurename"/>
+		<Item Type="A" RuntimeName="a.product.featureaction"/>
+		<Item Type="A" RuntimeName="a.product.custom.property.name"/>
+		<Item Type="A" RuntimeName="a.product.custom.property.value"/>
+		<Item Type="A" RuntimeName="a.product.package.name"/>
+		<Item Type="A" RuntimeName="a.product.package.upi"/>
+		
+		<!-- UI-related -->
+		<Item Type="W" RuntimeName="wp.combobox"/>
+		<Item Type="W" RuntimeName="wp.editbox"/>
+		<Item Type="W" RuntimeName="wp.infolink"/>
+		<Item Type="W" RuntimeName="wp.documentationlink"/>
+		<Item Type="W" RuntimeName="wp.supportlink"/>
+		<Item Type="W" RuntimeName="wp.tab"/>
+		<Item Type="W" RuntimeName="wp.install.reboot"/>
+		<Item Type="W" RuntimeName="wp.warning"/>
+		<Item Type="W" RuntimeName="wp.downloadsp"/>
+		<Item Type="W" RuntimeName="wp.page"/>
+		<Item Type="W" RuntimeName="wp.button"/>
+		<Item Type="W" RuntimeName="wp.accordion.open"/>
+		<Item Type="W" RuntimeName="wp.accordion.close"/>
+		<Item Type="W" RuntimeName="wp.systemrequirelink"/>
+		<Item Type="W" RuntimeName="wp.leveled.alert.read"/>
+		<Item Type="W" RuntimeName="wp.dependency.alert.read"/>
+		<Item Type="W" RuntimeName="wp.download"/>
+		<Item Type="A" RuntimeName="a.page.name"/>
+		<Item Type="A" RuntimeName="a.button.caption"/>
+		<Item Type="A" RuntimeName="a.button.type"/>
+		<Item Type="A" RuntimeName="a.button.state"/>
+		<Item Type="A" RuntimeName="a.combobox.name"/>
+		<Item Type="A" RuntimeName="a.combobox.new.value"/>
+		<Item Type="A" RuntimeName="a.editbox.name"/>
+		<Item Type="A" RuntimeName="a.editbox.value"/>
+		<Item Type="A" RuntimeName="a.infolink.link"/>
+		<Item Type="A" RuntimeName="a.tab.name"/>
+		<Item Type="A" RuntimeName="a.warning.message"/>
+		<Item Type="A" RuntimeName="a.leveled.alert.prodname"/>
+		<Item Type="A" RuntimeName="a.leveled.alert.type"/>
+		<Item Type="A" RuntimeName="a.dependency.alert.prodname"/>
+		<Item Type="A" RuntimeName="a.dependency.alert.message"/>
+		<Item Type="A" RuntimeName="a.dependency.alert.decision"/>
+		<Item Type="A" RuntimeName="a.accordion.name"/>
+		<Item Type="A" RuntimeName="a.download.url"/>
+		<Item Type="A" RuntimeName="a.download.errmsg"/>
+		<Item Type="A" RuntimeName="a.download.errcode"/>
+		<Item Type="A" RuntimeName="a.download.eventid"/>
+		<Item Type="A" RuntimeName="a.download.retry.times"/>
+		<Item Type="A" RuntimeName="a.download.download.mode"/>
+		<Item Type="A" RuntimeName="a.download.retry.succeeded"/>
+		<Item Type="A" RuntimeName="a.download.fallback"/>
+
+		<!-- Event related -->
+		<Item Type="A" RuntimeName="a.event.name"/>
+		
+		<!-- Solution-Over-Error-Related -->
+		<Item Type="W" RuntimeName="wp.solution.over.error"/>
+		<Item Type="A" RuntimeName="a.solution.over.error.download.succeeded"/>
+		<Item Type="A" RuntimeName="a.solution.over.error.xml.version"/>
+		<Item Type="A" RuntimeName="a.solution.over.error.error.code"/>
+		<Item Type="A" RuntimeName="a.solution.over.error.error.string"/>
+		<Item Type="A" RuntimeName="a.solution.over.error.error.context"/>
+		<Item Type="A" RuntimeName="a.solution.over.error.mapped.AKN.Url"/>
+		<Item Type="A" RuntimeName="a.solution.over.error.query.AKN.Url"/>
+		<Item Type="A" RuntimeName="a.solution.over.error.product.name"/>
+		<Item Type="A" RuntimeName="a.solution.over.error.package.name"/>
+		<Item Type="A" RuntimeName="a.solution.over.error.packageUPI"/>
+		<Item Type="A" RuntimeName="a.solution.over.error.link.clicked"/>
+		<Item Type="A" RuntimeName="a.direct.download.link.error.string"/>
+		<Item Type="A" RuntimeName="a.direct.download.link"/>
+		<Item Type="A" RuntimeName="a.direct.download.link.clicked"/>
+		<Item Type="A" RuntimeName="a.direct.download.link.error.code"/>
+		<Item Type="A" RuntimeName="a.direct.download.link.error.msg"/>
+		<Item Type="A" RuntimeName="a.install.errmsg" />
+	</Custom>
+	
+	<Command>
+	<!-- Explicitly specify command name that needs to be included. -->
+	</Command>
+</WhiteList>

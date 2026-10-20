@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Site Designer 2025</Name>
+    <Assembly>SiteDesigner\SiteDesigner.dll</Assembly>
+    <AddInId>BE8C3528-82C3-4A7C-8096-94A8DA602025</AddInId>
+    <FullClassName>SITES.ExternalApplication</FullClassName>
+    <VendorId>SDGN</VendorId>
+    <VendorDescription>Site Designer multi-version migration</VendorDescription>
+  </AddIn>
+</RevitAddIns>

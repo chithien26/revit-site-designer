@@ -49,6 +49,8 @@ public class SitePlacementSettings
 
 	private int m_nProjectInnerSlopes;
 
+	private double m_dComponentWidth;
+
 	private EPTransactionContainer m_TransactionContainer;
 
 	public LandcaddID LocateType
@@ -240,6 +242,18 @@ public class SitePlacementSettings
 		set
 		{
 			m_nProjectInnerSlopes = value;
+		}
+	}
+
+	public double ComponentWidth
+	{
+		get
+		{
+			return m_dComponentWidth;
+		}
+		set
+		{
+			m_dComponentWidth = value;
 		}
 	}
 

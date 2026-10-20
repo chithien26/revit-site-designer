@@ -192,107 +192,84 @@ public class SiteComponentCreation
 		{
 			if (_bCheckForFamily && m_FamilyList.Count == 0)
 			{
-				List<string> list2 = new List<string>();
-				list2.Add(EPShared.LocalRM.GetString("AllwaysLoadDefaultFamiliesOption"));
-				list2.Add(EPShared.LocalRM.GetString("ContinueWOLoadFamilyOption"));
-				string strSettingName = "LocateSiteComponent";
-				string strWarningText = string.Empty;
 				string strSearchFilename = string.Empty;
 				string text = string.Empty;
 				switch (m_CurrentLandcaddId)
 				{
 				case LandcaddID.SoftTerrain:
-					strWarningText = EPShared.LocalRM.GetString("SoftTerrainFamilyNotLoadedMessage");
 					strSearchFilename = "Sample Soft Terrain.rfa";
 					text = EPShared.LocalRM.GetString("LoadSoftTerrainFamilyTransaction");
 					break;
 				case LandcaddID.Sidewalk:
-					strWarningText = EPShared.LocalRM.GetString("SideWalkFamilyNotLoadedMessage");
 					strSearchFilename = "Sample Sidewalk.rfa";
 					text = EPShared.LocalRM.GetString("LoadSidewalkFamilyTransaction");
 					break;
 				case LandcaddID.RetainingWall:
-					strWarningText = EPShared.LocalRM.GetString("RetainingWallFamilyNotLoadedMessage");
 					strSearchFilename = "Sample Retaining Wall.rfa";
 					text = EPShared.LocalRM.GetString("LoadRetainingWallFamilyTransaction");
 					break;
 				case LandcaddID.Street:
-					strWarningText = EPShared.LocalRM.GetString("StreetFamilyNotLoadedMessage");
 					strSearchFilename = "Sample Street.rfa";
 					text = EPShared.LocalRM.GetString("LoadStreetFamilyTransaction");
 					break;
 				case LandcaddID.Curb:
-					strWarningText = EPShared.LocalRM.GetString("CurbFamilyNotLoadedMessage");
 					strSearchFilename = "Sample Curb.rfa";
 					text = EPShared.LocalRM.GetString("LoadCurbFamilyTransaction");
 					break;
 				case LandcaddID.ParkingLot:
-					strWarningText = EPShared.LocalRM.GetString("ParkingLotFamilyNotLoadedMessage");
 					strSearchFilename = "Sample Parking Lot.rfa";
 					text = EPShared.LocalRM.GetString("LoadParkingLotFamilyTransaction");
 					break;
 				}
-				WarningOptionsForm warningOptionsForm = new WarningOptionsForm(EPShared.LocalRM.GetString("WarningDialog"), m_Document.PathName, strSettingName, strWarningText, list2, 0, _bDisplayOKCancel: true, _bDisplayDoNotShow: false, 0);
-				warningOptionsForm.ShowDialog();
-				if (warningOptionsForm.DialogResult == DialogResult.OK)
+				m_bContinueWithoutLoading = false;
+				if (RevitUtility.GetFullFamilyFilenameIfExist(strSearchFilename, ref _strFullFamilyFilename))
 				{
-					if (string.Compare(warningOptionsForm.WarningOption, EPShared.LocalRM.GetString("AllwaysLoadDefaultFamiliesOption"), ignoreCase: true) == 0)
+					int num2 = _strFullFamilyFilename.LastIndexOf("\\");
+					int num3 = _strFullFamilyFilename.LastIndexOf(".");
+					string strNewFamilyName = _strFullFamilyFilename.Substring(num2 + 1, num3 - num2 - 1);
+					if (CheckForDuplicateSymbols(strNewFamilyName))
 					{
-						m_bContinueWithoutLoading = false;
-						if (RevitUtility.GetFullFamilyFilenameIfExist(strSearchFilename, ref _strFullFamilyFilename))
+						RevitMessageBox.Show(EPShared.LocalRM.GetString("DuplicateFamilySymbolMessage"), EPShared.LocalRM.GetString("Warning"), MessageBoxIcon.Exclamation);
+						return;
+					}
+					m_TransactionContainer.Start(text + Path.GetFileName(_strFullFamilyFilename));
+					RevitUtility.LoadFamily(m_Document, _strFullFamilyFilename, out _Family, _bUseFailureHandling: true, ref m_TransactionContainer);
+					m_TransactionContainer.Commit();
+					if (_Family != null && _Family.GetFamilySymbolIds() != null)
+					{
+						foreach (ElementId familySymbolId in _Family.GetFamilySymbolIds())
 						{
-							int num2 = _strFullFamilyFilename.LastIndexOf("\\");
-							int num3 = _strFullFamilyFilename.LastIndexOf(".");
-							string strNewFamilyName = _strFullFamilyFilename.Substring(num2 + 1, num3 - num2 - 1);
-							if (CheckForDuplicateSymbols(strNewFamilyName))
+							if (!(m_Document.GetElement(familySymbolId) is FamilySymbol familySymbol4))
 							{
-								RevitMessageBox.Show(EPShared.LocalRM.GetString("DuplicateFamilySymbolMessage"), EPShared.LocalRM.GetString("Warning"), MessageBoxIcon.Exclamation);
-								return;
+								continue;
 							}
-							m_TransactionContainer.Start(text + Path.GetFileName(_strFullFamilyFilename));
-							RevitUtility.LoadFamily(m_Document, _strFullFamilyFilename, out _Family, _bUseFailureHandling: true, ref m_TransactionContainer);
-							m_TransactionContainer.Commit();
-							if (_Family != null && _Family.GetFamilySymbolIds() != null)
+							Parameter parameter = null;
+							parameter = familySymbol4.LookupParameter(RevitParameters.SiteworksIDFamilyParameter);
+							if (parameter == null || string.Compare(parameter.AsString(), Convert.ToInt32(m_CurrentLandcaddId).ToString("000"), ignoreCase: true) != 0)
 							{
-								foreach (ElementId familySymbolId in _Family.GetFamilySymbolIds())
+								continue;
+							}
+							bool flag4 = false;
+							for (num = 0; num < m_FamilyList.Count; num++)
+							{
+								if (string.Compare(m_FamilyList[num].FamilyName, familySymbol4.Family.Name, ignoreCase: true) == 0)
 								{
-									if (!(m_Document.GetElement(familySymbolId) is FamilySymbol familySymbol4))
-									{
-										continue;
-									}
-									Parameter parameter = null;
-									parameter = familySymbol4.LookupParameter(RevitParameters.SiteworksIDFamilyParameter);
-									if (parameter == null || string.Compare(parameter.AsString(), Convert.ToInt32(m_CurrentLandcaddId).ToString("000"), ignoreCase: true) != 0)
-									{
-										continue;
-									}
-									bool flag4 = false;
-									for (num = 0; num < m_FamilyList.Count; num++)
-									{
-										if (string.Compare(m_FamilyList[num].FamilyName, familySymbol4.Family.Name, ignoreCase: true) == 0)
-										{
-											m_FamilyList[num].FamilySymbolList.Add(familySymbol4);
-											flag4 = true;
-											break;
-										}
-									}
-									if (!flag4)
-									{
-										FamilyContainer familyContainer2 = new FamilyContainer(familySymbol4.Family.Name);
-										familyContainer2.FamilySymbolList.Add(familySymbol4);
-										m_FamilyList.Add(familyContainer2);
-									}
+									m_FamilyList[num].FamilySymbolList.Add(familySymbol4);
+									flag4 = true;
+									break;
 								}
-								if (m_FamilyList.Count <= 0)
-								{
-									RevitMessageBox.Show(EPShared.LocalRM.GetString("NoFamiliesGenericMessage"), EPShared.LocalRM.GetString("Warning"), MessageBoxIcon.Exclamation);
-								}
+							}
+							if (!flag4)
+							{
+								FamilyContainer familyContainer2 = new FamilyContainer(familySymbol4.Family.Name);
+								familyContainer2.FamilySymbolList.Add(familySymbol4);
+								m_FamilyList.Add(familyContainer2);
 							}
 						}
-					}
-					else if (string.Compare(warningOptionsForm.WarningOption, EPShared.LocalRM.GetString("ContinueWOLoadFamilyOption"), ignoreCase: true) == 0)
-					{
-						m_bContinueWithoutLoading = true;
+						if (m_FamilyList.Count <= 0)
+						{
+							RevitMessageBox.Show(EPShared.LocalRM.GetString("NoFamiliesGenericMessage"), EPShared.LocalRM.GetString("Warning"), MessageBoxIcon.Exclamation);
+						}
 					}
 				}
 			}
@@ -351,7 +328,15 @@ public class SiteComponentCreation
 
 	public void Run()
 	{
-		DisplayUI();
+		try
+		{
+			DisplayUI();
+		}
+		finally
+		{
+			m_TransactionContainer?.Dispose();
+			m_TransactionContainer = null;
+		}
 	}
 
 	private bool DisplayUI()
@@ -660,6 +645,10 @@ public class SiteComponentCreation
 			SitePlacementSettings sitePlacementSettings = null;
 			sitePlacementSettings = new SitePlacementSettings(m_CurrentLandcaddId, m_Document.ActiveView.GenLevel, type, m_PlacementSymbol, empty, m_nMaxExistingTopoDrawOrder, m_TransactionContainer);
 			sitePlacementSettings.IntersectionPlacementSymbol = m_IntersectionPlacementSymbol;
+			if (m_CurrentLandcaddId == LandcaddID.Street && m_DisplayForm != null)
+			{
+				sitePlacementSettings.ComponentWidth = m_DisplayForm.Width;
+			}
 			ElementSet elementSet = new ElementSet();
 			ElementSet elementSet2 = new ElementSet();
 			List<Element> list3 = new List<Element>();
@@ -764,6 +753,11 @@ public class SiteComponentCreation
 				{
 					num = num6 * parameter.AsDouble() / 2.0;
 					num2 = num6 * parameter.AsDouble() / 2.0;
+				}
+				if (m_DisplayForm.Width > 0.0)
+				{
+					num = m_DisplayForm.Width / 2.0;
+					num2 = num;
 				}
 				break;
 			}
@@ -1436,6 +1430,18 @@ public class SiteComponentCreation
 					{
 						RevitUtility.HideElementsInAllViews(m_Document, elementSet);
 					}
+					if (m_CurrentLandcaddId != LandcaddID.SoftTerrain && m_CurrentLandcaddId != LandcaddID.ParkingLot && m_CurrentLandcaddId != LandcaddID.FeatureLine && m_CurrentLandcaddId != LandcaddID.PointWipeout)
+					{
+						Eps_Leg eps_Leg = null;
+						for (eps_Leg = _EvalLeg; eps_Leg != null; eps_Leg = eps_Leg.Next)
+						{
+							if (eps_Leg.Arc != null && RevitDefines.LT(eps_Leg.Arc.Radius, _dOffsetWidth))
+							{
+								RevitMessageBox.Show(EPShared.LocalRM.GetString("InvalidRadiusString"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
+								return false;
+							}
+						}
+					}
 					if (m_CurrentLandcaddId == LandcaddID.RetainingWall)
 					{
 						if (!m_DisplayForm.RelativeElevationChecked)
@@ -1492,18 +1498,6 @@ public class SiteComponentCreation
 							}
 						}
 						_PlacementSettings.UseRightSide = _UseRightSide2;
-					}
-					if (m_CurrentLandcaddId != LandcaddID.SoftTerrain && m_CurrentLandcaddId != LandcaddID.ParkingLot && m_CurrentLandcaddId != LandcaddID.FeatureLine && m_CurrentLandcaddId != LandcaddID.PointWipeout)
-					{
-						Eps_Leg eps_Leg = null;
-						for (eps_Leg = _EvalLeg; eps_Leg != null; eps_Leg = eps_Leg.Next)
-						{
-							if (eps_Leg.Arc != null && RevitDefines.LT(eps_Leg.Arc.Radius, _dOffsetWidth))
-							{
-								RevitMessageBox.Show(EPShared.LocalRM.GetString("InvalidRadiusString"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
-								return false;
-							}
-						}
 					}
 					if (m_CurrentLandcaddId == LandcaddID.Curb)
 					{

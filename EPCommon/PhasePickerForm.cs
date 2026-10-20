@@ -97,6 +97,7 @@ public class PhasePickerForm : EPForm
 		m_PhaseCreatedLbl.Text = EPShared.LocalRM.GetString("AMP_PhaseCreatedFamilyParameterSurfaceInfoDialog");
 		m_PhaseDemolishedLbl.Text = EPShared.LocalRM.GetString("AMP_PhaseDemolishedFamilyParameterSurfaceInfoDialog");
 		m_ToposurfaceNameTextBox.Text = EPShared.LocalRM.GetString("ProposedToposurfaceString");
+		m_HideOriginalCheckBox.Checked = TerrainApi.UsesToposolids;
 		m_PhaseCreatedCmbBox.DataSource = m_PhaseCreatedList;
 		m_PhaseCreatedCmbBox.DisplayMember = EPShared.LocalRM.GetString("NameString");
 		if (m_PhaseCreatedCmbBox.Items.Count > 0)

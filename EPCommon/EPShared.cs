@@ -22,6 +22,21 @@ public class EPShared
 		}
 	}
 
+	public static string SitesRibbonTab
+	{
+		get
+		{
+			string name = LocalRM.GetString("LandcaddSitesRibbonTab");
+			if (string.IsNullOrEmpty(name)) name = "Site Designer";
+			string year = ApplicationUtility.RevitVersion;
+			if (!string.IsNullOrEmpty(year) && name.IndexOf(year, StringComparison.Ordinal) < 0)
+			{
+				name = name.Trim() + " " + year;
+			}
+			return name;
+		}
+	}
+
 	public static bool eplGeoE_ArePntsDuplicates2D(Eps_Point _FirstCheckPnt, Eps_Point _SecondCheckPnt)
 	{
 		return eplGeoE_ArePntsDuplicates2D(_FirstCheckPnt, _SecondCheckPnt, 1E-05);
@@ -2714,16 +2729,6 @@ public class EPShared
 	{
 		_strSupportPath = string.Empty;
 		return 6;
-	}
-
-	public static bool eplLicM_GetLicense()
-	{
-		return true;
-	}
-
-	public static bool eplLicM_ReturnLicense()
-	{
-		return true;
 	}
 
 	public static void epl_UnloadHelper(bool _bIs64BitInstall)

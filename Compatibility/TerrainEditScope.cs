@@ -46,7 +46,8 @@ public sealed class TerrainEditScope : IDisposable
             using(var transaction=new Transaction(document,name))
             {
                 transaction.Start();
-                transaction.SetFailureHandlingOptions(transaction.GetFailureHandlingOptions().SetFailuresPreprocessor(failuresPreprocessor).SetClearAfterRollback(true));
+                var preprocessor = failuresPreprocessor ?? new TopographyEditFailuresPreprocessor();
+                transaction.SetFailureHandlingOptions(transaction.GetFailureHandlingOptions().SetFailuresPreprocessor(preprocessor).SetClearAfterRollback(true));
                 edit.Apply();
                 if(transaction.Commit()!=TransactionStatus.Committed)throw new InvalidOperationException("Revit rolled back the Toposolid point changes.");
             }

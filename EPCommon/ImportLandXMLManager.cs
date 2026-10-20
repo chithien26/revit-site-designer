@@ -528,7 +528,7 @@ public class ImportLandXMLManager : EPForm
 		}
 		if (topographySurface != null)
 		{
-			TerrainApi.NameParameter(((Element)topographySurface))?.Set(_CurSurface.SurfaceName);
+			TerrainApi.SetUniqueName(topographySurface, _CurSurface.SurfaceName);
 			Parameter parameter = ((Element)topographySurface).get_Parameter(BuiltInParameter.PHASE_CREATED);
 			if (parameter != null && _CurSurface.Phase != null)
 			{
@@ -654,11 +654,11 @@ public class ImportLandXMLManager : EPForm
 			FamilyInstance _ProposedPlacementFamilyInstance = null;
 			FamilyInstance _BasePlacementFamilyInstance = null;
 			TopographySurfaceManagement.FindBaseLandcaddTopographySurface(m_CurrentDocument, ref _BaseTopographySurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedTopographySurfaceContainer, ref _ProposedPlacementFamilyInstance, _TransactionContainer);
-			if (_ProposedTopographySurfaceContainer != null && _ProposedTopographySurfaceContainer.TopographySurface != null && _ProposedPlacementFamilyInstance != null && string.Compare(_ProposedTopographySurfaceContainer.TopographySurface.UniqueId, _CurSurface.OverwriteSurfaceID, ignoreCase: true) == 0)
+			if (_ProposedTopographySurfaceContainer != null && _ProposedTopographySurfaceContainer.TopographySurface != null && _ProposedPlacementFamilyInstance != null && TerrainApi.MatchesLinkedId(_CurSurface.OverwriteSurfaceID, _ProposedTopographySurfaceContainer.TopographySurface))
 			{
 				_ProposedPlacementFamilyInstance.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter)?.Set(topographySurface.UniqueId);
 			}
-			if (_BaseTopographySurfaceContainer != null && _BaseTopographySurfaceContainer.TopographySurface != null && _BasePlacementFamilyInstance != null && string.Compare(_BaseTopographySurfaceContainer.TopographySurface.UniqueId, _CurSurface.OverwriteSurfaceID, ignoreCase: true) == 0)
+			if (_BaseTopographySurfaceContainer != null && _BaseTopographySurfaceContainer.TopographySurface != null && _BasePlacementFamilyInstance != null && TerrainApi.MatchesLinkedId(_CurSurface.OverwriteSurfaceID, _BaseTopographySurfaceContainer.TopographySurface))
 			{
 				_BasePlacementFamilyInstance.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter)?.Set(topographySurface.UniqueId);
 			}

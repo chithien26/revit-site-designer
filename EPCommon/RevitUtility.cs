@@ -3810,7 +3810,19 @@ public class RevitUtility
 		{
 			_FamilySymbol.Activate();
 		}
-		return _CurDocument.Create.NewFamilyInstance(_Location, _FamilySymbol, _Host, _Level, _StructuralType);
+		try
+		{
+			return _CurDocument.Create.NewFamilyInstance(_Location, _FamilySymbol, _Host, _Level, _StructuralType);
+		}
+		catch (System.Exception ex)
+		{
+			if (_Host == null || !TerrainApi.UsesToposolids)
+			{
+				throw;
+			}
+			RuntimeDiagnostics.Write("Terrain host placement failed, placing on level: " + ex.Message);
+			return _CurDocument.Create.NewFamilyInstance(_Location, _FamilySymbol, _Level, _StructuralType);
+		}
 	}
 
 	public static bool LoadFamilySymbol(Document _CurDocument, string _strFamilyFilename, string _strSymbolName, IFamilyLoadOptions _FamilyLoadOptions, out FamilySymbol _FamilySymbol, bool _bUseFailureHandling, ref EPTransactionContainer _TransactionContainer)

@@ -48,6 +48,14 @@ public class SetBaseToposurface
 
 	public bool PickIndividualSurface => m_bPickIndividualSurface;
 
+	public TopographySurface CreatedProposedSurface => m_ProposedSurface;
+
+	public FamilyInstance CreatedProposedPlacement => m_ProposedFamilyInstance;
+
+	public TopographySurface CreatedBaseSurface => m_OriginalGroundSurface;
+
+	public FamilyInstance CreatedBasePlacement => m_OriginalGroundFamilyInstance;
+
 	public SetBaseToposurface(Document _CurDocument)
 	{
 		m_Document = _CurDocument;
@@ -107,7 +115,7 @@ public class SetBaseToposurface
 						continue;
 					}
 					parameter = familyInstance.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter);
-					if (parameter == null || string.Compare(parameter.AsString(), item.UniqueId, ignoreCase: true) != 0)
+					if (parameter == null || !TerrainApi.MatchesLinkedId(parameter.AsString(), item))
 					{
 						continue;
 					}
@@ -129,6 +137,10 @@ public class SetBaseToposurface
 					}
 					m_OriginalGroundFamilyInstance = familyInstance;
 				}
+			}
+			if (TerrainApi.UsesToposolids && (topographySurface == null || topographySurface.IsSiteSubRegion || TerrainApi.LooksLikeProposedTerrain(item)))
+			{
+				continue;
 			}
 			list4.Add(topographySurface);
 		}
@@ -238,6 +250,11 @@ public class SetBaseToposurface
 		{
 			RevitMessageBox.Show(EPShared.LocalRM.GetString("BaseToposurfaceAlreadySeteMessage"), EPShared.LocalRM.GetString("Warning"), MessageBoxIcon.Exclamation);
 		}
+		if (!m_bPickIndividualSurface && TerrainApi.UsesToposolids && m_SurfaceList.Count == 1)
+		{
+			m_SurfaceList[0].FindMinMaxPointsOfTopographySurface();
+			return CreateBaseToposurface(m_SurfaceList);
+		}
 		DialogResult _DialogResult = DialogResult.Retry;
 		using (m_DisplayForm = new SetBaseToposurfaceForm(this))
 		{
@@ -267,7 +284,7 @@ public class SetBaseToposurface
 		bool flag = false;
 		foreach (Element item in _Elements)
 		{
-			if (TerrainApi.AsSurface(item) is { Category: not null } topographySurface2 && topographySurface2.Category.Id.Value64() == TerrainApi.Category.GetHashCode())
+			if (TerrainApi.AsSurface(item) is { } topographySurface2)
 			{
 				for (int i = 0; i < m_SurfaceList.Count; i++)
 				{
@@ -402,23 +419,32 @@ public class SetBaseToposurface
 				ElementId phaseCreated = null;
 				ElementId phaseDemolished = null;
 				string strToposurfaceName = string.Empty;
-				using (PhasePickerForm phasePickerForm = new PhasePickerForm(m_Document))
+				if (TerrainApi.UsesToposolids)
 				{
-					if (phasePickerForm.ShowDialog() != DialogResult.OK)
+					m_HideOriginalTopoSurface = true;
+					strToposurfaceName = EPShared.LocalRM.GetString("ProposedToposurfaceString");
+					phaseCreated = m_Document.ActiveView?.get_Parameter(BuiltInParameter.VIEW_PHASE)?.AsElementId();
+				}
+				else
+				{
+					using (PhasePickerForm phasePickerForm = new PhasePickerForm(m_Document))
 					{
-						return false;
+						if (phasePickerForm.ShowDialog() != DialogResult.OK)
+						{
+							return false;
+						}
+						m_HideOriginalTopoSurface = phasePickerForm.HideOriginalTopoSurface;
+						if (phasePickerForm.CreatedPhaseId != -1)
+						{
+							long createdPhaseId = phasePickerForm.CreatedPhaseId;
+							phaseCreated = RevitIds.Create(createdPhaseId);
+						}
+						else
+						{
+							phaseCreated = RevitIds.Create(32440);
+						}
+						strToposurfaceName = phasePickerForm.ToposurfaceName;
 					}
-					m_HideOriginalTopoSurface = phasePickerForm.HideOriginalTopoSurface;
-					if (phasePickerForm.CreatedPhaseId != -1)
-					{
-						long createdPhaseId = phasePickerForm.CreatedPhaseId;
-						phaseCreated = RevitIds.Create(createdPhaseId);
-					}
-					else
-					{
-						phaseCreated = RevitIds.Create(32440);
-					}
-					strToposurfaceName = phasePickerForm.ToposurfaceName;
 				}
 				List<Element> list2 = new List<Element>();
 				if (m_PlacementSymbol != null)
@@ -577,7 +603,37 @@ public class SetBaseToposurface
 				m_TransactionContainer.EndTransaction();
 				TopographySurface _ProposedTopographySurface = null;
 				FamilyInstance _PlacementFamilyInstance = null;
-				TopographySurfaceManagement.CreateProposedSurface(m_Document, m_TransactionContainer, m_PlacementSymbol, surfacePoints, strToposurfaceName, elementId, phaseCreated, phaseDemolished, ref _ProposedTopographySurface, ref _PlacementFamilyInstance, topographySurface);
+				if (TerrainApi.UsesToposolids)
+				{
+					_ProposedTopographySurface = TerrainApi.FindProposedForBase(m_Document, topographySurface);
+				}
+				if (_ProposedTopographySurface != null)
+				{
+					m_TransactionContainer.BeginTransaction();
+					if (m_PlacementSymbol != null)
+					{
+						_PlacementFamilyInstance = RevitUtility.NewFamilyInstance(m_Document, new XYZ(0.0, 0.0, 0.0), m_PlacementSymbol, _ProposedTopographySurface, m_Document.ActiveView.GenLevel, StructuralType.NonStructural, ref m_TransactionContainer);
+						parameter = _PlacementFamilyInstance.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter);
+						if (parameter != null && !parameter.IsReadOnly)
+						{
+							parameter.Set(_ProposedTopographySurface.UniqueId);
+						}
+						parameter = _PlacementFamilyInstance.LookupParameter(RevitParameters.IsProposedSurfaceFamilyParameter);
+						if (parameter != null && !parameter.IsReadOnly)
+						{
+							parameter.Set(Convert.ToInt32(value: true));
+						}
+						ElementSet proposedPlacementSet = new ElementSet();
+						proposedPlacementSet.Insert(_PlacementFamilyInstance);
+						RevitUtility.HideElementsInAllViews(m_Document, proposedPlacementSet);
+					}
+					m_TransactionContainer.EndTransaction();
+					RuntimeDiagnostics.Write("Set Base reused the existing proposed terrain instead of cloning the selected Toposolid.");
+				}
+				else
+				{
+					TopographySurfaceManagement.CreateProposedSurface(m_Document, m_TransactionContainer, m_PlacementSymbol, surfacePoints, strToposurfaceName, elementId, phaseCreated, phaseDemolished, ref _ProposedTopographySurface, ref _PlacementFamilyInstance, topographySurface);
+				}
 				Eps_Point eps_Point = null;
 				if (list != null && list.Count > 0)
 				{
@@ -642,7 +698,7 @@ public class SetBaseToposurface
 						m_TransactionContainer.Start();
 					}
 				}
-				if (m_OriginalGroundSurface != null && (_SurfaceList.Count > 1 || (_SurfaceList.Count == 1 && string.Compare(_SurfaceList[0].TopographySurface.UniqueId, m_OriginalGroundSurface.UniqueId, ignoreCase: true) != 0)))
+				if (!TerrainApi.UsesToposolids && m_OriginalGroundSurface != null && (_SurfaceList.Count > 1 || (_SurfaceList.Count == 1 && string.Compare(_SurfaceList[0].TopographySurface.UniqueId, m_OriginalGroundSurface.UniqueId, ignoreCase: true) != 0)))
 				{
 					m_TransactionContainer.BeginTransaction();
 					m_Document.Delete(m_OriginalGroundSurface.Id);
@@ -654,7 +710,7 @@ public class SetBaseToposurface
 					m_Document.Delete(m_OriginalGroundFamilyInstance.Id);
 					m_TransactionContainer.EndTransaction();
 				}
-				if (m_ProposedSurface != null && (_SurfaceList.Count > 1 || (_SurfaceList.Count == 1 && string.Compare(_SurfaceList[0].TopographySurface.UniqueId, m_ProposedSurface.UniqueId, ignoreCase: true) != 0)))
+				if (!TerrainApi.UsesToposolids && m_ProposedSurface != null && (_SurfaceList.Count > 1 || (_SurfaceList.Count == 1 && string.Compare(_SurfaceList[0].TopographySurface.UniqueId, m_ProposedSurface.UniqueId, ignoreCase: true) != 0)))
 				{
 					m_TransactionContainer.BeginTransaction();
 					m_Document.Delete(m_ProposedSurface.Id);
@@ -666,7 +722,10 @@ public class SetBaseToposurface
 					m_Document.Delete(m_ProposedFamilyInstance.Id);
 					m_TransactionContainer.EndTransaction();
 				}
-				RevitUtility.RemoveAllSiteComponents(m_Document, m_TransactionContainer, _bIssueWarningForRemoval: true);
+				if (!TerrainApi.UsesToposolids)
+				{
+					RevitUtility.RemoveAllSiteComponents(m_Document, m_TransactionContainer, _bIssueWarningForRemoval: true);
+				}
 				if (list != null && list.Count > 0)
 				{
 					ElementTransformUtils.MoveElement(m_Document, _ProposedTopographySurface.Id, new XYZ(0.0 - eps_Point.x, 0.0 - eps_Point.y, 0.0));
@@ -677,6 +736,9 @@ public class SetBaseToposurface
 					elementSet2.Insert(topographySurface);
 					RevitUtility.HideElementsInAllViews(m_Document, elementSet2);
 				}
+				m_ProposedSurface = _ProposedTopographySurface;
+				m_ProposedFamilyInstance = _PlacementFamilyInstance;
+				m_OriginalGroundSurface = topographySurface;
 				m_TransactionContainer.Commit();
 				return true;
 			}

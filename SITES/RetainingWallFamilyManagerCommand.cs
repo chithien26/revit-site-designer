@@ -18,10 +18,6 @@ public class RetainingWallFamilyManagerCommand : IExternalCommand
 		try
 		{
 			RevitCommandRuntime.Begin(commandData.Application, GetType().Name);
-			if (!EPShared.eplLicM_GetLicense())
-			{
-				throw new System.InvalidOperationException("The original Site Designer license check did not grant a license.");
-			}
 			{
 				ApplicationUtility.VerifyProductVersion();
 				Document document = RevitCommandRuntime.RequireDocument(commandData.Application, GetType().Name);

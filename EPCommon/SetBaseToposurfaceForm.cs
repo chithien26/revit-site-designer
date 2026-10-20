@@ -43,7 +43,7 @@ public class SetBaseToposurfaceForm : EPForm
 			Text = EPShared.LocalRM.GetString("ToposurfaceAssociationDialog");
 			m_MessageTextBox.Text = EPShared.LocalRM.GetString("PickToposurfaceInformationDialog");
 		}
-		m_ToposurfaceListView.MultiSelect = !_dataBuffer.PickIndividualSurface;
+		m_ToposurfaceListView.MultiSelect = !TerrainApi.UsesToposolids && !_dataBuffer.PickIndividualSurface;
 		m_ToposurfaceGroupBox.Text = EPShared.LocalRM.GetString("ToposurfaceDialog");
 		m_PickButton.Text = EPShared.LocalRM.GetString("AMP_PickDialog");
 		m_OKButton.Text = EPShared.LocalRM.GetString("AMP_OKDialog");
@@ -83,7 +83,7 @@ public class SetBaseToposurfaceForm : EPForm
 		m_ToposurfaceListView.SelectedIndices.Clear();
 		foreach (Element item in m_dataBuffer.InstanceSet)
 		{
-			if (TerrainApi.AsSurface(item) is { Category: not null } topographySurface && topographySurface.Category.Id.Value64() == TerrainApi.Category.GetHashCode())
+			if (TerrainApi.AsSurface(item) is { } topographySurface)
 			{
 				int num = m_ToposurfaceListView.Items.IndexOfKey(topographySurface.UniqueId);
 				if (num >= 0)

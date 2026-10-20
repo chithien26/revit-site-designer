@@ -36,12 +36,18 @@ Get-ChildItem -LiteralPath $buildRoot | Where-Object { $_.Name -notin @('RevitAP
 Copy-Item -LiteralPath $NativeLibrary -Destination (Join-Path $destination 'SitesDLLWrapper.dll') -Force
 if ($WhitelistFile) { Copy-Item -LiteralPath $WhitelistFile -Destination (Join-Path $destination 'whitelist.xml') -Force }
 Copy-Item -LiteralPath (Join-Path $ContentRoot 'Data') -Destination $destination -Recurse -Force
+$stringsFile = Join-Path $destination 'Data\Support\SITEDESIGNER_enu.xml'
+if (Test-Path -LiteralPath $stringsFile) {
+    $xml = [System.IO.File]::ReadAllText($stringsFile)
+    $xml = $xml -replace 'id="LandcaddSitesRibbonTab" value="Site Designer"', "id=`"LandcaddSitesRibbonTab`" value=`"Site Designer $Version`""
+    [System.IO.File]::WriteAllText($stringsFile, $xml)
+}
 $assemblyPath = [System.Security.SecurityElement]::Escape((Join-Path $destination 'SiteDesigner.dll'))
 $manifest = @"
 <?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>
   <AddIn Type="Application">
-    <Name>Site Designer WPF</Name>
+    <Name>Site Designer $Version</Name>
     <Assembly>$assemblyPath</Assembly>
     <AddInId>BE8C3528-82C3-4A7C-8096-94A8DA602025</AddInId>
     <FullClassName>SITES.ExternalApplication</FullClassName>

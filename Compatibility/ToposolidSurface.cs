@@ -10,7 +10,7 @@ namespace EPCommon;
 public sealed class ToposolidSurface
 {
     internal const double Tolerance = 1e-6;
-    public Toposolid Element { get; }
+    public Toposolid Element { get; private set; }
     public Document Document => Element.Document;
     public ElementId Id => Element.Id;
     public string UniqueId => Element.UniqueId;
@@ -27,7 +27,7 @@ public sealed class ToposolidSurface
     public BoundingBoxXYZ get_BoundingBox(View view) => Element.get_BoundingBox(view);
     public IList<ElementId> GetHostedSubRegionIds() => Element.GetSubDivisionIds();
 
-    public static ToposolidSurface Create(Document document, IList<XYZ> points, ToposolidSurface template = null)
+    public static ToposolidSurface Create(Document document, IList<XYZ> points, ToposolidSurface template = null, bool copyHostSketch = true)
     {
         var unique = UniquePoints(points);
         if (unique.Count < 3) throw new ArgumentException("Terrain needs at least three distinct XY points.", nameof(points));
@@ -37,11 +37,11 @@ public sealed class ToposolidSurface
             : document.GetElement(template.Element.LevelId) as Level;
         if (level == null) level = Level.Create(document, 0);
         Toposolid solid;
-        var profiles = template?.GetProfiles();
+        var profiles = copyHostSketch ? template?.GetProfiles() : null;
         if (profiles != null && profiles.Count > 0) solid = Toposolid.Create(document, profiles, unique, typeId, level.Id);
         else solid = Toposolid.Create(document, unique, typeId, level.Id);
         document.Regenerate();
-        if (template != null)
+        if (template != null && copyHostSketch)
         {
             var result = new ToposolidSurface(solid);
             RestoreBreaklines(result, template.Element.GetSlabShapeEditor().SlabShapeCreases.Cast<SlabShapeCrease>()
@@ -64,7 +64,7 @@ public sealed class ToposolidSurface
         }
         return new ToposolidSurface(solid);
     }
-    internal static void RestoreBreaklines(ToposolidSurface surface, IList<XYZ[]> creases)
+    internal static void RestoreBreaklines(ToposolidSurface surface, IList<XYZ[]> creases, bool required = true)
     {
         if (creases.Count == 0) return;
         var editor = surface.Element.GetSlabShapeEditor();
@@ -75,12 +75,23 @@ public sealed class ToposolidSurface
             var shape = surface.Vertices();
             var start = shape.FirstOrDefault(x => SameXY(x.Position, crease[0]));
             var end = shape.FirstOrDefault(x => SameXY(x.Position, crease[1]));
-            if (start == null || end == null) throw new InvalidOperationException("Terrain recreation would remove a breakline endpoint. Edit the breakline first.");
+            if (start == null || end == null)
+            {
+                if (required) throw new InvalidOperationException("Terrain recreation would remove a breakline endpoint. Edit the breakline first.");
+                continue;
+            }
+            try
+            {
 #if REVIT2024
-            editor.DrawSplitLine(start, end);
+                editor.DrawSplitLine(start, end);
 #else
-            editor.AddSplitLine(start, end);
+                editor.AddSplitLine(start, end);
 #endif
+            }
+            catch (Autodesk.Revit.Exceptions.ArgumentException)
+            {
+                if (required) throw;
+            }
             surface.Document.Regenerate();
         }
     }
@@ -158,6 +169,120 @@ public sealed class ToposolidSurface
         action(session);
         session.Apply();
     }
+
+    internal void EnsureThicknessFor(IList<XYZ> points, double planeZ)
+    {
+        if (points == null || points.Count == 0) return;
+        double drop = planeZ - points.Min(point => point.Z);
+        if (drop <= 0.05) return;
+        // Only as thick as this cut, plus 100 mm. Never rewrite the project's original type.
+        double needed = drop + 0.32808399;
+        RuntimeDiagnostics.Write("Toposolid grading Z plane=" + planeZ + " drop=" + drop + " needed=" + needed + " ft.");
+        EnsureIsolatedThickness(needed);
+    }
+
+    internal void EnsureIsolatedThickness(double needed)
+    {
+        var type = Document.GetElement(Element.GetTypeId()) as ToposolidType;
+        if (type == null) return;
+        type = IsolateProposedType(type);
+        double current = ThicknessOf(type);
+        if (current + 1e-6 >= needed) return;
+        if (!SetThickness(type, needed))
+        {
+            RuntimeDiagnostics.Write("Could not increase Toposolid type thickness from " + current + " ft to " + needed + " ft.");
+            return;
+        }
+        RuntimeDiagnostics.Write("Increased isolated type '" + type.Name + "' thickness from " + current + " ft to " + needed + " ft.");
+    }
+
+    private ToposolidType IsolateProposedType(ToposolidType type)
+    {
+        if (type.Name.IndexOf("(Site Designer)", StringComparison.OrdinalIgnoreCase) >= 0) return type;
+        string name = type.Name + " (Site Designer)";
+        var existing = new FilteredElementCollector(Document).OfClass(typeof(ToposolidType)).Cast<ToposolidType>()
+            .FirstOrDefault(candidate => string.Equals(candidate.Name, name, StringComparison.OrdinalIgnoreCase));
+        type = existing ?? (ToposolidType)type.Duplicate(name);
+        if (Element.GetTypeId() != type.Id)
+        {
+            string previousId = Element.UniqueId;
+            ElementId newId = Element.ChangeTypeId(type.Id);
+            if (newId != Element.Id && Document.GetElement(newId) is Toposolid replacement)
+            {
+                Element = replacement;
+            }
+            Document.Regenerate();
+            RelinkPlacement(Document, previousId, Element.UniqueId);
+        }
+        return type;
+    }
+
+    private static void RelinkPlacement(Document document, string previousId, string newId)
+    {
+        if (string.IsNullOrEmpty(previousId) || string.Equals(previousId, newId, StringComparison.Ordinal)) return;
+        foreach (FamilyInstance instance in new FilteredElementCollector(document).OfClass(typeof(FamilyInstance)).OfCategory(BuiltInCategory.OST_Site).Cast<FamilyInstance>())
+        {
+            Parameter parameter = instance.LookupParameter("UniqueID");
+            if (parameter != null && !parameter.IsReadOnly && string.Equals(parameter.AsString(), previousId, StringComparison.OrdinalIgnoreCase))
+            {
+                parameter.Set(newId);
+            }
+        }
+    }
+
+    private static double ThicknessOf(ToposolidType type)
+    {
+        var structure = type.GetCompoundStructure();
+        if (structure != null && structure.LayerCount > 0) return structure.GetWidth();
+        foreach (BuiltInParameter id in new[] { BuiltInParameter.FLOOR_ATTR_DEFAULT_THICKNESS_PARAM, BuiltInParameter.FLOOR_ATTR_THICKNESS_PARAM })
+        {
+            var parameter = type.get_Parameter(id);
+            if (parameter != null && parameter.StorageType == StorageType.Double) return parameter.AsDouble();
+        }
+        return 0;
+    }
+
+    private static bool SetThickness(ToposolidType type, double needed)
+    {
+        var structure = type.GetCompoundStructure();
+        if (structure != null && structure.LayerCount > 0)
+        {
+            double extra = needed - structure.GetWidth();
+            if (extra <= 0) return true;
+            var layers = new List<int>();
+            int variable = structure.VariableLayerIndex;
+            if (variable >= 0) layers.Add(variable);
+            for (int i = structure.LayerCount - 1; i >= 0; i--)
+                if (i != variable) layers.Add(i);
+            foreach (int i in layers)
+            {
+                try
+                {
+                    structure.SetLayerWidth(i, structure.GetLayerWidth(i) + extra);
+                    if (variable < 0)
+                    {
+                        try { structure.VariableLayerIndex = i; }
+                        catch (Autodesk.Revit.Exceptions.ArgumentException) { }
+                    }
+                    type.SetCompoundStructure(structure);
+                    return true;
+                }
+                catch (Autodesk.Revit.Exceptions.ArgumentException)
+                {
+                }
+            }
+        }
+        foreach (BuiltInParameter id in new[] { BuiltInParameter.FLOOR_ATTR_DEFAULT_THICKNESS_PARAM, BuiltInParameter.FLOOR_ATTR_THICKNESS_PARAM })
+        {
+            var parameter = type.get_Parameter(id);
+            if (parameter != null && !parameter.IsReadOnly && parameter.StorageType == StorageType.Double)
+            {
+                parameter.Set(needed);
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 internal sealed class TerrainPointEdit
@@ -221,32 +346,54 @@ internal sealed class TerrainPointEdit
         foreach(var crease in creases)
             if(crease.Any(endpoint=>!points.Any(x=>ToposolidSurface.SameXY(x,endpoint))))
                 throw new InvalidOperationException("A point edit would remove the endpoint of a Toposolid breakline. Edit that breakline first.");
-        // Rebuild shape vertices in place: compatible with the original 2024 API,
-        // before DeletePoint was introduced in 2024.1. Sketch, holes and element ID remain.
-        editor.ResetSlabShape();
-        if(!editor.IsEnabled)editor.Enable();
-        Surface.Document.Regenerate();
+        bool removed = current.Any(point => point == null);
+        bool movedXY = false;
+        for (int i = 0; i < original.Count && i < current.Count; i++)
+        {
+            if (current[i] == null || original[i] == null) continue;
+            if (!ToposolidSurface.SameXY(original[i], current[i])) { movedXY = true; break; }
+        }
+        // Resetting rebuilds the whole mesh and folds existing holes into giant planes.
+        // Only rebuild when a point was deleted or moved in XY.
+        if (removed || movedXY)
+        {
+            editor.ResetSlabShape();
+            if(!editor.IsEnabled)editor.Enable();
+            Surface.Document.Regenerate();
+        }
         var vertices=Surface.Vertices();
         if(vertices.Count==0)throw new InvalidOperationException("The Toposolid did not expose its boundary shape vertices.");
         double baseZ=vertices[0].Position.Z;
+        Surface.EnsureThicknessFor(points, baseZ);
+        Surface.Document.Regenerate();
+        editor=Surface.Element.GetSlabShapeEditor();
+        if(!editor.IsEnabled)editor.Enable();
+        vertices=Surface.Vertices();
+        if(vertices.Count==0)throw new InvalidOperationException("The Toposolid did not expose its boundary shape vertices.");
+        baseZ=vertices[0].Position.Z;
         var faces=HostObjectUtils.GetTopFaces(Surface.Element)
             .Select(reference=>Surface.Element.GetGeometryObjectFromReference(reference)).OfType<Face>().ToList();
         var keys=new HashSet<string>(vertices.Select(x=>ToposolidSurface.Key(x.Position)));
+        int skipped = 0;
         foreach(var point in points)
         {
             if(keys.Add(ToposolidSurface.Key(point)))
             {
                 var flatPoint=new XYZ(point.X,point.Y,baseZ);
                 if(!faces.Any(face=>{var projection=face.Project(flatPoint);return projection!=null && face.IsInside(projection.UVPoint);}))
-                    throw new InvalidOperationException("A grading point lies outside the Toposolid profile or inside a profile opening.");
+                {
+                    skipped++;
+                    continue;
+                }
 #if REVIT2024
                 var added=editor.DrawPoint(flatPoint);
 #else
                 var added=editor.AddPoint(flatPoint);
 #endif
-                if(added==null)throw new InvalidOperationException("A grading point lies outside the Toposolid profile or inside a profile opening.");
+                if(added==null) { skipped++; continue; }
             }
         }
+        if (skipped > 0) RuntimeDiagnostics.Write("Toposolid grading skipped " + skipped + " point(s) outside the sketch or inside an opening.");
         Surface.Document.Regenerate();
         var desired=points.ToDictionary(ToposolidSurface.Key);
         foreach(var vertex in Surface.Vertices())

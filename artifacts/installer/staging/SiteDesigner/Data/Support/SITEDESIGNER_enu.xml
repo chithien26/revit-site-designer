@@ -1,0 +1,1538 @@
+<Application name="SITEWORKS">਍ഀ
+  <StringTable>਍ഀ
+    <!-- The following strings are Revit Element Specific Strings and should not be translated. -->਍ഀ
+    <String id="ENU-SurfaceNameString" value="Surface" />਍ഀ
+    <String id="ENU-SubRegionElement" value="Subregion" />਍ഀ
+    <String id="CSY-SurfaceNameString" value="Povrch" />਍ഀ
+    <String id="CSY-SubRegionElement" value="Podoblast" />਍ഀ
+    <String id="NLD-SurfaceNameString" value="Oppervlak" />਍ഀ
+    <String id="NLD-SubRegionElement" value="Subregio" />਍ഀ
+    <String id="RUS-SurfaceNameString" value="поверхность" />਍ഀ
+    <String id="RUS-SubRegionElement" value="Участок топо-поверхности" />਍ഀ
+    <String id="FRA-SurfaceNameString" value="Surface" />਍ഀ
+    <String id="FRA-SubRegionElement" value="Sous-région" />਍ഀ
+    <String id="DEU-SurfaceNameString" value="Oberfläche" />਍ഀ
+    <String id="DEU-SubRegionElement" value="Unterregion" />਍ഀ
+    <String id="ITA-SurfaceNameString" value="Superficie" />਍ഀ
+    <String id="ITA-SubRegionElement" value="Sottoregione" />਍ഀ
+    <String id="KOR-SurfaceNameString" value="표면" />਍ഀ
+    <String id="KOR-SubRegionElement" value="소구역" />਍ഀ
+    <String id="ESP-SurfaceNameString" value="Superficie" />਍ഀ
+    <String id="ESP-SubRegionElement" value="Subregión" />਍ഀ
+    <String id="HUN-SurfaceNameString" value="Felület" />਍ഀ
+    <String id="HUN-SubRegionElement" value="Alrégió" />਍ഀ
+    <String id="PLK-SurfaceNameString" value="Powierzchnia" />਍ഀ
+    <String id="PLK-SubRegionElement" value="Obszar podrzędny" />਍ഀ
+    <String id="PTG-SurfaceNameString" value="Superfície" />਍ഀ
+    <String id="PTG-SubRegionElement" value="Subregião" />਍ഀ
+    <String id="JPN-SurfaceNameString" value="サーフェス" />਍ഀ
+    <String id="JPN-SubRegionElement" value="サブ領域" />਍ഀ
+    <String id="CHS-SurfaceNameString" value="表面" />਍ഀ
+    <String id="CHS-SubRegionElement" value="子面域" />਍ഀ
+    <String id="CHT-SurfaceNameString" value="表面" />਍ഀ
+    <String id="CHT-SubRegionElement" value="附屬區域" />਍ഀ
+    <!-- The following strings are Revit Element Specific Strings and when translated must match correctly. -->਍ഀ
+    <String id="SurfaceNameString" value="Surface" />਍ഀ
+    <String id="SubRegionElement" value="Subregion" />਍ഀ
+    <String id="DetailFilledRegionElementName" value="Detail Filled Region" />਍ഀ
+    <String id="NewConstructionString" value="New Construction" />਍ഀ
+    <!-- The following strings are Revit.ini Specific Strings and when translated must match correctly. -->਍ഀ
+    <String id="FamilyTemplatePath" value="FamilyTemplatePath" />਍ഀ
+    <String id="ConceptualMassFolder" value="Conceptual Mass" />਍ഀ
+    <String id="ImperialTemplatesDirectory" value="Imperial Templates" />਍ഀ
+    <String id="MetricTemplatesDirectory" value="Metric Templates" />਍ഀ
+    <String id="ENU-ImperialTemplateFolderName" value="English_I" />਍ഀ
+    <String id="ENU-MetricTemplateFolderName" value="English" />਍ഀ
+    <String id="MassImperialTemplate" value="Mass" />਍ഀ
+    <String id="MassMetricTemplate" value="Metric Mass" />਍ഀ
+    <String id="SiteImperialTemplate" value="Site" />਍ഀ
+    <String id="SiteMetricTemplate" value="Metric Site" />਍ഀ
+    <String id="PlantingImperialTemplate" value="Planting" />਍ഀ
+    <String id="PlantingMetricTemplate" value="Metric Planting" />਍ഀ
+    <String id="GenericMetricTemplate" value="Metric Generic Model" />਍ഀ
+    <String id="GenericImperialTemplate" value="Generic Model" />਍ഀ
+    <String id="ImperialTemplateCabName" value="ImperialTempl.cab" />਍ഀ
+    <String id="MetricTemplateCabName" value="MetTempl.cab" />਍ഀ
+    <String id="ContentInstalledName" value="[ContentInstalled]" /> ਍ഀ
+  <!-- Non Revit Specific Strings. -->਍ഀ
+    <String id="NewerVersion_Message" value="A newer version " />਍ഀ
+    <String id="_IsUpToDateMessage" value=" is up to date." />਍ഀ
+    <String id="Source" value="Source" />਍ഀ
+    <String id="LocateComponentsRibbonButton" value="Locate Components" />਍ഀ
+    <String id="ConditionsMiscellaneousPlantFamilyParameter" value="Conditions Miscellaneous" />਍ഀ
+    <String id="PlantMixFamilyManagerRibbonButton" value="Plant Mix" />਍ഀ
+    <String id="ModifyPlantSearchTitle" value="Modify Plant Search" />਍ഀ
+    <String id="MaintenancePruningTimePlantFamilyParameter" value="Maintenance Pruning Time" />਍ഀ
+    <String id="RegionString" value="Region" />਍ഀ
+    <String id="LocateFenceRibbonButton" value="Locate Fence" />਍ഀ
+    <String id="CreatePlantmix" value="Plantmix Created." />਍ഀ
+    <String id="PatioWalkRibbonButton" value="Patio/Walk Report" />਍ഀ
+    <String id="NoPatioWalkSelected" value="No Material Selected" />਍ഀ
+    <String id="ConditionsSoilConditionPlantFamilyParameter" value="Conditions Soil Condition" />਍ഀ
+    <String id="PlantSpacingPlantFamilyParameter" value="Plant Spacing" />਍ഀ
+    <String id="NewStreet" value="New Street" />਍ഀ
+    <String id="NewCurb" value="New Curb" />਍ഀ
+    <String id="NewSidewalk" value="New Sidewalk" />਍ഀ
+    <String id="NewRetainingWall" value="New Retaining Wall" />਍ഀ
+    <String id="NewSoftTerrain" value="New Soft Terrain" />਍ഀ
+    <String id="NewParkingLot" value="New Parking Lot" />਍ഀ
+    <String id="PlantCommentsPlantFamilyParameter" value="Plant Comments" />਍ഀ
+    <String id="IsoMetricViewDirection" value="Iso Metric" />਍ഀ
+    <String id="QuantityOfString" value="Quantity Of" />਍ഀ
+    <String id="CharacteristicsFallColorPlantFamilyParameter" value="Characteristics Fall Color" />਍ഀ
+    <String id="KeynotePlantFamilyParameter" value="Keynote" />਍ഀ
+    <String id="PlantSpacingPlantMixFamilyParameter" value="Plant Spacing" />਍ഀ
+    <String id="SymbolNoRFAExtension" value="Symbol Name must have .rfa extension." />਍ഀ
+    <String id="PlantHeightPlantFamilyParameter" value="Plant Height" />਍ഀ
+    <String id="TypeCommentsPlantFamilyParameter" value="Type Comments" />਍ഀ
+    <String id="PlantCommonNamePlantFamilyParameter" value="Plant Common Name" />਍ഀ
+    <String id="CustomUnit" value="Custom" />਍ഀ
+    <String id="PlantMixPlantSearchTitle" value="Plant Mix Plant Search" />਍ഀ
+    <String id="FilterString" value="Filter" />਍ഀ
+    <String id="PlantUsesPlantFamilyParameter" value="Plant Uses" />਍ഀ
+    <String id="MaintenanceWaterRequirementsPlantFamilyParameter" value="Maintenance Water Requirements" />਍ഀ
+    <String id="GrowthFormPlantFamilyParameter" value="Growth Form" />਍ഀ
+    <String id="SubRegionString" value="Subregion" />਍ഀ
+    <String id="CharacteristicsCrownDensityPlantFamilyParameter" value="Characteristics Crown Density" />਍ഀ
+    <String id="MaintenanceTransplantingTimePlantFamilyParameter" value="Maintenance Transplanting Time" />਍ഀ
+    <String id="Patio" value="Patio" />਍ഀ
+    <String id="Value" value="Value" />਍ഀ
+    <String id="LabelFamilyInstanceParameter" value="Label" />਍ഀ
+    <String id="PositioningMethodLandXMLSurfacePlacementFamilyInstanceParameter" value="Positioning Method" />਍ഀ
+    <String id="PositionDistanceLandXMLSurfacePlacementFamilyInstanceParameter" value="Position Distance" />਍ഀ
+    <String id="PositionHzDirectionLandXMLSurfacePlacementFamilyInstanceParameter" value="Position Horizontal Direction" />਍ഀ
+    <String id="PositionVzDirectionLandXMLSurfacePlacementFamilyInstanceParameter" value="Position Vertical Direction" />਍ഀ
+    <String id="CostGenericFamilyParameter" value="Cost" />਍ഀ
+    <String id="UniqueIDGenericModelFamilyParameter" value="UniqueID" />਍ഀ
+    <String id="AssignPatioWalkRibbonButton" value="Assign Patio/Walk" />਍ഀ
+    <String id="TwoDDWGSymbolDimensionType" value="2D DWG Symbol" />਍ഀ
+    <String id="MaterialPathWalkFamilyParameter" value="Material" />਍ഀ
+    <String id="DescriptionPlantFamilyParameter" value="Description" />਍ഀ
+    <String id="ThreeDDWGSymbolDimensionType" value="3D DWG Symbol" />਍ഀ
+    <String id="PatioWalkString" value="Patio/Walk" />਍ഀ
+    <String id="PlantScientificNamePlantFamilyParameter" value="Plant Scientific Name" />਍ഀ
+    <String id="ImportDWGTitle" value="Import DWG" />    ਍ഀ
+    <String id="GrowthServiceLifePlantFamilyParameter" value="Growth Service Life" />਍ഀ
+    <String id="NoPlantsSelected" value="No plant(s) selected." />਍ഀ
+    <String id="CostPlantFamilyParameter" value="Cost" />਍ഀ
+    <String id="CommentsRegionFamilyParameter" value="Comments" />਍ഀ
+    <String id="VisibleString" value="Visible" />਍ഀ
+    <String id="ComparisonTypeString" value="Comparison Type" />਍ഀ
+    <String id="AllGeometryString" value="&lt;All Geometry&gt;" />਍ഀ
+    <String id="CharacteristicsAdmirationPointPlantFamilyParameter" value="Characteristics Admiration Point" />਍ഀ
+    <String id="AssignPlantMixRibbonButton" value="Assign Plant Mix" />਍ഀ
+    <String id="PlantViewSearchTitle" value="Plant View Search" />਍ഀ
+    <String id="AllSymbolsString" value="&lt;All Symbols&gt;" />਍ഀ
+    <String id="ModifyPlantsRibbonButton" value="Modify Plants" />਍ഀ
+    <String id="ImportLandXMLRibbonButton" value="Import LandXML" />਍ഀ
+    <String id="ExportLandXMLRibbonButton" value="Export LandXML" />਍ഀ
+    <String id="SetBaseTopoSurfaceRibbonButton" value="Set Base Toposurface" />਍ഀ
+    <String id="ToposurfaceConversionRibbonButton" value="Toposurface Conversion" />਍ഀ    ഀ
+    <String id="ModifySoftTerrainRibbonButton" value="Soft Terrain" />਍ഀ
+    <String id="LocateSidewalkRibbonButton" value="Sidewalk" />਍ഀ
+    <String id="LocateSidewalkRibbonToolTip" value="Locate Sidewalk in the project." />਍ഀ
+    <String id="LocateRetainingWallRibbonButton" value="Retaining Wall" />਍ഀ
+    <String id="LocateRetainingWallRibbonToolTip" value="Locate Retaining Wall in the project." />਍ഀ
+    <String id="ModifySidewalkRibbonButton" value="Sidewalk" />਍ഀ
+    <String id="ModifySidewalkRibbonToolTip" value="Modify Sidewalk in the project." />਍ഀ
+    <String id="ModifyRetainingWallRibbonButton" value="Retaining Wall" />਍ഀ
+    <String id="ModifyRetainingWallRibbonToolTip" value="Modify Retaining Wall in the project." />਍ഀ
+    <String id="StreetFamilyManagerRibbonButton" value="Street" />਍ഀ
+    <String id="StreetFamilyManagerToolTip" value="Create and Modify Street families." />਍ഀ
+    <String id="CurbFamilyManagerRibbonButton" value="Curb" />਍ഀ
+    <String id="CurbFamilyManagerToolTip" value="Create and Modify Curb families." />਍ഀ
+    <String id="ParkingLotFamilyManagerRibbonButton" value="Parking Lot" />਍ഀ
+    <String id="ParkingLotFamilyManagerToolTip" value="Create and Modify Parking Lot families." />਍ഀ
+    <String id="ModifyStreetRibbonButton" value="Street" />਍ഀ
+    <String id="ModifyStreetRibbonToolTip" value="Modify Street in the project." />਍ഀ
+    <String id="LocateStreetRibbonButton" value="Street" />਍ഀ
+    <String id="LocateStreetRibbonToolTip" value="Locate Street in the project." />਍ഀ
+    <String id="LocateCurbRibbonButton" value="Curb" />਍ഀ
+    <String id="LocateCurbRibbonToolTip" value="Locate Curb in the project." />਍ഀ
+    <String id="ModifyCurbRibbonButton" value="Curb" />਍ഀ
+    <String id="ModifyCurbRibbonToolTip" value="Modify Curb in the project." />਍ഀ
+    <String id="LocateParkingLotRibbonButton" value="Parking Lot" />਍ഀ
+    <String id="LocateParkingLotRibbonToolTip" value="Locate Parking Lot in the project." />਍ഀ
+    <String id="ModifyParkingLotRibbonButton" value="Parking Lot" />਍ഀ
+    <String id="ModifyParkingLotRibbonToolTip" value="Modify Parking Lot in the project." />਍ഀ
+    <String id="FeatureLineRibbonButton" value="Feature Line" />਍ഀ
+    <String id="LocateFeatureLineRibbonToolTip" value="Locate Feature Line in the project." />਍ഀ
+    <String id="ModifyFeatureLineRibbonToolTip" value="Modify Feature Line in the project." />਍ഀ
+    <String id="PointWipeoutRibbonButton" value="Point Wipeout" />਍ഀ
+    <String id="LocatePointWipeoutRibbonToolTip" value="Locate Point Wipeout in the project." />਍ഀ
+    <String id="ModifyPointWipeoutRibbonToolTip" value="Modify Point Wipeout in the project." />਍ഀ
+    <String id="SidewalkFamilyManagerRibbonButton" value="Sidewalk" />਍ഀ
+    <String id="SidewalkFamilyManagerToolTip" value="Create and Modify Sidewalk families." />਍ഀ
+    <String id="RetainingWallFamilyManagerRibbonButton" value="Retaining Wall" />਍ഀ
+    <String id="RetainingWallFamilyManagerToolTip" value="Create and Modify Retaining Wall families." />਍ഀ
+    <String id="SoftTerrainFamilyManagerRibbonButton" value="Soft Terrain" />਍ഀ
+    <String id="SiteComponentFamilyManagerToolTip" value="Create and Modify Site Component families." />਍ഀ
+    <String id="CharacteristicsFragrancePlantFamilyParameter" value="Characteristics Fragrance" />਍ഀ
+    <String id="AreaPlantMixFamilyParameter" value="Area" />਍ഀ
+    <String id="UndefinedDetailLevel" value="Undefined" />਍ഀ
+    <String id="ProjectedAreaSubRegionParameter" value="Projected Area" />਍ഀ
+    <String id="ValidTypeCommonOrScientificName" value="Plant Scientific Name or Plant Common Name Fields must be present in File" />਍ഀ
+    <String id="KeynoteGenericFamilyParameter" value="Keynote" />਍ഀ
+    <String id="FamilyFilePickerFilter" value="rfa files (*.rfa)|*.rfa" />਍ഀ
+    <String id="RightViewDirection" value="Right" />਍ഀ
+    <String id="ModifyPlantsRibbonToolTip" value="Find and modify existing plants or their attributes in the project quickly." />਍ഀ
+    <String id="ImportLandXMLRibbonToolTip" value="Imports Surfaces and Alignments from a LandXML File." />਍ഀ
+    <String id="ExportLandXMLRibbonToolTip" value="Exports Surfaces and Alignments to a LandXML File." />਍ഀ
+    <String id="SetBaseTopoSurfaceRibbonToolTip" value="Set Base Toposurface for Soft Terrain." />਍ഀ
+    <String id="ConvertObjectToToposurfaceRibbonToolTip" value="Convert Element Object to a Toposurface." />਍ഀ
+    <String id="ModifySoftTerrainRibbonToolTip" value="Modify Soft Terrain in the project." />਍ഀ
+    <String id="SoftTerrainFamilyManagerRibbonToolTip" value="Create and Modify Soft Terrain families." />਍ഀ
+    <String id="PercentagePlantMixFamilyParameter" value="Percentage" />਍ഀ
+    <String id="SurfaceAreaSubRegionParameter" value="Surface Area" />਍ഀ
+    <String id="PlantClimateAndZonePlantFamilyParameter" value="Plant Climate and Zone" />਍ഀ
+    <String id="LandcaddIDGenericModelFamilyParameter" value="LandcaddID" />਍ഀ
+    <String id="SiteworksIDFamilyParameter" value="Siteworks ID" />਍ഀ
+    <String id="PatioWalkFamilyManagerRibbonButton" value="Patio/Walk" />਍ഀ
+    <String id="NoAreaSpacingMethod" value="Cannot Specify Planting spacing with Area as Spacing method." />਍ഀ
+    <String id="DuplicateEdgeString" value="Edging has already been assigned to family." />਍ഀ
+    <String id="OriginToOriginPlacement" value="Origin-to-origin" />਍ഀ
+    <String id="CharacteristicsBloomPeriodPlantFamilyParameter" value="Characteristics Bloom Period" />਍ഀ
+    <String id="ScientificNamePlantMixFamilyParameter" value="Plant Scientific Name" />਍ഀ
+    <String id="PlantMixReportRibbonButton" value="Plant Mix Report" />਍ഀ
+    <String id="TopViewDirection" value="Top" />਍ഀ
+    <String id="DWGFilePickerFilter" value="DWG Files (*.dwg)|*.dwg" />਍ഀ
+    <String id="FamilyString" value="Family" />਍ഀ
+    <String id="ModelGenericFamilyParameter" value="Model" />਍ഀ
+    <String id="PreserveColorsColorMode" value="Preserve colors" />਍ഀ
+    <String id="TemplateFilePickerFilter" value="RFT Files (*.rft)|*.rft" />਍ഀ
+    <String id="PlantingRibbonPanel" value="Planting" />਍ഀ
+    <String id="ImportExportRibbonPanel" value="Import/Export" />਍ഀ
+    <String id="LocateRibbonPanel" value="Locate" />਍ഀ
+    <String id="ConvertRibbonPanel" value="Convert" />਍ഀ
+    <String id="ModifyRibbonPanel" value="Modify" />਍ഀ
+    <String id="LandcaddSitesRibbonTab" value="Site Designer 2025" />਍ഀ
+    <String id="QuantityPlantMixFamilyParameter" value="Quantity" />਍ഀ
+    <String id="PlantCodeNamePlantFamilyParameter" value="Plant Code Name" />਍ഀ
+    <String id="ContainsComparator" value="Contains" />਍ഀ
+    <String id="URLGenericFamilyParameter" value="URL" />਍ഀ
+    <String id="AreaRegionParameter" value="Area" />਍ഀ
+    <String id="PickClosedBoundaryMessage" value="Pick a Closed Boundary." />਍ഀ
+    <String id="PlantMixSpacingMethodSquare" value="Square" />਍ഀ
+    <String id="PlantMixSpacingMethodTriangular" value="Triangular" />਍ഀ
+    <String id="LeftViewDirection" value="Left" />਍ഀ
+    <String id="CoarseDetailLevel" value="Coarse" />਍ഀ
+    <String id="GrowthPatternPlantFamilyParameter" value="Growth Pattern" />਍ഀ
+    <String id="PlantWidthPlantFamilyParameter" value="Plant Width" />਍ഀ
+    <String id="PatioFamily" value="Patio Family" />਍ഀ
+    <String id="PlantingSizePlantFamilyParameter" value="Planting Size" />਍ഀ
+    <String id="CommonNamePlantMixFamilyParameter" value="Plant Common Name" />਍ഀ
+    <String id="PlantCountPlantFamilyParameter" value="Plant Count" />਍ഀ
+    <String id="FamilyNameFamilyParameter" value="Family Name" />਍ഀ
+    <String id="FamilySymbolNameFamilyParameter" value="Family Symbol Name" />਍ഀ
+    <String id="NoString" value="No" />਍ഀ
+    <String id="ExistingSymbolFileName" value="Please specify an existing Symbol File Name" />਍ഀ
+    <String id="LocatePlantsRibbonButton" value="Locate Plants" />਍ഀ
+    <String id="LocateSoftTerrainRibbonButton" value="Soft Terrain" />਍ഀ
+    <String id="LandcaddFamiliesRibbonPanel" value="Landcadd Families" />਍ഀ
+    <String id="EndsWithComparator" value="Ends With" />਍ഀ
+    <String id="ConditionsTolerancesPlantFamilyParameter" value="Conditions Tolerances" />਍ഀ
+    <String id="TemperatureRangePlantFamilyParameter" value="Temperature Range" />਍ഀ
+    <String id="ValidEdgeWidth" value="Edge Width cannot me more than" />਍ഀ
+    <String id="AutoDetectUnit" value="Auto-Detect" />਍ഀ
+    <String id="VolumeString" value="Volume" />਍ഀ
+    <String id="HardscapeRibbonPanel" value="Hardscape" />਍ഀ
+    <String id="StartsWithComparator" value="Starts With" />਍ഀ
+    <String id="NotEqualComparator" value="Not Equal" />਍ഀ
+    <String id="PlantFamilyManagerRibbonButton" value="Plant" />਍ഀ
+    <String id="InvalidInputString" value="Invalid Input" />਍ഀ
+    <String id="InvalidRadiusString" value="Cannot create the mass form because host line has one or more arcs whose radius is smaller than the width of the component you are trying to place." />਍ഀ
+    <String id="InvalidRadiusValueString" value="Radius should be greater than or equal to 0.0" />਍ഀ
+    <String id="PlantFamilyManagerRibbonToolTip" value="Create your own plant families based on LANDCADD families or from your own plant lists in a comma-delimited format." />਍ഀ
+    <String id="ThicknessPathWalkFamilyParameter" value="Thickness" />਍ഀ
+    <String id="BlackAndWhiteColorMode" value="Black and white" />਍ഀ
+    <String id="PathFamily" value="Path Family" />਍ഀ
+    <String id="AssignPatioWalkRibbonToolTip" value="Assign a patio-walk assembly of materials to any subregion or region and obtain detailed quantity report using the Patio-Walk Report." />਍ഀ
+    <String id="MowingStripPathWalkFamilyParameter" value="Mowing Strip" />਍ഀ
+    <String id="AreaDetailComponentFamilyParameter" value="Area" />਍ഀ
+    <String id="FenceFamilyHeightParameter" value="Height" />਍ഀ
+    <String id="EdgePathWalkFamilyParameter" value="Edging" />਍ഀ
+    <String id="LocatePlantSearchTitle" value="Locate Plant Search" />਍ഀ
+    <String id="EdgeWidthPathWalkFamilyParameter" value="Mowing Strip Width" />਍ഀ
+    <String id="MediumDetailLevel" value="Medium" />਍ഀ
+    <String id="NoTag" value="Tag Family Not Loaded. Please select Tag Family File." />਍ഀ
+    <String id="AssemblyCodePlantFamilyParameter" value="Assembly Code" />਍ഀ
+    <String id="ConditionsExposurePlantFamilyParameter" value="Conditions Exposure" />਍ഀ
+    <String id="MaintenanceDetrimentsPlantFamilyParameter" value="Maintenance Detriments" />਍ഀ
+    <String id="CharacteristicsFruitPeriodPlantFamilyParameter" value="Characteristics Fruit Period" />਍ഀ
+    <String id="MaintenanceTransplantPlantFamilyParameter" value="Maintenance Transplant" />਍ഀ
+    <String id="EqualComparator" value="Equal" />਍ഀ
+    <String id="AssemblyCodeGenericFamilyParameter" value="Assembly Code" />਍ഀ
+    <String id="RTFFilePickerFilter" value="rtf files (*.rtf)|*.rtf" />਍ഀ
+    <String id="HeightPlantFamilyParameter" value="Height" />਍ഀ
+    <String id="ManufacturerPlantFamilyParameter" value="Manufacturer" />਍ഀ
+    <String id="Warning" value="Warning" />਍ഀ
+    <String id="NoCSVTXT" value="File Name must have CSV/TXT extension." />਍ഀ
+    <String id="AssignPlantMixRibbonToolTip" value="Assign a plant mix to any subregion or region instead of locating multiple plant instances. Use the Plant Mix Report to obtain quantities." />਍ഀ
+    <String id="CharacteristicsFoliageSurfacePlantFamilyParameter" value="Characteristics Foliage Surface" />਍ഀ
+    <String id="PlantMixString" value="PlantMix" />਍ഀ
+    <String id="CharacteristicsBloomEffectPlantFamilyParameter" value="Characteristics Bloom Effect" />਍ഀ
+    <String id="FenceFamilySpanParameter" value="Span" />਍ഀ
+    <String id="ModelPlantFamilyParameter" value="Model" />਍ഀ
+    <String id="ValidFields" value="Field(s) must be present" />਍ഀ
+    <String id="MaterialString" value="Material" />਍ഀ
+    <String id="NoObject" value="Nothing was selected." />਍ഀ
+    <String id="RevitINIFileMissingMessage" value="Unable to get Template location due to Revit.ini file missing. Please restart Revit." />਍ഀ
+    <String id="NoMassRFTMessage" value="Could not find Mass.rft in your Revit template folder." />਍ഀ
+    <String id="NoSiteRFTMessage" value="Could not find Site.rft in your Revit template folder." />਍ഀ
+    <String id="NoGenericModelRFTMessage" value="Could not find GenericModel.rft in your Revit template folder." />਍ഀ
+    <String id="NoPlantingRFTMessage" value="Could not find Planting.rft in your Revit template folder." />਍ഀ
+    <String id="DescriptionGenericFamilyParameter" value="Description" />਍ഀ
+    <String id="PlantMixFamilyManagerToolTip" value="Create a ground cover, green roof, or flower beds mix of plants that can be assigned to subregions or regions without creating multiple instances." />਍ഀ
+    <String id="SelectRFADir" value="Select the directory that you want to search for plant families (.rfas)" />਍ഀ
+    <String id="ParameterString" value="Parameter" />਍ഀ
+    <String id="ConvertPlantsRibbonButton" value="Convert Plants" />਍ഀ
+    <String id="SpacingMethodPlantMixFamilyParameter" value="Spacing Method" />਍ഀ
+    <String id="CommentsSubRegionFamilyParameter" value="Comments" />਍ഀ
+    <String id="DestinationFamilyOverWrite" value="Destination File Name is the same as currently open Family. Do you wish to continue?" />਍ഀ
+    <String id="LocateComponentsRibbonToolTip" value="Create components along a path defined by model or symbolic lines or in triangular or square patterns within a bounded area." />਍ഀ
+    <String id="MixTemplate" value="Mix Template" />਍ഀ
+    <String id="PlantSizePlantMixFamilyParameter" value="Planting Size" />਍ഀ
+    <String id="CharacteristicsFoliageColorPlantFamilyParameter" value="Characteristics Foliage Color" />਍ഀ
+    <String id="CharacteristicsFoliageSizePlantFamilyParameter" value="Characteristics Foliage Size" />਍ഀ
+    <String id="PlantmixFailed" value="Unable to Create Plantmix" />਍ഀ
+    <String id="IslandClosedChainMessage" value="Island picked must be a closed chain. Pick again." />਍ഀ
+    <String id="NeedValidInputFor_" value="Need Valid Input for " />਍ഀ
+    <String id="NeedValidInputMessage" value="Need Valid Input" />਍ഀ
+    <String id="TxtFilePickerFilter" value="txt files (*.txt)|*.txt" />਍ഀ
+    <String id="FenceError" value="Vertical Found when placing fence. Locating fence halted." />਍ഀ
+    <String id="FrontViewDirection" value="Front" />਍ഀ
+    <String id="NotAvailableString" value="N/A" />਍ഀ
+    <String id="BackViewDirection" value="Back" />਍ഀ
+    <String id="Plant" value="Plant" />਍ഀ
+    <String id="SaveFamilyMessage" value="Do you really want to close without saving any changes to the families?" />਍ഀ
+    <String id="ConvertPlantsRibbonToolTip" value="Converts a conceptual plant layout from circles (model or symbolic lines) to plants." />਍ഀ
+    <String id="FineDetailLevel" value="Fine" />਍ഀ
+    <String id="DestinationOverWrite" value="Destination File Name already exists. Do you wish to overwrite the file?" />਍ഀ
+    <String id="GreaterThanComparator" value="Greater Than" />਍ഀ
+    <String id="MixGroup" value="Mix Group" />਍ഀ
+    <String id="PlantingSymbolPlantFamilyParameter" value="Planting Symbol" />਍ഀ
+    <String id="Path" value="Path" />਍ഀ
+    <String id="AssignPatioPathWalkRibbonToolTip" value="Assign a patio-walk assembly of materials to any subregion or region and obtain detailed quantity report using the Patio-Walk Report." />਍ഀ
+    <String id="CharacteristicsFruitColorPlantFamilyParameter" value="Characteristics Fruit Color" />਍ഀ
+    <String id="LocateFenceRibbonToolTip" value="Create a landscaping wall or fence that will follow any model or symbolic line and that will adjust to the Toposurface elevations." />਍ഀ
+    <String id="NoRFAExtension" value="File Name must have .rfa extension." />਍ഀ
+    <String id="ObjectSelectedNotSupportedMessage" value="Selected object is not supported." />਍ഀ
+    <String id="MaintenancePlantingTimePlantFamilyParameter" value="Maintenance Planting Time" />਍ഀ
+    <String id="AllString" value="All" />਍ഀ
+    <String id="URLPlantFamilyParameter" value="URL" />਍ഀ
+    <String id="LessThanComparator" value="Less Than" />਍ഀ
+    <String id="NeedEdgeMowingYes" value="Please set Edge and Mowing Strip set to 'Yes' to set Edge Width." />਍ഀ
+    <String id="ReportRibbonPanel" value="Reports" />਍ഀ
+    <String id="PlantingDefinitionGroup" value="LC Planting" />਍ഀ
+    <String id="GreaterThanOrEqualToComparator" value="Greater Than Or Equal To" />਍ഀ
+    <String id="NeedValidEdgeWidth" value="Need a valid Edge Width." />਍ഀ
+    <String id="ConvertPlantSearchTitle" value="Convert Plant Search" />਍ഀ
+    <String id="TypeNamePlantFamilyType" value="Type Name" />਍ഀ
+    <String id="NoRegion" value="Region not selected." />਍ഀ
+    <String id="BottomViewDirection" value="Bottom" />਍ഀ
+    <String id="SiteString" value="Site" />਍ഀ
+    <String id="NeedValidTypeName" value="Need a valid Type Name." />਍ഀ
+    <String id="PickObjectMessage" value="Pick a Object." />਍ഀ
+    <String id="TypeCommentsGenericFamilyParameter" value="Type Comments" />਍ഀ
+    <String id="TypeNameGenericModelFamilyParameter" value="Type Name" />਍ഀ
+    <String id="GrowthGrowthRatePlantFamilyParameter" value="Growth Growth Rate" />਍ഀ
+    <String id="Error" value="Error" />਍ഀ
+    <String id="PlantTypePlantFamilyParameter" value="Plant Type" />਍ഀ
+    <String id="LocatePlantsRibbonToolTip" value="Creates a Hedgerow following any model or symbolic lines or a Grove within a bounded area." />਍ഀ
+    <String id="LocateSoftTerrainRibbonToolTip" value="Locate Soft Terrain in the project." />਍ഀ
+    <String id="AssignPatioPathWalkRibbonButton" value="Assign Patio/Path/Walk" />਍ഀ
+    <String id="PercentageError" value="Plant Mix Percentages should not be more than 100%." />਍ഀ
+    <String id="CodeNamePlantMixFamilyParameter" value="Plant Code Name" />਍ഀ
+    <String id="PatioWalkRibbonButtonToolTip" value="Create and export a detailed report of areas and volumes of the patio-walk materials assigned to subregions and regions." />਍ഀ
+    <String id="NameSubRegionParameter" value="Name" />਍ഀ
+    <String id="Parameter" value="Parameter" />਍ഀ
+    <String id="CharacteristicsBarkSurfacePlantFamilyParameter" value="Characteristics Bark Surface" />਍ഀ
+    <String id="Revit" value="Revit" />਍ഀ
+    <String id="LessThanOrEqualToComparator" value="Less Than Or Equal To" />਍ഀ
+    <String id="_And_" value=" And " />਍ഀ
+    <String id="TemplateNotLoadedErrorMessage" value="Template Not Loaded. Please select Template File." />਍ഀ
+    <String id="SelectTemplateMessage" value="Please select Template File." />਍ഀ
+    <String id="PathWalkFamilyManagerToolTip" value="Create an assembly of materials that define a patio, walkway, or driveway surfaces that can be assigned to subregions or regions without creating multiple instances of other components." />਍ഀ
+    <String id="RegionNameGenericModelFamilyParameter" value="Region Name" />਍ഀ
+    <String id="FenceFamilyAngleParameter" value="Angle" />਍ഀ
+    <String id="BoundaryClosedChainMessage" value="Boundary picked must be a closed chain." />਍ഀ
+    <String id="InvertColorsColorMode" value="Invert colors" />਍ഀ
+    <String id="CenterToCenterPlacement" value="Center-to-center" />਍ഀ
+    <String id="CSVAndTxtFilePickerFilter" value="csv files (*.csv)|*.csv|txt files (*.txt)|*.txt" />਍ഀ
+    <String id="FamilyManagerRibbonPanel" value="Family Managers" />਍ഀ
+    <String id="_FamilyManagerString" value=" Family Manager" />਍ഀ
+    <String id="_FamiliesInModelString" value=" families in model" />਍ഀ
+    <String id="ManufacturerGenericFamilyParameter" value="Manufacturer" />਍ഀ
+    <String id="CharacteristicsBarkColorPlantFamilyParameter" value="Characteristics Bark Color" />਍ഀ
+    <String id="MaintenanceFertilizingTimePlantFamilyParameter" value="Maintenance Fertilizing Time" />਍ഀ
+    <String id="IslandEclipsePickMessage" value="Island picked cannot be an Ellipse. Pick again." />਍ഀ
+    <String id="Existing" value="Existing" />਍ഀ
+    <String id="PlantMixReportRibbonRibbonToolTip" value="Create and export a report of all plant mixes assigned in the project." />਍ഀ
+    <String id="FenceLeftVisiability" value="Left Post Visible" />਍ഀ
+    <String id="FenceRightVisiability" value="Right Post Visible" />਍ഀ
+    <String id="GrowthSimulationString" value="Growth Simulation" />਍ഀ
+    <String id="PlantGrowthSimulationRibbonButton" value="Plant Growth Simulation" />਍ഀ
+    <String id="PlantGrowthSimulationRibbonToolTip" value="Age the plants in the project to visualize their impact in your design." />਍ഀ
+    <String id="OperationNotValidMessage" value="Operation is not valid due to the current state of the object." />਍ഀ
+    <String id="NoProjectMessage" value="Please make sure you have opened a Project." />਍ഀ
+    <String id="InvalidAgeMessage" value="Age should be greater than zero." />਍ഀ
+    <String id="InvalidOffsetMessage" value="Offset should be greater than zero." />਍ഀ
+    <String id="NoPlantSymbolSelectedMessage" value="No Plant Symbol(s) Selected" />਍ഀ
+    <String id="GenericModelSymbolPlantFamilyParameter" value="Generic Model Symbol" />਍ഀ
+    <String id="MaximumString" value="Maximum" />਍ഀ
+    <String id="PlantBookletRibbonButton" value="Plant Booklet" />਍ഀ
+    <String id="PlantBookletRibbonToolTip" value="Create a plant maintenance report for all the plants in the project." />਍ഀ
+    <String id="FileOverwriteMessage" value="File Already Exists. Append ?" />਍ഀ
+    <String id="OverwriteMessage" value="Override ?" />਍ഀ
+    <String id="RadiusPlantParameter" value="Radius" />਍ഀ
+    <String id="TickLengthPlantParameter" value="Tick Length" />਍ഀ
+    <String id="TrunkHeightPlantParameter" value="Trunk Height" />਍ഀ
+    <String id="TrunkRadiusPlantParameter" value="Trunk Radius" />਍ഀ
+    <String id="Characteristics" value="Characteristics" />਍ഀ
+    <String id="Condition" value="Condition" />਍ഀ
+    <String id="Growth" value="Growth" />਍ഀ
+    <String id="Maintenance" value="Maintenance" />਍ഀ
+    <String id="OmniClassNumberPlantParameter" value="OmniClass Number" />਍ഀ
+    <String id="OmniClassTitlePlantParameter" value="OmniClass Title" />਍ഀ
+    <String id="Others" value="Others" />਍ഀ
+    <String id="YesString" value="Yes" />਍ഀ
+    <String id="RPCRenderAppearanceFamilyParameter" value="Render Appearance" />਍ഀ
+    <String id="RPCRenderAppearancePropertiesFamilyParameter" value="Render Appearance Properties" />਍ഀ
+    <String id="CantEditElementsUntilUserResavesMessage" value="Can't edit the element(s) until '{0}' resaves the element(s) to central and relinquishes it and you Reload Latest." />਍ഀ
+    <String id="CantObtainPermissionToEditElementMessage" value="Can't obtain permission to edit the element(s):  The Central File {0} is inaccessible." />਍ഀ
+    <String id="MassCreationOnlyModeOnMessage" value="Site Designer is in Mass Creation Only Mode, so this command cannot be run. Please change the MassCreationOnlyMode setting in the SitesRevit.ini file to 0 to run the command." />਍ഀ
+    <String id="IncorrectFamilySymbolMessage" value="There is no family loaded to run this command." />਍ഀ
+    <String id="IncorrectLevelMessage" value="The selected level is null or incorrect." />਍ഀ
+    <String id="InvalidFenceHeightMessage" value="Fence Height should be greater than zero." />਍ഀ
+    <String id="InvalidSetbackMessage" value="Setback should be greater than or equal to zero." />਍ഀ
+    <String id="InvalidSpenceSpanMessage" value="Fence span should be greater than zero." />਍ഀ
+    <String id="NoFenceHeightMessage" value="Need a valid Fence Height." />਍ഀ
+    <String id="NoFenceSpanMessage" value="Need a valid Fence Span." />਍ഀ
+    <String id="NoPlantSpacingMessage" value="Please specify the Plant Spacing." />਍ഀ
+    <String id="NoSetbackMessage" value="Need a valid Setback value." />਍ഀ
+    <String id="InvalidComponentSpacingMessage" value="Component Spacing must be a valid number greater than 0.00001." />਍ഀ
+    <String id="NoComponentSpacingMessage" value="Please specify the Component Spacing." />਍ഀ
+    <String id="AreaString" value="Area" />਍ഀ
+    <String id="LengthString" value="Length" />਍ഀ
+    <String id="NoEdgingYesMowingMessage" value="To add a Mowing Strip, Edging needs to be set to Yes." />਍ഀ
+    <String id="NotValidLANDCADDPatioWalkFamilyMessage" value="Not a valid LANDCADD Patio/Walk family" />਍ഀ
+    <String id="NotValidLANDCADDPlantMixFamilyMessage" value="Not a valid LANDCADD Plant Mix family" />਍ഀ
+    <String id="AssignPatioWalkNoFamilyMessage" value="No LANDCADD Patio/Walk families have been loaded in this project. Please load a Patio/Walk   family into the project before you use this command." />਍ഀ
+    <String id="AssignPlantMixNoFamilyMessage" value="No LANDCADD Plant Mix families have been loaded in this project. Please load a Plant  Mix family into the project before you use this command." />਍ഀ
+    <String id="ConvertPlantNoFamilyMessage" value="No Plant families have been loaded in this project. You can still use Convert Plants  with your own Planting families." />਍ഀ
+    <String id="GrowthSimulationNoLandCaddFamilyMessage" value="No Plants were found in the project that match LANDCADD growth simulation criteria." />਍ഀ
+    <String id="LocateComponentsNoFamilyMessage" value="No Site, Entourage, Furniture, GenericModel, Lighting Fixtures, Columns, or Electrical Equipment have been loaded into the project. Please load any of these families before you use this command." />਍ഀ
+    <String id="LocateFenceNoFamilyMessage" value="No LANDCADD Fence families have been loaded in this project. Please load fence family Mix family into the project before you use this command." />਍ഀ
+    <String id="ModifyPlantNoFamilyMessage" value="No plants have been placed in the project." />਍ഀ
+    <String id="PatiowalkReportNoFamilyMessage" value="No Patio/Walk family instances were found in the project." />਍ഀ
+    <String id="PlantBookletNoFamilyMessage" value="No Planting family instances were found in the project." />਍ഀ
+    <String id="PlantMixReportNoFamilyMessage" value="No Plant Mix family instances were found in the project." />਍ഀ
+    <String id="LocatePlantsNoFamiliesMessage" value="No LANDCADD families were found in the project. You can still use Locate Plants with your own Planting families." />਍ഀ
+    <String id="NoFamiliesGenericMessage" value="No families in this category were found in the project. Use the Load Family button provided in this command to load a family to proceed." />਍ഀ
+    <String id="NoFamiliesSitesMessage" value=" Families were found in the default Site Designer library folder. Use the Load Family button in the command to manually load a family if they are stored in a different folder or use the " />਍ഀ
+    <String id="NoFamiliesGenericCreateMessage" value=" family manager to create one." />਍ഀ
+    <String id="ParkingLotNoADAFamiliesMessage" value="No LANDCADD ADA Spacing families have been loaded into the project. You can still use this command but won't be able to place any ADA parking paces." />਍ഀ
+    <String id="ParkingLotNoBumperFamiliesMessage" value="No LANDCADD Bumper families have been loaded into the project. You can still use this command but won't be able to place bumpers with the parking stalls." />਍ഀ
+    <String id="ParkingLotNoIslandFamiliesMessage" value="No LANDCADD Island families have been loaded into the project. You can still use this command but won't be able to islands with the parking stalls." />਍ഀ
+    <String id="ParkingLotNoParkingFamiliesMessage" value="No LANDCADD standard parking families have been loaded in this project. Please load a Parking family before you use this command." />਍ഀ
+    <String id="NoSiteComponentsInProjectMessage" value="No Site Components were found in the project." />਍ഀ
+    <String id="SubregionBuildingPadBoundaryErrorMessage" value="Subregion(s) and/or Building Pad(s) boundaries were found that have incorrect data. Please recreate Subregion(s) and/or Building Pad(s)." />਍ഀ
+    <String id="AisleWidthString" value="Aisle Width" />਍ഀ
+    <String id="AllGeometryStringQuotes" value="&lt;All Geometry&gt;" />਍ഀ
+    <String id="CircleAlreadyPickedMessage" value="Circle has already been picked. Pick again." />਍ഀ
+    <String id="ColumnOrderString" value="ColumnOrder" />਍ഀ
+    <String id="DistBetweenLinesString" value="Distance Between Centerlines" />਍ഀ
+    <String id="DuplicateTypeAppendMessage" value="Duplicate Type Found. Do you wish to append on number to duplicates?" />਍ഀ
+    <String id="ExternalComponentExceptionMessage" value="External component has thrown an exception." />਍ഀ
+    <String id="FailedCreatingSharedParameterMessage" value="Shared parameter creation failed." />਍ഀ
+    <String id="FamilyNameString" value="FamilyName" />਍ഀ
+    <String id="GetNewRevitVersionMessage" value="Element Id Fields cannot be set with this version of Revit. Latest update to Revit will resolve issue." />਍ഀ
+    <String id="InvalidDirectoryMessage" value="Invalid Directory" />਍ഀ
+    <String id="LandcaddPlantMultipleTagString" value="Landcadd Planting Multiple Tags.rfa" />਍ഀ
+    <String id="LoadingFamilyProblemLoadNewMessage" value="Family cannot be loaded. Please pick another Tag Family File." />਍ഀ
+    <String id="MissingSharedParametersMessage" value="Plant Family Parameter field(s) found currently not in Shared Parameters file. Do you wish to add them?" />਍ഀ
+    <String id="NoIslandOnArcMessage" value="Islands cannot be placed on arcs." />਍ഀ
+    <String id="NoParkingSpacesOnArc" value="Parking spaces for Areas cannot be placed on arcs." />਍ഀ
+    <String id="NoPlantsFoundMessage" value="No plants found." />਍ഀ
+    <String id="NoPlantsMatchingCriteriaMessage" value="No plants found matching criteria." />਍ഀ
+    <String id="NoPlantTypePickedMessage" value="No plants exist for type picked." />਍ഀ
+    <String id="ObjectNotSupportConvertPlantMessage" value="Object selected not supported for converting to plants." />਍ഀ
+    <String id="ObjectNotSupportforModifyingPlantMessage" value="Object selected not supported for modifying plants." />਍ഀ
+    <String id="ObjectPickedPlantMessage" value="Object picked must be a plant just placed. Pick again." />਍ഀ
+    <String id="ObjectSelectedNotSupportedPlantingMessage" value="Object selected not supported for placing plants." />਍ഀ
+    <String id="OutOfRangeArgumentMessage" value="Specified argument was out of the range of valid values." />਍ഀ
+    <String id="ParkingNotObjectSelectedMessage" value="Object selected not supported for placing parking spaces." />਍ഀ
+    <String id="ParkingString" value="Parking" />਍ഀ
+    <String id="PickCircleMessage" value="Pick Circle(s)" />਍ഀ
+    <String id="PickIslandsMessage" value="Pick Island(s) to ignore." />਍ഀ
+    <String id="PickPlantMessage" value="Pick Plant" />਍ഀ
+    <String id="PickPlantsMessage" value="Pick plant(s)" />਍ഀ
+    <String id="PickPlantTagMessage" value="Pick Plant to Tag." />਍ഀ
+    <String id="PlacingStallMessage" value="Placing stalls on segment #" />਍ഀ
+    <String id="PlantAlreadyPickedMessage" value="Plant has already been picked. Pick again." />਍ഀ
+    <String id="PlantPlaceTagNotPlacedMessage" value="Plants placed. Tags Family cannot be placed." />਍ഀ
+    <String id="ProgressbarConvertingPlantsMessage" value="Converting plants ......." />਍ഀ
+    <String id="ProgressbarCreatingFamilyMessage" value="Creating Family document ............" />਍ഀ
+    <String id="ProgressBarPlacingComponentsMessage" value="Placing components ........." />਍ഀ
+    <String id="ProgressBarPlacingPlantsMessage" value="Placing Plants ........." />਍ഀ
+    <String id="ProgressbarSavingModifiedPlantsMessage" value="Saving modified plants ......." />਍ഀ
+    <String id="ProgressbarSettingParametersMessage" value="Setting up Parameters ........." />਍ഀ
+    <String id="ProgressPlacingFenceMessage" value="Placing fence ........." />਍ഀ
+    <String id="ProgressBarCreatingSidewalkMassMessage" value="Creating Sidewalk Mass. This process may take a few moments..." />਍ഀ
+    <String id="ProgressBarCreatingRetainingWallMassMessage" value="Creating Retaining Wall Mass. This process may take a few moments..." />਍ഀ
+    <String id="ProgressBarCreatingStreetMassMessage" value="Creating Street Mass. This process may take a few moments..." />਍ഀ
+    <String id="ProgressBarCreatingCurbMassMessage" value="Creating Curb Mass. This process may take a few moments..." />਍ഀ
+    <String id="ProgressBarCreatingPipeMassMessage" value="Creating Pipe Mass. This process may take a few moments..." />਍ഀ
+    <String id="ProgressBarCreatingStructureMassMessage" value="Creating Structure Mass. This process may take a few moments..." />਍ഀ
+    <String id="ProgressBarPlacingSidewalkMassMessage" value="Placing Sidewalk Mass..." />਍ഀ
+    <String id="ProgressBarPlacingRetainingWallMassMessage" value="Placing Retaining Wall Mass..." />਍ഀ
+    <String id="ProgressBarPlacingStreetMassMessage" value="Placing Street Mass..." />਍ഀ
+    <String id="ProgressBarPlacingCurbMassMessage" value="Placing Curb Mass..." />਍ഀ
+    <String id="ProgressBarPlacingPipeMassMessage" value="Placing Pipe Mass..." />਍ഀ
+    <String id="ProgressBarPlacingStructureMassMessage" value="Placing Structure Mass..." />਍ഀ
+    <String id="ProgressBarGradingToposurfaceMessage" value="Grading the Toposurface ........." />਍ഀ
+    <String id="ProgressBarUpdatingModelMessage" value="Updating the Model. This process may take a few moments..." />਍ഀ
+    <String id="ProgressBarCreatingNewBaseToposurfaceMessage" value="Creating New Base Toposurface ........." />਍ഀ
+    <String id="ProgressBarCreatingNewProposedToposurfaceMessage" value="Creating New Proposed Toposurface ........." />਍ഀ
+    <String id="ProgressBarProcessingPointsForSurfaceMessage" value="Processing Points for Surface " />਍ഀ
+    <String id="ProgressBarProcessingPointsForAlignmentMessage" value="Processing Points for Alignment " />਍ഀ
+    <String id="ProgressBarProcessingCogoPointsMessage" value="Processing Cogo Points..." />਍ഀ
+    <String id="ProgressBarCreatingNewToposurfaceMessage" value="Creating New Toposurface ........." />਍ഀ
+    <String id="ProgressBarProcessingSelectedSiteComponentPointsMessage" value="Processing Selected Site Component Points for Surface ........." />਍ഀ
+    <String id="ProgressBarObtainingSiteComponentsMessage" value="Obtaining Site Component(s) ........." />਍ഀ
+    <String id="RightVisibleParameter" value="Right Visible" />਍ഀ
+    <String id="SpecifyPlantSpacingMessage" value="Please specify the Plant Spacing" />਍ഀ
+    <String id="StallOnArcMessage" value="Placing stalls on arc." />਍ഀ
+    <String id="StallOnLineMessage" value="Placing stalls on line" />਍ഀ
+    <String id="ValidPlantSpacingMessage" value="Plant Spacing must be a valid number greater than 0.00001" />਍ഀ
+    <String id="NameString" value="Name" />਍ഀ
+    <String id="_LeadingAndTrailingSpacesMessage" value=" cannot start or end with empty spaces." />਍ഀ
+    <String id="RetainingWallString" value="Retaining Wall" />਍ഀ
+    <String id="SidewalkString" value="Sidewalk" />਍ഀ
+    <String id="SoftTerrainString" value="Soft Terrain" />਍ഀ
+    <String id="StreetString" value="Street" />਍ഀ
+    <String id="SWRetainingWallLineNameString" value="SW Retaining Wall" />਍ഀ
+    <String id="SWSidewalkLineNameString" value="SW Sidewalk" />਍ഀ
+    <String id="SWSoftTerrainLineNameString" value="SW Soft Terrain" />਍ഀ
+    <String id="SWStreetLineNameString" value="SW Street" />਍ഀ
+    <String id="SWCurbLineNameString" value="SW Curb" />਍ഀ
+    <String id="SWFeatureLineLineNameString" value="SW Feature Line" />਍ഀ
+    <String id="SWParkingLotLineNameString" value="SW Parking Lot" />਍ഀ
+    <String id="SWPointWipeoutLineNameString" value="SW Point Wipeout" />਍ഀ
+    <String id="SWIntersectionLineNameString" value="SW Intersection" />਍ഀ
+    <String id="SWPipeLineNameString" value="SW Pipe" />਍ഀ
+    <String id="SWStructureLineNameString" value="SW Structure" />਍ഀ
+    <String id="ViewNameString" value="ViewName" />਍ഀ
+    <String id="CannotImport_String" value="Cannot import " />਍ഀ
+    <String id="ImportFailedString" value="Import failed" />਍ഀ
+    <String id="ImportString" value="Import" />਍ഀ
+    <String id="SpecifyFileNameMessage" value="Please specify the  File Name." />਍ഀ
+    <String id="UnableCreateFamilyString" value="Unable to Create Family." />਍ഀ
+    <String id="SpecifySourceFileNameMessage" value="Please specify the Source File Name." />਍ഀ
+    <String id="_InSettingString" value=" in current settings." />਍ഀ
+    <String id="Assign_Message" value="Assign " />਍ഀ
+    <String id="ColumnMisMatchMessage" value="Number of columns in file don't match." />਍ഀ
+    <String id="ExportCompleteMessage" value="Export Complete" />਍ഀ
+    <String id="FamilyCannotbeLoadedPickanother_Message" value="Family cannot be loaded. Please pick another" />਍ഀ
+    <String id="FamilyLoadedNotA_Message" value="Family loaded was not a " />਍ഀ
+    <String id="FileExistsOverwriteMessage" value="File aleady exists. Do you wish to overwrite?" />਍ഀ
+    <String id="AddBuildingPadsPointsToSurfacesMessage" value="Building Pad(s) found in project that are within the bounds of the Base and Proposed surfaces. Do you wish to add the points of the Building Pad(s) to these surfaces?" />਍ഀ
+    <String id="PointsInBoundaryWillBeRemovedMessage" value="Point(s) indicated in boundary will be removed. Do you wish to continue?" />਍ഀ
+    <String id="SiteComponentsFoundInProjectMessage" value="Site Component(s) were found in project. Do you want to add them to the new Proposed Surface?" />਍ഀ
+    <String id="GenericModelLandcaddID_String" value="(Generic Model with LancaddID " />਍ഀ
+    <String id="InformationString" value="Information" />਍ഀ
+    <String id="NoLinearFootageMessage" value="No edging linear footage or mowing strip volume will be calculated for the region." />਍ഀ
+    <String id="NoRFAExtforDestinationMessage" value="Destination File must have .rfa extension." />਍ഀ
+    <String id="ObjectSelectedNotOnSideMessage" value="Object selected not on side. Pick again." />਍ഀ
+    <String id="OverWrite_Message" value="Do you wish to overwrite the " />਍ഀ
+    <String id="ParameterNotSelectedMessage" value="Parameter not selected." />਍ഀ
+    <String id="PickOffsetSideMessage" value="Pick offset side" />਍ഀ
+    <String id="PickStartingDirectionMessage" value="Pick starting direction" />਍ഀ
+    <String id="PickStartingSideMessage" value="Pick starting side" />਍ഀ
+    <String id="PickSideForGradeToPlaceMessage" value="Pick side for grade to be placed" />਍ഀ
+    <String id="PickSideForFaceOfCurbMessage" value="Pick side for face of curb" />਍ഀ
+    <String id="PlantMixMessage" value="Plant Mix" />਍ഀ
+    <String id="ProgressbarImportMessage" value="Importing information from file ........" />਍ഀ
+    <String id="ProgressbarLoadingFamilyMessage" value="Loading Family .........." />਍ഀ
+    <String id="ProgressbarLoadingFilesMessage" value="Loading files ....." />਍ഀ
+    <String id="ProgressbarSearchingMessage" value="Searching ......" />਍ഀ
+    <String id="SameSourceAndDestinationFileMessage" value="Destination File Name cannot be the same as Source File Name" />਍ഀ
+    <String id="Select__String" value="Please select  " />਍ഀ
+    <String id="SingleFileNoCSVTXTMessage" value="Single File Name must have .csv or .txt extension." />਍ഀ
+    <String id="SingleFileNoRFAMessage" value="Single File Name must have .rfa extension." />਍ഀ
+    <String id="SpecifyDestinationFileMessage" value="Please specify the Destination File" />਍ഀ
+    <String id="SpecifyFolderFileNameMessage" value="Please specify the folder and file name." />਍ഀ
+    <String id="SpecifySharedParameterFileNameMessage" value="Please specify the Shared Parameter File Name" />਍ഀ
+    <String id="SpecifySymbolFileNameMessage" value="Please specify the Symbol File Name" />਍ഀ
+    <String id="Specify_Message" value="Please specify the " />਍ഀ
+    <String id="Unassign_Message" value="Do you wish to unassign " />਍ഀ
+    <String id="_AssignFor_Message" value=" assigned for " />਍ഀ
+    <String id="_AssignTo_Message" value=" assigned to " />਍ഀ
+    <String id="_FamilyCannotBePlaceMessage" value="Family cannot be placed." />਍ഀ
+    <String id="_FamilyFileMessage" value="Family File." />਍ഀ
+    <String id="_FamilyNotLoaded_Message" value="Family Not Loaded. Please select" />਍ഀ
+    <String id="_From_Message" value=" from " />਍ഀ
+    <String id="_TypeParameterPFamilyNotLoadedMessage" value=" Type Parameter) Family not loaded." />਍ഀ
+    <String id="_TypeParameterString" value=" Type Parameter) Family File." />਍ഀ
+    <String id="__GenericModelFamilyString" value="(Generic Model) Family File." />਍ഀ
+    <String id="NoFamilySelectedMessage" value="No Family selected." />਍ഀ
+    <String id="PickPointElevationToolTip" value="Pick Point Elevation" />਍ഀ
+    <String id="NoTypeSelectedMessage" value="No Type was selected." />਍ഀ
+    <String id="LoadDrawingToolTip" value="Load Drawing" />਍ഀ
+    <String id="LoadFamilyToolTip" value="Load Family" />਍ഀ
+    <String id="LoadFileToolTip" value="Load File" />਍ഀ
+    <String id="NewFamilyToolTip" value="New Family" />਍ഀ
+    <String id="AboutRibbonButton" value="About" />਍ഀ
+    <String id="AboutRibbonToolTip" value="Shows what version of LANDCADD your running." />਍ഀ
+    <String id="BorrowLicenseRibbonButton" value="Borrow License" />਍ഀ
+    <String id="BorrowLicenseRibbonToolTip" value="Checks out a Site Designer license from the License Manager." />਍ഀ
+    <String id="ManageLicenseRibbonButton" value="Manage Licensing" />਍ഀ
+    <String id="ManageLicenseRibbonToolTip" value="Configure Licensing for Site Designer." />਍ഀ
+    <String id="ReturnLicenseRibbonToolTip" value="Returns the Site Designer license to the License Manager." />਍ഀ
+    <String id="AboutSiteworksRibbonToolTip" value="Shows what version of Site Designer is running." />਍ഀ
+    <String id="AnnotateRibbonButton" value="Annotate" />਍ഀ
+    <String id="AnnotateRibbonToolTip" value="Annotate Site Designer components." />਍ഀ
+    <String id="SitesReportRibbonButton" value="Reports" />਍ഀ
+    <String id="SitesReportRibbonToolTip" value="Report Site Designer components." />਍ഀ
+    <String id="LicensingRibbonPanel" value="Licensing" />਍ഀ
+    <String id="SettingRibbonButton" value="Settings" />਍ഀ
+    <String id="SettingRibbonToolTip" value="Settings for Site Designer." />਍ഀ
+    <String id="NetworkLicenseError" value="LANDCADD is not licensed for network." />਍ഀ
+    <String id="NetworkLicenseBorrowError" value="LANDCADD has not borrowed a license to return." />਍ഀ
+    <String id="SiteworksNetworkLicenseError" value="Site Designer is not licensed for network." />਍ഀ
+    <String id="SiteworksNetworkLicenseBorrowError" value="Site Designer has not borrowed a license to return." />਍ഀ
+    <String id="ReturnLicenseRibbonButton" value="Return License" />਍ഀ
+    <String id="LineSegmentsOutsideToposurfaceMessage" value="Cannot create the site component because one or more of the line segments that you selected or drawn fall outside of the toposurface boundary." />਍ഀ
+    <String id="LineSegmentsInsideBuildingPadMessage" value="The site component cannot be placed because one or more of the segments would affect a building pad. To place the component in this location, you will need to delete the building pad first." />਍ഀ
+    <String id="ProgressbarGrowingPlantsMessage" value="Growing Plants ........." />਍ഀ
+    <String id="_RegionNameAlreadyAssigned_Message" value=" region name already assigned to " />਍ഀ
+    <String id="GrowthSimulationNoFamilyMessage" value="No plants have been placed in the project." />਍ഀ
+    <String id="TemplateNotPickedFamilyNotCreatedMessage" value="Template File not picked. Planting Family not created." />਍ഀ
+    <String id="CreatingFamilyTypeMessage" value="Creating Family Type:" />਍ഀ
+    <String id="TaskNavigatorToolTip" value="Show me how" />਍ഀ
+    <String id="ToposurfaceSameNameAndPhaseMessage" value="A toposurface with the same name and in the same phase already exists. Do you want to overwrite or to add new toposurface to the model?" />਍ഀ
+    <String id="OverwriteToposurfaceOption" value="Overwrite would delete the toposurface currently in the model and replace it with new data" />਍ഀ
+    <String id="CreateNewToposurfaceOption" value="New toposurface will create a new toposurface and append a number to the end of the name" />਍ഀ
+    <String id="_FamilyTypeNotFoundDeleteMessage" value=" families are currently loaded in the project. Do you want to delete the selected component?" />਍ഀ
+    <String id="The_String" value="The " />਍ഀ
+    <String id="_FamilyTypeNotFoundMessage" value=" family type used to create this component is no longer loaded in the project. Do you want to:" />਍ഀ
+    <String id="SetFamilyTypeForSiteComponentOption" value="Assign a new type to the component and continue" />਍ഀ
+    <String id="DeleteSiteComponentOption" value="Delete the component" />਍ഀ
+    <String id="ContinueWOLoadFamiliesOption" value="Continue without loading families" />਍ഀ
+    <String id="ContinueWOLoadFamilyOption" value="Continue without loading a default family" />਍ഀ
+    <String id="FenceFamilyNotLoadedMessage" value="Fence Family not loaded in project." />਍ഀ
+    <String id="SoftTerrainFamilyNotLoadedMessage" value="There is no Soft Terrain Family currently loaded in this project. Do you want to:" />਍ഀ
+    <String id="SideWalkFamilyNotLoadedMessage" value="There is no Sidewalk Family currently loaded in this project. Do you want to:" />਍ഀ
+    <String id="RetainingWallFamilyNotLoadedMessage" value="There is no Retaining wall Family currently loaded in this project. Do you want to:" />਍ഀ
+    <String id="CurbFamilyNotLoadedMessage" value="There is no Curb Family currently loaded in this project. Do you want to:" />਍ഀ
+    <String id="StreetFamilyNotLoadedMessage" value="There is no Street Family currently loaded in this project. Do you want to:" />਍ഀ
+    <String id="ParkingLotFamilyNotLoadedMessage" value="There is no Parking Lot Family currently loaded in this project. Do you want to:" />਍ഀ
+    <String id="LaunchPatioWalkFamilyManagerOption" value="Launch Patio/Walk Family Manager" />਍ഀ
+    <String id="LaunchPlantMixFamilyManagerOption" value="Launch Plant Mix Family Manager" />਍ഀ
+    <String id="LoadDefaultFamiliesOption" value="Load default families" />਍ഀ
+    <String id="AllwaysLoadDefaultFamiliesOption" value="Always Load Default Families" />਍ഀ
+    <String id="LoadDefaultFamilyOption" value="Load default family" />਍ഀ
+    <String id="ShowMassInAllViewsOption" value="Show Mass in all existing Views" />਍ഀ
+    <String id="ShowMassInActiveViewOption" value="Show Mass only in currently active View" />਍ഀ
+    <String id="ParkingFamiliesNotLoadedMessage" value="Parking Families not loaded in project." />਍ഀ
+    <String id="PatioWalkFamilyNotLoadedMessage" value="Patio/Walk Family not loaded in project." />਍ഀ
+    <String id="PlantingFamilyNotLoadedMessage" value="Planting Family not loaded in project." />਍ഀ
+    <String id="PlantingTagFamiliesNotLoadedMessage" value="Planting and/or Tag Families not loaded in project." />਍ഀ
+    <String id="PlantMixFamilyNotLoadedMessage" value="Plant Mix Family not loaded in project." />਍ഀ
+    <String id="PickRegionSubRegionMessage" value="Pick Region or Subregion" />਍ഀ
+    <String id="PickViewOptionForMassMessage" value="Show Mass mode will be enabled, so the newly created Mass will be visible. Pick View option for which view(s) you want to make Mass visible." />਍ഀ
+    <String id="PickEndPointPrompt" value="Pick End Point." />਍ഀ
+    <String id="PickLeaderElbowPointPrompt" value="Pick Leader Elbow Point." />਍ഀ
+    <String id="PickLeaderStartPointPrompt" value="Pick Leader Start Point." />਍ഀ
+    <String id="PickPointPrompt" value="Pick a Point." />਍ഀ
+    <String id="PickPointsForBoundaryPrompt" value="Pick Points to be used to create the Boundary." />਍ഀ
+    <String id="PickStartPointPrompt" value="Pick Start Point." />਍ഀ
+    <String id="PickTagPointPrompt" value="Pick Tag Point." />਍ഀ
+    <String id="PickToposurfacesPrompt" value="Pick Toposurface(s)" />਍ഀ
+    <String id="PickToposurfacePrompt" value="Pick Toposurface" />਍ഀ
+    <String id="PickNextPointPrompt" value="Pick Next Point." />਍ഀ
+    <String id="PickElevationGradePointPrompt" value="Pick Point to change Elevation or Grade." />਍ഀ
+    <String id="PickAddVertexPointPrompt" value="Pick Point to Add a Vertex." />਍ഀ
+    <String id="PickDeleteVertexPointPrompt" value="Pick Point to Delete a Vertex." />਍ഀ
+    <String id="PickCenterPointPrompt" value="Pick Center Point." />਍ഀ
+    <String id="NoPreviousPositionAvailableMessage" value="No previous instance found. Pick different method." />਍ഀ
+    <String id="PickRotationPointPrompt" value="Pick rotation point." />਍ഀ
+    <String id="PickFirstPointForRotationPrompt" value="Pick first point to define rotation base." />਍ഀ
+    <String id="PickSecondPointForRotationPrompt" value="Pick second point to define rotation base." />਍ഀ
+    <String id="PlacementIDFamilyParameter" value="Placement ID" />਍ഀ
+    <String id="ChainIDGenericFamilyParameter" value="Chain ID" />਍ഀ
+    <String id="BoundaryIslandIDGenericFamilyParameter" value="Boundary Island ID" />਍ഀ
+    <String id="GroveRotationGenericFamilyParameter" value="Grove Rotation" />਍ഀ
+    <String id="HeightGenericFamilyParameter" value="Height" />਍ഀ
+    <String id="HeightVarianceGenericFamilyParameter" value="Height Variance" />਍ഀ
+    <String id="IsReverseGenericFamilyParameter" value="Is Reverse" />਍ഀ
+    <String id="IsSingleSegmentGenericFamilyParameter" value="Is Single Segment" />਍ഀ
+    <String id="PlacementTypeGenericFamilyParameter" value="Placement Type" />਍ഀ
+    <String id="SymbolIDGenericFamilyParameter" value="Symbol ID" />਍ഀ
+    <String id="PrimaryFormIDFamilyParameter" value="Primary Form ID" />਍ഀ
+    <String id="AdditionalFormIDFamilyParameter" value="Additional Form ID" />਍ഀ
+    <String id="IsFirstPlacementSegmentGenericFamilyParameter" value="Is First Placement Segment" />਍ഀ
+    <String id="SetbackGenericFamilyParameter" value="Setback" />਍ഀ
+    <String id="SpacingGenericFamilyParameter" value="Spacing" />਍ഀ
+    <String id="UseRightSideGenericFamilyParameter" value="Use Right Side" />਍ഀ
+    <String id="WidthGenericFamilyParameter" value="Width" />਍ഀ
+    <String id="WidthVarianceGenericFamilyParameter" value="Width Variance" />਍ഀ
+    <String id="StartingDistanceGenericFamilyParameter" value="Starting Distance" />਍ഀ
+    <String id="FieldsFoundWithLengthMessage" value="Fields found that have lengths. Please choose the appropriate unit format to export." />਍ഀ
+    <String id="SelectedFileHasLengthMessage" value="Selected file has length fields. Please choose the appropriate unit format." />਍ഀ
+    <String id="NoToposurfaceCanBeModifiedMessage" value="Project does not contain any toposurfaces that can be modified." />਍ഀ
+    <String id="PickSiteComponentLineMessage" value="Please pick a site component model line to run this command." />਍ഀ
+    <String id="RunLocateSiteComponentsMessage" value="You must have Locate Site Components to run this command." />਍ഀ
+    <String id="BaseSurfaceLinkBrokenMessage" value="The link to the Base Surface has been broken. Please reselect the surface from the following list." />਍ഀ
+    <String id="ProposedSurfaceLinkBrokenMessage" value="The link to the Proposed Surface has been broken. Please reselect the surface from the following list." />਍ഀ
+    <String id="ThereAreNoString_" value="There are no " />਍ഀ
+    <String id="_FeaturesInThisModelString" value=" features in this model." />਍ഀ
+    <String id="NotSiteComponentHostLineMessage" value="The selected object is not a Site Component host line." />਍ഀ
+    <String id="NotSiteComponentMessage_" value="The selected object is not a " />਍ഀ
+    <String id="_HostLineString" value=" host line." />਍ഀ
+    <String id="DeleteSiteComponentLineMessage" value="Are you sure you want to delete the site component?" />਍ഀ
+    <String id="NoBaseToposurfaceInProjectMessage" value="No base toposurface has been set in the project." />਍ഀ
+    <String id="MassingFamilyNameAlreadyUsedMessage" value="The component name has to be different from the family name." />਍ഀ
+    <String id="UseCentimeterUnitsOption" value="Use centimeter units" />਍ഀ
+    <String id="UseFeetUnitsOption" value="Use feet units" />਍ഀ
+    <String id="UseInchUnitsOption" value="Use inch units" />਍ഀ
+    <String id="UseMeterUnitsOption" value="Use meter units" />਍ഀ
+    <String id="UseMillimeterUnitsOption" value="Use millimeter units" />਍ഀ
+    <String id="AddInsRibbonTabIDValue" value="ADD_INS_TAB" />਍ഀ
+    <String id="LandcaddRibbonTab" value="LANDCADD" />਍ഀ
+    <String id="InvalidServiceLifeMessage" value="Service Life should be greater than zero." />਍ഀ
+    <String id="CreateLineSubCategoriesTransaction" value="Create Line Sub Categories" />਍ഀ
+    <String id="AssignPatioWalkTransaction" value="Assign Patio/Walk" />਍ഀ
+    <String id="AssignPlantMixTransaction" value="Assign Plant Mix" />਍ഀ
+    <String id="ConvertPlantsTransaction" value="Convert Plants" />਍ഀ
+    <String id="CreatePatioWalkFamilyTransaction" value="Create Patio/Walk Family" />਍ഀ
+    <String id="CreatePlantFamilyTransaction" value="Create Plant Family" />਍ഀ
+    <String id="CreatePlantMixFamilyTransaction" value="Create Plant Mix Family" />਍ഀ
+    <String id="FindFamilySymbolsTransaction" value="Find Family Symbols" />਍ഀ
+    <String id="GetFamilyInformationTransaction" value="Get Family Information" />਍ഀ
+    <String id="GetFamilyTypesTransaction" value="Get Family Types" />਍ഀ
+    <String id="GetPlantSymbolTransaction" value="Get Plant Symbol" />਍ഀ
+    <String id="GrowthSimulationTransaction" value="Growth Simulation" />਍ഀ
+    <String id="ImportDrawingTransaction" value="Import Drawing: " />਍ഀ
+    <String id="LoadADAParkingFamilyTransaction" value="Load ADA Parking Family: " />਍ഀ
+    <String id="LoadComponentFamilyTransaction" value="Load Component Family: " />਍ഀ
+    <String id="LoadFenceFamilyTransaction" value="Load Fence Family: " />਍ഀ
+    <String id="LoadParkingBumperFamilyTransaction" value="Load Parking Bumper Family: " />਍ഀ
+    <String id="LoadParkingFamilyTransaction" value="Load Parking Family: " />਍ഀ
+    <String id="LoadParkingIslandFamilyTransaction" value="Load Parking Island Family: " />਍ഀ
+    <String id="LoadPatioWalkFamilyTransaction" value="Load Patio/Walk Family: " />਍ഀ
+    <String id="LoadPlantFamilyTransaction" value="Load Plant Family: " />਍ഀ
+    <String id="LoadPlantingTagFamilyTransaction" value="Load Planting Tag Family: " />਍ഀ
+    <String id="LoadPlantMixFamilyTransaction" value="Load Plant Mix Family: " />਍ഀ
+    <String id="LoadSoftTerrainFamilyTransaction" value="Load Soft Terrain Family: " />਍ഀ
+    <String id="LoadSidewalkFamilyTransaction" value="Load Sidewalk Family: " />਍ഀ
+    <String id="LoadRetainingWallFamilyTransaction" value="Load Retaining Wall Family: " />਍ഀ
+    <String id="LoadStreetFamilyTransaction" value="Load Street Family: " />਍ഀ
+    <String id="LoadCurbFamilyTransaction" value="Load Curb Family: " />਍ഀ
+    <String id="LoadParkingLotFamilyTransaction" value="Load Parking Lot Family: " />਍ഀ
+    <String id="LocateComponentsTransaction" value="Locate Components" />਍ഀ
+    <String id="LocateFenceTransaction" value="Locate Fence" />਍ഀ
+    <String id="LocatePlacementFamilyTransaction" value="Load Placement Family: " />਍ഀ
+    <String id="LocatePlantsTransaction" value="Locate Plants" />਍ഀ
+    <String id="ModifyPlantsTransaction" value="Modify Plants" />਍ഀ
+    <String id="ObtainDrawingImageTransaction" value="Obtain Drawing Image" />਍ഀ
+    <String id="ParkingLotTransaction" value="Parking Lot" />਍ഀ
+    <String id="LocateSoftTerrainTransaction" value="Locate Soft Terrain" />਍ഀ
+    <String id="LocateSidewalkTransaction" value="Locate Sidewalk" />਍ഀ
+    <String id="LocateRetainingWallTransaction" value="Locate Retaining Wall" />਍ഀ
+    <String id="LocateStreetTransaction" value="Locate Street" />਍ഀ
+    <String id="LocateCurbTransaction" value="Locate Curb" />਍ഀ
+    <String id="LocateParkingLotTransaction" value="Locate Parking Lot" />਍ഀ
+    <String id="LoadTopoPlacementFamilyTransaction" value="Load Topo Placement Family: " />਍ഀ
+    <String id="LoadLandXMLSurfacePlacementFamilyTransaction" value="Load LandXML Placement Family: " />਍ഀ
+    <String id="SetBaseToposurfaceTransaction" value="Set Base Toposurface" />਍ഀ
+    <String id="ModifySiteComponentTransaction" value="Modify Site Component" />਍ഀ
+    <String id="AnnotateSiteComponentTransaction" value="Annotate Site Component" />਍ഀ
+    <String id="SurfaceCleanUpTransaction" value="Surface Clean Up" />਍ഀ
+    <String id="CreateMassFormTransaction" value="Create Mass Form" />਍ഀ
+    <String id="AddBuildingPadsToSurfaceTransaction" value="Add Building Pad(s) to Surface" />਍ഀ
+    <String id="LocateFeatureLineTransaction" value="Locate Feature Line" />਍ഀ
+    <String id="AddParametersToFamilyTransaction" value="Added Parameter(s) to Family" />਍ഀ
+    <String id="ReloadFamilyTransaction" value="Reload Family: " />਍ഀ
+    <String id="LocatePointWipeoutTransaction" value="Locate Point Wipeout" />਍ഀ
+    <String id="RelinkSurfacesTransaction" value="Relink Surface(s)" />਍ഀ
+    <String id="ConvertObjectToToposurfaceTransaction" value="Convert Object To Toposurface" />਍ഀ
+    <String id="ValidSetbackMessage" value="Setback must be a valid number greater than 0.00001" />਍ഀ
+    <String id="AlignToGenericFamilyParameter" value="Align To" />਍ഀ
+    <String id="LocateTypeGenericFamilyParameter" value="Locate Type" />਍ഀ
+    <String id="BreaklinesNotInParkingLotBoundaryMessage" value="Breakline(s) found outside Parking Lot Boundary will be removed." />਍ഀ
+    <String id="PointsNotInParkingLotBoundaryMessage" value="Points picked not within the Parking Lot Toposurface Boundary." />਍ഀ
+    <String id="UnableToCreateMassMessage" value="Unable to create mass. Please try and pick less complex geometry to create mass." />਍ഀ
+    <String id="PointNotInProposedBoundaryMessage" value="Point picked not within the Proposed Toposurface Boundary." />਍ഀ
+    <String id="PointNotInParkingLotBoundaryMessage" value="Point picked not within the Parking Lot Toposurface Boundary." />਍ഀ
+    <String id="PlacementFamilyNotLoadedMessage" value="Placement Family not loaded in project." />਍ഀ
+    <String id="RegionSelectedNotAssignedMessage" value="Region selected is not assigned." />਍ഀ
+    <String id="ADAStallCountGenericModelFamilyParameter" value="ADA Stall Count" />਍ഀ
+    <String id="ADAStallSymbolIDGenericFamilyParameter" value="ADA Stall Symbol ID" />਍ഀ
+    <String id="ADAStallWidthGenericModelFamilyParameter" value="ADA Stall Width" />਍ഀ
+    <String id="AreaAisleWidthGenericModelFamilyParameter" value="Area Aisle Width" />਍ഀ
+    <String id="AreaBidirectionalAislesGenericModelFamilyParameter" value="Area Bidirectional Aisles" />਍ഀ
+    <String id="AreaDistanceBetweenCenterlinesGenericModelFamilyParameter" value="Area Distance Between Centerlines" />਍ഀ
+    <String id="AreaRowCountGenericModelFamilyParameter" value="Area Row Count" />਍ഀ
+    <String id="AreaRowSpacingOptionsGenericModelFamilyParameter" value="Area Row Spacing Options" />਍ഀ
+    <String id="BumperHeightGenericModelFamilyParameter" value="Bumper Height" />਍ഀ
+    <String id="BumperOffsetGenericModelFamilyParameter" value="Bumper Offset" />਍ഀ
+    <String id="BumperSetbackGenericModelFamilyParameter" value="Bumper Setback" />਍ഀ
+    <String id="BumperSymbolIDGenericFamilyParameter" value="Bumper Symbol ID" />਍ഀ
+    <String id="BumperWidthGenericModelFamilyParameter" value="Bumper Width" />਍ഀ
+    <String id="IslandHeightGenericModelFamilyParameter" value="Island Height" />਍ഀ
+    <String id="IslandSymbolIDGenericFamilyParameter" value="Island Symbol ID" />਍ഀ
+    <String id="IslandWidthGenericModelFamilyParameter" value="Island Width" />਍ഀ
+    <String id="OptimizeParkingGenericModelFamilyParameter" value="Optimize Parking" />਍ഀ
+    <String id="PlaceBumperGenericModelFamilyParameter" value="Place Bumper" />਍ഀ
+    <String id="PlaceIslandGenericModelFamilyParameter" value="Place Island" />਍ഀ
+    <String id="StallCountGenericModelFamilyParameter" value="Stall Count" />਍ഀ
+    <String id="StallLengthGenericModelFamilyParameter" value="Stall Length" />਍ഀ
+    <String id="MiddleStallPlacementGenericFamilyParameter" value="Middle Stall Placement" />਍ഀ
+    <String id="IsFirstLegSegmentGenericFamilyParameter" value="Is First Leg Segment" />਍ഀ
+    <String id="ADAStallSharedAccessibleAisleGenericModelFamilyParameter" value="ADA Stall Shared Accessible Aisle" />਍ഀ
+    <String id="PhaseCreatedFamilyParameter" value="Phase Created" />਍ഀ
+    <String id="PhaseDemolishedFamilyParameter" value="Phase Demolished" />਍ഀ
+    <String id="MaterialFamilyParameter" value="Material" />਍ഀ
+    <String id="ElevationFamilyParameter" value="Elevation" />਍ഀ
+    <String id="BeginningElevationFamilyParameter" value="Beginning Elevation" />਍ഀ
+    <String id="EndingElevationFamilyParameter" value="Ending Elevation" />਍ഀ
+    <String id="UsePlacementElevationsFamilyParameter" value="Use Placement Elevations" />਍ഀ
+    <String id="NorthSouthBasePointParameter" value="N/S" />਍ഀ
+    <String id="EastWestBasePointParameter" value="E/W" />਍ഀ
+    <String id="ElevationBasePointParameter" value="Elev" />਍ഀ
+    <String id="NameFamilyParameter" value="Name" />਍ഀ
+    <String id="IsProposedSurfaceFamilyParameter" value="Is Proposed Surface" />਍ഀ
+    <String id="IslandSurfaceIdFamilyParameter" value="Island Surface Id" />਍ഀ
+    <String id="ParentSurfaceIDFamilyParameter" value="Parent Surface ID" />਍ഀ
+    <String id="ParkingLotSurfaceIDFamilyParameter" value="Parking Lot Surface ID" />਍ഀ
+    <String id="IsBreaklineFamilyParameter" value="Is Breakline" />਍ഀ
+    <String id="ParkinglotIslandString" value="Parkinglot Island" />਍ഀ
+    <String id="BaseToposurfaceCreatedFamilyParameter" value="Base Toposurface Created" />਍ഀ
+    <String id="ProjectInnerSlopesFamilyParameter" value="Project Inner Slopes" />਍ഀ
+    <String id="ComponentNameFamilyParameter" value="Component Name" />਍ഀ
+    <String id="ProposedToposurfaceString" value="Proposed Toposurface" />਍ഀ
+    <String id="BaseToposurfaceString" value="Base Toposurface" />਍ഀ
+    <String id="TypeManagerDialog" value="Type Manager" />਍ഀ
+    <String id="TypeNameMissing" value="Need a type name to update the family." />਍ഀ
+    <String id="SiteComponentIsRelativeElevationParameter" value="Is Relative Elevation" />਍ഀ
+    <String id="SiteComponentHasElevationAnnotationParameter" value="Has Elevation Annotation" />਍ഀ
+    <String id="SiteComponentHasGradeAnnotationParameter" value="Has Grade Annotation" />਍ഀ
+    <String id="SiteComponentAnnotationGradeIDParameter" value="Annotation Grade ID" />਍ഀ
+    <String id="SiteComponentAnnotationBeginElevationIDParameter" value="Annotation Begin Elevation ID" />਍ഀ
+    <String id="SiteComponentAnnotationEndElevationIDParameter" value="Annotation End Elevation ID" />਍ഀ
+    <String id="_Update_" value=" Update " />਍ഀ
+    <String id="Create_" value="Create " />਍ഀ
+    <String id="_Family_" value=" Family " />਍ഀ
+    <String id="Family_" value="Family " />਍ഀ
+    <String id="New_" value="New " />਍ഀ
+    <String id="Copy_" value="Copy " />਍ഀ
+    <String id="FamilyManagerLblSoftTerrainText" value="Create, add, or modify the families for graded areas, berms, ditches, swales, and others." />਍ഀ
+    <String id="FamilyManagerLblSidewalkText" value="Create, add, or modify the sidewalk families for your projects." />਍ഀ
+    <String id="FamilyManagerLblRetainingWallText" value="Create, add, or modify the retaining wall families for your projects." />਍ഀ
+    <String id="FamilyManagerLblParkingLotText" value="Create, add, or modify the parkinglot families for your projects." />਍ഀ
+    <String id="FamilyManagerLblStepsText" value="Create, add, or modify the steps families for your projects." />਍ഀ
+    <String id="FamilyManagerLblStreetText" value="Create, add, or modify the streets families for your projects." />਍ഀ
+    <String id="FamilyManagerLblCurbText" value="Create, add, or modify the curb families for your projects." />਍ഀ
+    <String id="_FamiliesString" value=" families" />਍ഀ
+    <String id="FamilyTypeString" value="Family Types" />਍ഀ
+    <String id="CurrentFamilyNameString" value="Current Family Name" />਍ഀ
+    <String id="_TypeString" value=" Type" />਍ഀ
+    <String id="CurrentSlopeUnitString" value="Slope Inputs units:" />਍ഀ
+    <String id="SlopeUnitRatio10" value="Ratio : 10" />਍ഀ
+    <String id="SlopeUnitRatio12" value="Ratio : 12" />਍ഀ
+    <String id="SlopeUnitRiseFeet" value="Rise / 1'- 0&#8221;"  />਍ഀ
+    <String id="SlopeUnitRiseInches" value="Rise / 12&#8221;" />਍ഀ
+    <String id="SlopeUnitRiseMM" value="Rise / 1000 mm" />਍ഀ
+    <String id="SlopeUnitDegrees" value="Decimal degrees" />਍ഀ
+    <String id="SlopeUnitPercentage" value="Percentage" />਍ഀ
+    <String id="InvalidTypeNameMessage_" value="Name Cannot Contain any of the following characters: " />਍ഀ
+    <String id="_InvalidTypeNameMessage" value=" or any of the non-printable characters" />਍ഀ
+    <String id="InvalidSlopeValue" value="Not a valid slope." />਍ഀ
+    <String id="InvalidCutFillSlopeValue" value="Cut Fill Slopes cannot be less than " />਍ഀ
+    <String id="InvalidFamilyNameMessage" value="Invalid Family Name." />਍ഀ
+    <String id="UpdatingFamilyTransaction" value="Updating Family Document" />਍ഀ
+    <String id="ValidTypeMessage" value="Need to add at least one type in the family before saving." />਍ഀ
+    <String id="DuplicateTypeNameMessage" value="The type name is already in use." />਍ഀ
+    <String id="SameTypeNameAsFamilyNameMessage" value="Cannot have Type name as Family name." />਍ഀ
+    <String id="DuplicateFamilyInFamilyManagerMessage" value="This family is already loaded into the model." />਍ഀ
+    <String id="DuplicateFamilySymbolMessage" value="There is family already loaded with the same name." />਍ഀ
+    <String id="WallCantBePlacedWithDaylightingMessage" value="Wall will not be placed because in some places along the host line, the assigned elevation is not sufficient to make it daylight." />਍ഀ
+    <String id="WallCantBePlacedWithGreaterElevationMessage" value=" Wall cannot be placed because the wall will be fully underground with the elevation selected." />਍ഀ
+    <String id="ParkingLotBoundaryClosedChainMessage" value="Parking Lot boundary picked must be a closed chain." />਍ഀ
+    <String id="PointWipeoutBoundaryClosedChainMessage" value="Point Wipeout boundary picked must be a closed chain." />਍ഀ
+    <String id="LinearIncrementParameter" value="Projection Linear Increment" />਍ഀ
+    <String id="CurveIncrementParameter" value="Projection Radial Increment" />਍ഀ
+    <String id="LinearPointIntervalParameter" value="Linear Point Interval" />਍ഀ
+    <String id="PrimaryPlacementIDParameter" value="Primary Placement Id" />਍ഀ
+    <String id="SecondaryPlacementIDParameter" value="Secondary Placement Id" />਍ഀ
+    <String id="IsStartingParameter" value="Is Starting" />਍ഀ
+    <String id="IsPrimaryLeftParameter" value="Is Primary Left" />਍ഀ
+    <String id="IsSecondaryLeftParameter" value="Is Secondary Left" />਍ഀ
+    <String id="TransitioningDistanceParameter" value="Transitioning Distance" />਍ഀ
+    <String id="RadiusParameter" value="Radius" />਍ഀ
+    <String id="PrimaryStationParameter" value="Primary Station" />਍ഀ
+    <String id="SecondaryStationParameter" value="Secondary Station" />਍ഀ
+    <String id="Slope_" value="Slope " />਍ഀ
+    <String id="NoneString" value="None" />਍ഀ
+    <String id="InvalidNumberOfLanesMessage" value="Number of lanes should be more than zero" />਍ഀ
+    <String id="SubRegionsInProposedSurfaceMessage" value="There are subregion(s) on the proposed surface, running the command will delete the subregion(s)." />਍ഀ
+    <String id="AddSubRegionsToProposedSurfaceMessage" value="One or more of the selected toposurfaces contain subregions. Do you wish to make a copy of them into the resulting proposed toposurface?" />਍ഀ
+    <String id="AddBuildingPadsToProposedSurfaceMessage" value="One or more of the selected toposurfaces contain building pads. Do you wish to make a copy of them into the resulting proposed toposurface? Please note that this will result in duplicate building pads that may affect your schedules." />਍ഀ
+    <String id="DifferentPhasingForBuildingPadsMessage" value="One or more of the selected toposurfaces contain building pads. The phase created and/or phase demolished for one or more of these building pads and/or perimeter toposurfaces is different from the selected toposurfaces. If you continue, the proposed toposurface will not include these building pads. Do you wish to continue?" />਍ഀ
+    <String id="MinimumValueIsMessage_" value="Minimum Value is " />਍ഀ
+    <String id="ValidLineWeightValuesMessage" value="Valid Line Weights are 1 to 16." />਍ഀ
+    <String id="OneMessage" value="1" />਍ഀ
+    <String id="ZeroMessage" value="0.0" />਍ഀ
+    <String id="ImportLandXMLString" value="Select File to Import" />਍ഀ
+    <String id="ImportLandTitleString" value="Import LandXML" />਍ഀ
+    <String id="XmlFilePickerFilter" value="xml files (*.xml)|*.xml" />਍ഀ
+    <String id="InvalidXMLFileName" value="Please select a valid LandXML file." />਍ഀ
+    <String id="AllignmentString" value="Alignment" />਍ഀ
+    <String id="AllignmentsString" value="Alignments" />਍ഀ
+    <String id="ToposurfacesString" value="Toposurfaces" />਍ഀ
+    <String id="ToposurfaceString" value="Toposurface" />਍ഀ
+    <String id="_ToExportString" value=" to Export" />਍ഀ
+    <String id="ElementTypeString" value="Element" />਍ഀ
+    <String id="ExistingSurfaceString" value="Existing" />਍ഀ
+    <String id="NumberOfPntsString" value="Number of Points" />਍ഀ
+    <String id="MaximumElevationString" value="Maximum Elevation" />਍ഀ
+    <String id="MinimumElevationString" value="Minimum Elevation" />਍ഀ
+    <String id="PlaneAreaString" value="Plane Area" />਍ഀ
+    <String id="SurfaceAreaString" value="Surface Area" />਍ഀ
+    <String id="SurfaceNotSelectedString" value="Surface not selected." />਍ഀ
+    <String id="AlignmentNotSelectedString" value="Alignment not selected." />    ਍ഀ
+    <String id="SpiralsNotSupportedMessages" value="One or more alignments in the file contain spiral information that cannot be imported." />਍ഀ
+    <String id="NoExistingSurfacesString" value="There are currently no toposurfaces in the model. The toposurface you want to import will need to be imported using the Add as a New Toposurface option." />਍ഀ
+    <String id="InvalidSurfaceNameString" value="Need a valid name for surface." />਍ഀ
+    <String id="InvalidViewForImportString" value="You cannot run this command on this view. Please change to a floor plan, site, or 3D view." />਍ഀ
+    <String id="CreatingSurfaceString" value="Creating Surface" />਍ഀ
+    <String id="OverwriteSurfaceString" value="Overwriting Surface" />਍ഀ
+    <String id="ImportLandXMLComponentsCompleteString" value="The import process is done." />਍ഀ
+    <String id="LinearUnitfootString" value="foot" />਍ഀ
+    <String id="LinearUnitfeetString" value="feet" />਍ഀ
+    <String id="LinearUnitFootString" value="Foot" />਍ഀ
+    <String id="LinearUnitFeetString" value="Feet" />਍ഀ
+    <String id="RevitLevelString" value="Level" />਍ഀ
+    <String id="NoSurfacesInLandXMLString" value="The selected LandXML filed does not contain any surfaces. Please click OK to continue." />਍ഀ
+    <String id="NoAlignmentInLandXMLString" value="The selected LandXML filed does not contain any alignments. Please click OK to continue." />਍ഀ
+    <String id="NoSurfacesInProjectString" value="No Site Designer surfaces were found in the Project. Please click OK to continue." />਍ഀ
+    <String id="NoAlignmentInProjectString" value="No Site Designer alignments were found in the Project. Please click OK to continue." />਍ഀ
+    <String id="ErrorParsingXMLFileString" value="Error Parsing Land XML file." />਍ഀ
+    <String id="ImportingAligmentString" value="Importing LandXML Alignments." />਍ഀ
+    <String id="ImportingToposurfaceString" value="Importing LandXML Toposurfaces." />਍ഀ
+    <String id="NoImportOptionsSelectedString" value="Please select one of the import options before proceeding." />਍ഀ
+    <String id="NoExportOptionsSelectedString" value="Please toggle one of the export options to proceed." />਍ഀ
+    <String id="SelectTopoSurfaceLabelString" value="Highlight the toposurface(s) that you wish to import into your model" />਍ഀ
+    <String id="SelectTopoAlignmentLabelString" value="Highlight the Alignment(s) that you wish to import into your model" />਍ഀ
+    <String id="SelectExportTopoSurfaceLabelString" value="Highlight the toposurface(s) that you wish to export into your model" />਍ഀ
+    <String id="SelectExportTopoAlignmentLabelString" value="Highlight the Alignment(s) that you wish to export into your model" />਍ഀ
+    <String id="NoSurfacesSelectedToExportString" value="No toposurface was selected for export." />਍ഀ
+    <String id="NoAlignmentSelectedToExportString" value="No alignment was selected for export." />਍ഀ
+    <String id="InvalidFileNameLocationMessageString" value="Please specify a file name and location." />਍ഀ
+    <String id="InValidNewFamily_Message" value="The family you selected is not a " />਍ഀ
+    <String id="ExportSurfaceLandXMLCompleteString" value="Export Completed." />਍ഀ
+    <String id="ExportAlignmentLandXMLCompleteString" value="Export Completed." />਍ഀ
+    <String id="ExportLandXMLComponentsCompleteString" value="Export Completed." />਍ഀ
+    <String id="NoSurfacesToExportString" value="No TopoSurfaces in the current project to Export to LandXML file." />਍ഀ
+    <String id="NoAlignmentToExportString" value="No Alignments in the current project to Export to LandXML file." />਍ഀ
+    <String id="UserInformationString" value="User Information" />਍ഀ
+    <String id="ExportLandXMLString" value="Export to LandXML" />਍ഀ
+    <String id="SiteComponentNameFamilyParameter" value="Site Component Name" />਍ഀ
+    <String id="TopoDrawOrderFamilyParameter" value="Topo Draw Order" />਍ഀ
+    <String id="NoXMLExtension" value="File Name must have .xml extension." />਍ഀ
+    <String id="StreetInfoTabString" value="Street Info" />਍ഀ
+    <String id="CurbGutterTabString" value="Curb/Gutter" />਍ഀ
+    <String id="SlopeProjectionTabString" value="Slope Projection" />਍ഀ
+    <String id="GeneralParametersTabString" value="General Parameters" />਍ഀ
+    <String id="StreetTypeManagerString" value="Street" />਍ഀ
+    <String id="ThreeDString" value="{3D}" />਍ഀ
+    <String id="StreetNumberOfLanesParameter" value="Number of lanes" />਍ഀ
+    <String id="StreetLaneWidthParameter" value="Lane width" />਍ഀ
+    <String id="StreetCrossSlopeParameter" value="Cross-slope" />਍ഀ
+    <String id="StreetGutterWidthParameter" value="Gutter width" />਍ഀ
+    <String id="StreetGutterSlopeParameter" value="Gutter slope" />਍ഀ
+    <String id="StreetCurbOffsetParameter" value="Curb Offset" />਍ഀ
+    <String id="StreetCurbWidthParameter" value="Curb width" />਍ഀ
+    <String id="StreetCurbHeightParameter" value="Curb height" />਍ഀ
+    <String id="StreetBoulevardWidthParameter" value="Boulevard width" />਍ഀ
+    <String id="StreetDefaultRadiusParameter" value="Default radius" />਍ഀ
+    <String id="StreetPavementSurfaceParameter" value="Pavement material" />਍ഀ
+    <String id="StreetCurbMaterialParameter" value="Curb material" />਍ഀ
+    <String id="StreetCurbDisplayParameter" value="Curb" />਍ഀ
+    <String id="StreetCutSlopeParameter" value="Cut Slope" />਍ഀ
+    <String id="StreetFillSlopeParameter" value="Fill Slope" />਍ഀ
+    <String id="StreetBaseSurfaceParameter" value="Street Base depth" />਍ഀ
+    <String id="StreetSubbaseSurfaceParameter" value="Street Sub-base depth" />਍ഀ
+    <String id="CurbTypeManagerString" value="Curb" />਍ഀ
+    <String id="CurbGutterSlopeParameter" value="Gutter slope" />਍ഀ
+    <String id="CurbMaterialParameter" value="Curb material" />਍ഀ
+    <String id="CurbGutterHeightParameter" value="Gutter height" />਍ഀ
+    <String id="CurbBaseSurfaceParameter" value="Curb Base depth" />਍ഀ
+    <String id="CurbSubbaseSurfaceParameter" value="Curb Sub-base depth" />਍ഀ
+    <String id="StreetPavementDepthParameter" value="Pavement Depth" />਍ഀ
+    <String id="SidewalkTypeManagerString" value="Sidewalk" />਍ഀ
+    <String id="SideWalkLocationLineParameter" value="Location Line" />਍ഀ
+    <String id="SideWalkWidthParameter" value="Sidewalk Width" />਍ഀ
+    <String id="SideWalkPavementDepthParameter" value="Pavement depth" />਍ഀ
+    <String id="SideWalkPavementSurfaceParameter" value="Pavement material" />਍ഀ
+    <String id="SideWalkBaseSurfaceParameter" value="Sidewalk Base depth" />਍ഀ
+    <String id="SideWalkSubbaseSurfaceParameter" value="Sidewalk Sub-base depth" />਍ഀ
+    <String id="SideWalkCutSlopeParameter" value="Cut Slope" />਍ഀ
+    <String id="SideWalkFillSlopeParameter" value="Fill Slope" />਍ഀ
+    <String id="CenterString" value="Center" />਍ഀ
+    <String id="SideString" value="Side" />਍ഀ
+    <String id="LeftString" value="Left" />਍ഀ
+    <String id="RightString" value="Right" />਍ഀ
+    <String id="RetainingWallManagerString" value="Retaining Wall" />਍ഀ
+    <String id="RetainingWallWidthParameter" value="Wall Width" />਍ഀ
+    <String id="RetainingWallExposureParameter" value="Wall Exposure" />਍ഀ
+    <String id="RetainingWallHeightParameter" value="Wall Height" />਍ഀ
+    <String id="RetainingWallBatterParameter" value="Wall Batter" />਍ഀ
+    <String id="RetainingWallSlopeProjectionParameter" value="Slope Projection" />਍ഀ
+    <String id="RetainingWallSlopeParameter" value="Slope" />਍ഀ
+    <String id="RetainingWallMaterialParameter" value="Wall material" />਍ഀ
+    <String id="RetainingWallCutSlopeParameter" value="Cut Slope" />਍ഀ
+    <String id="RetainingWallFillSlopeParameter" value="Fill Slope" />਍ഀ
+    <String id="RetainingWallBaseSurfaceParameter" value="Retaining Wall Base depth" />਍ഀ
+    <String id="RetainingWallSubbaseSurfaceParameter" value="Retaining Wall Sub-base depth" />਍ഀ
+    <String id="PipeMaterialParameter" value="Pipe material" />਍ഀ
+    <String id="PipeWidthParameter" value="Pipe Width" />਍ഀ
+    <String id="PipeHeightParameter" value="Pipe Height" />਍ഀ
+    <String id="PipeDepthParameter" value="Pipe Depth" />਍ഀ
+    <String id="PipeThicknessParameter" value="Pipe Thickness" />਍ഀ
+    <String id="PipeString" value="Pipe" />਍ഀ
+    <String id="StructureMaterialParameter" value="Structure material" />਍ഀ
+    <String id="StructureWidthParameter" value="Structure Width" />਍ഀ
+    <String id="StructureLengthParameter" value="Structure Length" />਍ഀ
+    <String id="StructureThicknessParameter" value="Structure Thickness" />਍ഀ
+    <String id="StructureDepthParameter" value="Structure Depth" />਍ഀ
+    <String id="StructureString" value="Structure" />਍ഀ
+    <String id="StepsManagerString" value="Steps" />਍ഀ
+    <String id="StepsHeightParameter" value="Step height" />਍ഀ
+    <String id="StepsTreadParameter" value="Step tread" />਍ഀ
+    <String id="StepsWidthParameter" value="Step width" />਍ഀ
+    <String id="StepsMaterialParameter" value="Step material" />਍ഀ
+    <String id="ParkingLotManagerString" value="Parking Lot" />਍ഀ
+    <String id="ParkingLotPavementDepthParameter" value="Pavement Depth" />    ਍ഀ
+    <String id="ParkingLotParkingPavementSurfaceParameter" value="Parking Pavement material" />਍ഀ
+    <String id="ParkingLotParkingBaseDepthParameter" value="Parking base Depth" />਍ഀ
+    <String id="ParkingLotParkingSubBaseDepthParameter" value="Parking sub-base Depth" />਍ഀ
+    <String id="SoftTerrainManagerString" value="Soft Terrain" />਍ഀ
+    <String id="SoftTerrainLeftOffsetWidthParameter" value="Left Offset Width" />਍ഀ
+    <String id="SoftTerrainRightOffsetWidthParameter" value="Right Offset Width" />਍ഀ
+    <String id="SoftTerrainCutSlopeParameter" value="Cut Slope" />਍ഀ
+    <String id="SoftTerrainFillSlopeParameter" value="Fill Slope" />਍ഀ
+    <String id="ProposedToposurfaceMaterialParameter" value="Proposed Toposurface material" />਍ഀ
+    <String id="ParkingLotIslandToposurfaceMaterialParameter" value="Parking Lot Island Toposurface material" />਍ഀ
+    <String id="SiteComponentPromptForStartingSide" value="Site Component Prompt For Starting Side" />਍ഀ
+    <String id="UseSharedElevation" value="Use Shared Elevation" />਍ഀ
+    <String id="CheckForUpdateNotification" value="Check for Update Notification" />਍ഀ
+    <String id="LibraryPath" value="Library Path" />਍ഀ
+    <String id="SamplePath" value="Sample Path" />਍ഀ
+    <String id="ComponentString" value="Component" />਍ഀ
+    <String id="MassGrossFloorAreaParameter" value="Gross Floor Area" />਍ഀ
+    <String id="MassGrossSurfaceAreaParameter" value="Gross Surface Area" />਍ഀ
+    <String id="MassGrossVolumeParameter" value="Gross Volume" />਍ഀ
+    <String id="MassBaseVolume" value="Base Volume" />    ਍ഀ
+    <String id="MassSubBaseVolume" value="Sub Base Volume" />਍ഀ
+    <String id="DoNotUpdatePostioningOption" value="Do not update postioning" />਍ഀ
+    <String id="FenceString" value="Fence" />਍ഀ
+    <String id="ParkingLotString" value="Parking Lot" />਍ഀ
+    <String id="CurbString" value="Curb" />਍ഀ
+    <String id="PlantString" value="Plant" />਍ഀ
+    <String id="IDString" value="ID" />਍ഀ
+    <String id="UpdatePositioningOption" value="Update positioning" />਍ഀ
+    <String id="InstallUpdate1ToRunSiteworksMessage" value="To run Site Designer for Revit you will need to apply Update 1 or higher to this version of Revit 2011. You can find the latest updates to Revit at http://www.autodesk.com." />਍ഀ
+    <String id="InstallUpdate1ToRunLANDCADDMessage" value="To run LANDCADD for Revit you will need to apply Update 1 or higher to this version of Revit 2011. You can find the latest updates to Revit at http://www.autodesk.com." />਍ഀ
+    <String id="_PositionUpdatedLineMovesMessage" value=" position to be updated as the host model and detail lines are modified." />਍ഀ
+    <String id="SelectUpdatePositioning_Message" value="Select Update positioning if you want the " />਍ഀ
+    <String id="IsLastLegSegmentGenericFamilyParameter" value="Is Last Leg Segment" />਍ഀ
+    <String id="FenceFamilyCantBeLoadedMessage" value="Family cannot be loaded. Please pick another Fence (Generic Model with LandcaddID " />਍ഀ
+    <String id="TypeParameterFamilyFileMessage" value=" Type Parameter) Family File." />਍ഀ
+    <String id="FenceFamilyNotLoadedWithIDMessage" value="Fence (Generic Model with LandcaddID " />਍ഀ
+    <String id="TypeParameterFamilyNotLoadedMessage" value=" Type Parameter) Family not loaded." />਍ഀ
+    <String id="FamilyNotFenceMessage" value="Family loaded was not a Fence (Generic Model with LandcaddID " />਍ഀ
+    <String id="TypeParameterFamilyMessage" value=" Type Parameter) Family." />਍ഀ
+    <String id="ComponentFamilyCantBeLoadedMessage" value="Family cannot be loaded. Please pick another Component (Generic Model, Site, Entourage, Furniture, Lighting Fixtures, Columns, or Electrical Equipment) Family File." />਍ഀ
+    <String id="ComponentFamilyNotLoadedMessage" value="Component (Generic Model, Site, Entourage, Furniture, Lighting Fixtures, Columns, or Electrical Equipment) Family not loaded." />਍ഀ
+    <String id="FamilyNotComponentMessage" value="Family loaded was not a Component (Generic Model, Site, Entourage, Furniture, Lighting Fixtures, Columns, or Electrical Equipment) Family." />਍ഀ
+    <String id="ParkingFamilyCantBeLoadedMessage" value="Family cannot be loaded. Please pick another Parking ( LancaddID " />਍ഀ
+    <String id="ParkingFamilyNotLoadedMessage" value="Parking ( LancaddID " />਍ഀ
+    <String id="FamilyNotParkingMessage" value="Family loaded was not a Parking ( LancaddID " />਍ഀ
+    <String id="PlantingFamilyCantBeLoadedMessage" value="Family cannot be loaded. Please pick another Planting Family File." />਍ഀ
+    <String id="FamilyNotPlantingMessage" value="Family loaded was not a Planting Family." />਍ഀ
+    <String id="ParkingLotFamilyCantBeLoadedMessage" value="Family cannot be loaded. Please pick another Parking Lot (Site with Siteworks ID " />਍ഀ
+    <String id="CurbFamilyCantBeLoadedMessage" value="Family cannot be loaded. Please pick another Curb (Site with Siteworks ID " />਍ഀ
+    <String id="ParkingLotFamilyNotLoadedWithIDMessage" value="Parking Lot (Site with Siteworks ID " />਍ഀ
+    <String id="CurbFamilyNotLoadedWithIDMessage" value="Curb (Site with Siteworks ID " />਍ഀ
+    <String id="FamilyNotParkingLotMessage" value="Family loaded was not a Parking Lot (Site with Siteworks ID " />਍ഀ
+    <String id="FamilyNotCurbMessage" value="Family loaded was not a Curb (Site with Siteworks ID " />਍ഀ
+    <String id="SoftTerrainFamilyCantBeLoadedMessage" value="Family cannot be loaded. Please pick another Soft Terrain (Site with Siteworks ID " />਍ഀ
+    <String id="SoftTerrainFamilyNotLoadedWithIDMessage" value="Soft Terrain (Site with Siteworks ID " />਍ഀ
+    <String id="FamilyNotSoftTerrainMessage" value="Family loaded was not a Soft Terrain (Site with Siteworks ID " />਍ഀ
+    <String id="SidewalkFamilyCantBeLoadedMessage" value="Family cannot be loaded. Please pick another Sidewalk (Site with Siteworks ID " />਍ഀ
+    <String id="SidewalkFamilyNotLoadedWithIDMessage" value="Sidewalk (Site with Siteworks ID " />਍ഀ
+    <String id="FamilyNotSidewalkMessage" value="Family loaded was not a Sidewalk (Site with Siteworks ID " />਍ഀ
+    <String id="RetainingWallFamilyCantBeLoadedMessage" value="Family cannot be loaded. Please pick another Retaining Wall (Site with Siteworks ID " />਍ഀ
+    <String id="RetainingWallFamilyNotLoadedWithIDMessage" value="Retaining Wall (Site with Siteworks ID " />਍ഀ
+    <String id="FamilyNotRetainingWallMessage" value="Family loaded was not a Retaining Wall (Site with Siteworks ID " />਍ഀ
+    <String id="StreetFamilyCantBeLoadedMessage" value="Family cannot be loaded. Please pick another Street (Site with Siteworks ID " />਍ഀ
+    <String id="StreetFamilyNotLoadedWithIDMessage" value="Street (Site with Siteworks ID " />਍ഀ
+    <String id="FamilyNotStreetMessage" value="Family loaded was not a Street (Site with Siteworks ID " />਍ഀ
+    <String id="NoSelectionMadeMessage" value="No selection was made." />਍ഀ
+    <String id="ObjectNotSupportedForPlantsMessage" value="Object selected not supported for modifying plants." />਍ഀ
+    <String id="FamilyNotPlantingTagMessage" value="Family loaded was not a Planting Tag Family." />਍ഀ
+    <String id="NoPointPickedMessage" value="No point was picked." />਍ഀ
+    <String id="LicenseBorrowedFromNetworkMessage" value="License borrowed from Network" />਍ഀ
+    <String id="LicenseBorrowedFromNetworkMessageError" value="License already borrowed from Network" />਍ഀ
+    <String id="LicenseReturnedToNetworkMessage" value="License returned to Network" />਍ഀ
+    <String id="PleaseSelectPlantingFamilyFileMessage" value="Please select Planting Family File." />਍ഀ
+    <String id="PleaseSelectComponentFamilyFileMessage" value="Please select Component Family File." />਍ഀ
+    <String id="PleaseSelectFenceFamilyFileMessage" value="Please select Fence (Generic Model) Family File." />਍ഀ
+    <String id="PleaseSelectSoftTerrainFamilyFileMessage" value="Please select Site Designer Soft Terrain Family File." />਍ഀ
+    <String id="PleaseSelectSidewalkFamilyFileMessage" value="Please select Site Designer Sidewalk Family File." />਍ഀ
+    <String id="PleaseSelectRetainingWallFamilyFileMessage" value="Please select Site Designer Retaining Wall Family File." />਍ഀ
+    <String id="PleaseSelectStreetFamilyFileMessage" value="Please select Site Designer Street Family File." />਍ഀ
+    <String id="PleaseSelectParkingLotFamilyFileMessage" value="Please select Site Designer Parking Lot Family File." />਍ഀ
+    <String id="PleaseSelectCurbFamilyFileMessage" value="Please select Site Designer Curb Family File." />਍ഀ
+    <String id="StartingDistanceGreaterThanLineLengthMessage" value="Starting Distance exceeds length of Model/Detail Line picked." />਍ഀ
+    <String id="_PlacedWontUpdateWithHost_Message" value=" being placed will not be updated with changes to the host line as the " />਍ഀ
+    <String id="_ParametersNotPartOfFamilyMessage" value=" parameters is not part of this family." />਍ഀ
+    <String id="PositionPlantsMessage" value="The position of the Plants" />਍ഀ
+    <String id="PositionComponetsMessage" value="The position of the Componets" />਍ഀ
+    <String id="PositionParkingLotsMessage" value="The position of the Parking Lots" />਍ഀ
+    <String id="PositionFenceMessage" value="The position of the fence" />਍ഀ
+    <String id="SpecifyPlantWidthMessage" value="Please specify the Plant Width" />਍ഀ
+    <String id="ValidPlantWidthMessage" value="Plant Width must be a valid number greater than 0.00001" />਍ഀ
+    <String id="ValidPlantWidthVarianceMessage" value="Plant Width Variance must be a valid number 0.0 or greater" />਍ഀ
+    <String id="VarianceMoreThanPlantWidthMessage" value="Plant Width Variance cannot be greater than or equal to Plant Width" />਍ഀ
+    <String id="SpecifyPlantHeightMessage" value="Please specify the Plant Height" />਍ഀ
+    <String id="ValidPlantHeightMessage" value="Plant Height must be a valid number greater than 0.00001" />਍ഀ
+    <String id="ValidPlantHeightVarianceMessage" value="Plant Height Variance must be a valid number 0.0 or greater" />਍ഀ
+    <String id="VarianceMoreThanPlantHeightMessage" value="Plant Height Variance cannot be greater than or equal to Plant Height" />਍ഀ
+    <String id="ChainPickedClosedProjectInnerSlopesMessage" value="You selected a closed chain, do you want to project slopes on the inside?" />਍ഀ
+    <String id="ArcPickedClosedProjectInnerSlopesMessage" value="Arc picked is closed. Do you want to project inner slopes?" />਍ഀ
+    <String id="ToposurfacNotInProjectMessage" value="You must have at least one Toposurface in your Project to run this command." />਍ഀ
+    <String id="BaseToposurfaceAlreadySeteMessage" value="A base toposurface has already been set for this model. Changing the selection of the base toposurface will affect the resulting Proposed Toposurface." />਍ഀ
+    <String id="ObjectSelectedNotToposurfaceMessage" value="Object selected not Toposurface." />਍ഀ
+    <String id="NoSurfacesSelectedMessage" value="No Surfaces selected." />਍ഀ
+    <String id="ToposurfaceAlreadyPickedMessage" value="Toposurface has already been picked. Pick again." />਍ഀ
+    <String id="ToposurfaceNotCreatedMessage" value="Toposurface not created." />਍ഀ
+    <String id="NoPointsFoundMessage" value="No points found." />਍ഀ
+    <String id="StreetTemplateNotMassTypeMessage" value="Street Template file is not Mass Family Type. Go to Settings Command and change the Street Mass Template File Name." />਍ഀ
+    <String id="CurbTemplateNotMassTypeMessage" value="Curb Template file is not Mass Family Type. Go to Settings Command and change the Curb Mass Template File Name." />਍ഀ
+    <String id="RetainingWallTemplateNotMassTypeMessage" value="Retaining Wall Template file is not Mass Family Type. Go to Settings Command and change the Retaining Wall Mass Template File Name." />਍ഀ
+    <String id="SidewalkTemplateNotMassTypeMessage" value="Sidewalk Template file is not Mass Family Type. Go to Settings Command and change the Sidewalk Mass Template File Name." />਍ഀ
+    <String id="PipeTemplateNotMassTypeMessage" value="Pipe Template file is not Mass Family Type. Go to Settings Command and change the Pipe Mass Template File Name." />਍ഀ
+    <String id="StructureTemplateNotMassTypeMessage" value="Structure Template file is not Mass Family Type. Go to Settings Command and change the Structure Mass Template File Name." />਍ഀ
+    <String id="NoOptionsSelectedMessage" value="Need to have at least one option selected." /> ਍ഀ
+    <String id="StreetIntersectionNotOnStraightLinesMessage" value="An intersection was found that can't be created. Please make sure that the new street intersects other streets only on straight line segments." />਍ഀ
+    <String id="SidewalkIntersectionNotOnStraightLinesMessage" value="An intersection was found that can't be created. Please make sure that the new sidewalk intersects other sidewalks only on straight line segments." />਍ഀ
+    <String id="RadiusMakesArcLengthMoreThanHostLineMessage" value="With the Radius specified the arc length exceeds the length of host line selected. Please decrease the Radius." />਍ഀ
+    <String id="TransitioningDistanceMakesDistanceMoreThanHostLineMessage" value="With the Transitioning Distance specified the distance exceeds the length of host line selected.  Please decrease the Transitioning Distance in Settings." />਍ഀ
+    <String id="PositioningAutoCenterToCenter" value="Auto Center to Center" />਍ഀ
+    <String id="PositioningAutoOriginToOrigin" value="Auto Origin to Origin" />਍ഀ
+    <String id="PositioningManualCenter" value="Manual Center" />਍ഀ
+    <String id="PositioningUsePreviousValues" value="Use Previous Values" />਍ഀ
+    <String id="PositioningBySharedCoordinates" value="By Shared Coordinates" />਍ഀ
+    <String id="PositioningBySurveyPoints" value="By Survey Point" />਍ഀ
+    <String id="BuildingPadString" value="Building Pad" />਍ഀ
+    <String id="FeatureLineString" value="Feature Line" />਍ഀ
+    <String id="PointWipeoutString" value="Point Wipeout" />਍ഀ
+    <String id="ToposurfaceIDFamilyParameter" value="Toposurface ID" />਍ഀ
+    <String id="MassTemplatesString" value="Mass Templates" />਍ഀ
+    <String id="MassCreationString" value="Mass Creation" />਍ഀ
+    <String id="SiteComponentLineCreationString" value="Site Component Line Creation" />਍ഀ
+    <String id="GeneralString" value="General" />਍ഀ
+    <String id="MassTemplateFileNameString" value="Mass Template File Name" />਍ഀ
+    <String id="StreetMassTemplateFileNameString" value="Street Mass Template File Name" />਍ഀ
+    <String id="CurbMassTemplateFileNameString" value="Curb Mass Template File Name" />਍ഀ
+    <String id="SidewalkMassTemplateFileNameString" value="Sidewalk Mass Template File Name" />਍ഀ
+    <String id="RetainingWallMassTemplateFileNameString" value="Retaining Wall Mass Template File Name" />਍ഀ
+    <String id="MassCreationOnlyMode" value="Only Create Masses" />਍ഀ
+    <String id="SidewalkMassSubCategoryName" value="Sidewalk Mass Sub Category Name" />਍ഀ
+    <String id="RetainingWallMassSubCategoryName" value="Retaining Wall Mass Sub Category Name" />਍ഀ
+    <String id="CurbMassSubCategoryName" value="Curb Mass Sub Category Name" />਍ഀ
+    <String id="StreetMassSubCategoryName" value="Street Mass Sub Category Name" />਍ഀ
+    <String id="SoftTerrainLineSubCategoryName" value="Soft Terrain Line Sub Category Name" />਍ഀ
+    <String id="SidewalkLineSubCategoryName" value="Sidewalk Line Sub Category Name" />਍ഀ
+    <String id="RetainingWallLineSubCategoryName" value="Retaining Wall Line Sub Category Name" />਍ഀ
+    <String id="StreetLineSubCategoryName" value="Street Line Sub Category Name" />਍ഀ
+    <String id="CurbLineSubCategoryName" value="Curb Line Sub Category Name" />਍ഀ
+    <String id="ParkingLotLineSubCategoryName" value="Parking Lot Line Sub Category Name" />਍ഀ
+    <String id="FeatureLineLineSubCategoryName" value="Feature Line Sub Category Name" />਍ഀ
+    <String id="PointWipeoutLineSubCategoryName" value="Point Wipeout Sub Category Name" />਍ഀ
+    <String id="TopographySurfaceArcPointInterval" value="Topography Surface Arc Point Interval" />਍ഀ
+    <String id="SoftTerrainLineSubCategoryColor" value="Soft Terrain Line Sub Category Color" />਍ഀ
+    <String id="SidewalkLineSubCategoryColor" value="Sidewalk Sub Category Color" />਍ഀ
+    <String id="RetainingWallLineSubCategoryColor" value="Retaining Wall Line Sub Category Color" />਍ഀ
+    <String id="StreetLineSubCategoryColor" value="Street Line Sub Category Color" />਍ഀ
+    <String id="CurbLineSubCategoryColor" value="Curb Sub Category Color" />਍ഀ
+    <String id="ParkingLotLineSubCategoryColor" value="Parking Lot Line Sub Category Color" />਍ഀ
+    <String id="FeatureLineLineSubCategoryColor" value="Feature Line Sub Category Color" />਍ഀ
+    <String id="PointWipeoutLineSubCategoryColor" value="Point Wipeout Sub Category Color" />਍ഀ
+    <String id="LineSubCategoryLineWeight" value="Line Sub Category Line Weight" />਍ഀ
+    <String id="SoftTerrainLineSubCategoryLineWeight" value="Soft Terrain Line Sub Category Line Weight" />਍ഀ
+    <String id="SidewalkLineSubCategoryLineWeight" value="Sidewalk Line Sub Category Line Weight" />਍ഀ
+    <String id="RetainingWallLineSubCategoryLineWeight" value="Retaining Wall Line Sub Category Line Weight" />਍ഀ
+    <String id="StreetLineSubCategoryLineWeight" value="Street Line Sub Category Line Weight" />਍ഀ
+    <String id="CurbLineSubCategoryLineWeight" value="Curb Line Sub Category Line Weight" />਍ഀ
+    <String id="ParkingLotLineSubCategoryLineWeight" value="Parking Lot Line Sub Category Line Weight" />਍ഀ
+    <String id="FeatureLineLineSubCategoryLineWeight" value="Feature Line Sub Category Line Weight" />਍ഀ
+    <String id="PointWipeoutLineSubCategoryLineWeight" value="Point Wipeout Sub Category Line Weight" />਍ഀ
+    <String id="RGBString" value="RGB" />਍ഀ
+    <String id="DefaultLineColor" value="0-0-255" />਍ഀ
+    <String id="RedLineColor" value="255-0-0" />਍ഀ
+    <String id="IntersectionLineSubCategoryName" value="Intersection Line Sub Category Name" />਍ഀ
+    <String id="IntersectionLineSubCategoryColor" value="Intersection Line Sub Category Color" />਍ഀ
+    <String id="IntersectionLineSubCategoryLineWeight" value="Intersection Line Sub Category Line Weight" />਍ഀ
+    <String id="StreetIntersectionDefaultRadius" value="Street Intersection Default Radius" />਍ഀ
+    <String id="SidewalkIntersectionDefaultRadius" value="Sidewalk Intersection Default Radius" />਍ഀ
+    <String id="StreetIntersectionDefaultTransitioningDistance" value="Street Intersection Default Transtioning Distance" />਍ഀ
+    <String id="SidewalkIntersectionDefaultTransitioningDistance" value="Sidewalk Intersection Default Transtioning Distance" />਍ഀ
+    <String id="IntersectionDetectedMessage" value="Intersection(s) were found. Do you want to create the Intersection(s)" />਍ഀ
+    <String id="InvalidRadiusMessage" value="Radius is Invalid, Arc doesn't fit in the intersection" />਍ഀ
+    <String id="InvalidRadiusForStreetMessage" value="Radius is invalid and must be more than the street curb and gutter width." />਍ഀ
+    <String id="TransitioningDistanceAndRadiusInvalidMessage" value="Cannot resolve intersections because no default radius or transitioing distance has been set." />਍ഀ
+    <String id="IntersectionSWStreetMass" value="Intersection SW Street Mass" />਍ഀ
+    <!-- Dialog Specific Strings. -->਍ഀ
+    <String id="CopyrightDialog" value="Copyright 2014" />਍ഀ
+    <String id="LocateFenceDialog" value="Locate Fence" />਍ഀ
+    <String id="AMP_FenceFamilyDialog" value="&amp;Fence Family:" />਍ഀ
+    <String id="F_AMP_enceNameDialog" value="F&amp;ence Name:" />਍ഀ
+    <String id="Fence_AMP_HeightDialog" value="Fence &amp;Height:" />਍ഀ
+    <String id="FenceS_AMP_panDialog" value="Fence S&amp;pan:" />਍ഀ
+    <String id="Set_AMP_backDialog" value="Set&amp;back:" />਍ഀ
+    <String id="AMP_LevelDialog" value="&amp;Level:" />਍ഀ
+    <String id="AMP_PositioningDialog" value="&amp;Positioning:" />਍ഀ
+    <String id="AMP_SegmentDialog" value="&amp;Segment" />਍ഀ
+    <String id="AMP_ChainDialog" value="&amp;Chain" />਍ഀ
+    <String id="ExistingEle_AMP_mentDialog" value="Existing Ele&amp;ment" />਍ഀ
+    <String id="DeleteE_AMP_xistingElementDialog" value="Delete E&amp;xisting Element" />਍ഀ
+    <String id="LocateComponentsDialog" value="Locate Components" />਍ഀ
+    <String id="AMP_ComponentFamilyDialog" value="&amp;Component Family:" />਍ഀ
+    <String id="C_AMP_omponentNameDialog" value="C&amp;omponent Name:" />਍ഀ
+    <String id="Component_AMP_SpacingDialog" value="Component &amp;Spacing:" />਍ഀ
+    <String id="AMP_PlaceAlongDialog" value="&amp;Place Along" />਍ഀ
+    <String id="C_AMP_enterDialog" value="C&amp;enter" />਍ഀ
+    <String id="AMP_AlternateDialog" value="&amp;Alternate" />਍ഀ
+    <String id="AMP_SideDialog" value="&amp;Side" />਍ഀ
+    <String id="Ali_AMP_gnToDialog" value="Ali&amp;gn To" />਍ഀ
+    <String id="PlaceIn_AMP_AreaDialog" value="Place in &amp;Area" />਍ഀ
+    <String id="Triang_AMP_ularDialog" value="Triang&amp;ular" />਍ഀ
+    <String id="S_AMP_quareDialog" value="S&amp;quare" />਍ഀ
+    <String id="R_AMP_otationDialog" value="R&amp;otation:" />਍ഀ
+    <String id="ParkingLotAreaSettingsDialog" value="Parking Lot Area Settings" />਍ഀ
+    <String id="RowSpacingDialog" value="Row Spacing" />਍ഀ
+    <String id="AMP_NumberOfRowsDialog" value="&amp;Number of Rows:" />਍ഀ
+    <String id="AMP_UseBiDirectionalAislesDialog" value="&amp;Use Bi-Directional Aisles" />਍ഀ
+    <String id="ParkingLotDialog" value="Parking Lot" />਍ഀ
+    <String id="ParkingStyleDialog" value="Parking Style" />਍ഀ
+    <String id="ADASpacingDialog" value="ADA Spacing" />਍ഀ
+    <String id="BumperDialog" value="Bumper" />਍ഀ
+    <String id="IslandDialog" value="Island" />਍ഀ
+    <String id="ParkingPlacementDialog" value="Parking Placement" />਍ഀ
+    <String id="AMP_SingleRowDialog" value="&amp;Single Row" />਍ഀ
+    <String id="AMP_DoubleRowDialog" value="&amp;Double Row" />਍ഀ
+    <String id="AMP_AreaDialog" value="&amp;Area" />਍ഀ
+    <String id="Se_AMP_ttingsDialog" value="Se&amp;ttings" />਍ഀ
+    <String id="AMP_FamilyDialog" value="&amp;Family:" />਍ഀ
+    <String id="AMP_NameDialog" value="&amp;Name:" />਍ഀ
+    <String id="AMP_LengthDialog" value="&amp;Length:" />਍ഀ
+    <String id="AMP_AngleDialog" value="&amp;Angle:" />਍ഀ
+    <String id="AMP_WidthDialog" value="&amp;Width:" />਍ഀ
+    <String id="AMP_OptimizeDialog" value="&amp;Optimize" />਍ഀ
+    <String id="ByN_AMP_umberDialog" value="By N&amp;umber" />਍ഀ
+    <String id="Nu_AMP_mberOfSpacesDialog" value="Nu&amp;mber of Spaces:" />਍ഀ
+    <String id="Place_AMP_ADAParkingSpacesDialog" value="Place &amp;ADA Parking Spaces" />਍ഀ
+    <String id="S_AMP_haredAccessibleAisleDialog" value="S&amp;hared Accessible Aisle" />਍ഀ
+    <String id="AMP_OffsetDialog" value="&amp;Offset:" />਍ഀ
+    <String id="AMP_HeightDialog" value="&amp;Height:" />਍ഀ
+    <String id="Place_AMP_BumpersDialog" value="Place &amp;Bumpers" />਍ഀ
+    <String id="Place_AMP_IslandsDialog" value="Place &amp;Islands" />਍ഀ
+    <String id="AMP_SetbackDialog" value="&amp;Setback:" />਍ഀ
+    <String id="ConvertPlantsDialog" value="Convert Plants" />਍ഀ
+    <String id="AMP_PlantFamilyDialog" value="&amp;Plant Family:" />਍ഀ
+    <String id="P_AMP_lantNameDialog" value="P&amp;lant Name:" />਍ഀ
+    <String id="Sea_AMP_rchDialog" value="Sea&amp;rch" />਍ഀ
+    <String id="SelectionMethodsDialog" value="Selection Methods" />਍ഀ
+    <String id="AMP_SelectionSetDialog" value="&amp;Selection Set" />਍ഀ
+    <String id="AMP_WindowSelectDialog" value="&amp;Window Select" />਍ഀ
+    <String id="AMP_AllCirclesDialog" value="&amp;All Circles" />਍ഀ
+    <String id="PlaceTagDialog" value="Place Tag" />਍ഀ
+    <String id="CreatePlant_AMP_GroupTagDialog" value="Create Plant &amp;Group Tag" />਍ഀ
+    <String id="Lea_AMP_deredTagDialog" value="Lea&amp;dered Tag" />਍ഀ
+    <String id="PlantGrowthSimulationDialog" value="Plant Growth Simulation" />਍ഀ
+    <String id="PlantGrowthDialog" value="Plant Growth" />਍ഀ
+    <String id="AMP_ModifyDialog" value="&amp;Modify" />਍ഀ
+    <String id="AMP_DeleteDialog" value="&amp;Delete" />਍ഀ
+    <String id="AMP_FileDialog" value="&amp;File:" />਍ഀ
+    <String id="Fi_AMP_leDialog" value="Fi&amp;le:" />਍ഀ
+    <String id="SourceDialog" value="Source" />਍ഀ
+    <String id="DestinationDialog" value="Destination" />਍ഀ
+    <String id="AMP_SearchDialog" value="&amp;Search" />਍ഀ
+    <String id="AMP_AddDialog" value="&amp;Add" />਍ഀ
+    <String id="AMP_EqualDialog" value="&amp;Equal" />਍ഀ
+    <String id="Save_AMP_FamilyDialog" value="Save &amp;Family" />਍ഀ
+    <String id="AMP_CancelDialog" value="&amp;Cancel" />਍ഀ
+    <String id="AMP_InsertDialog" value="&amp;Insert" />਍ഀ
+    <String id="AMP_OKDialog" value="&amp;OK" />਍ഀ
+    <String id="AMP_LoadDialog" value="&amp;Load" />਍ഀ
+    <String id="AMP_CopyDialog" value="&amp;Copy" />਍ഀ
+    <String id="SingleFileDialog" value="Single File" />਍ഀ
+    <String id="AMP_SingleFileDialog" value="&amp;Single File" />਍ഀ
+    <String id="Searc_AMP_hDialog" value="Searc	&amp;h" />਍ഀ
+    <String id="AMP_DirectoryMultipleFilesDialog" value="&amp;Directory (Multiple Family Files)" />਍ഀ
+    <String id="AMP_RFAFileDialog" value="&amp;RFA(Family File)" />਍ഀ
+    <String id="AMP_CSVFileDialog" value="&amp;Comma Delimited(Text File)" />਍ഀ
+    <String id="AMP_TabFileDialog" value="&amp;Tab Delimited(Text File)" />਍ഀ
+    <String id="CollectionDialog" value="Collection" />਍ഀ
+    <String id="PlantDialog" value="Plant" />਍ഀ
+    <String id="Column_AMP_DisplayDialog" value="Column &amp;Display" />਍ഀ
+    <String id="AMP_AddToFamilyDialog" value="&amp;Add To Family" />਍ഀ
+    <String id="Sho_AMP_wAllDialog" value="Sho&amp;w All" />਍ഀ
+    <String id="PlantSearchDialog" value="Plant Search" />਍ഀ
+    <String id="ManagerDialog" value="Manager" />਍ഀ
+    <String id="AMP_DirectoryDialog" value="&amp;Directory:" />਍ഀ
+    <String id="PlantMixFamilyDialog" value="Plant Mix Family" />਍ഀ
+    <String id="PathWalkFamilyDialog" value="Patio/Walk Family" />਍ഀ
+    <String id="PlantGrowthAgeDialog" value="Plant Growth Age" />਍ഀ
+    <String id="A_AMP_geDialog" value="A&amp;ge:" />਍ഀ
+    <String id="All_AMP_InstancesDialog" value="All &amp;Instances" />਍ഀ
+    <String id="AMP_ApplyDialog" value="&amp;Apply" />਍ഀ
+    <String id="ModifyPlantsDialog" value="Modify Plants" />਍ഀ
+    <String id="Plant_AMP_FamilyDialog" value="Plant &amp;Family:" />਍ഀ
+    <String id="Plant_AMP_NameDialog" value="Plant &amp;Name:" />਍ഀ
+    <String id="ExistingPlantsInProjDialog" value="Existing Plant(s) in Project" />਍ഀ
+    <String id="ModifyPlantsInProjDialog" value="Modify Plant(s) in Project" />਍ഀ
+    <String id="AMP_ModifyPlantTypeDialog" value="&amp;Modify Plant Type" />਍ഀ
+    <String id="Pic_AMP_kPlantDialog" value="Pic&amp;k Plant" />਍ഀ
+    <String id="M_AMP_odifyPlantWidthDialog" value="M&amp;odify Plant Width" />਍ഀ
+    <String id="Plant_AMP_WidthDialog" value="Plant &amp;Width:" />਍ഀ
+    <String id="Mo_AMP_difyPlantWidthDialog" value="Mo&amp;dify Plant Height" />਍ഀ
+    <String id="Plant_AMP_HeightDialog" value="Plant &amp;Height:" />਍ഀ
+    <String id="LocatePlantsDialog" value="Locate Plants" />਍ഀ
+    <String id="Plan_AMP_tSpacingDialog" value="Plan&amp;t Spacing:" />਍ഀ
+    <String id="AMP_VarianceDialog" value="&amp;Variance:" />਍ഀ
+    <String id="Varianc_AMP_eDialog" value="Varianc&amp;e:" />਍ഀ
+    <String id="AMP_HedgeRowDialog" value="&amp;Hedge Row" />਍ഀ
+    <String id="AMP_GroveDialog" value="&amp;Grove" />਍ഀ
+    <String id="S_AMP_ularDialog" value="S&amp;quare" />਍ഀ
+    <String id="AMP_SingleDialog" value="&amp;Single" />਍ഀ
+    <String id="Lea_AMP_deredDialog" value="Lea&amp;dered Tag" />਍ഀ
+    <String id="PlantBookletDialog" value="Plant Booklet" />਍ഀ
+    <String id="AMP_PickDialog" value="&amp;Pick" />਍ഀ
+    <String id="PlantsDialog" value="Plants" />਍ഀ
+    <String id="ExportOptionsDialog" value="Export Options" />਍ഀ
+    <String id="AMP_ExportDialog" value="&amp;Export" />਍ഀ
+    <String id="ModifyDialog" value="Modify" />਍ഀ
+    <String id="AddDialog" value="Add" />਍ഀ
+    <String id="PlantDWGCreatorDialog" value="Plant DWG Creator" />਍ഀ
+    <String id="AMP_ImageTypeDialog" value="&amp;Image Type:" />਍ഀ
+    <String id="PreviewDialog" value="Preview" />਍ഀ
+    <String id="LayerLevelColorsDialog" value="Layer/Level Colors" />਍ഀ
+    <String id="AMP_BlackAndWhiteDialog" value="&amp;Black and White" />਍ഀ
+    <String id="AMP_PreserveColorsDialog" value="&amp;Preserve Colors" />਍ഀ
+    <String id="I_AMP_nvertColorsDialog" value="I&amp;nvert Colors" />਍ഀ
+    <String id="AMP_LayersDialog" value="&amp;Layers" />਍ഀ
+    <String id="PositioningDialog" value="Positioning" />਍ഀ
+    <String id="AutomaticallyPlaceDialog" value="Automatically place" />਍ഀ
+    <String id="O_AMP_riginToOriginDialog" value="O&amp;rigin-to-Origin" />਍ഀ
+    <String id="Cen_AMP_terToCenterDialog" value="Cen&amp;ter-to-Center" />਍ഀ
+    <String id="Plac_AMP_eAtLevelDialog" value="Plac&amp;e at Level:" />਍ഀ
+    <String id="ScalingDialog" value="Scaling" />਍ഀ
+    <String id="Import_AMP_UnitsDialog" value="Import &amp;Units:" />਍ഀ
+    <String id="AMP_ScaleFactorDialog" value="&amp;Scale Factor:" />਍ഀ
+    <String id="NotAllObjectsAppearDialog" value="Not all objects may appear on the preview." />਍ഀ
+    <String id="AMP_DetailLevelDialog" value="&amp;Detail Level:" />਍ഀ
+    <String id="AMP_ViewDirectionDialog" value="&amp;View Direction:" />਍ഀ
+    <String id="NewFami_AMP_lySymbolDialog" value="New Fami&amp;ly Symbol:" />਍ഀ
+    <String id="AMP_CloseDialog" value="&amp;Close" />਍ഀ
+    <String id="PlantExportDialog" value="Plant Export" />਍ഀ
+    <String id="ColumnDisplayFormDialog" value="Column Display" />਍ഀ
+    <String id="DestinationPlantFamilyParametersFormDialog" value="Destination Plant Family Parameters" />਍ഀ
+    <String id="AvailableParametersDialog" value="Available Parameters" />਍ഀ
+    <String id="ParametersUsedDialog" value="Parameters Used" />਍ഀ
+    <String id="AMP_AddAllDialog" value="&amp;Add All &gt;&gt;&gt;" />਍ഀ
+    <String id="A_AMP_ddDialog" value="A&amp;dd --&gt;" />਍ഀ
+    <String id="AMP_RemoveDialog" value="&lt;-- &amp;Remove" />਍ഀ
+    <String id="R_AMP_emoveAllDialog" value="&lt;&lt;&lt; R&amp;emove All" />਍ഀ
+    <String id="AMP_MoveUpDialog" value="&amp;Move Up" />਍ഀ
+    <String id="Mo_AMP_veDownDialog" value="Mo&amp;ve Down" />਍ഀ
+    <String id="AMP_ParameterDialog" value="&amp;Parameter:" />਍ഀ
+    <String id="Fi_AMP_lterDialog" value="Fi&amp;lter:" />਍ഀ
+    <String id="AMP_FindDialog" value="&amp;Find" />਍ഀ
+    <String id="PlantFamilyManagerDialog" value="Plant Family Manager" />਍ഀ
+    <String id="AMP_UseParametersDialog" value="&amp;Use Parameters" />਍ഀ
+    <String id="DeleteFromL_AMP_ampDialog" value="Delete From L&amp;ist" />਍ഀ
+    <String id="FamilySymbolOptionsDialog" value="Family Symbol Options" />਍ഀ
+    <String id="S_AMP_ymbolFileDialog" value="S&amp;ymbol File:" />਍ഀ
+    <String id="Sym_AMP_bolNameDialog" value="Sym&amp;bol Name:" />਍ഀ
+    <String id="Cr_AMP_eateSymbolDWGDialog" value="Cr&amp;eate Symbol From DWG(s)" />਍ഀ
+    <String id="D_AMP_WGSymbolDialog" value="D&amp;WG Symbol" />਍ഀ
+    <String id="E_AMP_xportDialog" value="E&amp;xport" />਍ഀ
+    <String id="AMP_New_NewFamilyDialog" value=" &amp;New " />਍ഀ
+    <String id="PlantMixDialog" value="Plant Mix" />਍ഀ
+    <String id="PathWalkDialog" value="Patio/Walk" />਍ഀ
+    <String id="AMP_RegionNameDialog" value="&amp;Region Name:" />਍ഀ
+    <String id="AssignDialog" value="Assign" />਍ഀ
+    <String id="UnassignDialog" value="Unassign" />਍ഀ
+    <String id="ProgressDialog" value="Progress" />਍ഀ
+    <String id="WarningDialog" value="Warning" />਍ഀ
+    <String id="AMP_DoNotShowMessageDialog" value="&amp;Do not show message again" />਍ഀ
+    <String id="CreateSharedParameterFileDialog" value="Create Shared Parameters File" />਍ഀ
+    <String id="SharedParametersDontExistDialog" value="Shared Parameter File does not exist.  Please save file below to be able to report Landcadd parameters to a schedule." />਍ഀ
+    <String id="EaglePointLANDCADDForRevitDialog" value="Eagle Point LANDCADD for Revit" />਍ഀ
+    <String id="VersionDialog" value="Version" />਍ഀ
+    <String id="AboutLANDCADDForRevitDialog" value="About LANDCADD for Revit" />਍ഀ
+    <String id="AboutSiteworksForRevitDialog" value="About Siteworks for Revit" />਍ഀ
+    <String id="AutodeskSiteworksForRevitDialog" value="Site Designer for Revit" />਍ഀ
+    <String id="PlantMixReportDialog" value="Plant Mix Report" />਍ഀ
+    <String id="PatioWalkReportDialog" value="Patio/Walk Report" />਍ഀ
+    <String id="SitesReportDialog" value="Site Component Reports" />਍ഀ
+    <String id="E_AMP_xportFamilyInformationDialog" value="E&amp;xport Family Information" />਍ഀ
+    <String id="Export_AMP_RegionInformationDialog" value="Export &amp;Region Information" />਍ഀ
+    <String id="ExportType_AMP_InformationDialog" value="Export Type &amp;Information" />਍ഀ
+    <String id="S_AMP_tartingDistanceDialog" value="S&amp;tarting Distance:" />਍ഀ
+    <String id="LocateSoftTerrainDialog" value="Locate Soft Terrain" />਍ഀ
+    <String id="LocateSidewalkDialog" value="Locate Sidewalk" />਍ഀ
+    <String id="LocateRetainingWallDialog" value="Locate Retaining Wall" />਍ഀ
+    <String id="Soft_AMP_TerrainFamilyDialog" value="Soft &amp;Terrain Family:" />਍ഀ
+    <String id="So_AMP_ftTerrainTypeDialog" value="So&amp;ft Terrain Type:" />਍ഀ
+    <String id="S_AMP_oftTerrainNameDialog" value="S&amp;oft Terrain Name:" />਍ഀ
+    <String id="Side_AMP_WalkFamilyDialog" value="Side&amp;walk Family:" />਍ഀ
+    <String id="S_AMP_ideWalkTypeDialog" value="S&amp;idewalk Type:" />਍ഀ
+    <String id="Si_AMP_deWalkNameDialog" value="Si&amp;dewalk Name:" />਍ഀ
+    <String id="AMP_RetainingWallFamilyDialog" value="&amp;Retaining Wall Family:" />਍ഀ
+    <String id="Retaining_AMP_WallTypeDialog" value="Retaining &amp;Wall Type:" />਍ഀ
+    <String id="R_AMP_etainingWallNameDialog" value="R&amp;etaining Wall Name:" />਍ഀ
+    <String id="AMP_ElevationDialog" value="&amp;Elevation:" />਍ഀ
+    <String id="Ele_AMP_vationDialog" value="Ele&amp;vation:" />਍ഀ
+    <String id="HideE_AMP_xistingElementDialog" value="Hide E&amp;xisting Element" />਍ഀ
+    <String id="AMP_RadiusDialog" value="&amp;Radius:" />਍ഀ
+    <String id="Re_AMP_lativeElevationFromToposurfaceDialog" value="Re&amp;lative Elevation from Toposurface" />਍ഀ
+    <String id="Co_AMP_nstantElevationDialog" value="Co&amp;nstant Elevation" />਍ഀ
+    <String id="Create_AMP_ACopyDialog" value="Create &amp;A Copy" />਍ഀ
+    <String id="AMP_UseExistingHostLineDialog" value="&amp;Use an Existing Host Line" />਍ഀ
+    <String id="AMP_DrawHostLineDialog" value="&amp;Draw Host Line (Click Escape to Complete)" />਍ഀ
+    <String id="SetBaseToposurfaceInformationDialog" value="Please highlight the toposurface(s) that you want to use to create the base toposurface. Highlighting more than one toposurface will combine them." />਍ഀ
+    <String id="PickToposurfaceInformationDialog" value="Please highlight the individual toposurface that you want to use to associate your site component to." />਍ഀ
+    <String id="ToposurfaceDialog" value="Toposurface" />਍ഀ
+    <String id="SetBaseToposurfaceDialog" value="Set Base Toposurface" />਍ഀ
+    <String id="ToposurfaceAssociationDialog" value="Toposurface Association" />਍ഀ
+    <String id="SurfaceNameDialog" value="Surface Name" />਍ഀ
+    <String id="PhaseCreatedDialog" value="Phase Created" />਍ഀ
+    <String id="UnnamedSurfaceDialog" value="Unnamed Surface" />਍ഀ
+    <String id="Family_AMP_Name_NewFamilyDialog" value="Family &amp;Name " />਍ഀ
+    <String id="Family_AMP_Name_CopyFamilyDialog" value="Copy Family &amp;Name " />਍ഀ
+    <String id="AMP_PathNewFamilyDialog" value="&amp;Path" />਍ഀ
+    <String id="AMP_FileNameImportXMLDialog" value="&amp;File Name:" />਍ഀ
+    <String id="AMP_FileNameExportXMLDialog" value="&amp;File Name:" />਍ഀ
+    <String id="Toposurface_AMP_NameSurfaceInfoDialog" value="Toposurface &amp;Name" />਍ഀ
+    <String id="Add_AMP_NewSurfaceSurfaceInfoDialog" value="Add as a &amp;New Toposurface" />਍ഀ
+    <String id="AMP_OverwriteExistingSurfaceSurfaceInfoDialog" value="&amp;Overwrite existing Toposurface" />਍ഀ
+    <String id="AMP_PhaseCreatedFamilyParameterSurfaceInfoDialog" value="&amp;Phase Created:" />਍ഀ
+    <String id="AMP_PhaseDemolishedFamilyParameterSurfaceInfoDialog" value="Phase &amp;Demolished:" /> ਍ഀ
+    <String id="AMP_ToposurfaceToOverwriteSurfaceInfoDialog" value="&amp;Select toposurface to Overwrite" />਍ഀ
+    <String id="Import_AMP_AligmentsInXMLImportXMLDialog" value="Import &amp;alignments found in LandXML file" />਍ഀ
+    <String id="Import_AMP_ToposurfacesInXMLImportXMLDialog" value="Import &amp;toposurfaces found in LandXML file" />਍ഀ
+    <String id="Export_AMP_AligmentsExportXMLDialog" value="Export Site Designer &amp;alignments found in the model" />਍ഀ
+    <String id="Export_AMP_TopoSurfacesExportXMLDialog" value="Export &amp;toposurfaces found in the model" />਍ഀ
+    <String id="AMP_ProjectNameExportXMLDialog" value="&amp;Project" />਍ഀ
+    <String id="AMP_CompanyExportXMLDialog" value="&amp;Company" />਍ഀ
+    <String id="Created_AMP_ByExportXMLDialog" value="Created &amp;by" />਍ഀ
+    <String id="CreatedBy_AMP_EmailExportXMLDialog" value="Created by &amp;Email" />਍ഀ
+    <String id="ChangeElevationDialog" value="Change Elevation" />਍ഀ
+    <String id="CurrentElevationDialog" value="Current Elevation:" />਍ഀ
+    <String id="AMP_NewElevationDialog" value="&amp;New Elevation:" />਍ഀ
+    <String id="ChangeGradeDialog" value="Change Grade" />਍ഀ
+    <String id="CurrentGradeDialog" value="Current Grade:" />਍ഀ
+    <String id="AMP_NewGradeDialog" value="&amp;New Grade:" />਍ഀ
+    <String id="ChangeLinearIntervalDialog" value="Change Linear Interval" />਍ഀ
+    <String id="CurrentLinearDialog" value="Current Interval:" />਍ഀ
+    <String id="AMP_NewLinearDialog" value="&amp;New Interval:" />਍ഀ
+    <String id="ChangeFamilyTypeDialog" value="Change Family Type" />਍ഀ
+    <String id="CurrentFamilyDialog" value="Current Family:" />਍ഀ
+    <String id="CurrentTypeDialog" value="Current Type:" />਍ഀ
+    <String id="AMP_NewFamilyDialog" value="&amp;New Family:" />਍ഀ
+    <String id="New_AMP_TypeDialog" value="New &amp;Type:" />਍ഀ
+    <String id="ModifySiteComponentInformationDialog" value="Please select the edit type you want to do. Press &lt;Esc&gt; or right-click and Cancel to complete the action." />਍ഀ
+    <String id="AMP_MoveDialog" value="&amp;Move" />਍ഀ
+    <String id="AMP_RotateDialog" value="&amp;Rotate" />਍ഀ
+    <String id="Add_AMP_VertexDialog" value="Add &amp;Vertex" />਍ഀ
+    <String id="D_AMP_eleteVertexDialog" value="D&amp;elete Vertex" />਍ഀ
+    <String id="AMP_ChangeElevationDialog" value="&amp;Change Elevation" />਍ഀ
+    <String id="C_AMP_hangeTypeDialog" value="C&amp;hange Type" />਍ഀ
+    <String id="C_AMP_hangeIntervalDialog" value="C&amp;hange Interval" />਍ഀ
+    <String id="ModifySoftTerrainDialog" value="Modify Soft Terrain" />਍ഀ
+    <String id="ModifySidewalkDialog" value="Modify Sidewalk" />਍ഀ
+    <String id="ModifyStreetDialog" value="Modify Street" />਍ഀ
+    <String id="ModifyParkingLotDialog" value="Modify Parking Lot" />਍ഀ
+    <String id="ModifyCurbDialog" value="Modify Curb" />਍ഀ
+    <String id="ModifyRetainingWallDialog" value="Modify Retaining Wall" />਍ഀ
+    <String id="ModifyStepsDialog" value="Modify Steps" />਍ഀ
+    <String id="ModifyFeatureLineDialog" value="Modify Feature Line" />਍ഀ
+    <String id="ModifyPointWipeoutDialog" value="Modify Point Wipeout" />਍ഀ
+    <String id="LocateStreetDialog" value="Locate Street" />਍ഀ
+    <String id="LocateCurbDialog" value="Locate Curb" />਍ഀ
+    <String id="S_AMP_treetFamilyDialog" value="S&amp;treet Family:" />਍ഀ
+    <String id="StreetT_AMP_ypeDialog" value="Street T&amp;ype:" />਍ഀ
+    <String id="StreetNa_AMP_meDialog" value="Street Na&amp;me:" />਍ഀ
+    <String id="AMP_CurbFamilyDialog" value="&amp;Curb Family:" />਍ഀ
+    <String id="CurbT_AMP_ypeDialog" value="Curb T&amp;ype:" />਍ഀ
+    <String id="CurbNa_AMP_meDialog" value="Curb Na&amp;me:" />਍ഀ
+    <String id="RetainingwallRe_AMP_lativeElevationFromToposurfaceDialog" value="Wall Exposure Re&amp;lative to Toposurface" />਍ഀ
+    <String id="RetainingwallCo_AMP_nstantElevationDialog" value="Co&amp;nstant Top of Wall Elevation" />਍ഀ
+    <String id="LocateParkingLotDialog" value="Locate Parking Lot" />਍ഀ
+    <String id="AMP_ParkingLotFamilyDialog" value="&amp;Parking Lot Family:" />਍ഀ
+    <String id="Par_AMP_kingLotTypeDialog" value="Par&amp;king Lot Type:" />਍ഀ
+    <String id="Parki_AMP_ngLotNameDialog" value="Parki&amp;ng Lot Name:" />਍ഀ
+    <String id="LocatePointWipeoutDialog" value="Locate Point Wipeout" />਍ഀ
+    <String id="AMP_ElevationsDialog" value="&amp;Elevations" />਍ഀ
+    <String id="AMP_GradesDialog" value="&amp;Grades" />਍ഀ
+    <String id="AnnotateTitleDialog" value="Annotate Site Components" />਍ഀ
+    <String id="ToposurfaceSelectionDialog" value="Toposurface Selection" />਍ഀ
+    <String id="AlignmentSelectionDialog" value="Alignment Selection" />਍ഀ
+    <String id="ToposurfacesToExportDialog" value="Toposurfaces to Export" />਍ഀ
+    <String id="AlignmentToExportDialog" value="Alignment to Export" />਍ഀ
+    <String id="AddBreaklineDialog" value="Add Breakline" />਍ഀ
+    <String id="Add_AMP_BreaklineDialog" value="Add &amp;Breakline" />਍ഀ
+    <String id="De_AMP_leteBreaklineDialog" value="De&amp;lete Breakline" />਍ഀ
+    <String id="LocateFeatureLineDialog" value="Locate Feature Line" />਍ഀ
+    <String id="AMP_BeginningElevationDialog" value="&amp;Beginning Elevation:" />਍ഀ
+    <String id="EndingEle_AMP_vationDialog" value="Ending Ele&amp;vation:" />਍ഀ
+    <String id="AMP_GradeDialog" value="&amp;Grade" />਍ഀ
+    <String id="Linear_AMP_PointIntervalDialog" value="Linear &amp;Point Interval:" />਍ഀ
+    <String id="Elevatio_AMP_nRangeDialog" value="Elevatio&amp;n Range" />਍ഀ
+    <String id="ChangeView_AMP_ScaleDialog" value="Change View &amp;Scale" />਍ഀ
+    <String id="ChangeViewScaleDialog" value="Change View Scale" />਍ഀ
+    <String id="CurrentViewScaleDialog" value="Current View Scale:" />਍ഀ
+    <String id="AMP_NewViewScaleDialog" value="&amp;New View Scale:" />਍ഀ
+    <String id="AMP_TextTypeDialog" value="&amp;Text Type:" />਍ഀ
+    <String id="S_AMP_howAffectedPointsDialog" value="S&amp;how Affected Point(s)" />਍ഀ
+    <String id="B_AMP_ySharedCoordinatesDialog" value="B&amp;y Shared Coordinates" />਍ഀ
+    <String id="B_AMP_ySurveyPointsDialog" value="B&amp;y Survey Point" />਍ഀ
+    <String id="Constant_AMP_ElevationsDialog" value="Constant &amp;Elevations" />਍ഀ
+    <String id="Re_AMP_lativeElevationsDialog" value="Re&amp;lative Elevations" />਍ഀ
+    <String id="DisplayAnd_AMP_UseExistingHostLineDialog" value="Display and &amp;Use an Existing Host Line" />਍ഀ
+    <String id="ChangeRadiusDialogTitle" value="Change Radius" />਍ഀ
+    <String id="RadiusSettingsGroupTitle" value="Radius Settings" />਍ഀ
+    <String id="AMP_CurrentRadiusDialog" value="&amp;Current Radius" />਍ഀ
+    <String id="AMP_NewRadiusDialog" value="&amp;New Radius" />਍ഀ
+    <String id="AMP_FinishDialog" value="&amp;Finish" />਍ഀ
+    <String id="A_AMP_pplyAllDialog" value="A&amp;pply all" />਍ഀ
+    <String id="AMP_Select" value="&amp;Select" />਍ഀ
+    <String id="ProductUpdateAvailableTitle" value="Product Update Available" />਍ഀ
+    <String id="NewerVersionAvailableForDownloadDialog" value="A newer version is available for download.  Please follow the instructions below and click the Download Now button to get the latest version." />਍ഀ
+    <String id="ProductDownloadIntructionsDialog" value="1. Download the files to your local drive into a temporary location.&#xD;&#xA;2. Extract the contents of the compressed file (ZIP) to this temporary location.&#xD;&#xA;3. Run the setup.exe file found in the root folder of your setup location. The product installation kiosk will display.&#xD;&#xA;4. Read through the Installation Procedures on the right side of the kiosk and follow the instructions to properly install the software." />਍ഀ
+    <String id="AMP_DownloadNow" value="&amp;Download Now" />਍ഀ
+    <String id="ConvertObjectToToposurfaceTitle" value="Convert Object To Toposurface" />਍ഀ
+    <String id="AMP_ConvertDialog" value="&amp;Convert" />਍ഀ
+    <String id="AMP_ToposurfaceNameDialog" value="&amp;Toposurface Name:" />਍ഀ
+    <String id="AMP_ShowDialog" value="&amp;Show" />਍ഀ
+    <String id="WorksetPermissionErrorDialog" value="Workset Permission Error" />਍ഀ
+    <String id="MessagesDialog" value="Messages" />਍ഀ
+    <String id="SelectSurfaceNameAndPhaseDialog" value="Select Surface Name and Phase" />਍ഀ
+  </StringTable>਍ഀ
+</Application>

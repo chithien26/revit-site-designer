@@ -515,6 +515,11 @@ public class TopographySurfaceManagement
 				num11 = num26 * (double)parameter.AsInteger() / 2.0;
 				num12 = num26 * (double)parameter.AsInteger() / 2.0;
 			}
+			if (_PlacementSettings.ComponentWidth > 0.0)
+			{
+				num11 = _PlacementSettings.ComponentWidth / 2.0;
+				num12 = num11;
+			}
 			parameter = _PlacementSettings.Type.LookupParameter(RevitParameters.StreetCrossSlopeParameter);
 			if (parameter != null)
 			{
@@ -908,39 +913,10 @@ public class TopographySurfaceManagement
 			eps_Leg2.Line.EndPnt = ppOffsetLegList.LegStartPnt;
 			eps_Leg.Last.Next = Eps_Leg.SingleLeg(eps_Leg2);
 		}
-		if (eps_Leg != null)
+		if (eps_Leg != null && !HostLineFitsTerrain(_Document, ref _ProposedSurface, _CurrentLeg, eps_Leg, ref aLines2, ref nLineCount2, ref aArcs2, ref nArcCount2, ref aLegOrder2))
 		{
-			TopographySurfaceContainer topographySurfaceContainer = null;
-			List<Eps_Point> pointsAtIntervals = eps_Leg.GetPointsAtIntervals(1.0, 1.0);
-			for (int n = 0; n < pointsAtIntervals.Count; n++)
-			{
-				topographySurfaceContainer = _ProposedSurface.GetSurfaceContainerContainingPoint(pointsAtIntervals[n]);
-				if (topographySurfaceContainer == null)
-				{
-					eps_Leg.ConvertLegToLineArcArrays(ref aLines2, ref nLineCount2, ref aArcs2, ref nArcCount2, ref aLegOrder2, _bExtendLeg: false);
-					int nLineCount3 = 0;
-					int nArcCount3 = 0;
-					Eps_Line[] aLines3 = null;
-					Eps_Arc[] aArcs3 = null;
-					int[] aLegOrder3 = null;
-					if (_ProposedSurface.BoundaryLeg != null)
-					{
-						_ProposedSurface.BoundaryLeg.ConvertLegToLineArcArrays(ref aLines3, ref nLineCount3, ref aArcs3, ref nArcCount3, ref aLegOrder3, _bExtendLeg: false);
-						if (!EPShared.eplGeoE_IsLegListInsideLegList(aLines2, nLineCount2, aArcs2, nArcCount2, aLegOrder2, aLines3, nLineCount3, aArcs3, nArcCount3, aLegOrder3, 1E-05))
-						{
-							RevitMessageBox.Show(EPShared.LocalRM.GetString("LineSegmentsOutsideToposurfaceMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
-							_nTopoDrawOrder = -1;
-							return false;
-						}
-					}
-				}
-				else if (topographySurfaceContainer.TopographySurfaceType == TopographySurfaceType.BuildingPad)
-				{
-					RevitMessageBox.Show(EPShared.LocalRM.GetString("LineSegmentsInsideBuildingPadMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
-					_nTopoDrawOrder = -1;
-					return false;
-				}
-			}
+			_nTopoDrawOrder = -1;
+			return false;
 		}
 		List<double> list12 = new List<double>();
 		List<Eps_Point> list13 = new List<Eps_Point>();
@@ -1008,6 +984,10 @@ public class TopographySurfaceManagement
 				}
 				num5 = (_PlacementSettings.Grade = (legEndPnt.z - legStartPnt.z) / RevitGeometry.eplGeoE_CalcLegListLength(_CurrentLeg));
 			}
+		}
+		if (TerrainApi.UsesToposolids && !bUseConstantElevation)
+		{
+			DrapeLegOntoToposolid(_ProposedSurface, _CurrentLeg, flag ? num17 : 0.0);
 		}
 		FindOffsetLegWrappers(originaltLeg, _CurrentLeg, list2, list4, list3, _PlacementSettings.LocateType, num11, num12, num3, dAdjustSubgradeElev, dStreetEdgeAdjustElev, ref _OffsetLegWrappers, ref _IntersectionContainers);
 		if (list2.Count > 0 && list2.Count == list3.Count)
@@ -1101,6 +1081,7 @@ public class TopographySurfaceManagement
 		case LandcaddID.Street:
 		{
 			StreetForm streetForm2 = new StreetForm(_PlacementSettings.Type, _CurrentLeg);
+			streetForm2.PavementWidth = _PlacementSettings.ComponentWidth;
 			streetForm2.IntersectionContainers = _IntersectionContainers;
 			string _strAdditionalLoftID2 = string.Empty;
 			_PlacementSettings.LoftFormID = streetForm2.CreateForm(_Document, _PlacementSettings.Name, ref _strAdditionalLoftID2);
@@ -1264,7 +1245,7 @@ public class TopographySurfaceManagement
 				RevitGeometry.RemoveAllPointsInBoundary(ref paPntList2, _FeatureLineLeg);
 				RevitGeometry.RemoveAllPointsInBoundary(ref paPntList2, _CatchLineLeg);
 				RevitGeometry.RemoveAllPointsInBoundary(ref paPntList2, _OriginalBoundaryLeg);
-				if (_PlacementSettings.ProjectInnerSlopes == 1)
+				if (_PlacementSettings.ProjectInnerSlopes == 1 || (TerrainApi.UsesToposolids && _PlacementSettings.ProjectInnerSlopes == 0))
 				{
 					RevitGeometry.RemoveAllPointsInBoundary(ref paPntList2, _CurrentLeg);
 				}
@@ -1341,22 +1322,39 @@ public class TopographySurfaceManagement
 					sDTimer2.Stop();
 					SDTimer sDTimer3 = new SDTimer("Point_Update_Create", _Document.Application);
 					sDTimer3.Start();
+					try
+					{
 					SDTimer sDTimer4 = new SDTimer("Traverse_Point", _Document.Application);
 					sDTimer4.Start();
+					bool toposolidOverlay = TerrainApi.UsesToposolids;
 					HashSet<XYZ> hashSet = new HashSet<XYZ>(list17, new XYZEqualityComparer());
-					for (int num43 = PointXYZList.Count - 1; num43 >= 0; num43--)
+					if (!toposolidOverlay)
 					{
-						if (hashSet.Contains(PointXYZList[num43]))
+						for (int num43 = PointXYZList.Count - 1; num43 >= 0; num43--)
 						{
-							hashSet.Remove(PointXYZList[num43]);
-							PointXYZList.RemoveAt(num43);
+							if (hashSet.Contains(PointXYZList[num43]))
+							{
+								hashSet.Remove(PointXYZList[num43]);
+								PointXYZList.RemoveAt(num43);
+							}
 						}
 					}
 					sDTimer4.Stop();
 					_PlacementSettings.TransactionContainer.Start("Update Topo Points");
 					try
 					{
-						if (hashSet.Count <= PointXYZList.Count)
+						if (toposolidOverlay)
+						{
+							if (ReplacesInteriorPatch(_PlacementSettings.LocateType))
+							{
+								ApplyInteriorPointEdits(_ProposedSurface.TopographySurface, PointXYZList, replaceUnmatched: true);
+							}
+							else
+							{
+								RuntimeDiagnostics.Write("Skipped Toposolid mesh grading for " + _PlacementSettings.LocateType + "; the 3D road is placed on the existing top face.");
+							}
+						}
+						else if (hashSet.Count <= PointXYZList.Count)
 						{
 							int num44 = 0;
 							foreach (XYZ item in hashSet)
@@ -1408,10 +1406,16 @@ public class TopographySurfaceManagement
 					sDTimer5.Start();
 					_PlacementSettings.TransactionContainer.CommitTopographyEditScope(ref failuresPreprocessor);
 					sDTimer5.Stop();
+					}
+					finally
+					{
+						_PlacementSettings.TransactionContainer.DisposeTopographyEditScope();
+					}
 					_PlacementSettings.TransactionContainer.Start(name);
 					_PlacementSettings.TransactionContainer.BeginTransaction();
 					_ProposedSurface.Refresh();
 					_Document.Regenerate();
+					AddToposolidBreaklines(_ProposedSurface.TopographySurface, _CurrentLeg, _CatchLineLeg, _FeatureLineLeg);
 					progressBarForm.UpdateProgressBar(7);
 					if (_TopoPlacementFamilyInstance != null)
 					{
@@ -1545,11 +1549,18 @@ public class TopographySurfaceManagement
 				List<Eps_Point> list23 = new List<Eps_Point>();
 				if (_PlacementSettings.LocateType == LandcaddID.Curb)
 				{
-					list23 = _CurrentLeg.GetPointsAtIntervals(num9, 1.0);
-					TopographySurface topographySurface = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list23, _ProposedSurface);
-					if (topographySurface != null)
+					if (TerrainApi.UsesToposolids)
 					{
-						_PlacementSettings.IslandSurfaceID = topographySurface.UniqueId;
+						_PlacementSettings.IslandSurfaceID = CreateClosedPavementOverlay(_Document, _PlacementSettings, _CurrentLeg, _ProposedSurface);
+					}
+					else
+					{
+						list23 = _CurrentLeg.GetPointsAtIntervals(num9, 1.0);
+						TopographySurface topographySurface = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list23, _ProposedSurface);
+						if (topographySurface != null)
+						{
+							_PlacementSettings.IslandSurfaceID = topographySurface.UniqueId;
+						}
 					}
 				}
 				else if (_PlacementSettings.LocateType == LandcaddID.ParkingLot)
@@ -1559,11 +1570,18 @@ public class TopographySurfaceManagement
 					ppOffsetLegList2 = new Eps_Leg();
 					RevitGeometry.OffsetLegList(_CurrentLeg, 0.02, 2, ref ppOffsetLegList2, TrimClosedObject: true);
 					_CurrentLeg = ((!(RevitGeometry.eplGeoE_CalcLegListLength(ppOffsetLegList2) < RevitGeometry.eplGeoE_CalcLegListLength(ppOffsetLegList))) ? ppOffsetLegList : ppOffsetLegList2);
-					list23 = GetParkingLotTopoSurfacePoints(_CurrentLeg, list16, num9, num10, _dArcPointInterval, _Document.PathName, _ProposedSurface);
-					TopographySurface topographySurface2 = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list23, _ProposedSurface);
-					if (topographySurface2 != null)
+					if (TerrainApi.UsesToposolids)
 					{
-						_PlacementSettings.ParkingLotSurfaceID = topographySurface2.UniqueId;
+						_PlacementSettings.ParkingLotSurfaceID = CreateClosedPavementOverlay(_Document, _PlacementSettings, _CurrentLeg, _ProposedSurface);
+					}
+					else
+					{
+						list23 = GetParkingLotTopoSurfacePoints(_CurrentLeg, list16, num9, num10, _dArcPointInterval, _Document.PathName, _ProposedSurface);
+						TopographySurface topographySurface2 = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list23, _ProposedSurface);
+						if (topographySurface2 != null)
+						{
+							_PlacementSettings.ParkingLotSurfaceID = topographySurface2.UniqueId;
+						}
 					}
 				}
 			}
@@ -3426,6 +3444,39 @@ public class TopographySurfaceManagement
 		return list;
 	}
 
+	private static string CreateClosedPavementOverlay(Document document, SitePlacementSettings settings, Eps_Leg boundary, TopographySurfaceContainer proposed)
+	{
+		if (document == null || boundary == null) return string.Empty;
+		double depth = 0.5;
+		ElementId materialId = ElementId.InvalidElementId;
+		if (settings.LocateType == LandcaddID.ParkingLot)
+		{
+			Parameter depthParameter = settings.Type?.LookupParameter(RevitParameters.ParkingLotPavementDepthParameter);
+			if (depthParameter != null && depthParameter.AsDouble() > 1e-6)
+				depth = depthParameter.AsDouble();
+			Parameter materialParameter = settings.Type?.LookupParameter(RevitParameters.ParkingLotParkingPavementSurfaceParameter);
+			if (materialParameter != null)
+				materialId = RevitIds.Create(materialParameter.AsInteger());
+		}
+		else
+		{
+			depth = 0.15;
+			if (proposed?.TopographySurface != null)
+				materialId = TerrainApi.GetMaterialId(proposed.TopographySurface);
+		}
+		string name = settings.Name;
+		if (string.IsNullOrEmpty(name))
+			name = settings.LocateType == LandcaddID.ParkingLot ? "Parking Lot" : "Island";
+		DirectShape pad = SitePavementOverlay.CreateExtrudedPad(document, boundary, depth, materialId, name, BuiltInCategory.OST_Roads);
+		if (pad == null)
+		{
+			RuntimeDiagnostics.Write("Failed to create thin pavement overlay for " + settings.LocateType);
+			return string.Empty;
+		}
+		RuntimeDiagnostics.Write("Created thin pavement overlay for " + settings.LocateType + " depth=" + depth + " ft.");
+		return pad.UniqueId;
+	}
+
 	private static TopographySurface CreateAdditionalTopoSurface(Document _Document, SitePlacementSettings _PlacementSettings, List<Eps_Point> _NewSurfacePoints, TopographySurfaceContainer _ProposedSurface)
 	{
 		ElementId elementId = null;
@@ -3482,7 +3533,7 @@ public class TopographySurfaceManagement
 			if (PointXYZList.Count > 0)
 			{
 				RemoveDuplicateXY(ref PointXYZList);
-				topographySurface = TerrainApi.Create(_Document, PointXYZList);
+				topographySurface = TerrainApi.Create(_Document, PointXYZList, _ProposedSurface?.TopographySurface, copyHostSketch: false);
 				TerrainApi.SetMaterialId(topographySurface, RevitIds.Create(_nMaterialId));
 				_Document.Regenerate();
 			}
@@ -3491,34 +3542,13 @@ public class TopographySurfaceManagement
 				Parameter parameter = null;
 				if (_PlacementSettings.LocateType == LandcaddID.Curb)
 				{
-					parameter = ((Element)topographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-					if (parameter != null && !parameter.IsReadOnly && _nMaterialId != -1)
-					{
-						ElementId value = RevitIds.Create(_nMaterialId);
-						parameter.Set(value);
-					}
 					int nBeginningIndex = 0;
-					string empty = string.Empty;
-					empty = ((!GetIslandFamiliesCount(_Document, _PlacementSettings.Name, ref nBeginningIndex)) ? _PlacementSettings.Name : (_PlacementSettings.Name + "-" + nBeginningIndex));
-					parameter = TerrainApi.NameParameter(((Element)topographySurface));
-					if (parameter != null && !parameter.IsReadOnly)
-					{
-						parameter.Set(empty);
-					}
+					string empty = ((!GetIslandFamiliesCount(_Document, _PlacementSettings.Name, ref nBeginningIndex)) ? _PlacementSettings.Name : (_PlacementSettings.Name + "-" + nBeginningIndex));
+					TerrainApi.SetUniqueName(topographySurface, empty);
 				}
 				else if (_PlacementSettings.LocateType == LandcaddID.ParkingLot)
 				{
-					parameter = ((Element)topographySurface).get_Parameter(BuiltInParameter.MATERIAL_ID_PARAM);
-					if (parameter != null && !parameter.IsReadOnly && _nMaterialId != -1)
-					{
-						ElementId value2 = RevitIds.Create(_nMaterialId);
-						parameter.Set(value2);
-					}
-					parameter = TerrainApi.NameParameter(((Element)topographySurface));
-					if (parameter != null && !parameter.IsReadOnly)
-					{
-						parameter.Set(_PlacementSettings.Name);
-					}
+					TerrainApi.SetUniqueName(topographySurface, _PlacementSettings.Name);
 				}
 				foreach (Phase phase in _Document.Phases)
 				{
@@ -3537,6 +3567,92 @@ public class TopographySurfaceManagement
 		return topographySurface;
 	}
 
+	private static bool HostLineOnTerrain(TopographySurface surface, List<Eps_Point> points, out int missed, out int counted)
+	{
+		missed = 0;
+		counted = 0;
+		if (surface == null || points == null) return false;
+		for (int i = 0; i < points.Count; i++)
+		{
+			if (points[i] == null) continue;
+			counted++;
+			if (!TerrainApi.ContainsXY(surface, points[i].XYZ)) missed++;
+		}
+		return counted > 0 && missed == 0;
+	}
+
+	private static bool HostLineFitsTerrain(Document document, ref TopographySurfaceContainer proposed, Eps_Leg hostLeg, Eps_Leg corridor, ref Eps_Line[] corridorLines, ref int corridorLineCount, ref Eps_Arc[] corridorArcs, ref int corridorArcCount, ref int[] corridorOrder)
+	{
+		if (proposed == null || corridor == null)
+		{
+			return true;
+		}
+		if (TerrainApi.UsesToposolids)
+		{
+			Eps_Leg check = hostLeg ?? corridor;
+			List<Eps_Point> points = check.GetPointsAtIntervals(1.0, 1.0);
+			if (HostLineOnTerrain(proposed.TopographySurface, points, out int missed, out int counted))
+			{
+				return true;
+			}
+			ElementId currentId = proposed.TopographySurface?.Id;
+			TopographySurface match = null;
+			int bestMissed = int.MaxValue;
+			foreach (Element element in new FilteredElementCollector(document).OfClass(TerrainApi.ElementType).OfCategory(TerrainApi.Category))
+			{
+				if (element == null || (currentId != null && element.Id == currentId)) continue;
+				TopographySurface surface = TerrainApi.AsSurface(element);
+				if (surface == null || surface.IsSiteSubRegion) continue;
+				if (!HostLineOnTerrain(surface, points, out int otherMissed, out int otherCounted)) continue;
+				int score = otherMissed;
+				if (TerrainApi.IsProposedTerrain(element) || TerrainApi.LooksLikeProposedTerrain(element)) score -= 1;
+				if (match == null || score < bestMissed)
+				{
+					match = surface;
+					bestMissed = score;
+				}
+			}
+			if (match != null)
+			{
+				proposed = new TopographySurfaceContainer(document.Application, match, _bFindMinMaxPoints: true);
+				RuntimeDiagnostics.Write("Retargeted site component to the Toposolid that contains the host line.");
+				return true;
+			}
+			RuntimeDiagnostics.Write("Street/host line has " + missed + " of " + counted + " samples outside the Toposolid sketch.");
+			RevitMessageBox.Show(EPShared.LocalRM.GetString("LineSegmentsOutsideToposurfaceMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
+			return false;
+		}
+		List<Eps_Point> pointsAtIntervals = corridor.GetPointsAtIntervals(1.0, 1.0);
+		for (int n = 0; n < pointsAtIntervals.Count; n++)
+		{
+			TopographySurfaceContainer containing = proposed.GetSurfaceContainerContainingPoint(pointsAtIntervals[n]);
+			if (containing == null)
+			{
+				corridor.ConvertLegToLineArcArrays(ref corridorLines, ref corridorLineCount, ref corridorArcs, ref corridorArcCount, ref corridorOrder, _bExtendLeg: false);
+				int nLineCount3 = 0;
+				int nArcCount3 = 0;
+				Eps_Line[] aLines3 = null;
+				Eps_Arc[] aArcs3 = null;
+				int[] aLegOrder3 = null;
+				if (proposed.BoundaryLeg != null)
+				{
+					proposed.BoundaryLeg.ConvertLegToLineArcArrays(ref aLines3, ref nLineCount3, ref aArcs3, ref nArcCount3, ref aLegOrder3, _bExtendLeg: false);
+					if (!EPShared.eplGeoE_IsLegListInsideLegList(corridorLines, corridorLineCount, corridorArcs, corridorArcCount, corridorOrder, aLines3, nLineCount3, aArcs3, nArcCount3, aLegOrder3, 1E-05))
+					{
+						RevitMessageBox.Show(EPShared.LocalRM.GetString("LineSegmentsOutsideToposurfaceMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
+						return false;
+					}
+				}
+			}
+			else if (containing.TopographySurfaceType == TopographySurfaceType.BuildingPad)
+			{
+				RevitMessageBox.Show(EPShared.LocalRM.GetString("LineSegmentsInsideBuildingPadMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
+				return false;
+			}
+		}
+		return true;
+	}
+
 	private static bool GetIslandFamiliesCount(Document _Document, string _strFindName, ref int nBeginningIndex)
 	{
 		List<Element> list = null;
@@ -3553,7 +3669,7 @@ public class TopographySurfaceManagement
 		string empty = string.Empty;
 		foreach (Element item in list3)
 		{
-			if (item == null || item.Category == null || item.Category.Id.Value64() != TerrainApi.Category.GetHashCode())
+			if (item == null || TerrainApi.AsSurface(item) == null)
 			{
 				continue;
 			}
@@ -3776,6 +3892,11 @@ public class TopographySurfaceManagement
 				{
 					num7 = num22 * (double)parameter.AsInteger() / 2.0;
 					num8 = num22 * (double)parameter.AsInteger() / 2.0;
+				}
+				if (_PlacementSettings.ComponentWidth > 0.0)
+				{
+					num7 = _PlacementSettings.ComponentWidth / 2.0;
+					num8 = num7;
 				}
 				parameter = _PlacementSettings.Type.LookupParameter(RevitParameters.StreetCrossSlopeParameter);
 				if (parameter != null)
@@ -4073,37 +4194,10 @@ public class TopographySurfaceManagement
 				eps_Leg2.Line.EndPnt = eps_Leg3.LegStartPnt;
 				eps_Leg.Last.Next = Eps_Leg.SingleLeg(eps_Leg2);
 			}
-			if (eps_Leg != null)
+			TopographySurfaceContainer terrain = _ProposedSurface;
+			if (eps_Leg != null && !HostLineFitsTerrain(_Document, ref terrain, _CurrentLeg, eps_Leg, ref aLines, ref nLineCount, ref aArcs, ref nArcCount, ref aLegOrder))
 			{
-				TopographySurfaceContainer topographySurfaceContainer = null;
-				List<Eps_Point> pointsAtIntervals = eps_Leg.GetPointsAtIntervals(1.0, 1.0);
-				for (int k = 0; k < pointsAtIntervals.Count; k++)
-				{
-					topographySurfaceContainer = _ProposedSurface.GetSurfaceContainerContainingPoint(pointsAtIntervals[k]);
-					if (topographySurfaceContainer == null)
-					{
-						eps_Leg.ConvertLegToLineArcArrays(ref aLines, ref nLineCount, ref aArcs, ref nArcCount, ref aLegOrder, _bExtendLeg: false);
-						int nLineCount3 = 0;
-						int nArcCount3 = 0;
-						Eps_Line[] aLines3 = null;
-						Eps_Arc[] aArcs3 = null;
-						int[] aLegOrder3 = null;
-						if (_ProposedSurface.BoundaryLeg != null)
-						{
-							_ProposedSurface.BoundaryLeg.ConvertLegToLineArcArrays(ref aLines3, ref nLineCount3, ref aArcs3, ref nArcCount3, ref aLegOrder3, _bExtendLeg: false);
-							if (!EPShared.eplGeoE_IsLegListInsideLegList(aLines, nLineCount, aArcs, nArcCount, aLegOrder, aLines3, nLineCount3, aArcs3, nArcCount3, aLegOrder3, 1E-05))
-							{
-								RevitMessageBox.Show(EPShared.LocalRM.GetString("LineSegmentsOutsideToposurfaceMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
-								return false;
-							}
-						}
-					}
-					else if (topographySurfaceContainer.TopographySurfaceType == TopographySurfaceType.BuildingPad)
-					{
-						RevitMessageBox.Show(EPShared.LocalRM.GetString("LineSegmentsInsideBuildingPadMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
-						return false;
-					}
-				}
+				return false;
 			}
 			if (_LeftIntersectionStations != null && _RightIntersectionStations != null && _LeftIntersectionStations.Count > 0 && _LeftIntersectionStations.Count == _RightIntersectionStations.Count)
 			{
@@ -4140,6 +4234,7 @@ public class TopographySurfaceManagement
 			case LandcaddID.Street:
 			{
 				StreetForm streetForm = new StreetForm(_PlacementSettings.Type, _CurrentLeg);
+				streetForm.PavementWidth = _PlacementSettings.ComponentWidth;
 				streetForm.IntersectionContainers = _IntersectionContainers;
 				string _strAdditionalLoftID = string.Empty;
 				_PlacementSettings.LoftFormID = streetForm.CreateForm(_Document, _PlacementSettings.Name, ref _strAdditionalLoftID);
@@ -4293,7 +4388,7 @@ public class TopographySurfaceManagement
 				RevitGeometry.RemoveAllPointsInBoundary(ref _TopoPointList, _FeatureLineLeg);
 				RevitGeometry.RemoveAllPointsInBoundary(ref _TopoPointList, _CatchLineLeg);
 				RevitGeometry.RemoveAllPointsInBoundary(ref _TopoPointList, _OriginalBoundaryLeg);
-				if (_PlacementSettings.ProjectInnerSlopes == 1)
+				if (_PlacementSettings.ProjectInnerSlopes == 1 || (TerrainApi.UsesToposolids && _PlacementSettings.ProjectInnerSlopes == 0))
 				{
 					RevitGeometry.RemoveAllPointsInBoundary(ref _TopoPointList, _CurrentLeg);
 				}
@@ -4311,11 +4406,18 @@ public class TopographySurfaceManagement
 					List<Eps_Point> list4 = new List<Eps_Point>();
 					if (_PlacementSettings.LocateType == LandcaddID.Curb)
 					{
-						list4 = _CurrentLeg.GetPointsAtIntervals(num5, 1.0);
-						TopographySurface topographySurface = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list4, _ProposedSurface);
-						if (topographySurface != null)
+						if (TerrainApi.UsesToposolids)
 						{
-							_PlacementSettings.IslandSurfaceID = topographySurface.UniqueId;
+							_PlacementSettings.IslandSurfaceID = CreateClosedPavementOverlay(_Document, _PlacementSettings, _CurrentLeg, _ProposedSurface);
+						}
+						else
+						{
+							list4 = _CurrentLeg.GetPointsAtIntervals(num5, 1.0);
+							TopographySurface topographySurface = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list4, _ProposedSurface);
+							if (topographySurface != null)
+							{
+								_PlacementSettings.IslandSurfaceID = topographySurface.UniqueId;
+							}
 						}
 					}
 					else if (_PlacementSettings.LocateType == LandcaddID.ParkingLot)
@@ -4382,11 +4484,18 @@ public class TopographySurfaceManagement
 							}
 						}
 						_ParkingLotTopoPointList = list4;
-						TopographySurface topographySurface2 = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list4, _ProposedSurface);
-						if (topographySurface2 != null)
+						if (TerrainApi.UsesToposolids)
 						{
-							_PlacementSettings.ParkingLotSurfaceID = topographySurface2.UniqueId;
-							_ParkingLotSurface = new TopographySurfaceContainer(_Document.Application, topographySurface2, _bFindMinMaxPoints: true);
+							_PlacementSettings.ParkingLotSurfaceID = CreateClosedPavementOverlay(_Document, _PlacementSettings, _CurrentLeg, _ProposedSurface);
+						}
+						else
+						{
+							TopographySurface topographySurface2 = CreateAdditionalTopoSurface(_Document, _PlacementSettings, list4, _ProposedSurface);
+							if (topographySurface2 != null)
+							{
+								_PlacementSettings.ParkingLotSurfaceID = topographySurface2.UniqueId;
+								_ParkingLotSurface = new TopographySurfaceContainer(_Document.Application, topographySurface2, _bFindMinMaxPoints: true);
+							}
 						}
 					}
 				}
@@ -6566,14 +6675,7 @@ public class TopographySurfaceManagement
 		parameter2 = TerrainApi.NameParameter(((Element)_ProposedTopographySurface));
 		if (parameter2 != null && !parameter2.IsReadOnly)
 		{
-			if (_strToposurfaceName != string.Empty)
-			{
-				parameter2.Set(_strToposurfaceName);
-			}
-			else
-			{
-				parameter2.Set(EPShared.LocalRM.GetString("ProposedToposurfaceString"));
-			}
+			TerrainApi.SetUniqueName(_ProposedTopographySurface, _strToposurfaceName != string.Empty ? _strToposurfaceName : EPShared.LocalRM.GetString("ProposedToposurfaceString"));
 		}
 		ElementSet elementSet = new ElementSet();
 		if (_PlacementSymbol != null)
@@ -6582,7 +6684,7 @@ public class TopographySurfaceManagement
 			parameter = _PlacementFamilyInstance.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter);
 			if (parameter != null && !parameter.IsReadOnly)
 			{
-				parameter.Set(_ProposedTopographySurface.UniqueId);
+				parameter.Set(((Element)_ProposedTopographySurface).UniqueId);
 			}
 			parameter = _PlacementFamilyInstance.LookupParameter(RevitParameters.IsProposedSurfaceFamilyParameter);
 			if (parameter != null && !parameter.IsReadOnly)
@@ -6598,6 +6700,55 @@ public class TopographySurfaceManagement
 		_TransactionContainer.EndTransaction();
 	}
 
+	public static bool RunLocate(Document document, LandcaddID landcaddId)
+	{
+		if (!TryPrepareProposedTerrain(document, out TopographySurfaceContainer baseContainer, out FamilyInstance basePlacement, out TopographySurfaceContainer proposedContainer, out FamilyInstance proposedPlacement))
+		{
+			return false;
+		}
+		new SiteComponentCreation(document, baseContainer, basePlacement, proposedContainer, proposedPlacement, landcaddId).Run();
+		return true;
+	}
+
+	public static bool TryPrepareProposedTerrain(Document document, out TopographySurfaceContainer baseContainer, out FamilyInstance basePlacement, out TopographySurfaceContainer proposedContainer, out FamilyInstance proposedPlacement)
+	{
+		baseContainer = null;
+		basePlacement = null;
+		proposedContainer = null;
+		proposedPlacement = null;
+		FindAndCreateProposedLandcaddTopographySurface(document, ref baseContainer, ref basePlacement, ref proposedContainer, ref proposedPlacement);
+		if (proposedContainer != null && proposedPlacement != null)
+		{
+			return true;
+		}
+		SetBaseToposurface setBaseToposurface = new SetBaseToposurface(document);
+		if (!setBaseToposurface.Run())
+		{
+			return false;
+		}
+		FindAndCreateProposedLandcaddTopographySurface(document, ref baseContainer, ref basePlacement, ref proposedContainer, ref proposedPlacement);
+		if (proposedContainer != null && proposedPlacement != null)
+		{
+			return true;
+		}
+		if (setBaseToposurface.CreatedProposedSurface != null && setBaseToposurface.CreatedProposedPlacement != null)
+		{
+			proposedContainer = new TopographySurfaceContainer(document.Application, setBaseToposurface.CreatedProposedSurface, _bFindMinMaxPoints: true);
+			proposedPlacement = setBaseToposurface.CreatedProposedPlacement;
+			if (setBaseToposurface.CreatedBaseSurface != null)
+			{
+				baseContainer = new TopographySurfaceContainer(document.Application, setBaseToposurface.CreatedBaseSurface, _bFindMinMaxPoints: true);
+			}
+			basePlacement = setBaseToposurface.CreatedBasePlacement;
+		}
+		if (proposedContainer == null || proposedPlacement == null)
+		{
+			RuntimeDiagnostics.Write("Proposed terrain was not linked after Set Base.");
+			return false;
+		}
+		return true;
+	}
+
 	public static void FindAndCreateProposedLandcaddTopographySurface(Document _Document, ref TopographySurfaceContainer _BaseSurfaceContainer, ref FamilyInstance _BasePlacementFamilyInstance, ref TopographySurfaceContainer _ProposedSurfaceContainer, ref FamilyInstance _ProposedPlacementFamilyInstance)
 	{
 		FindBaseLandcaddTopographySurface(_Document, ref _BaseSurfaceContainer, ref _BasePlacementFamilyInstance, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance);
@@ -6605,9 +6756,16 @@ public class TopographySurfaceManagement
 		{
 			return;
 		}
+		if (TryAdoptExistingProposed(_Document, _BaseSurfaceContainer, _BasePlacementFamilyInstance, ref _ProposedSurfaceContainer, ref _ProposedPlacementFamilyInstance))
+		{
+			return;
+		}
 		EPTransactionContainer ePTransactionContainer = new EPTransactionContainer(_Document);
 		ePTransactionContainer.Start(EPShared.LocalRM.GetString("SurfaceCleanUpTransaction"));
-		RevitUtility.RemoveAllSiteComponents(_Document, ePTransactionContainer);
+		if (!TerrainApi.UsesToposolids)
+		{
+			RevitUtility.RemoveAllSiteComponents(_Document, ePTransactionContainer);
+		}
 		if (_BaseSurfaceContainer != null && _BasePlacementFamilyInstance != null)
 		{
 			if (_ProposedPlacementFamilyInstance != null)
@@ -6637,6 +6795,44 @@ public class TopographySurfaceManagement
 			}
 		}
 		ePTransactionContainer.Commit();
+	}
+
+	private static bool TryAdoptExistingProposed(Document document, TopographySurfaceContainer baseSurface, FamilyInstance basePlacement, ref TopographySurfaceContainer proposedContainer, ref FamilyInstance proposedPlacement)
+	{
+		TopographySurface found = TerrainApi.FindProposedForBase(document, baseSurface?.TopographySurface);
+		if (found == null) return false;
+		FamilyInstance placement = proposedPlacement;
+		if (placement == null)
+		{
+			foreach (FamilyInstance instance in new FilteredElementCollector(document).OfClass(typeof(FamilyInstance)).OfCategory(BuiltInCategory.OST_Site).Cast<FamilyInstance>())
+			{
+				Parameter proposed = instance.LookupParameter(RevitParameters.IsProposedSurfaceFamilyParameter);
+				if (proposed != null && proposed.AsInteger() == 1)
+				{
+					placement = instance;
+					break;
+				}
+			}
+		}
+		EPTransactionContainer transaction = new EPTransactionContainer(document);
+		transaction.Start("Relink proposed terrain");
+		transaction.BeginTransaction();
+		if (placement == null && basePlacement?.Symbol != null)
+		{
+			placement = RevitUtility.NewFamilyInstance(document, XYZ.Zero, basePlacement.Symbol, found, document.ActiveView.GenLevel, StructuralType.NonStructural, ref transaction);
+			Parameter proposedFlag = placement?.LookupParameter(RevitParameters.IsProposedSurfaceFamilyParameter);
+			if (proposedFlag != null && !proposedFlag.IsReadOnly) proposedFlag.Set(1);
+		}
+		Parameter uniqueId = placement?.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter);
+		if (uniqueId != null && !uniqueId.IsReadOnly) uniqueId.Set(found.UniqueId);
+		transaction.EndTransaction();
+		transaction.Commit();
+		transaction.Dispose();
+		if (placement == null) return false;
+		proposedContainer = new TopographySurfaceContainer(document.Application, found, _bFindMinMaxPoints: true);
+		proposedPlacement = placement;
+		RuntimeDiagnostics.Write("Reused existing proposed terrain instead of cloning the ungraded base.");
+		return true;
 	}
 
 	public static void FindBaseLandcaddTopographySurface(Document _Document, bool _bIsProposedSurface, ref TopographySurfaceContainer _SiteTopographySurfaceContainer, ref FamilyInstance _TopoPlacementFamilyInstance)
@@ -6699,14 +6895,14 @@ public class TopographySurfaceManagement
 		}
 		foreach (Element item2 in list2)
 		{
-			if (item2 == null || item2.Category == null || item2.Category.Id.Value64() != TerrainApi.Category.GetHashCode() || !(TerrainApi.AsSurface(item2) is {} topographySurface))
+			if (item2 == null || !(TerrainApi.AsSurface(item2) is {} topographySurface))
 			{
 				continue;
 			}
 			for (int num = list.Count - 1; num >= 0; num--)
 			{
 				Element element = list[num];
-				if (element is FamilyInstance { Category: not null } familyInstance && familyInstance.Category.Id.Value64() == BuiltInCategory.OST_Site.GetHashCode())
+				if (element is FamilyInstance { Category: not null } familyInstance)
 				{
 					SiteworksIDParameter = familyInstance.Symbol.LookupParameter(RevitParameters.SiteworksIDFamilyParameter);
 					if (SiteworksIDParameter != null && string.Compare(SiteworksIDParameter.AsString(), Convert.ToInt32(LandcaddID.TopoSurfacePlacement).ToString("000"), ignoreCase: true) == 0)
@@ -6715,49 +6911,47 @@ public class TopographySurfaceManagement
 						if (parameter != null)
 						{
 							parameter2 = familyInstance.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter);
-							if (parameter2 != null && parameter2.AsString() != string.Empty)
+							string storedId = parameter2?.AsString();
+							if (TerrainApi.MatchesLinkedId(storedId, item2))
 							{
-								if (string.Compare(parameter2.AsString(), topographySurface.UniqueId, ignoreCase: true) == 0)
+								if (!Convert.ToBoolean(parameter.AsInteger()))
 								{
-									if (!Convert.ToBoolean(parameter.AsInteger()))
+									_BasePlacementFamilyInstance = familyInstance;
+									_BaseTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+									flag2 = true;
+								}
+								else
+								{
+									_ProposedPlacementFamilyInstance = familyInstance;
+									_ProposedTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
+									flag3 = true;
+								}
+								list.RemoveAt(num);
+								flag = true;
+								break;
+							}
+							parameter2 = TerrainApi.NameParameter(((Element)topographySurface));
+							if (parameter2 != null && parameter2.AsString() != null && parameter2.AsString() != string.Empty)
+							{
+								if (!flag2 && !Convert.ToBoolean(parameter.AsInteger()) && parameter2.AsString().ToLower().Contains(EPShared.LocalRM.GetString("BaseToposurfaceString").ToLower()))
+								{
+									if (elementSet.Size == 0)
 									{
 										_BasePlacementFamilyInstance = familyInstance;
 										_BaseTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
-										flag2 = true;
 									}
-									else
+									elementSet.Insert(familyInstance);
+									flag4 = true;
+								}
+								else if (!flag3 && Convert.ToBoolean(parameter.AsInteger()) && parameter2.AsString().ToLower().Contains(EPShared.LocalRM.GetString("ProposedToposurfaceString").ToLower()))
+								{
+									if (elementSet2.Size == 0)
 									{
 										_ProposedPlacementFamilyInstance = familyInstance;
 										_ProposedTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
-										flag3 = true;
 									}
-									list.RemoveAt(num);
-									flag = true;
-									break;
-								}
-								parameter2 = TerrainApi.NameParameter(((Element)topographySurface));
-								if (parameter2 != null && parameter2.AsString() != null && parameter2.AsString() != string.Empty)
-								{
-									if (!flag2 && !Convert.ToBoolean(parameter.AsInteger()) && parameter2.AsString().ToLower().Contains(EPShared.LocalRM.GetString("BaseToposurfaceString").ToLower()))
-									{
-										if (elementSet.Size == 0)
-										{
-											_BasePlacementFamilyInstance = familyInstance;
-											_BaseTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
-										}
-										elementSet.Insert(familyInstance);
-										flag4 = true;
-									}
-									else if (!flag3 && Convert.ToBoolean(parameter.AsInteger()) && parameter2.AsString().ToLower().Contains(EPShared.LocalRM.GetString("ProposedToposurfaceString").ToLower()))
-									{
-										if (elementSet2.Size == 0)
-										{
-											_ProposedPlacementFamilyInstance = familyInstance;
-											_ProposedTopographySurfaceContainer = new TopographySurfaceContainer(_Document.Application, topographySurface, _bFindMinMaxPoints: true);
-										}
-										elementSet2.Insert(familyInstance);
-										flag4 = true;
-									}
+									elementSet2.Insert(familyInstance);
+									flag4 = true;
 								}
 							}
 						}
@@ -7311,7 +7505,14 @@ public class TopographySurfaceManagement
 			List<Eps_Point> list = new List<Eps_Point>();
 			for (int i = 0; i < _SurfaceList.Count; i++)
 			{
-				list.AddRange(_SurfaceList[i].Vertices);
+				if (_SurfaceList[i].Vertices == null)
+				{
+					_SurfaceList[i].FindMinMaxPointsOfTopographySurface();
+				}
+				if (_SurfaceList[i].Vertices != null)
+				{
+					list.AddRange(_SurfaceList[i].Vertices);
+				}
 			}
 			IEnumerable<Eps_Point> source = list;
 			result = source.Distinct(new PointEqualityComparer()).ToList();
@@ -8016,6 +8217,91 @@ public class TopographySurfaceManagement
 					break;
 				}
 			}
+		}
+	}
+
+	internal static bool ReplacesInteriorPatch(LandcaddID locateType)
+	{
+		return locateType == LandcaddID.SoftTerrain || locateType == LandcaddID.PointWipeout;
+	}
+
+	private static void DrapeLegOntoToposolid(TopographySurfaceContainer terrain, Eps_Leg leg, double extraZ)
+	{
+		if (terrain?.TopographySurface == null || leg == null) return;
+		int draped = 0;
+		for (Eps_Leg current = leg; current != null; current = current.Next)
+		{
+			if (DrapePointOntoToposolid(terrain.TopographySurface, current.Line?.StartPnt, extraZ)) draped++;
+			if (DrapePointOntoToposolid(terrain.TopographySurface, current.Line?.EndPnt, extraZ)) draped++;
+			if (DrapePointOntoToposolid(terrain.TopographySurface, current.Arc?.StartPnt, extraZ)) draped++;
+			if (DrapePointOntoToposolid(terrain.TopographySurface, current.Arc?.EndPnt, extraZ)) draped++;
+		}
+		RuntimeDiagnostics.Write("Draped " + draped + " host-line point(s) onto the Toposolid top face.");
+	}
+
+	private static bool DrapePointOntoToposolid(TopographySurface surface, Eps_Point point, double extraZ)
+	{
+		if (point == null) return false;
+		if (!TerrainApi.TryGetTopZ(surface, point.XYZ, out double z)) return false;
+		point.z = z + extraZ;
+		return true;
+	}
+
+	internal static void ApplyInteriorPointEdits(TopographySurface surface, IList<XYZ> desired, bool replaceUnmatched)
+	{
+		if (surface == null || desired == null) return;
+		List<XYZ> remaining = (surface.GetInteriorPoints() ?? new List<XYZ>()).ToList();
+		List<XYZ> toAdd = new List<XYZ>();
+		foreach (XYZ point in desired)
+		{
+			if (point == null) continue;
+			int index = remaining.FindIndex(existing => Math.Abs(existing.X - point.X) < 1E-06 && Math.Abs(existing.Y - point.Y) < 1E-06);
+			if (index >= 0)
+			{
+				XYZ existing = remaining[index];
+				remaining.RemoveAt(index);
+				if (Math.Abs(existing.Z - point.Z) > 1E-04)
+				{
+					surface.MovePoint(existing, new XYZ(existing.X, existing.Y, point.Z));
+				}
+			}
+			else
+			{
+				toAdd.Add(point);
+			}
+		}
+		if (replaceUnmatched && remaining.Count > 0)
+		{
+			surface.DeletePoints(remaining);
+		}
+		if (toAdd.Count > 0)
+		{
+			surface.AddPoints(toAdd);
+		}
+	}
+
+	internal static void AddToposolidBreaklines(TopographySurface surface, params Eps_Leg[] legs)
+	{
+		if (!TerrainApi.UsesToposolids || surface == null || legs == null) return;
+		List<XYZ[]> creases = new List<XYZ[]>();
+		foreach (Eps_Leg leg in legs)
+		{
+			if (leg == null) continue;
+			List<Eps_Point> points = leg.GetPointsAtIntervals(4.0, 4.0);
+			for (int i = 1; i < points.Count; i++)
+			{
+				if (points[i - 1] == null || points[i] == null) continue;
+				creases.Add(new XYZ[] { points[i - 1].XYZ, points[i].XYZ });
+			}
+		}
+		if (creases.Count == 0) return;
+		try
+		{
+			ToposolidSurface.RestoreBreaklines(surface, creases, required: false);
+		}
+		catch (Exception ex)
+		{
+			RuntimeDiagnostics.Write("Street breaklines were skipped: " + ex.Message);
 		}
 	}
 

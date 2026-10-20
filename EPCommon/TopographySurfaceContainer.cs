@@ -637,7 +637,7 @@ public class TopographySurfaceContainer
 		// Subdivision elevations include their thickness. The native host already
 		// carries the terrain shape, so merging child meshes would raise that shape.
 		if (TerrainApi.UsesToposolids && m_TopographySurface != null)
-			return m_TopographySurface.GetPoints().Select(point => new Eps_Point(point)).ToList();
+			return (m_TopographySurface.GetPoints() ?? Enumerable.Empty<XYZ>()).Select(point => new Eps_Point(point)).ToList();
 		List<Eps_Point> list = new List<Eps_Point>();
 		List<Eps_Point> paPntList = new List<Eps_Point>();
 		List<Eps_Point> list2 = new List<Eps_Point>();

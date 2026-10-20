@@ -374,14 +374,6 @@ public class EPSharedExternal
 
 	public const int m_nMaxStringBuilderSize = 32767;
 
-	public static bool eplLicM_GetLicense()
-	{
-		if (!ApplicationUtility.Is64BitInstall)
-		{
-			return Externalx86.eplLM_GetLicense();
-		}
-		return Externalx64.eplLM_GetLicense();
-	}
 
 	public static bool eplLicM_IsNodeLicense()
 	{

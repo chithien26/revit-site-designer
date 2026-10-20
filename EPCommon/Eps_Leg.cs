@@ -2045,4 +2045,35 @@ public class Eps_Leg
 		}
 		return eps_Leg2;
 	}
+
+	public Eps_Leg FlattenArcsNarrowerThan(double minRadius)
+	{
+		if (RevitDefines.LE(minRadius, 0.0)) return this;
+		Eps_Leg head = null;
+		for (Eps_Leg current = this; current != null; current = current.Next)
+		{
+			if (current.Arc != null && RevitDefines.LT(current.Arc.Radius, minRadius) && !RevitDefines.EQ(current.Arc.Radius, 0.0))
+			{
+				double length = EPShared.eplGeoE_SolveArcLenByRadiusAndDelta(current.Arc.Radius, current.Arc.Delta);
+				int count = Math.Max(2, (int)Math.Ceiling(Math.Abs(current.Arc.Delta) / (Math.PI / 6.0)));
+				Eps_Point previous = new Eps_Point(current.Arc.StartPnt);
+				for (int i = 1; i <= count; i++)
+				{
+					Eps_Point next = new Eps_Point();
+					if (i == count) next = new Eps_Point(current.Arc.EndPnt);
+					else EPShared.eplGeoE_FindStaOffPointAlongArc(current.Arc, length * i / count, 0.0, ref next);
+					Eps_Leg piece = new Eps_Leg();
+					piece.Line = new Eps_Line();
+					piece.Line.StartPnt = previous;
+					piece.Line.EndPnt = next;
+					if (head == null) head = SingleLeg(piece);
+					else head.Last.Next = SingleLeg(piece);
+					previous = next;
+				}
+			}
+			else if (head == null) head = SingleLeg(current);
+			else head.Last.Next = SingleLeg(current);
+		}
+		return head ?? this;
+	}
 }
