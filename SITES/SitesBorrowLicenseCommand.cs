@@ -17,7 +17,8 @@ public class SitesBorrowLicenseCommand : IExternalCommand
 		Result result = Result.Succeeded;
 		try
 		{
-			RevitCommandRuntime.Begin(commandData.Application, GetType().Name);
+			if (!RevitCommandRuntime.Begin(commandData.Application, GetType().Name))
+				return Result.Cancelled;
 			if (!EPShared.eplLicM_IsNodeLicense())
 			{
 				if (EPShared.eplLicM_BorrowNetworkLicense())

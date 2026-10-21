@@ -17,7 +17,8 @@ public class SitesLicenseManagementCommand : IExternalCommand
 		Result result = Result.Succeeded;
 		try
 		{
-			RevitCommandRuntime.Begin(commandData.Application, GetType().Name);
+			if (!RevitCommandRuntime.Begin(commandData.Application, GetType().Name))
+				return Result.Cancelled;
 			EPShared.eplLicM_LicenseManagement();
 		}
 		catch (Autodesk.Revit.Exceptions.OperationCanceledException)

@@ -16,7 +16,8 @@ public class ModifyStreetCommand : IExternalCommand
 		Result result = Result.Succeeded;
 		try
 		{
-			RevitCommandRuntime.Begin(commandData.Application, GetType().Name);
+			if (!RevitCommandRuntime.Begin(commandData.Application, GetType().Name))
+				return Result.Cancelled;
 			{
 				ApplicationUtility.VerifyProductVersion();
 				Document document = RevitCommandRuntime.RequireDocument(commandData.Application, GetType().Name);

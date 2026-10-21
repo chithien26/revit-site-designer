@@ -13,7 +13,8 @@ internal static class LocateSiteComponentCommand
 		Result result = Result.Succeeded;
 		try
 		{
-			RevitCommandRuntime.Begin(commandData.Application, "Locate" + landcaddId + "Command");
+			if (!RevitCommandRuntime.Begin(commandData.Application, "Locate" + landcaddId + "Command"))
+				return Result.Cancelled;
 			ApplicationUtility.VerifyProductVersion();
 			Document document = RevitCommandRuntime.RequireDocument(commandData.Application, "Locate" + landcaddId + "Command");
 			if (document == null) return Result.Cancelled;

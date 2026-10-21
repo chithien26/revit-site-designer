@@ -9,7 +9,7 @@ public static class RevitCommandRuntime
 {
     public static UIApplication Current { get; private set; }
 
-    public static void Begin(UIApplication application, string command)
+    public static bool Begin(UIApplication application, string command)
     {
         Current = application;
         RuntimeDiagnostics.IsRevitHost = true;
@@ -29,6 +29,7 @@ public static class RevitCommandRuntime
         }
         if (!ApplicationUtility.IsRevitVersionValid)
             throw new InvalidOperationException("Site Designer could not initialize for this Revit version.");
+        return LicenseCheck.EnsureAllowed(application);
     }
 
     public static Document RequireDocument(UIApplication application, string command)

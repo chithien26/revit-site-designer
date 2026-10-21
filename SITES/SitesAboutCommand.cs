@@ -17,7 +17,8 @@ public class SitesAboutCommand : IExternalCommand
 		Result result = Result.Succeeded;
 		try
 		{
-			RevitCommandRuntime.Begin(commandData.Application, GetType().Name);
+			if (!RevitCommandRuntime.Begin(commandData.Application, GetType().Name))
+				return Result.Cancelled;
 			AboutForm aboutForm = new AboutForm();
 			aboutForm.ShowDialog();
 		}
