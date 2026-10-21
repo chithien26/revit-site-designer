@@ -1857,6 +1857,367 @@ public class RevitGeometry
 		return _CurrentLeg;
 	}
 
+	public static List<Eps_Leg> GetStreetNetworkLegs(Document document, Element seed)
+	{
+		List<Eps_Leg> legs = new List<Eps_Leg>();
+		if (document == null || seed == null) return legs;
+		List<Element> curves = CollectConnectedHostCurves(document, seed);
+		if (curves.Count == 0) return legs;
+		List<HostEdge> edges = new List<HostEdge>();
+		foreach (Element element in curves)
+		{
+			if (!TryHostEnds(element, out Eps_Point start, out Eps_Point end)) continue;
+			edges.Add(new HostEdge { Element = element, Start = start, End = end, Used = false });
+		}
+		if (edges.Count == 0) return legs;
+		List<HostEdge> cycle = LongestCycle(edges);
+		if (cycle.Count >= 3)
+		{
+			Eps_Leg loop = ChainHostEdges(cycle, true);
+			if (loop != null) legs.Add(loop);
+			foreach (HostEdge edge in cycle)
+				edge.Used = true;
+		}
+		while (true)
+		{
+			HostEdge startEdge = edges.FirstOrDefault(e => !e.Used);
+			if (startEdge == null) break;
+			List<HostEdge> chain = WalkOpenChain(edges, startEdge);
+			if (chain.Count == 0)
+			{
+				startEdge.Used = true;
+				continue;
+			}
+			Eps_Leg branch = ChainHostEdges(chain, false);
+			if (branch == null) continue;
+			if (eplGeoE_CalcLegListLength(branch) < 8.0) continue;
+			if (legs.Count > 0)
+				ExtendLegToMeet(branch, legs[0]);
+			legs.Add(branch);
+		}
+		legs.Sort((a, b) =>
+		{
+			int closed = (b.IsLegClosed() ? 1 : 0) - (a.IsLegClosed() ? 1 : 0);
+			if (closed != 0) return closed;
+			return eplGeoE_CalcLegListLength(b).CompareTo(eplGeoE_CalcLegListLength(a));
+		});
+		return legs;
+	}
+
+	private const double HostJoinTolFt = 0.08;
+
+	private sealed class HostEdge
+	{
+		public Element Element;
+		public Eps_Point Start;
+		public Eps_Point End;
+		public bool Used;
+	}
+
+	private static List<Element> CollectConnectedHostCurves(Document document, Element seed)
+	{
+		List<Element> collected = new List<Element>();
+		HashSet<long> seen = new HashSet<long>();
+		Queue<Element> queue = new Queue<Element>();
+		if (seed.Location is LocationCurve)
+		{
+			queue.Enqueue(seed);
+			seen.Add(seed.Id.Value64());
+		}
+		while (queue.Count > 0)
+		{
+			Element current = queue.Dequeue();
+			collected.Add(current);
+			if (current.Location is not LocationCurve location) continue;
+			for (int end = 0; end < 2; end++)
+			{
+				ElementArray joined = location.get_ElementsAtJoin(end);
+				if (joined == null) continue;
+				foreach (Element next in joined)
+				{
+					if (next == null || next.Location is not LocationCurve) continue;
+					if (!seen.Add(next.Id.Value64())) continue;
+					queue.Enqueue(next);
+				}
+			}
+		}
+		List<Element> loopCurves = new List<Element>(collected);
+		foreach (CurveElement curveElement in new FilteredElementCollector(document).OfClass(typeof(CurveElement)).WhereElementIsNotElementType())
+		{
+			if (curveElement is not ModelCurve) continue;
+			if (curveElement.Location is not LocationCurve location || location.Curve == null || !location.Curve.IsBound)
+				continue;
+			if (!seen.Add(curveElement.Id.Value64())) continue;
+			if (!IsOpenTeeStub(curveElement, loopCurves))
+			{
+				seen.Remove(curveElement.Id.Value64());
+				continue;
+			}
+			collected.Add(curveElement);
+			if (collected.Count - loopCurves.Count >= 8) break;
+		}
+		return collected;
+	}
+
+	private static bool IsOpenTeeStub(Element candidate, List<Element> loopCurves)
+	{
+		if (!TryHostEnds(candidate, out Eps_Point start, out Eps_Point end)) return false;
+		if (EPShared.eplGeoE_ArePntsDuplicates2D(start, end, HostJoinTolFt)) return false;
+		double length = 0.0;
+		EPShared.eplGeoE_CalcHorzDistBtwnTwoPnts(start, end, ref length);
+		if (length < 8.0) return false;
+		bool startOn = false;
+		bool endOn = false;
+		foreach (Element existing in loopCurves)
+		{
+			if (existing.Location is not LocationCurve location || location.Curve == null) continue;
+			if (PointNearCurve(start, location.Curve)) startOn = true;
+			if (PointNearCurve(end, location.Curve)) endOn = true;
+		}
+		return startOn != endOn;
+	}
+
+	private static bool PointNearCurve(Eps_Point point, Curve curve)
+	{
+		try
+		{
+			IntersectionResult result = curve.Project(point.XYZ);
+			if (result == null || result.XYZPoint == null) return false;
+			return point.XYZ.DistanceTo(result.XYZPoint) <= HostJoinTolFt;
+		}
+		catch (Exception)
+		{
+			return false;
+		}
+	}
+
+	private static bool TryHostEnds(Element element, out Eps_Point start, out Eps_Point end)
+	{
+		start = null;
+		end = null;
+		if (element?.Location is not LocationCurve location || location.Curve == null || !location.Curve.IsBound)
+			return false;
+		start = new Eps_Point(location.Curve.GetEndPoint(0));
+		end = new Eps_Point(location.Curve.GetEndPoint(1));
+		return true;
+	}
+
+	private static List<HostEdge> LongestCycle(List<HostEdge> edges)
+	{
+		Dictionary<string, int> degree = new Dictionary<string, int>();
+		foreach (HostEdge edge in edges)
+		{
+			string a = NodeKey(edge.Start);
+			string b = NodeKey(edge.End);
+			degree[a] = (degree.TryGetValue(a, out int da) ? da : 0) + 1;
+			degree[b] = (degree.TryGetValue(b, out int db) ? db : 0) + 1;
+		}
+		List<HostEdge> best = new List<HostEdge>();
+		foreach (HostEdge start in edges)
+		{
+			List<HostEdge> path = GreedyCycleFrom(edges, start, degree);
+			if (path.Count > best.Count) best = path;
+		}
+		return best;
+	}
+
+	private static List<HostEdge> GreedyCycleFrom(List<HostEdge> edges, HostEdge start, Dictionary<string, int> degree)
+	{
+		List<HostEdge> path = new List<HostEdge> { start };
+		HashSet<HostEdge> used = new HashSet<HostEdge> { start };
+		Eps_Point origin = start.Start;
+		Eps_Point current = start.End;
+		for (int step = 0; step < edges.Count; step++)
+		{
+			HostEdge next = null;
+			int nextDeg = -1;
+			HostEdge close = null;
+			foreach (HostEdge edge in edges)
+			{
+				if (used.Contains(edge)) continue;
+				Eps_Point other = OtherEnd(edge, current);
+				if (other == null) continue;
+				if (EPShared.eplGeoE_ArePntsDuplicates2D(other, origin, HostJoinTolFt) && path.Count >= 2)
+				{
+					close = edge;
+					continue;
+				}
+				int deg = NodeDegree(other, degree);
+				if (next == null || deg > nextDeg)
+				{
+					next = edge;
+					nextDeg = deg;
+				}
+			}
+			if (close != null && (next == null || nextDeg <= 1 || path.Count >= 3))
+			{
+				path.Add(close);
+				return path;
+			}
+			if (next == null) break;
+			used.Add(next);
+			current = OtherEnd(next, current);
+			path.Add(next);
+		}
+		return new List<HostEdge>();
+	}
+
+	private static Eps_Point OtherEnd(HostEdge edge, Eps_Point at)
+	{
+		if (EPShared.eplGeoE_ArePntsDuplicates2D(at, edge.Start, HostJoinTolFt)) return edge.End;
+		if (EPShared.eplGeoE_ArePntsDuplicates2D(at, edge.End, HostJoinTolFt)) return edge.Start;
+		return null;
+	}
+
+	private static string NodeKey(Eps_Point point)
+	{
+		return Math.Round(point.x / HostJoinTolFt) + "," + Math.Round(point.y / HostJoinTolFt);
+	}
+
+	private static int NodeDegree(Eps_Point point, Dictionary<string, int> degree)
+	{
+		return degree.TryGetValue(NodeKey(point), out int value) ? value : 0;
+	}
+
+	private static List<HostEdge> WalkOpenChain(List<HostEdge> edges, HostEdge start)
+	{
+		List<HostEdge> chain = new List<HostEdge> { start };
+		start.Used = true;
+		Eps_Point head = start.Start;
+		Eps_Point tail = start.End;
+		bool grew = true;
+		while (grew)
+		{
+			grew = false;
+			foreach (HostEdge edge in edges)
+			{
+				if (edge.Used) continue;
+				if (EPShared.eplGeoE_ArePntsDuplicates2D(tail, edge.Start, HostJoinTolFt))
+				{
+					chain.Add(edge);
+					edge.Used = true;
+					tail = edge.End;
+					grew = true;
+					break;
+				}
+				if (EPShared.eplGeoE_ArePntsDuplicates2D(tail, edge.End, HostJoinTolFt))
+				{
+					chain.Add(edge);
+					edge.Used = true;
+					tail = edge.Start;
+					grew = true;
+					break;
+				}
+				if (EPShared.eplGeoE_ArePntsDuplicates2D(head, edge.End, HostJoinTolFt))
+				{
+					chain.Insert(0, edge);
+					edge.Used = true;
+					head = edge.Start;
+					grew = true;
+					break;
+				}
+				if (EPShared.eplGeoE_ArePntsDuplicates2D(head, edge.Start, HostJoinTolFt))
+				{
+					chain.Insert(0, edge);
+					edge.Used = true;
+					head = edge.End;
+					grew = true;
+					break;
+				}
+			}
+		}
+		return chain;
+	}
+
+	private static Eps_Leg ChainHostEdges(List<HostEdge> edges, bool close)
+	{
+		if (edges == null || edges.Count == 0) return null;
+		Eps_Leg head = LegFromLocationElement(edges[0].Element);
+		if (head == null) return null;
+		for (int i = 1; i < edges.Count; i++)
+		{
+			Eps_Leg piece = LegFromLocationElement(edges[i].Element);
+			if (piece == null) continue;
+			if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegEndPnt, piece.LegStartPnt, HostJoinTolFt))
+				head.Last.Next = piece;
+			else if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegEndPnt, piece.LegEndPnt, HostJoinTolFt))
+				head.Last.Next = piece.Reverse();
+			else if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegStartPnt, piece.LegEndPnt, HostJoinTolFt))
+			{
+				piece.Last.Next = head;
+				head = piece;
+			}
+			else if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegStartPnt, piece.LegStartPnt, HostJoinTolFt))
+			{
+				Eps_Leg reversed = piece.Reverse();
+				reversed.Last.Next = head;
+				head = reversed;
+			}
+			else
+				head.Last.Next = piece;
+		}
+		if (close && head != null && !head.IsLegClosed() && EPShared.eplGeoE_ArePntsDuplicates2D(head.LegStartPnt, head.LegEndPnt, HostJoinTolFt * 4.0))
+		{
+			if (head.Last.Line != null)
+				head.Last.Line.EndPnt = new Eps_Point(head.LegStartPnt);
+			else if (head.Last.Arc != null)
+				head.Last.Arc.EndPnt = new Eps_Point(head.LegStartPnt);
+		}
+		return head;
+	}
+
+	private static Eps_Leg LegFromLocationElement(Element element)
+	{
+		if (element?.Location is not LocationCurve location || location.Curve == null) return null;
+		Eps_Leg leg = new Eps_Leg();
+		if (location.Curve is Arc)
+		{
+			leg.Element = element;
+			leg.Arc = new Eps_Arc((Arc)location.Curve);
+			return leg;
+		}
+		if (location.Curve is Line)
+		{
+			leg.Element = element;
+			leg.Line = new Eps_Line((Line)location.Curve);
+			return leg;
+		}
+		if (location.Curve is NurbSpline || location.Curve is HermiteSpline || location.Curve is Ellipse)
+			return GetLegFromSpline(element, location.Curve, _bReverseOrder: false);
+		return null;
+	}
+
+	private static void ExtendLegToMeet(Eps_Leg branch, Eps_Leg loop)
+	{
+		if (branch == null || loop == null) return;
+		TrySnapEndToLeg(branch, loop, true);
+		TrySnapEndToLeg(branch, loop, false);
+	}
+
+	private static void TrySnapEndToLeg(Eps_Leg branch, Eps_Leg target, bool start)
+	{
+		Eps_Point end = start ? branch.LegStartPnt : branch.LegEndPnt;
+		double station = 0.0;
+		double offset = 0.0;
+		if (eplGeoE_CalcStationOffsetAlongLegList(end, target, ref station, ref offset) != 1700)
+			return;
+		if (Math.Abs(offset) > 1.0) return;
+		Eps_Point snapped = new Eps_Point();
+		if (eplGeoE_FindPntOnLegByStationOffset(target, station, 0.0, ref snapped) != 0)
+			return;
+		if (start)
+		{
+			if (branch.Line != null) branch.Line.StartPnt = new Eps_Point(snapped);
+			else if (branch.Arc != null) branch.Arc.StartPnt = new Eps_Point(snapped);
+		}
+		else
+		{
+			Eps_Leg last = branch.Last;
+			if (last.Line != null) last.Line.EndPnt = new Eps_Point(snapped);
+			else if (last.Arc != null) last.Arc.EndPnt = new Eps_Point(snapped);
+		}
+	}
+
 	public static void CreatePointListFromMinMaxOfArea(ref List<Eps_Point> _PointList, Eps_Point _LowerLeftPnt, Eps_Point _UpperRightPnt, double _dBaseLineAngle, double _dSpacing, bool _bSpacingType)
 	{
 		Eps_Point _MidPoint = new Eps_Point();

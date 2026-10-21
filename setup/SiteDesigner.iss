@@ -22,7 +22,7 @@ Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
 OutputDir=..\artifacts\installer
-OutputBaseFilename=SiteDesigner-{#RevitVersion}-Setup
+OutputBaseFilename=SiteDesigner-{#RevitVersion}-Setup-{#AppVersion}
 UninstallDisplayName={#AppName} {#RevitVersion}
 SetupLogging=yes
 

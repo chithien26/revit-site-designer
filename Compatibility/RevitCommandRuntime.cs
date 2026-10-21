@@ -7,8 +7,11 @@ namespace EPCommon;
 
 public static class RevitCommandRuntime
 {
+    public static UIApplication Current { get; private set; }
+
     public static void Begin(UIApplication application, string command)
     {
+        Current = application;
         RuntimeDiagnostics.IsRevitHost = true;
         var assembly = typeof(RevitCommandRuntime).Assembly;
         RuntimeDiagnostics.Write("Command " + command + "; Revit=" + application.Application.VersionNumber

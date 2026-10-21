@@ -36,7 +36,10 @@ public class AboutForm : EPForm
 		{
 			m_CopyrightLabel.Text = string.Format(EPShared.LocalRM.GetString("CopyrightDialog"), DateTime.Now.Year);
 		}
-		m_VersionLabel.Text = EPShared.LocalRM.GetString("VersionDialog") + " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+		string version = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
+		m_VersionLabel.Text = string.IsNullOrWhiteSpace(version)
+			? EPShared.LocalRM.GetString("VersionDialog") + " (dev)"
+			: EPShared.LocalRM.GetString("VersionDialog") + " " + version;
 		GetDialogPosition();
 	}
 

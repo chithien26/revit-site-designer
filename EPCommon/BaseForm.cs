@@ -107,7 +107,7 @@ public class BaseForm
 
 	public string CreateForm(Document _ProjectDocument, string _strSiteComponentName, bool _bUseInternalPoint, double _dElevation, ref string _strAdditionalLoftID)
 	{
-		if (!ApplicationUtility.UseMass || (this is StreetForm && TerrainApi.UsesToposolids))
+		if (!ApplicationUtility.UseMass)
 		{
 			return CreateElement(_ProjectDocument, _strSiteComponentName, _bUseInternalPoint, _dElevation, ref _strAdditionalLoftID);
 		}

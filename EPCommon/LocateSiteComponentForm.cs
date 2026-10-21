@@ -167,6 +167,17 @@ public class LocateSiteComponentForm : EPForm
 		m_DecimalSymbolType = m_dataBuffer.Document.GetUnits().DecimalSymbol;
 		m_dAdjustConstElevation = 0.0;
 		InitializeControls();
+		HideLegacyStreetWidth();
+	}
+
+	private void HideLegacyStreetWidth()
+	{
+		foreach (System.Windows.Forms.Control control in Controls)
+		{
+			string name = control.Name ?? string.Empty;
+			if (name.IndexOf("Width", StringComparison.OrdinalIgnoreCase) < 0) continue;
+			control.Visible = false;
+		}
 	}
 
 	private void SetStrings()
@@ -626,7 +637,7 @@ public class LocateSiteComponentForm : EPForm
 			SiteDesigner.UI.WpfFocus.Focus(m_NameTextBox);
 			return false;
 		}
-		if (m_ChainRadioButton.Checked && m_DrawHostLineRadioButton.Checked)
+		if (m_ChainRadioButton.Checked && m_DrawHostLineRadioButton.Checked && m_CurrentLandcaddID != LandcaddID.Street)
 		{
 			m_CurType = m_TypeNameComboBox.SelectedItem as FamilySymbol;
 			if (m_CurType == null)
@@ -693,8 +704,7 @@ public class LocateSiteComponentForm : EPForm
 				{
 					RevitGeometry.Units_ConvertStringToDouble(m_RadiusTextBox.Text, m_Units, UnitType.UT_Length, ref _dReturnedDouble, _bDisplayInvalidInputMessage: true);
 				}
-				if (RevitDefines.LT(_dReturnedDouble, dY) && !RevitDefines.EQ(_dReturnedDouble, 0.0)
-					&& !(m_CurrentLandcaddID == LandcaddID.Street && TerrainApi.UsesToposolids))
+				if (RevitDefines.LT(_dReturnedDouble, dY) && !RevitDefines.EQ(_dReturnedDouble, 0.0))
 				{
 					RevitMessageBox.Show(EPShared.LocalRM.GetString("InvalidRadiusString"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
 					return false;

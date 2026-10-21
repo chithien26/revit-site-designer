@@ -6,11 +6,17 @@ param(
     [string]$WhitelistFile,
     [string]$ContentRoot = "$env:ProgramData\Autodesk\Site Designer for Revit 2020",
     [string]$InnoCompiler,
-    [switch]$SkipBuild
+    [switch]$SkipBuild,
+    [string]$ProductVersion
 )
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
-if (-not $SkipBuild) { & (Join-Path $root 'Build.ps1') -Version $Version -Configuration $Configuration }
+$versionFile = Join-Path $root 'version.txt'
+if (-not $ProductVersion -and (Test-Path -LiteralPath $versionFile)) {
+    $ProductVersion = (Get-Content -LiteralPath $versionFile -Raw).Trim()
+}
+if (-not $ProductVersion) { throw 'Supply -ProductVersion (e.g. 1.0.1). Ask the user if they did not specify it.' }
+if (-not $SkipBuild) { & (Join-Path $root 'Build.ps1') -Version $Version -Configuration $Configuration -ProductVersion $ProductVersion }
 
 $framework = if ($Version -le 2024) { 'net48' } elseif ($Version -eq 2027) { 'net10.0-windows' } else { 'net8.0-windows' }
 $buildRoot = Join-Path $root "bin\$Configuration\$Version\$framework"
@@ -93,10 +99,11 @@ if (-not $InnoCompiler) {
 }
 
 $iss = Join-Path $root 'setup\SiteDesigner.iss'
-$exeName = "SiteDesigner-$Version-Setup"
+Set-Content -LiteralPath $versionFile -Value $ProductVersion -Encoding ascii
+$exeName = "SiteDesigner-$Version-Setup-$ProductVersion"
 & $InnoCompiler $iss `
     "/DRevitVersion=$Version" `
-    "/DAppVersion=$Version.0.0" `
+    "/DAppVersion=$ProductVersion" `
     "/DStagingDir=$staging" `
     "/F$exeName"
 if ($LASTEXITCODE -ne 0) { throw "Inno Setup compile failed." }

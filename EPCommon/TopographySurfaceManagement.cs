@@ -2825,6 +2825,11 @@ public class TopographySurfaceManagement
 		}
 		if (_bDisplayPromptWhenNecessary && (_LeftIntersectionStations.Count == 0 || _LeftIntersectionStations.Count != _RightIntersectionStations.Count || _LeftIntersectionStations.Count != _CenterIntersectionStations.Count))
 		{
+			if (TerrainApi.UsesToposolids && _LocateType == LandcaddID.Street)
+			{
+				RuntimeDiagnostics.Write("Street junction stations left=" + _LeftIntersectionStations.Count + " right=" + _RightIntersectionStations.Count + " center=" + _CenterIntersectionStations.Count + "; overlay will fill the node.");
+				return true;
+			}
 			if (_LocateType == LandcaddID.Street)
 			{
 				RevitMessageBox.Show(EPShared.LocalRM.GetString("StreetIntersectionNotOnStraightLinesMessage"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
@@ -2836,13 +2841,17 @@ public class TopographySurfaceManagement
 			return false;
 		}
 		DialogResult dialogResult = DialogResult.Ignore;
-		if (_bFindIntersectionStations && _bDisplayPromptWhenNecessary)
+		if (_bFindIntersectionStations && _bDisplayPromptWhenNecessary && !TerrainApi.UsesToposolids)
 		{
 			dialogResult = RevitMessageBox.Show(EPShared.LocalRM.GetString("IntersectionDetectedMessage"), EPShared.LocalRM.GetString("InformationString"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk);
 			if (dialogResult == DialogResult.Cancel)
 			{
 				return false;
 			}
+		}
+		else if (TerrainApi.UsesToposolids && _LocateType == LandcaddID.Street)
+		{
+			dialogResult = DialogResult.Yes;
 		}
 		bool bSurpressError = !_bDisplayPromptWhenNecessary;
 		bool intersectionProfiles = GetIntersectionProfiles(_LocateType, _LeftExistingOffsetLeg, _RightExistingOffsetLeg, _LeftOffsetLeg, _dExistingAdjustSubgradeElev, flag, bSurpressError, _RightIntersectionStations, ref _LeftIntersectionStations);
@@ -2851,7 +2860,7 @@ public class TopographySurfaceManagement
 			bSurpressError = true;
 		}
 		bool intersectionProfiles2 = GetIntersectionProfiles(_LocateType, _LeftExistingOffsetLeg, _RightExistingOffsetLeg, _RightOffsetLeg, _dExistingAdjustSubgradeElev, flag, bSurpressError, _LeftIntersectionStations, ref _RightIntersectionStations);
-		if ((dialogResult == DialogResult.Yes || intersectionProfiles || intersectionProfiles2) && _bDisplayPromptWhenNecessary)
+		if ((dialogResult == DialogResult.Yes || intersectionProfiles || intersectionProfiles2) && _bDisplayPromptWhenNecessary && !TerrainApi.UsesToposolids)
 		{
 			ChangeIntersectionRadiusForm changeIntersectionRadiusForm = new ChangeIntersectionRadiusForm(_Document, _TransactionContainer, _LocateType, _LeftExistingOffsetLeg, _RightExistingOffsetLeg, _LeftOffsetLeg, _RightOffsetLeg, _dExistingAdjustSubgradeElev, flag, _dMinimumRadius);
 			changeIntersectionRadiusForm.LeftIntersectionStations = _LeftIntersectionStations;

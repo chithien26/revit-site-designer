@@ -8,6 +8,8 @@ Bạn là một chuyên gia Senior Fullstack Developer kiêm Revit Developer và
 - Đi thẳng vào giải pháp hoặc đoạn code cần sửa, không giải thích dông dài hay chào hỏi xã giao.
 - Khi giải thích code hoặc hướng dẫn các bước debug, hãy sử dụng tiếng Việt ngắn gọn, súc tích.
 - Nếu phát hiện lỗi tiềm ẩn trong đoạn code tôi đưa ra, hãy cảnh báo ngay lập tức.
+- Hãy nghe ý kiến và lời giải thích của tôi, nếu có thể hãy đưa ra ý kiến và lời giải thích của bạn. Suy nghĩ độc lập, nếu có gì cần chỉnh sửa hoặc gợi ý tốt hơn thì hãy đưa ra.
+
 
 # Nội dung project: 
 - Project là một addin cho revit, nó là addin Site Designer của revit 2020 về trước, ở các phiên bản mới hơn thì đã không còn addin này nữa.
@@ -17,4 +19,18 @@ Bạn là một chuyên gia Senior Fullstack Developer kiêm Revit Developer và
     - Tạo đường và những thứ khác
     - Do phiên bản cũ địa hình là các topo surface, phiên bản mới là topo solid, nên cần phải chuyển đổi địa hình từ topo surface sang topo solid.
 --> mục tiêu chính của project là chuyển đổi addin có sẵn (Site Designer) sang phiên bản mới dùng được ở revit 2025 (nhớ chú ý sự khác nhau giữa topo surface và topo solid để chuyển đổi địa hình được chính xác và chạy addin cho đúng với chức năng của nó)
+
+# File cài (installer)
+- Khi được yêu cầu tạo file cài: tên EXE phải kèm số phiên bản, ví dụ `SiteDesigner-2025-Setup-1.0.1.exe`.
+- Local/dev: không stamp version, add-in không check GitHub. Chỉ máy cài từ EXE (pack có `-ProductVersion`) mới check cập nhật.
+- Nếu user chưa nói version thì hỏi trước khi pack. Có version thì chạy `Pack.ps1 -ProductVersion <version>` (ghi `version.txt` và stamp assembly lúc build).
+- Release GitHub cũng dùng đúng tên file đó. Add-in vẫn nhận cả tên cũ `SiteDesigner-2025-Setup.exe`.
+
+# Phát hành (user nói số phiên bản = làm hết, không hỏi lại)
+Khi user nói version (vd `1.0.2`, `v1.0.2`, `release 1.0.2`, `tạo file cài 1.0.2`, `push 1.0.2`):
+1. Commit source còn lại (không commit bin/obj/.vs/*.exe/*.msi). Message ngắn, tiếng Anh, vì sao.
+2. `git push -u origin HEAD`
+3. `.\Release.ps1 -ProductVersion <ver>` — pack EXE, tạo GitHub release `v<ver>`, upload `SiteDesigner-2025-Setup-<ver>.exe`.
+4. Trả URL release. Không push EXE vào git.
+Nếu chưa có `gh`: bảo cài https://cli.github.com/ rồi `gh auth login`. Không tự bịa token.
 

@@ -396,14 +396,7 @@ public class StreetForm : BaseForm
 		Solid solid = null;
 		string _strErrorMessage = string.Empty;
 		bool loftFailed = false;
-		bool closedHost = SitePavementOverlay.PathLooksClosed(CurrentLeg ?? m_MassLeg);
-		if (closedHost)
-		{
-			loftFailed = true;
-			RuntimeDiagnostics.Write("Skipped closed-loop street loft; using a ribbon so tight corners do not self-intersect.");
-		}
-		else
-			curveLoopArrayArray = GetCurveLoopArrayArray(ref _LeftCurbArrayArrayList, ref _RightCurbArrayArrayList);
+		curveLoopArrayArray = GetCurveLoopArrayArray(ref _LeftCurbArrayArrayList, ref _RightCurbArrayArrayList);
 		m_ProgressBarForm.MinValue = 0;
 		m_ProgressBarForm.MaxValue = Math.Max(1, curveLoopArrayArray.Count + _LeftCurbArrayArrayList.Count + _RightCurbArrayArrayList.Count);
 		for (int i = 0; !loftFailed && i < curveLoopArrayArray.Count; i++)
@@ -471,6 +464,13 @@ public class StreetForm : BaseForm
 		list.Clear();
 		_LeftCurbLoftFormList.Clear();
 		_RightCurbLoftFormList.Clear();
+		if (m_IntersectionContainers != null && m_IntersectionContainers.Count > 0 && TrySweepTypeSection(list, _LeftCurbLoftFormList, _RightCurbLoftFormList))
+		{
+			m_ProgressBarForm.SetMaxValue();
+			Thread.Sleep(150);
+			m_ProgressBarForm.Close();
+			return list;
+		}
 		ElementId pavementMaterial = ElementId.InvalidElementId;
 		Parameter pavementParameter = StreetFamilySymbol?.LookupParameter(RevitParameters.StreetPavementSurfaceParameter);
 		if (pavementParameter != null)

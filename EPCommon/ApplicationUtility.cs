@@ -349,5 +349,13 @@ public class ApplicationUtility
 
 	public static void VerifyProductVersion(bool _bDailyVersionCheck)
 	{
+		try
+		{
+			ProductUpdate.Check(_bDailyVersionCheck);
+		}
+		catch (Exception ex)
+		{
+			RuntimeDiagnostics.Write("VerifyProductVersion: " + ex.Message);
+		}
 	}
 }

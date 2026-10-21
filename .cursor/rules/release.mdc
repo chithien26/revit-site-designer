@@ -1,0 +1,16 @@
+---
+description: Khi user nói số phiên bản thì push, pack EXE, tạo GitHub release và upload file cài
+alwaysApply: true
+---
+
+# Phát hành Site Designer
+
+User nói version (`1.0.2`, `v1.0.2`, `release 1.0.2`, `tạo file cài 1.0.2`) = chạy hết, không hỏi lại:
+
+1. Commit source còn lại. Không commit `bin/`, `obj/`, `.vs/`, `*.exe`, `*.msi`.
+2. `git push -u origin HEAD`
+3. `.\Release.ps1 -ProductVersion <ver>`
+4. Trả URL release.
+
+EXE: `SiteDesigner-2025-Setup-<ver>.exe`. Tag: `v<ver>`. Repo: `chithien26/revit-site-designer`.
+Thiếu `gh`: bảo cài https://cli.github.com/ rồi `gh auth login`.

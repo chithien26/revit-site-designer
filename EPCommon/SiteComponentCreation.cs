@@ -1421,8 +1421,12 @@ public class SiteComponentCreation
 					{
 						RevitUtility.HideElementsInAllViews(m_Document, elementSet);
 					}
-					if (m_CurrentLandcaddId != LandcaddID.SoftTerrain && m_CurrentLandcaddId != LandcaddID.ParkingLot && m_CurrentLandcaddId != LandcaddID.FeatureLine && m_CurrentLandcaddId != LandcaddID.PointWipeout
-						&& !(m_CurrentLandcaddId == LandcaddID.Street && TerrainApi.UsesToposolids))
+					if (m_CurrentLandcaddId == LandcaddID.Street)
+					{
+						Eps_Leg flattened = _EvalLeg.FlattenArcsNarrowerThan(_dOffsetWidth + 2.0);
+						if (flattened != null) _EvalLeg = flattened;
+					}
+					else if (m_CurrentLandcaddId != LandcaddID.SoftTerrain && m_CurrentLandcaddId != LandcaddID.ParkingLot && m_CurrentLandcaddId != LandcaddID.FeatureLine && m_CurrentLandcaddId != LandcaddID.PointWipeout)
 					{
 						Eps_Leg eps_Leg = null;
 						for (eps_Leg = _EvalLeg; eps_Leg != null; eps_Leg = eps_Leg.Next)

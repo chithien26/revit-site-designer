@@ -44,6 +44,16 @@
   <Target Name="ValidateRevitVersion" BeforeTargets="PrepareForBuild">
     <Error Condition="$(RevitVersion) &lt; 2022 Or $(RevitVersion) &gt; 2027" Text="RevitVersion must be between 2022 and 2027." />
   </Target>
+  <Target Name="GenerateProductVersion" BeforeTargets="CoreCompile" Condition="'$(ProductVersion)' != ''">
+    <ItemGroup>
+      <ProductVersionAttribute Include="System.Reflection.AssemblyInformationalVersionAttribute">
+        <_Parameter1>$(ProductVersion)</_Parameter1>
+      </ProductVersionAttribute>
+    </ItemGroup>
+    <WriteCodeFragment AssemblyAttributes="@(ProductVersionAttribute)" Language="C#" OutputFile="$(IntermediateOutputPath)ProductVersion.g.cs">
+      <Output TaskParameter="OutputFile" ItemName="Compile" />
+    </WriteCodeFragment>
+  </Target>
   <Target Name="GenerateRuntimeDirectory" BeforeTargets="CoreCompile">
     <ItemGroup>
       <RuntimeDirectoryAttribute Include="System.Reflection.AssemblyMetadataAttribute">

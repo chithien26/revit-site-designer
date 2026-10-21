@@ -140,6 +140,76 @@ internal static class SitePavementOverlay
 		return TryExtrudeLoop(LoopFromPoints(ring, true), depth, options);
 	}
 
+	public static int PlaceNetworkJunctions(Document document, List<Eps_Leg> legs, double halfWidth, double depth, ElementId materialId)
+	{
+		if (document == null || legs == null || legs.Count < 2 || halfWidth <= MinCurveFt) return 0;
+		depth = Math.Max(depth, MinDepthFt);
+		SolidOptions options = SolidOptionsOrNull(materialId);
+		int placed = 0;
+		for (int i = 0; i < legs.Count; i++)
+		{
+			for (int j = i + 1; j < legs.Count; j++)
+			{
+				if (!TryMeetPoint(legs[i], legs[j], out XYZ point)) continue;
+				Solid pad = CreateJunctionPadSolid(point, halfWidth, depth, options);
+				if (pad == null) continue;
+				if (Place(document, pad, BuiltInCategory.OST_Roads, "Street Junction") != null)
+					placed++;
+			}
+		}
+		if (placed > 0)
+			RuntimeDiagnostics.Write("Street network junction pads=" + placed + " halfWidth=" + halfWidth + " ft.");
+		return placed;
+	}
+
+	private static bool TryMeetPoint(Eps_Leg first, Eps_Leg second, out XYZ point)
+	{
+		point = null;
+		if (first == null || second == null) return false;
+		List<Eps_Point> hits = new List<Eps_Point>();
+		int count = 0;
+		if (RevitGeometry.eplGeoE_IntersectTwoLegLists(first, second, ref hits, ref count, 0.05) == 0 && count > 0 && hits[0] != null)
+		{
+			point = hits[0].XYZ;
+			return true;
+		}
+		if (EndOnLeg(first.LegStartPnt, second, out point) || EndOnLeg(first.LegEndPnt, second, out point))
+			return true;
+		if (EndOnLeg(second.LegStartPnt, first, out point) || EndOnLeg(second.LegEndPnt, first, out point))
+			return true;
+		return false;
+	}
+
+	private static bool EndOnLeg(Eps_Point end, Eps_Leg target, out XYZ point)
+	{
+		point = null;
+		if (end == null || target == null) return false;
+		double station = 0.0;
+		double offset = 0.0;
+		if (RevitGeometry.eplGeoE_CalcStationOffsetAlongLegList(end, target, ref station, ref offset) != 1700)
+			return false;
+		if (Math.Abs(offset) > 1.0) return false;
+		Eps_Point snapped = new Eps_Point();
+		if (RevitGeometry.eplGeoE_FindPntOnLegByStationOffset(target, station, 0.0, ref snapped) != 0)
+			return false;
+		point = snapped.XYZ;
+		return true;
+	}
+
+	private static Solid CreateJunctionPadSolid(XYZ center, double halfWidth, double depth, SolidOptions options)
+	{
+		double reach = Math.Max(halfWidth * 1.15, 2.0);
+		List<XYZ> ring = new List<XYZ>();
+		int steps = 16;
+		double z = center.Z;
+		for (int i = 0; i < steps; i++)
+		{
+			double angle = Math.PI * 2.0 * i / steps;
+			ring.Add(new XYZ(center.X + reach * Math.Cos(angle), center.Y + reach * Math.Sin(angle), z));
+		}
+		return TryExtrudeLoop(LoopFromPoints(ring, true), depth, options);
+	}
+
 	public static Solid CreateOffsetStrip(Eps_Leg center, double halfWidth, double thickness, ElementId materialId)
 	{
 		if (center == null || halfWidth <= MinCurveFt) return null;
