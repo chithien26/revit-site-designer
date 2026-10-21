@@ -515,11 +515,6 @@ public class TopographySurfaceManagement
 				num11 = num26 * (double)parameter.AsInteger() / 2.0;
 				num12 = num26 * (double)parameter.AsInteger() / 2.0;
 			}
-			if (_PlacementSettings.ComponentWidth > 0.0)
-			{
-				num11 = _PlacementSettings.ComponentWidth / 2.0;
-				num12 = num11;
-			}
 			parameter = _PlacementSettings.Type.LookupParameter(RevitParameters.StreetCrossSlopeParameter);
 			if (parameter != null)
 			{
@@ -989,6 +984,15 @@ public class TopographySurfaceManagement
 		{
 			DrapeLegOntoToposolid(_ProposedSurface, _CurrentLeg, flag ? num17 : 0.0);
 		}
+		if (bUseConstantElevation)
+		{
+			ApplyConstantElevationToHostGeometry(_CurrentLeg, aLines, nLineCount, aArcs, nArcCount, num17);
+		}
+		else if (TerrainApi.UsesToposolids && _PlacementSettings.LocateType != LandcaddID.FeatureLine && _PlacementSettings.LocateType != LandcaddID.PointWipeout)
+		{
+			_CurrentLeg.ConvertLegToLineArcArrays(ref aLines, ref nLineCount, ref aArcs, ref nArcCount, ref aLegOrder, _bExtendLeg: true);
+		}
+		RuntimeDiagnostics.Write("Host elevation relative=" + flag + " constant=" + bUseConstantElevation + " value=" + num17 + " firstZ=" + (_CurrentLeg?.LegStartPnt != null ? _CurrentLeg.LegStartPnt.z.ToString() : "n/a"));
 		FindOffsetLegWrappers(originaltLeg, _CurrentLeg, list2, list4, list3, _PlacementSettings.LocateType, num11, num12, num3, dAdjustSubgradeElev, dStreetEdgeAdjustElev, ref _OffsetLegWrappers, ref _IntersectionContainers);
 		if (list2.Count > 0 && list2.Count == list3.Count)
 		{
@@ -1081,7 +1085,6 @@ public class TopographySurfaceManagement
 		case LandcaddID.Street:
 		{
 			StreetForm streetForm2 = new StreetForm(_PlacementSettings.Type, _CurrentLeg);
-			streetForm2.PavementWidth = _PlacementSettings.ComponentWidth;
 			streetForm2.IntersectionContainers = _IntersectionContainers;
 			string _strAdditionalLoftID2 = string.Empty;
 			_PlacementSettings.LoftFormID = streetForm2.CreateForm(_Document, _PlacementSettings.Name, ref _strAdditionalLoftID2);
@@ -1544,7 +1547,7 @@ public class TopographySurfaceManagement
 			{
 				_PlacementSettings.ParentTopoSurfaceID = _ProposedSurface.TopographySurface.UniqueId;
 			}
-			if ((_PlacementSettings.LocateType == LandcaddID.Curb || _PlacementSettings.LocateType == LandcaddID.ParkingLot) && _CurrentLeg.IsLegClosed())
+			if ((_PlacementSettings.LocateType == LandcaddID.Curb || _PlacementSettings.LocateType == LandcaddID.ParkingLot) && CanMakeClosedPad(_CurrentLeg))
 			{
 				List<Eps_Point> list23 = new List<Eps_Point>();
 				if (_PlacementSettings.LocateType == LandcaddID.Curb)
@@ -3444,9 +3447,43 @@ public class TopographySurfaceManagement
 		return list;
 	}
 
+	private static bool CanMakeClosedPad(Eps_Leg leg)
+	{
+		if (leg == null) return false;
+		if (leg.IsLegClosed()) return true;
+		if (leg.LegStartPnt == null || leg.LegEndPnt == null) return false;
+		double gap = 0.0;
+		EPShared.eplGeoE_CalcHorzDistBtwnTwoPnts(leg.LegStartPnt, leg.LegEndPnt, ref gap);
+		return gap < 1.0;
+	}
+
+	private static Eps_Leg CloseNearlyClosed(Eps_Leg boundary)
+	{
+		if (boundary == null) return null;
+		Eps_Leg pad = Eps_Leg.CopyLeg(boundary) ?? boundary;
+		if (!pad.IsLegClosed() && pad.LegStartPnt != null && pad.LegEndPnt != null && pad.Last != null)
+		{
+			double gap = 0.0;
+			EPShared.eplGeoE_CalcHorzDistBtwnTwoPnts(pad.LegStartPnt, pad.LegEndPnt, ref gap);
+			if (gap > 0.0 && gap < 1.0)
+			{
+				Eps_Leg closer = new Eps_Leg();
+				closer.Line = new Eps_Line();
+				closer.Line.StartPnt = new Eps_Point(pad.LegEndPnt);
+				closer.Line.EndPnt = new Eps_Point(pad.LegStartPnt);
+				pad.Last.Next = closer;
+			}
+		}
+		return pad;
+	}
+
 	private static string CreateClosedPavementOverlay(Document document, SitePlacementSettings settings, Eps_Leg boundary, TopographySurfaceContainer proposed)
 	{
 		if (document == null || boundary == null) return string.Empty;
+		Eps_Leg padBoundary = CloseNearlyClosed(boundary);
+		if (padBoundary == null) return string.Empty;
+		if (proposed != null)
+			DrapeLegOntoToposolid(proposed, padBoundary, 0.0);
 		double depth = 0.5;
 		ElementId materialId = ElementId.InvalidElementId;
 		if (settings.LocateType == LandcaddID.ParkingLot)
@@ -3467,7 +3504,7 @@ public class TopographySurfaceManagement
 		string name = settings.Name;
 		if (string.IsNullOrEmpty(name))
 			name = settings.LocateType == LandcaddID.ParkingLot ? "Parking Lot" : "Island";
-		DirectShape pad = SitePavementOverlay.CreateExtrudedPad(document, boundary, depth, materialId, name, BuiltInCategory.OST_Roads);
+		DirectShape pad = SitePavementOverlay.CreateExtrudedPad(document, padBoundary, depth, materialId, name, BuiltInCategory.OST_Roads);
 		if (pad == null)
 		{
 			RuntimeDiagnostics.Write("Failed to create thin pavement overlay for " + settings.LocateType);
@@ -3522,6 +3559,11 @@ public class TopographySurfaceManagement
 
 	private static TopographySurface CreateAdditionalTopoSurface(Document _Document, SitePlacementSettings _PlacementSettings, List<Eps_Point> _NewSurfacePoints, TopographySurfaceContainer _ProposedSurface, long _nMaterialId)
 	{
+		if (TerrainApi.UsesToposolids)
+		{
+			RuntimeDiagnostics.Write("Skipped extra Toposolid for " + _PlacementSettings.LocateType + "; parking/island use a thin overlay.");
+			return null;
+		}
 		TopographySurface topographySurface = null;
 		if (_NewSurfacePoints != null && _NewSurfacePoints.Count > 0)
 		{
@@ -3796,9 +3838,9 @@ public class TopographySurfaceManagement
 		Eps_Line[] aLines2 = null;
 		Eps_Arc[] aArcs2 = null;
 		int[] aLegOrder2 = null;
-		bool bUseToposurfaceElevation = false;
-		bool bUseConstantElevation = false;
-		double num = 0.0;
+		bool bUseToposurfaceElevation = _PlacementSettings.IsRelativeElevation;
+		bool bUseConstantElevation = !_PlacementSettings.IsRelativeElevation;
+		double num = _PlacementSettings.Elevation;
 		double dElevation = 0.0;
 		double num2 = 0.0;
 		double num3 = 3.0;
@@ -3892,11 +3934,6 @@ public class TopographySurfaceManagement
 				{
 					num7 = num22 * (double)parameter.AsInteger() / 2.0;
 					num8 = num22 * (double)parameter.AsInteger() / 2.0;
-				}
-				if (_PlacementSettings.ComponentWidth > 0.0)
-				{
-					num7 = _PlacementSettings.ComponentWidth / 2.0;
-					num8 = num7;
 				}
 				parameter = _PlacementSettings.Type.LookupParameter(RevitParameters.StreetCrossSlopeParameter);
 				if (parameter != null)
@@ -4142,7 +4179,7 @@ public class TopographySurfaceManagement
 		_CurrentLeg = _CurrentLeg.SplitLegAtStations(list2);
 		if (_PlacementSettings.LocateType != LandcaddID.FeatureLine && _PlacementSettings.LocateType != LandcaddID.PointWipeout)
 		{
-			_CurrentLeg.ConvertLegToLineArcArrays(ref aLines2, ref nLineCount2, ref aArcs2, ref nArcCount2, ref aLegOrder2, null, bUseToposurfaceElevation, bUseConstantElevation, num, _bExtendLeg: true, list3);
+			_CurrentLeg.ConvertLegToLineArcArrays(ref aLines2, ref nLineCount2, ref aArcs2, ref nArcCount2, ref aLegOrder2, _ProposedSurface, bUseToposurfaceElevation, bUseConstantElevation, num, _bExtendLeg: true, list3);
 		}
 		else if (_PlacementSettings.LocateType == LandcaddID.FeatureLine)
 		{
@@ -4153,8 +4190,22 @@ public class TopographySurfaceManagement
 			}
 		}
 		double num26 = 0.0;
-		num26 = ((_PlacementSettings.LocateType != LandcaddID.RetainingWall) ? 0.0 : num14);
-		_CurrentLeg = _CurrentLeg.ApplyElevationsToLeg(null, bUseToposurfaceElevation, bUseConstantElevation, num26, list3);
+		num26 = _PlacementSettings.LocateType == LandcaddID.RetainingWall
+			? num14
+			: UsesFormPadElevation(_PlacementSettings.LocateType) ? num : 0.0;
+		_CurrentLeg = _CurrentLeg.ApplyElevationsToLeg(_ProposedSurface, bUseToposurfaceElevation, bUseConstantElevation, num26, list3);
+		if (TerrainApi.UsesToposolids && !bUseConstantElevation)
+		{
+			DrapeLegOntoToposolid(_ProposedSurface, _CurrentLeg, bUseToposurfaceElevation ? _PlacementSettings.Elevation : 0.0);
+		}
+		if (bUseConstantElevation)
+		{
+			ApplyConstantElevationToHostGeometry(_CurrentLeg, aLines2, nLineCount2, aArcs2, nArcCount2, num26);
+		}
+		else if (TerrainApi.UsesToposolids && _PlacementSettings.LocateType != LandcaddID.FeatureLine && _PlacementSettings.LocateType != LandcaddID.PointWipeout)
+		{
+			_CurrentLeg.ConvertLegToLineArcArrays(ref aLines2, ref nLineCount2, ref aArcs2, ref nArcCount2, ref aLegOrder2, _bExtendLeg: true);
+		}
 		List<IntersectionContainer> _IntersectionContainers2 = new List<IntersectionContainer>();
 		FindOffsetLegWrappers(originaltLeg, _CurrentLeg, _LeftIntersectionStations, _CenterIntersectionStations, _RightIntersectionStations, _PlacementSettings.LocateType, num7, num8, num2, dAdjustSubgradeElev, dStreetEdgeAdjustElev, ref _OffsetLegWrappers, ref _IntersectionContainers2);
 		foreach (IntersectionContainer item in _IntersectionContainers2)
@@ -4234,7 +4285,6 @@ public class TopographySurfaceManagement
 			case LandcaddID.Street:
 			{
 				StreetForm streetForm = new StreetForm(_PlacementSettings.Type, _CurrentLeg);
-				streetForm.PavementWidth = _PlacementSettings.ComponentWidth;
 				streetForm.IntersectionContainers = _IntersectionContainers;
 				string _strAdditionalLoftID = string.Empty;
 				_PlacementSettings.LoftFormID = streetForm.CreateForm(_Document, _PlacementSettings.Name, ref _strAdditionalLoftID);
@@ -4401,7 +4451,7 @@ public class TopographySurfaceManagement
 			progressBarForm?.UpdateProgressBar(1);
 			if (_bModifiedSiteComponent)
 			{
-				if ((_PlacementSettings.LocateType == LandcaddID.Curb || _PlacementSettings.LocateType == LandcaddID.ParkingLot) && _CurrentLeg.IsLegClosed())
+				if ((_PlacementSettings.LocateType == LandcaddID.Curb || _PlacementSettings.LocateType == LandcaddID.ParkingLot) && CanMakeClosedPad(_CurrentLeg))
 				{
 					List<Eps_Point> list4 = new List<Eps_Point>();
 					if (_PlacementSettings.LocateType == LandcaddID.Curb)
@@ -8223,6 +8273,41 @@ public class TopographySurfaceManagement
 	internal static bool ReplacesInteriorPatch(LandcaddID locateType)
 	{
 		return locateType == LandcaddID.SoftTerrain || locateType == LandcaddID.PointWipeout;
+	}
+
+	private static bool UsesFormPadElevation(LandcaddID locateType)
+	{
+		return locateType == LandcaddID.SoftTerrain || locateType == LandcaddID.FeatureLine || locateType == LandcaddID.Sidewalk;
+	}
+
+	private static void ApplyConstantElevationToHostGeometry(Eps_Leg leg, Eps_Line[] lines, int lineCount, Eps_Arc[] arcs, int arcCount, double elevation)
+	{
+		for (Eps_Leg current = leg; current != null; current = current.Next)
+		{
+			if (current.Line != null)
+			{
+				if (current.Line.StartPnt != null) current.Line.StartPnt.z = elevation;
+				if (current.Line.EndPnt != null) current.Line.EndPnt.z = elevation;
+			}
+			if (current.Arc != null)
+			{
+				if (current.Arc.StartPnt != null) current.Arc.StartPnt.z = elevation;
+				if (current.Arc.EndPnt != null) current.Arc.EndPnt.z = elevation;
+				if (current.Arc.RadiusPnt != null) current.Arc.RadiusPnt.z = elevation;
+			}
+		}
+		for (int i = 0; i < lineCount && lines != null; i++)
+		{
+			if (lines[i]?.StartPnt != null) lines[i].StartPnt.z = elevation;
+			if (lines[i]?.EndPnt != null) lines[i].EndPnt.z = elevation;
+		}
+		for (int i = 0; i < arcCount && arcs != null; i++)
+		{
+			if (arcs[i]?.StartPnt != null) arcs[i].StartPnt.z = elevation;
+			if (arcs[i]?.EndPnt != null) arcs[i].EndPnt.z = elevation;
+			if (arcs[i]?.RadiusPnt != null) arcs[i].RadiusPnt.z = elevation;
+		}
+		RuntimeDiagnostics.Write("Forced constant host elevation Z=" + elevation + " ft.");
 	}
 
 	private static void DrapeLegOntoToposolid(TopographySurfaceContainer terrain, Eps_Leg leg, double extraZ)

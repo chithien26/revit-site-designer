@@ -18,26 +18,16 @@ internal static class SitePavementOverlay
 	public static DirectShape CreateExtrudedPad(Document document, Eps_Leg boundary, double depth, ElementId materialId, string name, BuiltInCategory category)
 	{
 		if (document == null || boundary == null) return null;
-		CurveLoop loop = CurveLoopFromLeg(boundary);
-		if (loop == null) return null;
-		loop = FlattenToMaxZ(loop);
-		if (loop == null) return null;
 		depth = Math.Max(depth, MinDepthFt);
 		SolidOptions options = SolidOptionsOrNull(materialId);
-		Solid solid = TryExtrude(new List<CurveLoop> { loop }, depth, options);
+		Solid solid = TryExtrudeLoop(CurveLoopFromLeg(boundary), depth, options);
+		if (solid == null)
+			solid = TryExtrudeLoop(PolygonFromLeg(boundary), depth, options);
 		if (solid == null)
 		{
-			try
-			{
-				loop.Flip();
-				solid = TryExtrude(new List<CurveLoop> { loop }, depth, options);
-			}
-			catch (Exception ex)
-			{
-				RuntimeDiagnostics.Write("Parking-lot pad reverse failed: " + ex.Message);
-			}
+			RuntimeDiagnostics.Write("Parking-lot pad extrusion failed.");
+			return null;
 		}
-		if (solid == null) return null;
 		return Place(document, solid, category, name);
 	}
 
@@ -46,23 +36,132 @@ internal static class SitePavementOverlay
 		List<Solid> solids = new List<Solid>();
 		if (pathLeg == null || width <= MinCurveFt) return solids;
 		depth = Math.Max(depth, MinDepthFt);
-		Solid strip = CreateOffsetStrip(pathLeg, width * 0.5, depth, materialId);
-		if (strip != null)
-		{
-			solids.Add(strip);
-			return solids;
-		}
-		CurveLoop path = CurveLoopFromLeg(pathLeg);
-		if (path == null) return solids;
 		SolidOptions options = SolidOptionsOrNull(materialId);
-		Solid solid = TrySweep(path, width, depth, options);
-		if (solid != null) solids.Add(solid);
+		CurveLoop path = CurveLoopFromLeg(pathLeg);
+		if (path != null)
+		{
+			Solid swept = TrySweep(path, width, depth, options);
+			if (swept != null)
+			{
+				solids.Add(swept);
+				return solids;
+			}
+		}
+		if (LooksClosed(pathLeg))
+		{
+			Solid ring = TryClosedRing(pathLeg, width * 0.5, depth, options);
+			if (ring != null)
+			{
+				solids.Add(ring);
+				return solids;
+			}
+			Solid pair = TryOffsetPair(pathLeg, width * 0.5, depth, options);
+			if (pair != null)
+			{
+				solids.Add(pair);
+				return solids;
+			}
+		}
+		else
+		{
+			Solid strip = CreateOffsetStrip(pathLeg, width * 0.5, depth, materialId);
+			if (strip != null)
+			{
+				solids.Add(strip);
+				return solids;
+			}
+		}
+		solids.AddRange(SweepEachSegment(path ?? CurveLoopFromLeg(pathLeg), width, depth, options));
+		if (solids.Count == 0)
+		{
+			Eps_Leg flattened = pathLeg.FlattenArcsNarrowerThan(width * 0.5 + 2.0) ?? pathLeg;
+			solids.AddRange(SweepEachSegment(CurveLoopFromLeg(flattened), width, depth, options));
+		}
+		if (solids.Count == 0)
+			solids.AddRange(TessellatedRibbon(pathLeg, width, depth, options));
+		if (solids.Count > 0)
+			RuntimeDiagnostics.Write("Street per-segment ribbon solids=" + solids.Count + " width=" + width + " ft.");
 		return solids;
+	}
+
+	public static Eps_Leg ExtractBetweenStations(Eps_Leg source, double startStation, double endStation)
+	{
+		if (source == null || endStation <= startStation + MinCurveFt) return null;
+		Eps_Leg head = null;
+		double cursor = 0.0;
+		for (Eps_Leg current = source; current != null; current = current.Next)
+		{
+			double length = RevitGeometry.eplGeoE_CalcLegLength(current);
+			double segStart = cursor;
+			double segEnd = cursor + length;
+			cursor = segEnd;
+			if (segEnd <= startStation + MinCurveFt || segStart >= endStation - MinCurveFt) continue;
+			double from = Math.Max(startStation, segStart) - segStart;
+			double to = Math.Min(endStation, segEnd) - segStart;
+			Eps_Leg piece = SliceLeg(current, from, to);
+			if (piece == null) continue;
+			if (head == null) head = piece;
+			else head.Last.Next = piece;
+		}
+		return head;
+	}
+
+	public static Solid CreateIntersectionPad(IntersectionContainer container, double depth, ElementId materialId)
+	{
+		if (container == null) return null;
+		depth = Math.Max(depth, MinDepthFt);
+		SolidOptions options = SolidOptionsOrNull(materialId);
+		if (container.LeftOffsetLeg != null && container.RightOffsetLeg != null)
+		{
+			Solid sampled = TrySampledPair(container.LeftOffsetLeg, container.RightOffsetLeg, depth, options);
+			if (sampled != null) return sampled;
+		}
+		List<XYZ> left = new List<XYZ>();
+		List<XYZ> right = new List<XYZ>();
+		if (container.Profiles != null)
+		{
+			foreach (ProfileContainer profile in container.Profiles)
+			{
+				if (profile?.Points == null || profile.Points.Count < 2) continue;
+				Eps_Point first = profile.Points[0];
+				Eps_Point last = profile.Points[profile.Points.Count - 1];
+				if (first == null || last == null) continue;
+				XYZ a = new XYZ(first.x, first.y, first.z);
+				XYZ b = new XYZ(last.x, last.y, last.z);
+				if (left.Count == 0 || left[left.Count - 1].DistanceTo(a) >= MinCurveFt) left.Add(a);
+				if (right.Count == 0 || right[right.Count - 1].DistanceTo(b) >= MinCurveFt) right.Add(b);
+			}
+		}
+		if (left.Count < 2 || right.Count < 2) return null;
+		List<XYZ> ring = new List<XYZ>();
+		ring.AddRange(left);
+		for (int i = right.Count - 1; i >= 0; i--)
+			ring.Add(right[i]);
+		return TryExtrudeLoop(LoopFromPoints(ring, true), depth, options);
 	}
 
 	public static Solid CreateOffsetStrip(Eps_Leg center, double halfWidth, double thickness, ElementId materialId)
 	{
 		if (center == null || halfWidth <= MinCurveFt) return null;
+		thickness = Math.Max(thickness, MinDepthFt);
+		SolidOptions options = SolidOptionsOrNull(materialId);
+		// Closed / nearly-closed centerlines must stay a picture-frame ring.
+		// CreateViaThicken of a closed loop is a single outer loop → filled plate.
+		if (LooksClosed(center))
+		{
+			Solid ring = TryClosedRing(center, halfWidth, thickness, options);
+			if (ring != null) return ring;
+			Solid pair = TryOffsetPair(center, halfWidth, thickness, options);
+			if (pair != null) return pair;
+			List<Solid> tessellated = TessellatedRibbon(center, halfWidth * 2.0, thickness, options);
+			if (tessellated.Count > 0) return tessellated[0];
+			RuntimeDiagnostics.Write("Closed street ring failed; halfWidth=" + halfWidth + " ft.");
+			return null;
+		}
+		Solid thickened = TryThicken(center, halfWidth * 2.0, thickness, options);
+		if (thickened != null) return thickened;
+		Solid sampled = TrySampledStrip(center, halfWidth, thickness, options);
+		if (sampled != null) return sampled;
 		Eps_Leg left = new Eps_Leg();
 		Eps_Leg right = new Eps_Leg();
 		if (RevitGeometry.OffsetLegList(center, halfWidth, 1, ref left, TrimClosedObject: true) != 0) return null;
@@ -70,13 +169,64 @@ internal static class SitePavementOverlay
 		return CreateStrip(left, right, thickness, materialId);
 	}
 
+	public static Eps_Leg FilletLineCorners(Eps_Leg source, double preferredRadius)
+	{
+		if (source == null || preferredRadius < 0.5) return source;
+		List<Eps_Leg> segs = new List<Eps_Leg>();
+		for (Eps_Leg current = source; current != null; current = current.Next)
+			segs.Add(Eps_Leg.SingleLeg(current));
+		if (segs.Count < 2) return source;
+		bool closed = LooksClosed(source);
+		List<Eps_Leg> result = new List<Eps_Leg>();
+		int count = segs.Count;
+		int last = closed ? count : count - 1;
+		for (int i = 0; i < last; i++)
+		{
+			Eps_Leg first = segs[i];
+			Eps_Leg second = segs[(i + 1) % count];
+			if (first.Line == null || second.Line == null)
+			{
+				result.Add(first);
+				continue;
+			}
+			double len1 = 0.0;
+			double len2 = 0.0;
+			EPShared.eplGeoE_CalcHorzDistBtwnTwoPnts(first.Line.StartPnt, first.Line.EndPnt, ref len1);
+			EPShared.eplGeoE_CalcHorzDistBtwnTwoPnts(second.Line.StartPnt, second.Line.EndPnt, ref len2);
+			double radius = Math.Min(preferredRadius, Math.Min(len1, len2) * 0.4);
+			Eps_Arc arc = new Eps_Arc();
+			if (radius < 0.5 || RevitGeometry.SolveArcFromTangentLines(first.Line, second.Line, radius, ref arc, _bVerifyTangentLength: true) != 0)
+			{
+				result.Add(first);
+				continue;
+			}
+			first.Line.EndPnt = new Eps_Point(arc.StartPnt);
+			second.Line.StartPnt = new Eps_Point(arc.EndPnt);
+			result.Add(first);
+			Eps_Leg corner = new Eps_Leg();
+			corner.Arc = arc;
+			result.Add(corner);
+		}
+		if (!closed)
+			result.Add(segs[segs.Count - 1]);
+		if (result.Count == 0) return source;
+		for (int i = 0; i < result.Count - 1; i++)
+			result[i].Next = result[i + 1];
+		result[result.Count - 1].Next = null;
+		return result[0];
+	}
+
 	public static Solid CreateOffsetBand(Eps_Leg center, double innerOffset, double outerOffset, int offsetDir, double thickness, ElementId materialId)
 	{
 		if (center == null || outerOffset <= innerOffset + MinCurveFt) return null;
+		thickness = Math.Max(thickness, MinDepthFt);
+		SolidOptions options = SolidOptionsOrNull(materialId);
 		Eps_Leg inner = new Eps_Leg();
 		Eps_Leg outer = new Eps_Leg();
 		if (RevitGeometry.OffsetLegList(center, innerOffset, offsetDir, ref inner, TrimClosedObject: true) != 0) return null;
 		if (RevitGeometry.OffsetLegList(center, outerOffset, offsetDir, ref outer, TrimClosedObject: true) != 0) return null;
+		Solid sampled = TrySampledPair(inner, outer, thickness, options);
+		if (sampled != null) return sampled;
 		return CreateStrip(inner, outer, thickness, materialId);
 	}
 
@@ -284,6 +434,274 @@ internal static class SitePavementOverlay
 
 	private static XYZ AtZ(XYZ point, double z) => new XYZ(point.X, point.Y, z);
 
+	public static bool PathLooksClosed(Eps_Leg center) => LooksClosed(center);
+
+	private static bool LooksClosed(Eps_Leg center)
+	{
+		if (center == null) return false;
+		if (center.IsLegClosed()) return true;
+		if (center.LegStartPnt == null || center.LegEndPnt == null) return false;
+		double gap = 0.0;
+		EPShared.eplGeoE_CalcHorzDistBtwnTwoPnts(center.LegStartPnt, center.LegEndPnt, ref gap);
+		return gap < 1.0;
+	}
+
+	private static Solid TryOffsetPair(Eps_Leg center, double halfWidth, double thickness, SolidOptions options)
+	{
+		if (center == null || halfWidth <= MinCurveFt) return null;
+		double tryHalf = halfWidth;
+		for (int attempt = 0; attempt < 3; attempt++)
+		{
+			Eps_Leg left = new Eps_Leg();
+			Eps_Leg right = new Eps_Leg();
+			if (RevitGeometry.OffsetLegList(center, tryHalf, 1, ref left, TrimClosedObject: true) == 0
+				&& RevitGeometry.OffsetLegList(center, tryHalf, 2, ref right, TrimClosedObject: true) == 0)
+			{
+				Solid sampled = TrySampledPair(left, right, thickness, options);
+				if (sampled != null)
+				{
+					RuntimeDiagnostics.Write("Street offset-pair ring halfWidth=" + tryHalf + " ft.");
+					return sampled;
+				}
+				Solid strip = CreateStrip(left, right, thickness, ElementId.InvalidElementId);
+				if (strip != null)
+				{
+					RuntimeDiagnostics.Write("Street offset-pair strip halfWidth=" + tryHalf + " ft.");
+					return strip;
+				}
+			}
+			tryHalf *= 0.6;
+			if (tryHalf <= MinCurveFt) break;
+		}
+		return null;
+	}
+
+	private static Solid TryClosedRing(Eps_Leg center, double halfWidth, double thickness, SolidOptions options)
+	{
+		List<XYZ> spine = SampleXy(center);
+		if (spine.Count < 3) return null;
+		if (spine[0].DistanceTo(spine[spine.Count - 1]) >= MinCurveFt)
+			spine.Add(spine[0]);
+		double minX = spine[0].X, maxX = spine[0].X, minY = spine[0].Y, maxY = spine[0].Y;
+		for (int i = 1; i < spine.Count; i++)
+		{
+			minX = Math.Min(minX, spine[i].X);
+			maxX = Math.Max(maxX, spine[i].X);
+			minY = Math.Min(minY, spine[i].Y);
+			maxY = Math.Max(maxY, spine[i].Y);
+		}
+		double inradius = 0.35 * Math.Min(maxX - minX, maxY - minY);
+		double innerHalf = halfWidth;
+		if (inradius > 0.5) innerHalf = Math.Min(halfWidth, inradius);
+		List<XYZ> left = OffsetClosedPolyline(spine, halfWidth);
+		List<XYZ> right = OffsetClosedPolyline(spine, -innerHalf);
+		if (left == null || right == null || left.Count < 3 || right.Count < 3) return null;
+		CurveLoop loopA = LoopFromPoints(left, true);
+		CurveLoop loopB = LoopFromPoints(right, true);
+		if (loopA == null || loopB == null) return null;
+		double lenA = PolylineLength(left);
+		double lenB = PolylineLength(right);
+		CurveLoop outer = lenA >= lenB ? loopA : loopB;
+		CurveLoop inner = lenA >= lenB ? loopB : loopA;
+		Solid solid = TryExtrude(new List<CurveLoop> { outer, inner }, thickness, options);
+		if (solid != null)
+		{
+			RuntimeDiagnostics.Write("Street closed ring outer=" + Math.Max(lenA, lenB) + " inner=" + Math.Min(lenA, lenB) + " half=" + halfWidth + " innerHalf=" + innerHalf + " ft.");
+			return solid;
+		}
+		try { inner.Flip(); } catch (Exception) { }
+		solid = TryExtrude(new List<CurveLoop> { outer, inner }, thickness, options);
+		if (solid != null) return solid;
+		try { outer.Flip(); } catch (Exception) { }
+		return TryExtrude(new List<CurveLoop> { outer, inner }, thickness, options);
+	}
+
+	private static List<XYZ> OffsetClosedPolyline(List<XYZ> closed, double distance)
+	{
+		if (closed == null || closed.Count < 4 || Math.Abs(distance) < MinCurveFt) return null;
+		int n = closed.Count - 1;
+		if (closed[0].DistanceTo(closed[n]) >= MinCurveFt) n = closed.Count;
+		List<XYZ> result = new List<XYZ>();
+		for (int i = 0; i < n; i++)
+		{
+			XYZ prev = closed[(i - 1 + n) % n];
+			XYZ cur = closed[i];
+			XYZ next = closed[(i + 1) % n];
+			XYZ d0 = HorzDir(prev, cur);
+			XYZ d1 = HorzDir(cur, next);
+			if (d0.IsZeroLength()) d0 = d1;
+			if (d1.IsZeroLength()) d1 = d0;
+			if (d0.IsZeroLength() || d1.IsZeroLength()) continue;
+			XYZ n0 = new XYZ(-d0.Y, d0.X, 0.0);
+			XYZ n1 = new XYZ(-d1.Y, d1.X, 0.0);
+			XYZ miter = n0.Add(n1);
+			if (miter.GetLength() < 1e-8) miter = n0;
+			else miter = miter.Normalize();
+			double denom = Math.Abs(miter.DotProduct(n0));
+			if (denom < 0.25) denom = 0.25;
+			XYZ offset = miter.Multiply(distance / denom);
+			result.Add(new XYZ(cur.X + offset.X, cur.Y + offset.Y, cur.Z));
+		}
+		return result.Count >= 3 ? result : null;
+	}
+
+	private static XYZ HorzDir(XYZ from, XYZ to)
+	{
+		XYZ v = new XYZ(to.X - from.X, to.Y - from.Y, 0.0);
+		double length = Math.Sqrt(v.X * v.X + v.Y * v.Y);
+		if (length < MinCurveFt) return XYZ.Zero;
+		return new XYZ(v.X / length, v.Y / length, 0.0);
+	}
+
+	private static double PolylineLength(List<XYZ> points)
+	{
+		if (points == null || points.Count < 2) return 0.0;
+		double length = 0.0;
+		for (int i = 1; i < points.Count; i++)
+			length += points[i - 1].DistanceTo(points[i]);
+		length += points[points.Count - 1].DistanceTo(points[0]);
+		return length;
+	}
+
+	private static Solid TryThicken(Eps_Leg center, double width, double thickness, SolidOptions options)
+	{
+		try
+		{
+			CurveLoop path = FlattenToMaxZ(CurveLoopFromLeg(center));
+			if (path == null) return null;
+			CurveLoop thick = CurveLoop.CreateViaThicken(path, width, XYZ.BasisZ);
+			return TryExtrudeLoop(thick, thickness, options);
+		}
+		catch (Exception ex)
+		{
+			RuntimeDiagnostics.Write("CreateViaThicken failed: " + ex.Message);
+			return null;
+		}
+	}
+
+	private static Solid TrySampledStrip(Eps_Leg center, double halfWidth, double thickness, SolidOptions options)
+	{
+		Eps_Leg left = new Eps_Leg();
+		Eps_Leg right = new Eps_Leg();
+		if (RevitGeometry.OffsetLegList(center, halfWidth, 1, ref left, TrimClosedObject: true) != 0) return null;
+		if (RevitGeometry.OffsetLegList(center, halfWidth, 2, ref right, TrimClosedObject: true) != 0) return null;
+		return TrySampledPair(left, right, thickness, options);
+	}
+
+	private static Solid TrySampledPair(Eps_Leg first, Eps_Leg second, double thickness, SolidOptions options)
+	{
+		if (first == null || second == null) return null;
+		if (first.IsLegClosed() && second.IsLegClosed())
+		{
+			CurveLoop loopA = PolygonFromLeg(first);
+			CurveLoop loopB = PolygonFromLeg(second);
+			if (loopA == null || loopB == null) return null;
+			double lenA = RevitGeometry.eplGeoE_CalcLegListLength(first);
+			double lenB = RevitGeometry.eplGeoE_CalcLegListLength(second);
+			CurveLoop outer = lenA >= lenB ? loopA : loopB;
+			CurveLoop inner = lenA >= lenB ? loopB : loopA;
+			Solid solid = TryExtrude(new List<CurveLoop> { outer, inner }, thickness, options);
+			if (solid != null) return solid;
+			try { inner.Flip(); } catch (Exception) { }
+			return TryExtrude(new List<CurveLoop> { outer, inner }, thickness, options);
+		}
+		List<XYZ> firstPts = SampleXy(first);
+		List<XYZ> secondPts = SampleXy(second);
+		if (firstPts.Count < 2 || secondPts.Count < 2) return null;
+		List<XYZ> ring = new List<XYZ>();
+		ring.AddRange(firstPts);
+		for (int i = secondPts.Count - 1; i >= 0; i--)
+			ring.Add(secondPts[i]);
+		return TryExtrudeLoop(LoopFromPoints(ring, true), thickness, options);
+	}
+
+	private static Eps_Leg SliceLeg(Eps_Leg source, double from, double to)
+	{
+		if (source == null || to <= from + MinCurveFt) return null;
+		Eps_Point start = new Eps_Point();
+		Eps_Point end = new Eps_Point();
+		if (source.Line != null)
+		{
+			EPShared.eplGeoE_FindStaOffPointAlongLine(source.Line, from, 0.0, ref start);
+			EPShared.eplGeoE_FindStaOffPointAlongLine(source.Line, to, 0.0, ref end);
+			if (start == null || end == null || start.XYZ.DistanceTo(end.XYZ) < MinCurveFt) return null;
+			Eps_Leg piece = new Eps_Leg();
+			piece.Line = new Eps_Line();
+			piece.Line.StartPnt = start;
+			piece.Line.EndPnt = end;
+			return piece;
+		}
+		if (source.Arc != null)
+		{
+			EPShared.eplGeoE_FindStaOffPointAlongArc(source.Arc, from, 0.0, ref start);
+			EPShared.eplGeoE_FindStaOffPointAlongArc(source.Arc, to, 0.0, ref end);
+			if (start == null || end == null || start.XYZ.DistanceTo(end.XYZ) < MinCurveFt) return null;
+			Eps_Leg piece = new Eps_Leg();
+			piece.Arc = new Eps_Arc(source.Arc);
+			piece.Arc.StartPnt = start;
+			piece.Arc.EndPnt = end;
+			if (RevitDefines.GT(source.Arc.Radius, 0.0))
+				piece.Arc.Delta = (to - from) / source.Arc.Radius;
+			return piece;
+		}
+		return null;
+	}
+
+	private static CurveLoop PolygonFromLeg(Eps_Leg leg)
+	{
+		return LoopFromPoints(SampleXy(leg), true);
+	}
+
+	private static List<XYZ> SampleXy(Eps_Leg leg)
+	{
+		List<XYZ> points = new List<XYZ>();
+		if (leg == null) return points;
+		double z = leg.LegStartPnt != null ? leg.LegStartPnt.z : 0.0;
+		List<Eps_Point> samples = leg.GetPointsAtIntervals(2.0, 1.0);
+		if (samples == null) return points;
+		foreach (Eps_Point sample in samples)
+		{
+			if (sample == null) continue;
+			XYZ xy = new XYZ(sample.x, sample.y, z);
+			if (points.Count == 0 || points[points.Count - 1].DistanceTo(xy) >= MinCurveFt)
+				points.Add(xy);
+		}
+		return points;
+	}
+
+	private static CurveLoop LoopFromPoints(List<XYZ> points, bool close)
+	{
+		if (points == null || points.Count < 3) return null;
+		try
+		{
+			CurveLoop loop = new CurveLoop();
+			int last = points.Count;
+			for (int i = 0; i < last - 1; i++)
+			{
+				if (points[i].DistanceTo(points[i + 1]) < MinCurveFt) continue;
+				loop.Append(Line.CreateBound(points[i], points[i + 1]));
+			}
+			if (close && points[points.Count - 1].DistanceTo(points[0]) >= MinCurveFt)
+				loop.Append(Line.CreateBound(points[points.Count - 1], points[0]));
+			return loop;
+		}
+		catch (Exception ex)
+		{
+			RuntimeDiagnostics.Write("Polygon loop failed: " + ex.Message);
+			return null;
+		}
+	}
+
+	private static Solid TryExtrudeLoop(CurveLoop loop, double depth, SolidOptions options)
+	{
+		if (loop == null) return null;
+		CurveLoop flat = FlattenToMaxZ(loop) ?? loop;
+		Solid solid = TryExtrude(new List<CurveLoop> { flat }, depth, options);
+		if (solid != null) return solid;
+		try { flat.Flip(); } catch (Exception) { }
+		return TryExtrude(new List<CurveLoop> { flat }, depth, options);
+	}
+
 	private static CurveLoop OpenStripLoop(Eps_Leg left, Eps_Leg right)
 	{
 		CurveLoop leftLoop = CurveLoopFromLeg(left);
@@ -390,6 +808,7 @@ internal static class SitePavementOverlay
 	private static List<Solid> SweepEachSegment(CurveLoop path, double width, double depth, SolidOptions options)
 	{
 		List<Solid> parts = new List<Solid>();
+		if (path == null) return parts;
 		foreach (Curve curve in path)
 		{
 			if (curve == null || curve.Length < MinCurveFt) continue;
@@ -403,7 +822,57 @@ internal static class SitePavementOverlay
 				continue;
 			}
 			Solid part = TrySweep(segment, width, depth, options);
-			if (part != null) parts.Add(part);
+			if (part != null)
+			{
+				parts.Add(part);
+				continue;
+			}
+			parts.AddRange(QuadStripAlongCurve(curve, width, depth, options));
+		}
+		return parts;
+	}
+
+	private static List<Solid> TessellatedRibbon(Eps_Leg pathLeg, double width, double depth, SolidOptions options)
+	{
+		List<Solid> parts = new List<Solid>();
+		CurveLoop path = CurveLoopFromLeg(pathLeg);
+		if (path == null) return parts;
+		foreach (Curve curve in path)
+			parts.AddRange(QuadStripAlongCurve(curve, width, depth, options));
+		if (parts.Count > 0)
+			RuntimeDiagnostics.Write("Street tessellated ribbon solids=" + parts.Count + " width=" + width + " ft.");
+		return parts;
+	}
+
+	private static List<Solid> QuadStripAlongCurve(Curve curve, double width, double depth, SolidOptions options)
+	{
+		List<Solid> parts = new List<Solid>();
+		if (curve == null || width <= MinCurveFt) return parts;
+		IList<XYZ> points;
+		try
+		{
+			points = curve.Tessellate();
+		}
+		catch (Exception)
+		{
+			return parts;
+		}
+		if (points == null || points.Count < 2) return parts;
+		double half = width * 0.5;
+		for (int i = 0; i < points.Count - 1; i++)
+		{
+			XYZ a = points[i];
+			XYZ b = points[i + 1];
+			XYZ dir = HorzDir(a, b);
+			if (dir.IsZeroLength()) continue;
+			XYZ n = new XYZ(-dir.Y, dir.X, 0.0);
+			XYZ aL = new XYZ(a.X + n.X * half, a.Y + n.Y * half, a.Z);
+			XYZ aR = new XYZ(a.X - n.X * half, a.Y - n.Y * half, a.Z);
+			XYZ bL = new XYZ(b.X + n.X * half, b.Y + n.Y * half, b.Z);
+			XYZ bR = new XYZ(b.X - n.X * half, b.Y - n.Y * half, b.Z);
+			CurveLoop loop = LoopFromPoints(new List<XYZ> { aL, bL, bR, aR }, true);
+			Solid solid = TryExtrudeLoop(loop, depth, options);
+			if (solid != null) parts.Add(solid);
 		}
 		return parts;
 	}

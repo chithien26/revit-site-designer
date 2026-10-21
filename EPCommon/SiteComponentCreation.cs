@@ -645,10 +645,6 @@ public class SiteComponentCreation
 			SitePlacementSettings sitePlacementSettings = null;
 			sitePlacementSettings = new SitePlacementSettings(m_CurrentLandcaddId, m_Document.ActiveView.GenLevel, type, m_PlacementSymbol, empty, m_nMaxExistingTopoDrawOrder, m_TransactionContainer);
 			sitePlacementSettings.IntersectionPlacementSymbol = m_IntersectionPlacementSymbol;
-			if (m_CurrentLandcaddId == LandcaddID.Street && m_DisplayForm != null)
-			{
-				sitePlacementSettings.ComponentWidth = m_DisplayForm.Width;
-			}
 			ElementSet elementSet = new ElementSet();
 			ElementSet elementSet2 = new ElementSet();
 			List<Element> list3 = new List<Element>();
@@ -753,11 +749,6 @@ public class SiteComponentCreation
 				{
 					num = num6 * parameter.AsDouble() / 2.0;
 					num2 = num6 * parameter.AsDouble() / 2.0;
-				}
-				if (m_DisplayForm.Width > 0.0)
-				{
-					num = m_DisplayForm.Width / 2.0;
-					num2 = num;
 				}
 				break;
 			}
@@ -1426,11 +1417,12 @@ public class SiteComponentCreation
 						_EvalLeg = new Eps_Leg();
 						_EvalLeg.Line = new Eps_Line(_EvalLine);
 					}
-					if (elementSet.Size > 0)
+					if (elementSet.Size > 0 && !(m_CurrentLandcaddId == LandcaddID.SoftTerrain && TerrainApi.UsesToposolids))
 					{
 						RevitUtility.HideElementsInAllViews(m_Document, elementSet);
 					}
-					if (m_CurrentLandcaddId != LandcaddID.SoftTerrain && m_CurrentLandcaddId != LandcaddID.ParkingLot && m_CurrentLandcaddId != LandcaddID.FeatureLine && m_CurrentLandcaddId != LandcaddID.PointWipeout)
+					if (m_CurrentLandcaddId != LandcaddID.SoftTerrain && m_CurrentLandcaddId != LandcaddID.ParkingLot && m_CurrentLandcaddId != LandcaddID.FeatureLine && m_CurrentLandcaddId != LandcaddID.PointWipeout
+						&& !(m_CurrentLandcaddId == LandcaddID.Street && TerrainApi.UsesToposolids))
 					{
 						Eps_Leg eps_Leg = null;
 						for (eps_Leg = _EvalLeg; eps_Leg != null; eps_Leg = eps_Leg.Next)
@@ -1666,6 +1658,12 @@ public class SiteComponentCreation
 						_PlacementSettings.Elevation = m_DisplayForm.Elevation;
 						if (m_DisplayForm.CreateCopyChecked && elementSet2.Size > 0)
 						{
+							if (TerrainApi.UsesToposolids)
+							{
+								m_TransactionContainer.BeginTransaction();
+								RevitUtility.HideElementsInAllViews(m_Document, elementSet2);
+								m_TransactionContainer.EndTransaction();
+							}
 							elementSet2.Clear();
 						}
 						else

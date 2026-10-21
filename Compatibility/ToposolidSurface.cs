@@ -172,8 +172,24 @@ public sealed class ToposolidSurface
 
     internal void EnsureThicknessFor(IList<XYZ> points, double planeZ)
     {
+        EnsureThicknessFor(points, null, planeZ);
+    }
+
+    internal void EnsureThicknessFor(IList<XYZ> points, IList<XYZ> original, double planeZ)
+    {
         if (points == null || points.Count == 0) return;
-        double drop = planeZ - points.Min(point => point.Z);
+        double minZ = points.Min(point => point.Z);
+        double maxZ = points.Max(point => point.Z);
+        if (original != null)
+        {
+            foreach (XYZ point in original)
+            {
+                if (point == null) continue;
+                if (point.Z > maxZ) maxZ = point.Z;
+                if (point.Z < minZ) minZ = point.Z;
+            }
+        }
+        double drop = Math.Max(planeZ, maxZ) - minZ;
         if (drop <= 0.05) return;
         // Only as thick as this cut, plus 100 mm. Never rewrite the project's original type.
         double needed = drop + 0.32808399;
@@ -334,6 +350,11 @@ internal sealed class TerrainPointEdit
         if(index<0)throw new ArgumentException("The terrain point to move was not found.");
         current[index]=target; moved.Add(index); Dirty=true;
     }
+    private double SketchPlaneZ(List<SlabShapeVertex> vertices)
+    {
+        // After ResetSlabShape this is the sketch plane in SlabShapeVertex.Position coordinates.
+        return vertices[0].Position.Z;
+    }
     internal void Apply()
     {
         if(!Dirty)return;
@@ -363,14 +384,14 @@ internal sealed class TerrainPointEdit
         }
         var vertices=Surface.Vertices();
         if(vertices.Count==0)throw new InvalidOperationException("The Toposolid did not expose its boundary shape vertices.");
-        double baseZ=vertices[0].Position.Z;
-        Surface.EnsureThicknessFor(points, baseZ);
+        double baseZ=SketchPlaneZ(vertices);
+        Surface.EnsureThicknessFor(points, original, baseZ);
         Surface.Document.Regenerate();
         editor=Surface.Element.GetSlabShapeEditor();
         if(!editor.IsEnabled)editor.Enable();
         vertices=Surface.Vertices();
         if(vertices.Count==0)throw new InvalidOperationException("The Toposolid did not expose its boundary shape vertices.");
-        baseZ=vertices[0].Position.Z;
+        baseZ=SketchPlaneZ(vertices);
         var faces=HostObjectUtils.GetTopFaces(Surface.Element)
             .Select(reference=>Surface.Element.GetGeometryObjectFromReference(reference)).OfType<Face>().ToList();
         var keys=new HashSet<string>(vertices.Select(x=>ToposolidSurface.Key(x.Position)));

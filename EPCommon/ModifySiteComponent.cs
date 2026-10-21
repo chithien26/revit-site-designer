@@ -751,10 +751,18 @@ public class ModifySiteComponent
 		}
 		else
 		{
+			if (list == null)
+				list = new List<Element>();
 			for (int num = 0; num < list.Count; num++)
 			{
 				m_SiteCategoryLineElementSet.Insert(list[num]);
 			}
+			FilteredElementCollector allLines = new FilteredElementCollector(m_Document);
+			allLines.OfClass(typeof(CurveElement)).OfCategory(BuiltInCategory.OST_Lines);
+			List<Element> populateList = allLines.ToList();
+			if (list.Count > 0)
+				populateList.AddRange(list);
+			PopulateSiteComponentLists(MassLineSubCategoryList, populateList);
 		}
 	}
 
@@ -762,7 +770,7 @@ public class ModifySiteComponent
 	{
 		Parameter IDParameter = null;
 		FilteredElementCollector filteredElementCollector = new FilteredElementCollector(m_Document);
-		filteredElementCollector.OfClass(typeof(FamilyInstance)).OfCategory(BuiltInCategory.OST_Site);
+		filteredElementCollector.OfClass(typeof(FamilyInstance));
 		if (!_bIsChainID)
 		{
 			IEnumerable<Element> source = filteredElementCollector.Where((Element CurrentElement) => (IDParameter = CurrentElement.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter)) != null && string.Compare(IDParameter.AsString(), _strID, ignoreCase: true) == 0);
@@ -772,77 +780,267 @@ public class ModifySiteComponent
 		return source2.ToList();
 	}
 
+	private bool TryBindPickedHost(Element picked, out LandcaddID actualType)
+	{
+		actualType = m_CurrentFamilyType;
+		if (picked == null) return false;
+		FamilyInstance placement = FindPlacementForPickedElement(picked);
+		if (placement == null) return false;
+		Parameter locate = placement.LookupParameter(RevitParameters.LocateTypeGenericFamilyParameter);
+		if (locate == null || !int.TryParse(locate.AsString(), out int locateId)) return false;
+		actualType = (LandcaddID)locateId;
+		if (actualType != m_CurrentFamilyType) return false;
+		Element host = HostCurveForPlacement(placement) ?? picked;
+		FindFamilyInstanceComponentWrapper(host);
+		if (m_FamilyInstanceComponentWrapper == null)
+			WrapPlacement(placement, host);
+		return m_FamilyInstanceComponentWrapper != null;
+	}
+
+	private FamilyInstance FindPlacementForPickedElement(Element picked)
+	{
+		if (picked == null) return null;
+		FamilyInstance instanceSelf = picked as FamilyInstance;
+		if (IsSiteComponentPlacement(instanceSelf) && LocateTypeOf(instanceSelf) == m_CurrentFamilyType)
+			return instanceSelf;
+		string uid = picked.UniqueId;
+		Element hostOfPick = (picked as FamilyInstance)?.Host;
+		foreach (FamilyInstance instance in CollectPlacementInstances())
+		{
+			if (instance.Id == picked.Id) return instance;
+			if (hostOfPick != null && instance.Id == hostOfPick.Id) return instance;
+			if (instance.Host != null && instance.Host.Id == picked.Id) return instance;
+			Parameter unique = instance.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter);
+			string uniqueId = unique?.AsString();
+			if (!string.IsNullOrEmpty(uniqueId) && string.Compare(uniqueId, uid, ignoreCase: true) == 0)
+				return instance;
+			if (hostOfPick != null && !string.IsNullOrEmpty(uniqueId) && string.Compare(uniqueId, hostOfPick.UniqueId, ignoreCase: true) == 0)
+				return instance;
+			Parameter primary = instance.LookupParameter(RevitParameters.PrimaryFormIDFamilyParameter);
+			if (primary != null && string.Compare(primary.AsString(), uid, ignoreCase: true) == 0)
+				return instance;
+			Parameter additional = instance.LookupParameter(RevitParameters.AdditionalFormIDFamilyParameter);
+			if (additional != null && string.Compare(additional.AsString(), uid, ignoreCase: true) == 0)
+				return instance;
+			Element storedHost = string.IsNullOrEmpty(uniqueId) ? null : m_Document.GetElement(uniqueId);
+			if (storedHost != null && (storedHost.Id == picked.Id || CurvesMatch2D(storedHost, picked)))
+				return instance;
+			if (CurvesMatch2D(instance.Host, picked) || CurvesMatch2D(storedHost, hostOfPick))
+				return instance;
+		}
+		return null;
+	}
+
+	private static bool IsSiteComponentPlacement(FamilyInstance instance)
+	{
+		if (instance?.Symbol == null) return false;
+		Parameter siteworks = instance.Symbol.LookupParameter(RevitParameters.SiteworksIDFamilyParameter);
+		return siteworks != null && string.Compare(siteworks.AsString(), Convert.ToInt32(LandcaddID.SiteComponentPlacement).ToString("000"), ignoreCase: true) == 0;
+	}
+
+	private static LandcaddID LocateTypeOf(FamilyInstance instance)
+	{
+		Parameter locate = instance?.LookupParameter(RevitParameters.LocateTypeGenericFamilyParameter);
+		if (locate == null || !int.TryParse(locate.AsString(), out int locateId))
+			return LandcaddID.SoftTerrain;
+		return (LandcaddID)locateId;
+	}
+
+	private IEnumerable<FamilyInstance> CollectPlacementInstances()
+	{
+		FilteredElementCollector collector = new FilteredElementCollector(m_Document);
+		collector.OfClass(typeof(FamilyInstance));
+		foreach (Element element in collector)
+		{
+			if (element is FamilyInstance instance && IsSiteComponentPlacement(instance))
+				yield return instance;
+		}
+	}
+
+	private Element HostCurveForPlacement(FamilyInstance placement)
+	{
+		if (placement == null) return null;
+		if (placement.Host is CurveElement hostCurve) return hostCurve;
+		Parameter unique = placement.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter);
+		if (unique != null && !string.IsNullOrEmpty(unique.AsString()))
+		{
+			Element stored = m_Document.GetElement(unique.AsString());
+			if (stored != null) return stored;
+		}
+		return null;
+	}
+
+	private void WrapPlacement(FamilyInstance placement, Element host)
+	{
+		if (placement == null || host == null) return;
+		Parameter chain = placement.LookupParameter(RevitParameters.ChainIDGenericFamilyParameter);
+		string chainId = chain?.AsString();
+		if (string.IsNullOrEmpty(chainId))
+			chainId = Guid.NewGuid().ToString();
+		int nDrawOrder = 0;
+		Parameter draw = placement.LookupParameter(RevitParameters.TopoDrawOrderFamilyParameter);
+		if (draw != null)
+			nDrawOrder = draw.AsInteger();
+		List<FamilyInstanceComponentContainer> containers = new List<FamilyInstanceComponentContainer>();
+		List<Element> chainPlacements = FindSiteFamilyList(chainId, _bIsChainID: true);
+		if (chainPlacements == null || chainPlacements.Count == 0)
+			chainPlacements = new List<Element> { placement };
+		foreach (Element item in chainPlacements)
+		{
+			if (item is not FamilyInstance instance || !IsSiteComponentPlacement(instance))
+				continue;
+			Element segmentHost = HostCurveForPlacement(instance) ?? host;
+			if (segmentHost == null) continue;
+			containers.Add(new FamilyInstanceComponentContainer(segmentHost, instance));
+		}
+		if (containers.Count == 0)
+			containers.Add(new FamilyInstanceComponentContainer(host, placement));
+		m_FamilyInstanceComponentWrapper = new FamilyInstanceComponentWrapper(chainId, containers, nDrawOrder);
+		m_FamilyInstanceComponentWrapper.CreateProposedLeg(m_ProposedSurface);
+		RuntimeDiagnostics.Write("Modify wrapped " + GetCurrentTypeString(m_CurrentFamilyType) + " host id=" + host.Id.Value64() + " placements=" + containers.Count + ".");
+	}
+
+	private static Curve CurveOf(Element element)
+	{
+		if (element is CurveElement curveElement)
+			return curveElement.GeometryCurve;
+		if (element is FamilyInstance instance && instance.Host is CurveElement hostCurve)
+			return hostCurve.GeometryCurve;
+		if (element?.Location is LocationCurve locationCurve)
+			return locationCurve.Curve;
+		return null;
+	}
+
+	private static bool CurvesMatch2D(Element first, Element second)
+	{
+		if (first == null || second == null) return false;
+		if (first.Id == second.Id) return true;
+		List<Curve> firstCurves = CurvesOfElement(first);
+		List<Curve> secondCurves = CurvesOfElement(second);
+		for (int i = 0; i < firstCurves.Count; i++)
+		{
+			for (int j = 0; j < secondCurves.Count; j++)
+			{
+				if (CurvesMatch2D(firstCurves[i], secondCurves[j]))
+					return true;
+			}
+		}
+		return false;
+	}
+
+	private static bool CurvesMatch2D(Curve first, Curve second)
+	{
+		if (first == null || second == null) return false;
+		const double tol = 0.25;
+		try
+		{
+			XYZ a0 = Horz(first.GetEndPoint(0));
+			XYZ a1 = Horz(first.GetEndPoint(1));
+			XYZ b0 = Horz(second.GetEndPoint(0));
+			XYZ b1 = Horz(second.GetEndPoint(1));
+			return (a0.DistanceTo(b0) < tol && a1.DistanceTo(b1) < tol)
+				|| (a0.DistanceTo(b1) < tol && a1.DistanceTo(b0) < tol);
+		}
+		catch (Exception)
+		{
+			return false;
+		}
+	}
+
+	private static XYZ Horz(XYZ point)
+	{
+		return point == null ? XYZ.Zero : new XYZ(point.X, point.Y, 0.0);
+	}
+
+	private static List<Curve> CurvesOfElement(Element element)
+	{
+		List<Curve> curves = new List<Curve>();
+		Curve direct = CurveOf(element);
+		if (direct != null)
+			curves.Add(direct);
+		if (element == null || curves.Count > 0 && element is CurveElement)
+			return curves;
+		try
+		{
+			Options options = new Options();
+			options.ComputeReferences = false;
+			options.IncludeNonVisibleObjects = true;
+			GeometryElement geometry = element.get_Geometry(options);
+			CollectCurves(geometry, curves);
+		}
+		catch (Exception)
+		{
+		}
+		return curves;
+	}
+
+	private static void CollectCurves(GeometryElement geometry, List<Curve> curves)
+	{
+		if (geometry == null) return;
+		foreach (GeometryObject item in geometry)
+		{
+			if (item is Curve curve)
+				curves.Add(curve);
+			else if (item is GeometryInstance instance)
+				CollectCurves(instance.GetInstanceGeometry(), curves);
+			else if (item is GeometryElement nested)
+				CollectCurves(nested, curves);
+		}
+	}
+
 	private void FindFamilyInstanceComponentWrapper(Element _CurElement)
 	{
-		Parameter parameter = null;
-		Parameter parameter2 = null;
-		Parameter parameter3 = null;
-		Parameter parameter4 = null;
-		Parameter parameter5 = null;
+		if (_CurElement == null) return;
 		List<Element> list = FindSiteFamilyList(_CurElement.UniqueId, _bIsChainID: false);
 		foreach (Element item in list)
 		{
-			if (!(item is FamilyInstance { Category: not null } familyInstance) || familyInstance.Category.Id.Value64() != BuiltInCategory.OST_Site.GetHashCode())
-			{
+			if (item is not FamilyInstance familyInstance || !IsSiteComponentPlacement(familyInstance))
 				continue;
-			}
-			parameter = familyInstance.Symbol.LookupParameter(RevitParameters.SiteworksIDFamilyParameter);
-			if (parameter == null || string.Compare(parameter.AsString(), Convert.ToInt32(LandcaddID.SiteComponentPlacement).ToString("000"), ignoreCase: true) != 0)
+			Parameter locate = familyInstance.LookupParameter(RevitParameters.LocateTypeGenericFamilyParameter);
+			if (locate == null) continue;
+			Parameter chain = familyInstance.LookupParameter(RevitParameters.ChainIDGenericFamilyParameter);
+			string chainId = chain?.AsString();
+			if (string.IsNullOrEmpty(chainId))
 			{
-				continue;
-			}
-			parameter2 = familyInstance.LookupParameter(RevitParameters.LocateTypeGenericFamilyParameter);
-			if (parameter2 == null)
-			{
-				continue;
-			}
-			parameter5 = familyInstance.LookupParameter(RevitParameters.ChainIDGenericFamilyParameter);
-			if (parameter5 == null || !(parameter5.AsString() != string.Empty))
-			{
-				continue;
+				WrapPlacement(familyInstance, _CurElement);
+				return;
 			}
 			int nDrawOrder = 0;
-			parameter4 = familyInstance.LookupParameter(RevitParameters.TopoDrawOrderFamilyParameter);
-			if (parameter4 != null)
-			{
-				nDrawOrder = parameter4.AsInteger();
-			}
+			Parameter draw = familyInstance.LookupParameter(RevitParameters.TopoDrawOrderFamilyParameter);
+			if (draw != null)
+				nDrawOrder = draw.AsInteger();
 			List<FamilyInstanceComponentContainer> list2 = new List<FamilyInstanceComponentContainer>();
-			List<Element> list3 = FindSiteFamilyList(parameter5.AsString(), _bIsChainID: true);
+			List<Element> list3 = FindSiteFamilyList(chainId, _bIsChainID: true);
 			foreach (Element item2 in list3)
 			{
-				if (!(item2 is FamilyInstance { Category: not null } familyInstance2) || familyInstance2.Category.Id.Value64() != BuiltInCategory.OST_Site.GetHashCode())
-				{
+				if (item2 is not FamilyInstance familyInstance2 || !IsSiteComponentPlacement(familyInstance2))
 					continue;
-				}
-				parameter3 = familyInstance2.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter);
-				if (parameter3 == null || string.Compare(parameter3.AsString(), _CurElement.UniqueId, ignoreCase: true) == 0)
-				{
+				Parameter unique = familyInstance2.LookupParameter(RevitParameters.UniqueIDGenericModelFamilyParameter);
+				if (unique == null || string.Compare(unique.AsString(), _CurElement.UniqueId, ignoreCase: true) == 0)
 					continue;
-				}
-				parameter = familyInstance2.Symbol.LookupParameter(RevitParameters.SiteworksIDFamilyParameter);
-				if (parameter == null || string.Compare(parameter.AsString(), Convert.ToInt32(LandcaddID.SiteComponentPlacement).ToString("000"), ignoreCase: true) != 0)
+				Element siblingHost = HostCurveForPlacement(familyInstance2);
+				if (siblingHost == null && m_SiteCategoryLineElementSet != null)
 				{
-					continue;
-				}
-				parameter2 = familyInstance2.LookupParameter(RevitParameters.LocateTypeGenericFamilyParameter);
-				if (parameter2 == null)
-				{
-					continue;
-				}
-				foreach (Element item3 in m_SiteCategoryLineElementSet)
-				{
-					if (string.Compare(parameter3.AsString(), item3.UniqueId, ignoreCase: true) == 0)
+					foreach (Element item3 in m_SiteCategoryLineElementSet)
 					{
-						list2.Add(new FamilyInstanceComponentContainer(item3, familyInstance2));
-						break;
+						if (string.Compare(unique.AsString(), item3.UniqueId, ignoreCase: true) == 0)
+						{
+							siblingHost = item3;
+							break;
+						}
 					}
 				}
+				if (siblingHost != null)
+					list2.Add(new FamilyInstanceComponentContainer(siblingHost, familyInstance2));
 			}
 			list2.Add(new FamilyInstanceComponentContainer(_CurElement, familyInstance));
-			m_FamilyInstanceComponentWrapper = new FamilyInstanceComponentWrapper(parameter5.AsString(), list2, nDrawOrder);
+			m_FamilyInstanceComponentWrapper = new FamilyInstanceComponentWrapper(chainId, list2, nDrawOrder);
 			m_FamilyInstanceComponentWrapper.CreateProposedLeg(m_ProposedSurface);
+			return;
 		}
+		FamilyInstance placement = FindPlacementForPickedElement(_CurElement);
+		if (placement != null)
+			WrapPlacement(placement, HostCurveForPlacement(placement) ?? _CurElement);
 	}
 
 	private void HideSiteAlignmentLines()
@@ -941,34 +1139,55 @@ public class ModifySiteComponent
 		}
 		Parameter parameter = null;
 		List<string> list = new List<string>();
+		LandcaddID pickedHostType = m_CurrentFamilyType;
 		foreach (Element item in _Elements)
 		{
+			RuntimeDiagnostics.Write("Modify pick id=" + item.Id.Value64() + " cat=" + item.Category?.Name + " type=" + item.GetType().Name);
 			if (m_SiteCategoryComponentList != null && m_SiteCategoryComponentList.Count > 0)
 			{
 				for (int i = 0; i < m_SiteCategoryComponentList.Count; i++)
 				{
-					if (m_SiteCategoryComponentList[i].IndexOfOriginalElementID(item.Id) >= 0)
+					FamilyInstanceComponentWrapper wrapper = m_SiteCategoryComponentList[i];
+					if (wrapper.IndexOfOriginalElementID(item.Id) >= 0 || wrapper.IndexOfFamilyInstanceID(item.Id) >= 0)
 					{
-						m_FamilyInstanceComponentWrapper = m_SiteCategoryComponentList[i];
+						m_FamilyInstanceComponentWrapper = wrapper;
 						break;
 					}
+					if (wrapper.FamilyContainerList == null) continue;
+					for (int c = 0; c < wrapper.FamilyContainerList.Count; c++)
+					{
+						FamilyInstanceComponentContainer container = wrapper.FamilyContainerList[c];
+						if (container?.FamilyInstance?.Host != null && container.FamilyInstance.Host.Id == item.Id)
+						{
+							m_FamilyInstanceComponentWrapper = wrapper;
+							break;
+						}
+						if (container?.Element != null && CurvesMatch2D(container.Element, item))
+						{
+							m_FamilyInstanceComponentWrapper = wrapper;
+							break;
+						}
+					}
+					if (m_FamilyInstanceComponentWrapper != null) break;
 				}
 			}
-			else
+			if (m_FamilyInstanceComponentWrapper == null && m_SiteCategoryLineElementSet != null && m_SiteCategoryLineElementSet.Size > 0)
 			{
-				if (m_SiteCategoryLineElementSet == null || m_SiteCategoryLineElementSet.Size <= 0)
-				{
-					continue;
-				}
 				foreach (Element item2 in m_SiteCategoryLineElementSet)
 				{
-					if (item2.Id == item.Id)
+					if (item2.Id == item.Id || CurvesMatch2D(item2, item))
 					{
-						FindFamilyInstanceComponentWrapper(item);
+						FindFamilyInstanceComponentWrapper(item2);
+						if (m_FamilyInstanceComponentWrapper == null)
+							FindFamilyInstanceComponentWrapper(item);
 						break;
 					}
 				}
 			}
+			if (m_FamilyInstanceComponentWrapper == null)
+				TryBindPickedHost(item, out pickedHostType);
+			if (m_FamilyInstanceComponentWrapper != null)
+				break;
 		}
 		if (m_FamilyInstanceComponentWrapper != null)
 		{
@@ -1102,7 +1321,9 @@ public class ModifySiteComponent
 		}
 		if (!flag)
 		{
-			string strText = EPShared.LocalRM.GetString("NotSiteComponentMessage_") + GetCurrentTypeString(m_CurrentFamilyType) + EPShared.LocalRM.GetString("_HostLineString");
+			string strText = pickedHostType != m_CurrentFamilyType
+				? "The selected object is a " + GetCurrentTypeString(pickedHostType) + " host line, not a " + GetCurrentTypeString(m_CurrentFamilyType) + " host line."
+				: EPShared.LocalRM.GetString("NotSiteComponentMessage_") + GetCurrentTypeString(m_CurrentFamilyType) + EPShared.LocalRM.GetString("_HostLineString");
 			RevitMessageBox.Show(strText, EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
 			return PickSiteAlignmentElement();
 		}

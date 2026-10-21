@@ -525,6 +525,11 @@ public class TopographySurfaceContainer
 			{
 				return null;
 			}
+			if (TerrainApi.UsesToposolids && m_TopographySurface != null && TerrainApi.TryGetTopZ(m_TopographySurface, _FindPoint.XYZ, out double topZ))
+			{
+				_dElevation = topZ;
+				return m_TopographySurface;
+			}
 			for (int i = 0; i < m_Triangles.Count; i++)
 			{
 				if (m_Triangles[i].IsPointInside(_FindPoint))

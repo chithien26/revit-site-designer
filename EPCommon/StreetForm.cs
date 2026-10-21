@@ -188,42 +188,190 @@ public class StreetForm : BaseForm
 	private bool TrySweepTypeSection(List<Solid> pavement, List<Solid> leftCurbs, List<Solid> rightCurbs)
 	{
 		ElementId pavementMaterial = MaterialId(RevitParameters.StreetPavementSurfaceParameter);
-		double half = m_dWidth / 2.0;
+		double gutterWidth = TypeDistance(RevitParameters.StreetGutterWidthParameter, 0.0);
+		double half = m_dWidth / 2.0 + gutterWidth;
 		double depth = Math.Max(m_dSubgradeDepth, 0.04);
-		Solid strip = SitePavementOverlay.CreateOffsetStrip(m_MassLeg, half, depth, pavementMaterial);
+		bool hasJunction = m_IntersectionContainers != null && m_IntersectionContainers.Count > 0;
+		Eps_Leg path = OverlayPath(!hasJunction);
+		if (hasJunction && TrySweepIntersectionSection(path, half, depth, pavementMaterial, pavement, leftCurbs, rightCurbs))
+			return true;
+		Solid strip = SitePavementOverlay.CreateOffsetStrip(path, half, depth, pavementMaterial);
 		if (strip == null) return false;
 		pavement.Add(strip);
-		TrySweepCurbSections(leftCurbs, rightCurbs);
-		RuntimeDiagnostics.Write("Street continuous strip width=" + m_dWidth + " depth=" + depth + " ft; curbs=" + (leftCurbs.Count + rightCurbs.Count) + ".");
+		TrySweepCurbSections(path, leftCurbs, rightCurbs, half);
+		RuntimeDiagnostics.Write("Street continuous strip width=" + (half * 2.0) + " depth=" + depth + " ft; curbs=" + (leftCurbs.Count + rightCurbs.Count) + ".");
 		return true;
 	}
 
-	private void TrySweepCurbSections(List<Solid> leftCurbs, List<Solid> rightCurbs)
+	private bool TrySweepIntersectionSection(Eps_Leg path, double half, double depth, ElementId pavementMaterial, List<Solid> pavement, List<Solid> leftCurbs, List<Solid> rightCurbs)
+	{
+		List<double[]> ranges = IntersectionRanges(path);
+		if (ranges.Count == 0) return false;
+		double length = RevitGeometry.eplGeoE_CalcLegListLength(path);
+		List<Eps_Leg> approaches = new List<Eps_Leg>();
+		double cursor = 0.0;
+		for (int i = 0; i < ranges.Count; i++)
+		{
+			if (ranges[i][0] - cursor > 1.0)
+			{
+				Eps_Leg piece = SitePavementOverlay.ExtractBetweenStations(path, cursor, ranges[i][0]);
+				if (piece != null) approaches.Add(piece);
+			}
+			cursor = ranges[i][1];
+		}
+		if (length - cursor > 1.0)
+		{
+			Eps_Leg tail = SitePavementOverlay.ExtractBetweenStations(path, cursor, length);
+			if (tail != null) approaches.Add(tail);
+		}
+		foreach (Eps_Leg approach in approaches)
+		{
+			Solid strip = SitePavementOverlay.CreateOffsetStrip(approach, half, depth, pavementMaterial);
+			if (strip != null) pavement.Add(strip);
+			TrySweepCurbSections(approach, leftCurbs, rightCurbs, half);
+		}
+		int pads = 0;
+		int returns = 0;
+		foreach (IntersectionContainer container in m_IntersectionContainers)
+		{
+			if (container == null) continue;
+			Solid pad = SitePavementOverlay.CreateIntersectionPad(container, depth, pavementMaterial);
+			if (pad != null)
+			{
+				pavement.Add(pad);
+				pads++;
+			}
+			returns += AddCurbReturns(container, leftCurbs, rightCurbs);
+		}
+		if (pavement.Count == 0) return false;
+		RuntimeDiagnostics.Write("Street junction overlay approaches=" + approaches.Count + " pads=" + pads + " curb-returns=" + returns + ".");
+		return true;
+	}
+
+	private int AddCurbReturns(IntersectionContainer container, List<Solid> leftCurbs, List<Solid> rightCurbs)
+	{
+		if (m_LeftCurbForm == null && m_RightCurbForm == null) return 0;
+		ElementId curbMaterial = MaterialId(RevitParameters.StreetCurbMaterialParameter);
+		double curbWidth = TypeDistance(RevitParameters.StreetCurbWidthParameter, 1.0);
+		double curbHeight = TypeDistance(RevitParameters.StreetCurbHeightParameter, 0.5);
+		int count = 0;
+		if (m_LeftCurbForm != null && container.LeftOffsetLeg != null)
+		{
+			Solid left = SitePavementOverlay.CreateOffsetStrip(container.LeftOffsetLeg, curbWidth * 0.5, curbHeight, curbMaterial);
+			if (left != null)
+			{
+				leftCurbs.Add(left);
+				count++;
+			}
+		}
+		if (m_RightCurbForm != null && container.RightOffsetLeg != null)
+		{
+			Solid right = SitePavementOverlay.CreateOffsetStrip(container.RightOffsetLeg, curbWidth * 0.5, curbHeight, curbMaterial);
+			if (right != null)
+			{
+				rightCurbs.Add(right);
+				count++;
+			}
+		}
+		return count;
+	}
+
+	private List<double[]> IntersectionRanges(Eps_Leg path)
+	{
+		List<double[]> ranges = new List<double[]>();
+		double length = path == null ? 0.0 : RevitGeometry.eplGeoE_CalcLegListLength(path);
+		double sideGap = Math.Max(8.0, m_dWidth * 0.55);
+		foreach (IntersectionContainer container in m_IntersectionContainers)
+		{
+			if (container == null) continue;
+			double start = double.MaxValue;
+			double end = double.MinValue;
+			if (container.Profiles != null)
+			{
+				foreach (ProfileContainer profile in container.Profiles)
+				{
+					if (profile == null) continue;
+					start = Math.Min(start, profile.Station);
+					end = Math.Max(end, profile.Station);
+				}
+			}
+			if (start == double.MaxValue)
+			{
+				if (container.StartingIntersection) { start = 0.0; end = sideGap; }
+				else { start = Math.Max(0.0, length - sideGap); end = length; }
+			}
+			if (end - start < 2.0)
+			{
+				double mid = (start + end) * 0.5;
+				start = mid - sideGap;
+				end = mid + sideGap;
+			}
+			start = Math.Max(0.0, start - 1.0);
+			end = Math.Min(length, end + 1.0);
+			if (end > start) ranges.Add(new double[] { start, end });
+		}
+		ranges.Sort((a, b) => a[0].CompareTo(b[0]));
+		List<double[]> merged = new List<double[]>();
+		foreach (double[] range in ranges)
+		{
+			if (merged.Count == 0 || range[0] > merged[merged.Count - 1][1] + 0.5)
+				merged.Add(range);
+			else
+				merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], range[1]);
+		}
+		return merged;
+	}
+
+	private void TrySweepCurbSections(Eps_Leg path, List<Solid> leftCurbs, List<Solid> rightCurbs, double pavementHalf)
 	{
 		if (m_LeftCurbForm == null && m_RightCurbForm == null) return;
 		ElementId curbMaterial = MaterialId(RevitParameters.StreetCurbMaterialParameter);
-		double half = m_dWidth / 2.0;
-		double curbWidth = 1.0;
-		double curbHeight = 0.5;
-		double gutterWidth = 0.0;
-		Parameter parameter = StreetFamilySymbol?.LookupParameter(RevitParameters.StreetCurbWidthParameter);
-		if (parameter != null && parameter.AsDouble() > 0.0) curbWidth = parameter.AsDouble();
-		parameter = StreetFamilySymbol?.LookupParameter(RevitParameters.StreetCurbHeightParameter);
-		if (parameter != null && parameter.AsDouble() > 0.0) curbHeight = parameter.AsDouble();
-		parameter = StreetFamilySymbol?.LookupParameter(RevitParameters.StreetGutterWidthParameter);
-		if (parameter != null && parameter.AsDouble() > 0.0) gutterWidth = parameter.AsDouble();
-		double inner = half + gutterWidth;
-		double outer = inner + curbWidth;
+		double curbWidth = TypeDistance(RevitParameters.StreetCurbWidthParameter, 1.0);
+		double curbHeight = TypeDistance(RevitParameters.StreetCurbHeightParameter, 0.5);
+		double outer = pavementHalf + curbWidth;
 		if (m_LeftCurbForm != null)
 		{
-			Solid left = SitePavementOverlay.CreateOffsetBand(m_MassLeg, inner, outer, 1, curbHeight, curbMaterial);
+			Solid left = SitePavementOverlay.CreateOffsetBand(path, pavementHalf, outer, 1, curbHeight, curbMaterial);
 			if (left != null) leftCurbs.Add(left);
 		}
 		if (m_RightCurbForm != null)
 		{
-			Solid right = SitePavementOverlay.CreateOffsetBand(m_MassLeg, inner, outer, 2, curbHeight, curbMaterial);
+			Solid right = SitePavementOverlay.CreateOffsetBand(path, pavementHalf, outer, 2, curbHeight, curbMaterial);
 			if (right != null) rightCurbs.Add(right);
 		}
+	}
+
+	private Eps_Leg OverlayPath()
+	{
+		return OverlayPath(true);
+	}
+
+	private Eps_Leg OverlayPath(bool filletCorners)
+	{
+		Eps_Leg source = CurrentLeg ?? m_MassLeg;
+		if (source == null) return m_MassLeg;
+		double distance = 0.0;
+		double direction = 0.0;
+		Eps_Point insert = m_LegInsertPoint ?? source.LegStartPnt;
+		EPShared.eplGeoE_CalcHorzDistBtwnTwoPnts(insert, new Eps_Point(0.0, 0.0, 0.0), ref distance);
+		EPShared.eplGeoE_CalcHorzDirBtwnTwoPnts(insert, new Eps_Point(0.0, 0.0, 0.0), ref direction);
+		Eps_Leg local = source.MoveLeg(direction, distance, 0.0 - insert.z);
+		if (!filletCorners) return local;
+		double gutter = TypeDistance(RevitParameters.StreetGutterWidthParameter, 0.0);
+		double half = m_dWidth / 2.0 + gutter;
+		// Tight host arcs (R < half-width) cannot be swept; flatten then re-fillet
+		// so the offset strip stays a ring instead of aborting the command.
+		if (local != null)
+			local = local.FlattenArcsNarrowerThan(half + 2.0) ?? local;
+		double fillet = Math.Max(half + 2.0, Math.Max(4.0, m_dWidth * 0.35));
+		return SitePavementOverlay.FilletLineCorners(local, fillet) ?? local;
+	}
+
+	private double TypeDistance(string parameterName, double fallback)
+	{
+		Parameter parameter = StreetFamilySymbol?.LookupParameter(parameterName);
+		if (parameter != null && parameter.AsDouble() > 0.0) return parameter.AsDouble();
+		return fallback;
 	}
 
 	private ElementId MaterialId(string parameterName)
@@ -242,6 +390,102 @@ public class StreetForm : BaseForm
 		m_ProgressBarForm.Message = EPShared.LocalRM.GetString("ProgressBarCreatingStreetMassMessage");
 		m_ProgressBarForm.MinValue = 0;
 		m_ProgressBarForm.MaxValue = 0;
+		List<List<CurveLoop>> _LeftCurbArrayArrayList = new List<List<CurveLoop>>();
+		List<List<CurveLoop>> _RightCurbArrayArrayList = new List<List<CurveLoop>>();
+		List<List<CurveLoop>> curveLoopArrayArray = new List<List<CurveLoop>>();
+		Solid solid = null;
+		string _strErrorMessage = string.Empty;
+		bool loftFailed = false;
+		bool closedHost = SitePavementOverlay.PathLooksClosed(CurrentLeg ?? m_MassLeg);
+		if (closedHost)
+		{
+			loftFailed = true;
+			RuntimeDiagnostics.Write("Skipped closed-loop street loft; using a ribbon so tight corners do not self-intersect.");
+		}
+		else
+			curveLoopArrayArray = GetCurveLoopArrayArray(ref _LeftCurbArrayArrayList, ref _RightCurbArrayArrayList);
+		m_ProgressBarForm.MinValue = 0;
+		m_ProgressBarForm.MaxValue = Math.Max(1, curveLoopArrayArray.Count + _LeftCurbArrayArrayList.Count + _RightCurbArrayArrayList.Count);
+		for (int i = 0; !loftFailed && i < curveLoopArrayArray.Count; i++)
+		{
+			if (curveLoopArrayArray[i] != null && curveLoopArrayArray[i].Count > 0)
+			{
+				solid = NewStreetBlend(curveLoopArrayArray[i], i, ref _strErrorMessage);
+				if (solid == null)
+				{
+					loftFailed = true;
+					list.Clear();
+					break;
+				}
+				list.Add(solid);
+			}
+			m_ProgressBarForm.UpdateProgressBar(1);
+		}
+		if (!loftFailed)
+		{
+			for (int j = 0; j < _LeftCurbArrayArrayList.Count; j++)
+			{
+				if (_LeftCurbArrayArrayList[j] != null && _LeftCurbArrayArrayList[j].Count > 0)
+				{
+					solid = NewCurbBlend(_LeftCurbArrayArrayList[j], j, _bIsLeftCurb: true, ref _strErrorMessage);
+					if (solid == null)
+					{
+						loftFailed = true;
+						list.Clear();
+						_LeftCurbLoftFormList.Clear();
+						break;
+					}
+					_LeftCurbLoftFormList.Add(solid);
+				}
+				m_ProgressBarForm.UpdateProgressBar(1);
+			}
+		}
+		if (!loftFailed)
+		{
+			for (int k = 0; k < _RightCurbArrayArrayList.Count; k++)
+			{
+				if (_RightCurbArrayArrayList[k] != null && _RightCurbArrayArrayList[k].Count > 0)
+				{
+					solid = NewCurbBlend(_RightCurbArrayArrayList[k], k, _bIsLeftCurb: false, ref _strErrorMessage);
+					if (solid == null)
+					{
+						loftFailed = true;
+						list.Clear();
+						_LeftCurbLoftFormList.Clear();
+						_RightCurbLoftFormList.Clear();
+						break;
+					}
+					_RightCurbLoftFormList.Add(solid);
+				}
+				m_ProgressBarForm.UpdateProgressBar(1);
+			}
+		}
+		if (!loftFailed && list.Count > 0)
+		{
+			RuntimeDiagnostics.Write("Street 2020 loft created " + list.Count + " pavement solid(s); curbs=" + (_LeftCurbLoftFormList.Count + _RightCurbLoftFormList.Count) + ".");
+			m_ProgressBarForm.SetMaxValue();
+			Thread.Sleep(150);
+			m_ProgressBarForm.Close();
+			return list;
+		}
+		list.Clear();
+		_LeftCurbLoftFormList.Clear();
+		_RightCurbLoftFormList.Clear();
+		ElementId pavementMaterial = ElementId.InvalidElementId;
+		Parameter pavementParameter = StreetFamilySymbol?.LookupParameter(RevitParameters.StreetPavementSurfaceParameter);
+		if (pavementParameter != null)
+			pavementMaterial = RevitIds.Create(pavementParameter.AsInteger());
+		List<Solid> swept = SitePavementOverlay.SweepRibbon(OverlayPath(), m_dWidth, m_dSubgradeDepth, pavementMaterial);
+		if (swept != null && swept.Count > 0)
+		{
+			RuntimeDiagnostics.Write("Street ribbon sweep created " + swept.Count + " solid(s); width=" + m_dWidth + " depth=" + m_dSubgradeDepth + " ft.");
+			list.AddRange(swept);
+			TrySweepCurbSections(OverlayPath(), _LeftCurbLoftFormList, _RightCurbLoftFormList, m_dWidth / 2.0);
+			m_ProgressBarForm.SetMaxValue();
+			Thread.Sleep(150);
+			m_ProgressBarForm.Close();
+			return list;
+		}
 		if (TrySweepTypeSection(list, _LeftCurbLoftFormList, _RightCurbLoftFormList))
 		{
 			m_ProgressBarForm.SetMaxValue();
@@ -249,90 +493,12 @@ public class StreetForm : BaseForm
 			m_ProgressBarForm.Close();
 			return list;
 		}
-		ElementId pavementMaterial = ElementId.InvalidElementId;
-		Parameter pavementParameter = StreetFamilySymbol?.LookupParameter(RevitParameters.StreetPavementSurfaceParameter);
-		if (pavementParameter != null)
-			pavementMaterial = RevitIds.Create(pavementParameter.AsInteger());
-		List<Solid> swept = SitePavementOverlay.SweepRibbon(m_MassLeg, m_dWidth, m_dSubgradeDepth, pavementMaterial);
-		if (swept != null && swept.Count > 0)
-		{
-			RuntimeDiagnostics.Write("Street ribbon sweep created " + swept.Count + " solid(s); width=" + m_dWidth + " depth=" + m_dSubgradeDepth + " ft.");
-			list.AddRange(swept);
-			TrySweepCurbSections(_LeftCurbLoftFormList, _RightCurbLoftFormList);
-			m_ProgressBarForm.SetMaxValue();
-			Thread.Sleep(150);
-			m_ProgressBarForm.Close();
-			return list;
-		}
-		List<List<CurveLoop>> _LeftCurbArrayArrayList = new List<List<CurveLoop>>();
-		List<List<CurveLoop>> _RightCurbArrayArrayList = new List<List<CurveLoop>>();
-		List<List<CurveLoop>> curveLoopArrayArray = GetCurveLoopArrayArray(ref _LeftCurbArrayArrayList, ref _RightCurbArrayArrayList);
-		m_ProgressBarForm.MinValue = 0;
-		m_ProgressBarForm.MaxValue = curveLoopArrayArray.Count + _LeftCurbArrayArrayList.Count + _RightCurbArrayArrayList.Count;
-		Solid solid = null;
-		string _strErrorMessage = string.Empty;
-		for (int i = 0; i < curveLoopArrayArray.Count; i++)
-		{
-			if (curveLoopArrayArray[i] != null && curveLoopArrayArray[i].Count > 0)
-			{
-				solid = NewStreetBlend(curveLoopArrayArray[i], i, ref _strErrorMessage);
-				if (solid == null)
-				{
-					m_ProgressBarForm.SetMaxValue();
-					Thread.Sleep(300);
-					m_ProgressBarForm.Close();
-					list.Clear();
-					_LeftCurbLoftFormList.Clear();
-					_RightCurbLoftFormList.Clear();
-					RevitMessageBox.Show(_strErrorMessage, EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
-					return list;
-				}
-				list.Add(solid);
-			}
-			m_ProgressBarForm.UpdateProgressBar(1);
-		}
-		for (int j = 0; j < _LeftCurbArrayArrayList.Count; j++)
-		{
-			if (_LeftCurbArrayArrayList[j] != null && _LeftCurbArrayArrayList[j].Count > 0)
-			{
-				solid = NewCurbBlend(_LeftCurbArrayArrayList[j], j, _bIsLeftCurb: true, ref _strErrorMessage);
-				if (solid == null)
-				{
-					m_ProgressBarForm.SetMaxValue();
-					Thread.Sleep(300);
-					m_ProgressBarForm.Close();
-					list.Clear();
-					_LeftCurbLoftFormList.Clear();
-					_RightCurbLoftFormList.Clear();
-					RevitMessageBox.Show(_strErrorMessage, EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
-					return list;
-				}
-				_LeftCurbLoftFormList.Add(solid);
-			}
-			m_ProgressBarForm.UpdateProgressBar(1);
-		}
-		for (int k = 0; k < _RightCurbArrayArrayList.Count; k++)
-		{
-			if (_RightCurbArrayArrayList[k] != null && _RightCurbArrayArrayList[k].Count > 0)
-			{
-				solid = NewCurbBlend(_RightCurbArrayArrayList[k], k, _bIsLeftCurb: false, ref _strErrorMessage);
-				if (solid == null)
-				{
-					m_ProgressBarForm.SetMaxValue();
-					Thread.Sleep(300);
-					m_ProgressBarForm.Close();
-					list.Clear();
-					_LeftCurbLoftFormList.Clear();
-					_RightCurbLoftFormList.Clear();
-					RevitMessageBox.Show(_strErrorMessage, EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
-					return list;
-				}
-				_RightCurbLoftFormList.Add(solid);
-			}
-			m_ProgressBarForm.UpdateProgressBar(1);
-		}
+		if (list.Count == 0 && string.Equals(_strErrorMessage, EPShared.LocalRM.GetString("StreetTemplateNotMassTypeMessage"), StringComparison.OrdinalIgnoreCase))
+			RevitMessageBox.Show(_strErrorMessage, EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
+		else if (list.Count == 0)
+			RuntimeDiagnostics.Write("Street overlay produced no solid after loft/ribbon/strip fallbacks.");
 		m_ProgressBarForm.SetMaxValue();
-		Thread.Sleep(300);
+		Thread.Sleep(150);
 		m_ProgressBarForm.Close();
 		return list;
 	}

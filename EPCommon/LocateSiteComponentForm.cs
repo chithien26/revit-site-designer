@@ -93,10 +93,6 @@ public class LocateSiteComponentForm : EPForm
 
 	private Button m_PickInRevitButton;
 
-	private Label m_WidthLabel;
-
-	private TextBox m_WidthTextBox;
-
 	public bool ExistingHostLineChecked => m_UseExistingHostLineRadioButton.Checked;
 
 	public bool CreateCopyChecked => m_CreateCopyCheckBox.Checked;
@@ -119,23 +115,6 @@ public class LocateSiteComponentForm : EPForm
 	}
 
 	public FamilySymbol Type => m_CurType;
-
-	public double Width
-	{
-		get
-		{
-			if (m_CurrentLandcaddID != LandcaddID.Street || m_WidthTextBox == null || !m_WidthTextBox.Visible)
-			{
-				return 0.0;
-			}
-			double width = 0.0;
-			if (m_WidthTextBox.Text != string.Empty)
-			{
-				RevitGeometry.Units_ConvertStringToDouble(m_WidthTextBox.Text, m_Units, UnitType.UT_Length, ref width, _bDisplayInvalidInputMessage: true);
-			}
-			return width;
-		}
-	}
 
 	public double Elevation
 	{
@@ -384,10 +363,6 @@ public class LocateSiteComponentForm : EPForm
 				m_ConstantElevationRadioButton.Checked = true;
 			}
 		}
-		bool showWidth = m_CurrentLandcaddID == LandcaddID.Street;
-		if (m_WidthLabel != null) m_WidthLabel.Visible = showWidth;
-		if (m_WidthTextBox != null) m_WidthTextBox.Visible = showWidth;
-		FillWidthFromType();
 		if (ApplicationUtility.Settings.eplSetE_GetSetting(m_dataBuffer.Document.PathName, "UseSharedElevation", ref _nReturnValue) && _nReturnValue == 1)
 		{
 			ProjectLocation activeProjectLocation = m_dataBuffer.Document.ActiveProjectLocation;
@@ -435,34 +410,7 @@ public class LocateSiteComponentForm : EPForm
 		{
 			m_TypeNameComboBox.DataSource = familyContainer.FamilySymbolList;
 			m_TypeNameComboBox.DisplayMember = EPShared.LocalRM.GetString("NameString");
-			FillWidthFromType();
 		}
-	}
-
-	private void OnTypeNameComboBoxSelectedIndexChanged(object sender, EventArgs e)
-	{
-		FillWidthFromType();
-	}
-
-	private void FillWidthFromType()
-	{
-		if (m_WidthTextBox == null || m_FormatOptions == null || m_dataBuffer == null || m_CurrentLandcaddID != LandcaddID.Street) return;
-		FamilySymbol type = m_TypeNameComboBox.SelectedItem as FamilySymbol;
-		double width = 0.0;
-		if (type != null)
-		{
-			double lane = 0.0;
-			Parameter parameter = type.LookupParameter(RevitParameters.StreetLaneWidthParameter);
-			if (parameter != null) lane = parameter.AsDouble();
-			parameter = type.LookupParameter(RevitParameters.StreetNumberOfLanesParameter);
-			if (parameter != null) width = lane * parameter.AsInteger();
-		}
-		string display = string.Empty;
-		if (width > 0.0)
-		{
-			RevitGeometry.Units_ConvertDoubleToString(width, m_FormatOptions.LegacyDisplayUnits(), m_FormatOptions.Accuracy, m_UnitSymbolType, m_dataBuffer.Document.GetUnits(), ref display);
-		}
-		m_WidthTextBox.Text = display;
 	}
 
 	private void OnLoadFamilyButtonClick(object sender, EventArgs e)
@@ -737,7 +685,6 @@ public class LocateSiteComponentForm : EPForm
 					{
 						dY = num * (double)parameter.AsInteger();
 					}
-					if (Width > 0.0) dY = Width;
 					break;
 				}
 				}
@@ -746,7 +693,8 @@ public class LocateSiteComponentForm : EPForm
 				{
 					RevitGeometry.Units_ConvertStringToDouble(m_RadiusTextBox.Text, m_Units, UnitType.UT_Length, ref _dReturnedDouble, _bDisplayInvalidInputMessage: true);
 				}
-				if (RevitDefines.LT(_dReturnedDouble, dY) && !RevitDefines.EQ(_dReturnedDouble, 0.0))
+				if (RevitDefines.LT(_dReturnedDouble, dY) && !RevitDefines.EQ(_dReturnedDouble, 0.0)
+					&& !(m_CurrentLandcaddID == LandcaddID.Street && TerrainApi.UsesToposolids))
 				{
 					RevitMessageBox.Show(EPShared.LocalRM.GetString("InvalidRadiusString"), EPShared.LocalRM.GetString("Error"), MessageBoxIcon.Hand);
 					return false;
@@ -967,7 +915,6 @@ public class LocateSiteComponentForm : EPForm
 		this.m_TypeNameComboBox.Name = "m_TypeNameComboBox";
 		this.m_TypeNameComboBox.Size = new System.Drawing.Size(239, 21);
 		this.m_TypeNameComboBox.TabIndex = 5;
-		this.m_TypeNameComboBox.SelectedIndexChanged += new System.EventHandler(this.OnTypeNameComboBoxSelectedIndexChanged);
 		this.m_TypeNameLabel.AutoSize = true;
 		this.m_TypeNameLabel.Location = new System.Drawing.Point(12, 42);
 		this.m_TypeNameLabel.Name = "m_TypeNameLabel";
@@ -1045,20 +992,6 @@ public class LocateSiteComponentForm : EPForm
 		this.m_RadiusTextBox.TabIndex = 18;
 		this.m_RadiusTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnRadiusKeyDown);
 		this.m_RadiusTextBox.Leave += new System.EventHandler(this.OnRadiusTextBoxLeave);
-		this.m_WidthLabel = new System.Windows.Forms.Label();
-		this.m_WidthTextBox = new System.Windows.Forms.TextBox();
-		this.m_WidthLabel.AutoSize = true;
-		this.m_WidthLabel.Location = new System.Drawing.Point(300, 285);
-		this.m_WidthLabel.Name = "m_WidthLabel";
-		this.m_WidthLabel.Size = new System.Drawing.Size(38, 13);
-		this.m_WidthLabel.TabIndex = 19;
-		this.m_WidthLabel.Text = "Width:";
-		this.m_WidthLabel.Visible = false;
-		this.m_WidthTextBox.Location = new System.Drawing.Point(344, 282);
-		this.m_WidthTextBox.Name = "m_WidthTextBox";
-		this.m_WidthTextBox.Size = new System.Drawing.Size(84, 20);
-		this.m_WidthTextBox.TabIndex = 20;
-		this.m_WidthTextBox.Visible = false;
 		this.m_NameLabel.AutoSize = true;
 		this.m_NameLabel.Location = new System.Drawing.Point(12, 69);
 		this.m_NameLabel.Name = "m_NameLabel";
@@ -1166,8 +1099,6 @@ public class LocateSiteComponentForm : EPForm
 		base.Controls.Add(this.m_NameTextBox);
 		base.Controls.Add(this.m_RadiusLabel);
 		base.Controls.Add(this.m_RadiusTextBox);
-		base.Controls.Add(this.m_WidthLabel);
-		base.Controls.Add(this.m_WidthTextBox);
 		base.Controls.Add(this.m_CreateCopyCheckBox);
 		base.Controls.Add(this.m_MoveablePanel);
 		base.Controls.Add(this.m_ConstantElevationLabel);
