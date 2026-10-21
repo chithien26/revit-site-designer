@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Name>SiteDesigner2025</Name>
+		<FullClassName>SiteDesigner.ExternalApplication</FullClassName>
+		<Text>SiteDesigner2025</Text>
+		<Description>Site Designer for Revit 2025</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>SiteDesigner.dll</Assembly>
+		<AddInId>08798f36-9f2e-4e87-b315-a92376b17b8f</AddInId>
+		<VendorId>tobic</VendorId>
+		<VendorDescription>tobic</VendorDescription>
+	</AddIn>
+</RevitAddIns>
