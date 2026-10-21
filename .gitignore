@@ -9,3 +9,9 @@ tools/ilspy/
 tools/decompiled/
 tools/NormalizeResources.exe
 tools/revit-test-process*.txt
+artifacts/installer/*.exe
+artifacts/installer/*.msi
+artifacts/installer/*.zip
+artifacts/installer/*.wixpdb
+artifacts/installer/staging/
+setup/SiteDesigner.generated.wxs

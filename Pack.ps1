@@ -68,12 +68,19 @@ Set-Content -LiteralPath (Join-Path $staging 'SiteDesigner.addin') -Value $addin
 
 $zip = Join-Path $outRoot "SiteDesigner-$Version.zip"
 if (Test-Path -LiteralPath $zip) { Remove-Item -LiteralPath $zip -Force }
-Compress-Archive -Path (Join-Path $staging '*') -DestinationPath $zip -Force
+try {
+    Compress-Archive -Path (Join-Path $staging '*') -DestinationPath $zip -Force
+    Write-Output "Zip package: $zip"
+} catch {
+    Write-Output "Zip skipped: $($_.Exception.Message)"
+}
 Write-Output "Staged payload: $staging"
-Write-Output "Zip package: $zip"
 
 if (-not $InnoCompiler) {
     $InnoCompiler = @(
+        "${env:ProgramFiles(x86)}\Inno Setup 7\ISCC.exe",
+        "${env:ProgramFiles}\Inno Setup 7\ISCC.exe",
+        "${env:LOCALAPPDATA}\Programs\Inno Setup 7\ISCC.exe",
         "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe",
         "${env:ProgramFiles}\Inno Setup 6\ISCC.exe",
         "${env:LOCALAPPDATA}\Programs\Inno Setup 6\ISCC.exe"

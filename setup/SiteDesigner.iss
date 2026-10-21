@@ -38,10 +38,5 @@ Type: filesandordirs; Name: "{app}"
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}"
-
-[Code]
-function InitializeSetup(): Boolean;
-begin
-  Result := True;
-  MsgBox('Close Revit {#RevitVersion} before installing. Revit will prompt to load this unsigned add-in on first start.', mbInformation, MB_OK);
-end;
+Type: files; Name: "{userappdata}\Autodesk\Revit\Addins\{#RevitVersion}\SiteDesigner.addin"
+Type: files; Name: "{commonappdata}\Autodesk\Revit\Addins\{#RevitVersion}\SiteDesigner2025.addin"
