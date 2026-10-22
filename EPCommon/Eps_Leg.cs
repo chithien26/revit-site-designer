@@ -148,7 +148,7 @@ public class Eps_Leg
 				{
 					elementSet = new ElementSet();
 				}
-				if (eps_Leg.Element != null)
+				if (eps_Leg.Element != null && IsUsableElement(eps_Leg.Element))
 				{
 					elementSet.Insert(eps_Leg.Element);
 				}
@@ -168,7 +168,7 @@ public class Eps_Leg
 				{
 					list = new List<Element>();
 				}
-				if (eps_Leg.Element != null)
+				if (eps_Leg.Element != null && IsUsableElement(eps_Leg.Element))
 				{
 					list.Add(eps_Leg.Element);
 				}
@@ -2075,5 +2075,17 @@ public class Eps_Leg
 			else head.Last.Next = SingleLeg(current);
 		}
 		return head ?? this;
+	}
+
+	private static bool IsUsableElement(Element element)
+	{
+		try
+		{
+			return element.IsValidObject;
+		}
+		catch (Exception)
+		{
+			return false;
+		}
 	}
 }

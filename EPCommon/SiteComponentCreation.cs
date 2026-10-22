@@ -1417,16 +1417,19 @@ public class SiteComponentCreation
 						_EvalLeg = new Eps_Leg();
 						_EvalLeg.Line = new Eps_Line(_EvalLine);
 					}
+					if (m_CurrentLandcaddId == LandcaddID.Street)
+					{
+						if (!CreateStreetNetworkFromPickedHost(_PlacementSettings, _MassLineSubCategory, _dOffsetWidth, _dArcPointInterval, item5, _EvalLeg, elementSet, elementSet2, list, list2))
+						{
+							return false;
+						}
+						continue;
+					}
 					if (elementSet.Size > 0 && !(m_CurrentLandcaddId == LandcaddID.SoftTerrain && TerrainApi.UsesToposolids))
 					{
 						RevitUtility.HideElementsInAllViews(m_Document, elementSet);
 					}
-					if (m_CurrentLandcaddId == LandcaddID.Street)
-					{
-						Eps_Leg flattened = _EvalLeg.FlattenArcsNarrowerThan(_dOffsetWidth + 2.0);
-						if (flattened != null) _EvalLeg = flattened;
-					}
-					else if (m_CurrentLandcaddId != LandcaddID.SoftTerrain && m_CurrentLandcaddId != LandcaddID.ParkingLot && m_CurrentLandcaddId != LandcaddID.FeatureLine && m_CurrentLandcaddId != LandcaddID.PointWipeout)
+					if (m_CurrentLandcaddId != LandcaddID.SoftTerrain && m_CurrentLandcaddId != LandcaddID.ParkingLot && m_CurrentLandcaddId != LandcaddID.FeatureLine && m_CurrentLandcaddId != LandcaddID.PointWipeout)
 					{
 						Eps_Leg eps_Leg = null;
 						for (eps_Leg = _EvalLeg; eps_Leg != null; eps_Leg = eps_Leg.Next)
@@ -1705,6 +1708,113 @@ public class SiteComponentCreation
 			}
 		}
 		return true;
+	}
+
+	private bool CreateStreetNetworkFromPickedHost(SitePlacementSettings placementSettings, Category massLineSubCategory, double offsetWidth, double arcPointInterval, Element seed, Eps_Leg fallbackLeg, ElementSet tempCurves, ElementSet originalHosts, List<Element> tempCurveList, List<Element> verifyHosts)
+	{
+		if (tempCurves != null && tempCurves.Size > 0)
+		{
+			m_TransactionContainer.BeginTransaction();
+			m_Document.Delete(ElementSetConverter.ToIDList(tempCurves));
+			m_TransactionContainer.EndTransaction();
+			tempCurves.Clear();
+		}
+		tempCurveList?.Clear();
+		List<Eps_Leg> networkLegs = RevitGeometry.GetStreetNetworkLegs(m_Document, seed, RevitUtility.LastSelectionPoint);
+		if (networkLegs == null)
+			networkLegs = new List<Eps_Leg>();
+		if (networkLegs.Count == 0 && fallbackLeg != null)
+			networkLegs.Add(fallbackLeg);
+		if (networkLegs.Count == 0)
+			return false;
+		RuntimeDiagnostics.Write("Street network legs=" + networkLegs.Count + " from host " + seed.Id.Value64());
+		ElementSet hosts = new ElementSet();
+		AddValidHosts(hosts, originalHosts);
+		foreach (Eps_Leg leg in networkLegs)
+			AddValidHosts(hosts, leg.ElementSet);
+		placementSettings.IsRelativeElevation = m_DisplayForm.RelativeElevationChecked;
+		placementSettings.Elevation = m_DisplayForm.Elevation;
+		List<Element> verify = verifyHosts ?? new List<Element>();
+		verify.Clear();
+		if (m_DisplayForm.CreateCopyChecked && hosts.Size > 0)
+		{
+			if (TerrainApi.UsesToposolids)
+			{
+				m_TransactionContainer.BeginTransaction();
+				RevitUtility.HideElementsInAllViews(m_Document, hosts);
+				m_TransactionContainer.EndTransaction();
+			}
+			hosts = new ElementSet();
+		}
+		else
+		{
+			foreach (Element host in hosts)
+				verify.Add(host);
+		}
+		bool first = true;
+		foreach (Eps_Leg streetLeg in networkLegs)
+		{
+			Eps_Leg work = streetLeg;
+			Eps_Leg flattened = work.FlattenArcsNarrowerThan(offsetWidth + 2.0);
+			if (flattened != null)
+				work = flattened;
+			if (!first)
+				AdvanceStreetPlacementName(placementSettings);
+			first = false;
+			placementSettings.LoftFormID = string.Empty;
+			placementSettings.AdditionalLoftFormID = string.Empty;
+			placementSettings.BeginningElevationList.Clear();
+			placementSettings.EndingElevationList.Clear();
+			placementSettings.IntersectionStations = null;
+			if (!m_TransactionContainer.HasStarted())
+				m_TransactionContainer.Start(EPShared.LocalRM.GetString("LocateStreetTransaction"));
+			List<Element> hostCurves = new List<Element>();
+			ElementSet hideSet = new ElementSet();
+			ModelCurveArray modelCurveArray = RevitUtility.NewModelCurveArray(m_Document, work, m_Document.ActiveView, _bUse2011TempLines: false);
+			foreach (ModelCurve modelCurve in modelCurveArray)
+			{
+				if (massLineSubCategory != null)
+					modelCurve.LineStyle = massLineSubCategory.GetGraphicsStyle(GraphicsStyleType.Projection);
+				hostCurves.Add(modelCurve);
+				hideSet.Insert(modelCurve);
+			}
+			if (hideSet.Size > 0)
+				RevitUtility.HideElementsInAllViews(m_Document, hideSet);
+			if (!TopographySurfaceManagement.CreateTopographySurfaceUpdate(m_Document, work, placementSettings, arcPointInterval, hostCurves, ref m_ProposedSurface, ref m_ProposedPlacementFamilyInstance, ref m_nMaxExistingTopoDrawOrder, verify))
+				return false;
+		}
+		if (hosts.Size > 0)
+		{
+			m_TransactionContainer.BeginTransaction();
+			m_Document.Delete(ElementSetConverter.ToIDList(hosts));
+			m_TransactionContainer.EndTransaction();
+		}
+		return true;
+	}
+
+	private void AdvanceStreetPlacementName(SitePlacementSettings placementSettings)
+	{
+		string baseName = GetSitePlacementNameWithoutSeperator(placementSettings.Name);
+		int index = 0;
+		FindMassingFamilyStartingNumberName(baseName, ref index);
+		placementSettings.Name = baseName + NUMMERIC_SEPERATOR + Convert.ToString(index);
+	}
+
+	private static void AddValidHosts(ElementSet target, ElementSet source)
+	{
+		if (target == null || source == null) return;
+		foreach (Element host in source)
+		{
+			if (host == null) continue;
+			try
+			{
+				if (host.IsValidObject)
+					target.Insert(host);
+			}
+			catch (Exception)
+			{
+			}
+		}
 	}
 
 	public bool FindFamilyName(string _strFindName)

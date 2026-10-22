@@ -18,6 +18,8 @@ public class RevitUtility
 {
 	public const int PROGRESSBAR_DELAY = 300;
 
+	public static XYZ LastSelectionPoint { get; private set; }
+
 	public static string GetFormattedFileName(string _strFileName)
 	{
 		return GetFormattedFileName(_strFileName, _bCreateDirectory: false);
@@ -182,6 +184,7 @@ public class RevitUtility
 			}
 			if (reference != null && _Document.GetElement(reference) != null)
 			{
+				LastSelectionPoint = reference.GlobalPoint;
 				_Elements = new ElementSet();
 				_Elements.Insert(_Document.GetElement(reference));
 				break;

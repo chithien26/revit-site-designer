@@ -1859,9 +1859,14 @@ public class RevitGeometry
 
 	public static List<Eps_Leg> GetStreetNetworkLegs(Document document, Element seed)
 	{
+		return GetStreetNetworkLegs(document, seed, null);
+	}
+
+	public static List<Eps_Leg> GetStreetNetworkLegs(Document document, Element seed, XYZ pickPoint)
+	{
 		List<Eps_Leg> legs = new List<Eps_Leg>();
 		if (document == null || seed == null) return legs;
-		List<Element> curves = CollectConnectedHostCurves(document, seed);
+		List<Element> curves = CollectConnectedHostCurves(document, seed, pickPoint);
 		if (curves.Count == 0) return legs;
 		List<HostEdge> edges = new List<HostEdge>();
 		foreach (Element element in curves)
@@ -1890,9 +1895,10 @@ public class RevitGeometry
 			}
 			Eps_Leg branch = ChainHostEdges(chain, false);
 			if (branch == null) continue;
-			if (eplGeoE_CalcLegListLength(branch) < 8.0) continue;
-			if (legs.Count > 0)
-				ExtendLegToMeet(branch, legs[0]);
+			if (eplGeoE_CalcLegListLength(branch) < MinStreetLegFt && !LegContainsElement(branch, seed))
+				continue;
+			foreach (Eps_Leg existing in legs)
+				ExtendLegToMeet(branch, existing);
 			legs.Add(branch);
 		}
 		legs.Sort((a, b) =>
@@ -1904,7 +1910,11 @@ public class RevitGeometry
 		return legs;
 	}
 
-	private const double HostJoinTolFt = 0.08;
+	private const double HostJoinTolFt = 0.25;
+	private const double HostGeoTolFt = 1.25;
+	private const double MinStreetLegFt = 2.5;
+	private const double JunctionPickRadiusFt = 30.0;
+	private const double CollinearDotMin = 0.65;
 
 	private sealed class HostEdge
 	{
@@ -1914,16 +1924,60 @@ public class RevitGeometry
 		public bool Used;
 	}
 
-	private static List<Element> CollectConnectedHostCurves(Document document, Element seed)
+	private static List<Element> CollectConnectedHostCurves(Document document, Element seed, XYZ pickPoint)
 	{
 		List<Element> collected = new List<Element>();
 		HashSet<long> seen = new HashSet<long>();
 		Queue<Element> queue = new Queue<Element>();
-		if (seed.Location is LocationCurve)
+		EnqueueHost(seed, seen, queue);
+		DrainJoinedHosts(queue, collected, seen);
+		List<Element> seedChain = new List<Element>(collected);
+		foreach (CurveElement curveElement in AllHostCurves(document))
 		{
-			queue.Enqueue(seed);
-			seen.Add(seed.Id.Value64());
+			if (seen.Contains(curveElement.Id.Value64())) continue;
+			if (IsHiddenHost(document, curveElement)) continue;
+			if (!ConnectsAsTeeOrCross(curveElement, seedChain)) continue;
+			if (pickPoint != null && DistancePointToCurve2D(pickPoint, curveElement) > JunctionPickRadiusFt)
+				continue;
+			EnqueueHost(curveElement, seen, queue);
 		}
+		DrainCollinearJoins(queue, collected, seen);
+		return collected;
+	}
+
+	private static IEnumerable<CurveElement> AllHostCurves(Document document)
+	{
+		foreach (CurveElement curveElement in new FilteredElementCollector(document).OfClass(typeof(CurveElement)).WhereElementIsNotElementType())
+		{
+			if (curveElement is not ModelCurve) continue;
+			if (curveElement.Location is not LocationCurve location || location.Curve == null || !location.Curve.IsBound)
+				continue;
+			yield return curveElement;
+		}
+	}
+
+	private static bool IsHiddenHost(Document document, Element element)
+	{
+		try
+		{
+			Autodesk.Revit.DB.View view = document?.ActiveView;
+			return view != null && element.IsHidden(view);
+		}
+		catch (Exception)
+		{
+			return false;
+		}
+	}
+
+	private static void EnqueueHost(Element element, HashSet<long> seen, Queue<Element> queue)
+	{
+		if (element == null || element.Location is not LocationCurve) return;
+		if (!seen.Add(element.Id.Value64())) return;
+		queue.Enqueue(element);
+	}
+
+	private static void DrainJoinedHosts(Queue<Element> queue, List<Element> collected, HashSet<long> seen)
+	{
 		while (queue.Count > 0)
 		{
 			Element current = queue.Dequeue();
@@ -1934,56 +1988,233 @@ public class RevitGeometry
 				ElementArray joined = location.get_ElementsAtJoin(end);
 				if (joined == null) continue;
 				foreach (Element next in joined)
+					EnqueueHost(next, seen, queue);
+			}
+		}
+	}
+
+	private static void DrainCollinearJoins(Queue<Element> queue, List<Element> collected, HashSet<long> seen)
+	{
+		while (queue.Count > 0)
+		{
+			Element current = queue.Dequeue();
+			collected.Add(current);
+			if (!TryHostEnds(current, out Eps_Point start, out Eps_Point end)) continue;
+			if (current.Location is not LocationCurve location) continue;
+			for (int endIndex = 0; endIndex < 2; endIndex++)
+			{
+				ElementArray joined = location.get_ElementsAtJoin(endIndex);
+				if (joined == null) continue;
+				Eps_Point node = endIndex == 0 ? start : end;
+				Eps_Point from = endIndex == 0 ? end : start;
+				if (!TryUnitDirection(from, node, out double inX, out double inY)) continue;
+				foreach (Element next in joined)
 				{
-					if (next == null || next.Location is not LocationCurve) continue;
-					if (!seen.Add(next.Id.Value64())) continue;
-					queue.Enqueue(next);
+					if (next == null || seen.Contains(next.Id.Value64())) continue;
+					if (!TryHostEnds(next, out Eps_Point nextStart, out Eps_Point nextEnd)) continue;
+					Eps_Point other = OtherPoint(node, nextStart, nextEnd);
+					if (other == null || !TryUnitDirection(node, other, out double outX, out double outY))
+						continue;
+					if (inX * outX + inY * outY < CollinearDotMin) continue;
+					EnqueueHost(next, seen, queue);
 				}
 			}
 		}
-		List<Element> loopCurves = new List<Element>(collected);
-		foreach (CurveElement curveElement in new FilteredElementCollector(document).OfClass(typeof(CurveElement)).WhereElementIsNotElementType())
-		{
-			if (curveElement is not ModelCurve) continue;
-			if (curveElement.Location is not LocationCurve location || location.Curve == null || !location.Curve.IsBound)
-				continue;
-			if (!seen.Add(curveElement.Id.Value64())) continue;
-			if (!IsOpenTeeStub(curveElement, loopCurves))
-			{
-				seen.Remove(curveElement.Id.Value64());
-				continue;
-			}
-			collected.Add(curveElement);
-			if (collected.Count - loopCurves.Count >= 8) break;
-		}
-		return collected;
 	}
 
-	private static bool IsOpenTeeStub(Element candidate, List<Element> loopCurves)
+	private static Eps_Point OtherPoint(Eps_Point node, Eps_Point start, Eps_Point end)
 	{
+		if (EPShared.eplGeoE_ArePntsDuplicates2D(node, start, HostGeoTolFt)) return end;
+		if (EPShared.eplGeoE_ArePntsDuplicates2D(node, end, HostGeoTolFt)) return start;
+		return null;
+	}
+
+	private static bool ConnectsAsTeeOrCross(Element candidate, List<Element> hosts)
+	{
+		if (candidate.Location is not LocationCurve candidateLocation || candidateLocation.Curve == null)
+			return false;
 		if (!TryHostEnds(candidate, out Eps_Point start, out Eps_Point end)) return false;
 		if (EPShared.eplGeoE_ArePntsDuplicates2D(start, end, HostJoinTolFt)) return false;
 		double length = 0.0;
 		EPShared.eplGeoE_CalcHorzDistBtwnTwoPnts(start, end, ref length);
-		if (length < 8.0) return false;
-		bool startOn = false;
-		bool endOn = false;
-		foreach (Element existing in loopCurves)
+		if (length < MinStreetLegFt) return false;
+		Curve candidateCurve = candidateLocation.Curve;
+		foreach (Element existing in hosts)
 		{
 			if (existing.Location is not LocationCurve location || location.Curve == null) continue;
-			if (PointNearCurve(start, location.Curve)) startOn = true;
-			if (PointNearCurve(end, location.Curve)) endOn = true;
+			if (IsSameHostCurve(candidateCurve, location.Curve)) continue;
+			if (CurvesFormTeeOrCross(candidateCurve, location.Curve))
+				return true;
 		}
-		return startOn != endOn;
+		return false;
 	}
 
-	private static bool PointNearCurve(Eps_Point point, Curve curve)
+	private static bool CurvesFormTeeOrCross(Curve a, Curve b)
+	{
+		Curve flatA = FlattenCurveXY(a);
+		Curve flatB = FlattenCurveXY(b);
+		if (flatA == null || flatB == null) return false;
+		XYZ a0 = flatA.GetEndPoint(0);
+		XYZ a1 = flatA.GetEndPoint(1);
+		XYZ b0 = flatB.GetEndPoint(0);
+		XYZ b1 = flatB.GetEndPoint(1);
+		bool aStartOnB = DistancePointToCurve2D(a0, flatB) <= HostGeoTolFt;
+		bool aEndOnB = DistancePointToCurve2D(a1, flatB) <= HostGeoTolFt;
+		bool bStartOnA = DistancePointToCurve2D(b0, flatA) <= HostGeoTolFt;
+		bool bEndOnA = DistancePointToCurve2D(b1, flatA) <= HostGeoTolFt;
+		if (aStartOnB && aEndOnB) return false;
+		if (bStartOnA && bEndOnA) return false;
+		if (aStartOnB != aEndOnB) return true;
+		if (bStartOnA != bEndOnA) return true;
+		return SegmentsCross2D(a0, a1, b0, b1) || HasInteriorIntersection(a, b);
+	}
+
+	private static bool IsSameHostCurve(Curve a, Curve b)
+	{
+		if (a == null || b == null || !a.IsBound || !b.IsBound) return false;
+		return PointNearCurve(new Eps_Point(a.GetEndPoint(0)), b, HostGeoTolFt)
+			&& PointNearCurve(new Eps_Point(a.GetEndPoint(1)), b, HostGeoTolFt)
+			&& PointNearCurve(new Eps_Point(b.GetEndPoint(0)), a, HostGeoTolFt)
+			&& PointNearCurve(new Eps_Point(b.GetEndPoint(1)), a, HostGeoTolFt);
+	}
+
+	private static bool HasInteriorIntersection(Curve a, Curve b)
 	{
 		try
 		{
-			IntersectionResult result = curve.Project(point.XYZ);
+			Curve flatA = FlattenCurveXY(a);
+			Curve flatB = FlattenCurveXY(b);
+			if (flatA == null || flatB == null) return false;
+			IntersectionResultArray results;
+			SetComparisonResult result = flatA.Intersect(flatB, out results);
+			if (result != SetComparisonResult.Overlap || results == null || results.Size == 0)
+				return false;
+			foreach (IntersectionResult hit in results)
+			{
+				XYZ point = hit?.XYZPoint;
+				if (point == null) continue;
+				bool onAEnd = HorizontalDistance(point, flatA.GetEndPoint(0)) <= HostGeoTolFt
+					|| HorizontalDistance(point, flatA.GetEndPoint(1)) <= HostGeoTolFt;
+				bool onBEnd = HorizontalDistance(point, flatB.GetEndPoint(0)) <= HostGeoTolFt
+					|| HorizontalDistance(point, flatB.GetEndPoint(1)) <= HostGeoTolFt;
+				if (!onAEnd || !onBEnd)
+					return true;
+			}
+		}
+		catch (Exception)
+		{
+		}
+		return false;
+	}
+
+	private static Curve FlattenCurveXY(Curve curve)
+	{
+		if (curve == null || !curve.IsBound) return null;
+		XYZ start = curve.GetEndPoint(0);
+		XYZ end = curve.GetEndPoint(1);
+		XYZ a = new XYZ(start.X, start.Y, 0.0);
+		XYZ b = new XYZ(end.X, end.Y, 0.0);
+		if (curve is Line)
+		{
+			if (a.DistanceTo(b) < 1E-09) return null;
+			return Line.CreateBound(a, b);
+		}
+		if (curve is Arc)
+		{
+			XYZ mid = curve.Evaluate(0.5, true);
+			try
+			{
+				return Arc.Create(a, b, new XYZ(mid.X, mid.Y, 0.0));
+			}
+			catch (Exception)
+			{
+				return a.DistanceTo(b) < 1E-09 ? null : Line.CreateBound(a, b);
+			}
+		}
+		return curve;
+	}
+
+	private static double HorizontalDistance(XYZ a, XYZ b)
+	{
+		double dx = a.X - b.X;
+		double dy = a.Y - b.Y;
+		return Math.Sqrt(dx * dx + dy * dy);
+	}
+
+	private static bool LegContainsElement(Eps_Leg leg, Element element)
+	{
+		if (leg == null || element == null) return false;
+		for (Eps_Leg piece = leg; piece != null; piece = piece.Next)
+		{
+			if (piece.Element != null && piece.Element.Id == element.Id)
+				return true;
+		}
+		return false;
+	}
+
+	private static double DistancePointToCurve2D(XYZ point, Element element)
+	{
+		if (point == null || element?.Location is not LocationCurve location || location.Curve == null)
+			return double.MaxValue;
+		return DistancePointToCurve2D(point, location.Curve);
+	}
+
+	private static double DistancePointToCurve2D(XYZ point, Curve curve)
+	{
+		Curve flat = FlattenCurveXY(curve);
+		if (point == null || flat == null) return double.MaxValue;
+		XYZ probe = new XYZ(point.X, point.Y, 0.0);
+		IList<XYZ> points = flat is Line
+			? new List<XYZ> { flat.GetEndPoint(0), flat.GetEndPoint(1) }
+			: flat.Tessellate();
+		double best = double.MaxValue;
+		for (int i = 1; i < points.Count; i++)
+		{
+			double distance = DistancePointToSegment2D(probe, points[i - 1], points[i]);
+			if (distance < best)
+				best = distance;
+		}
+		return best;
+	}
+
+	private static double DistancePointToSegment2D(XYZ point, XYZ start, XYZ end)
+	{
+		double dx = end.X - start.X;
+		double dy = end.Y - start.Y;
+		double lengthSq = dx * dx + dy * dy;
+		if (lengthSq < 1E-18)
+			return HorizontalDistance(point, start);
+		double t = ((point.X - start.X) * dx + (point.Y - start.Y) * dy) / lengthSq;
+		if (t < 0.0) t = 0.0;
+		else if (t > 1.0) t = 1.0;
+		return HorizontalDistance(point, new XYZ(start.X + t * dx, start.Y + t * dy, 0.0));
+	}
+
+	private static bool SegmentsCross2D(XYZ a0, XYZ a1, XYZ b0, XYZ b1)
+	{
+		double d1 = Cross2D(b0, b1, a0);
+		double d2 = Cross2D(b0, b1, a1);
+		double d3 = Cross2D(a0, a1, b0);
+		double d4 = Cross2D(a0, a1, b1);
+		return ((d1 > 1E-08 && d2 < -1E-08) || (d1 < -1E-08 && d2 > 1E-08))
+			&& ((d3 > 1E-08 && d4 < -1E-08) || (d3 < -1E-08 && d4 > 1E-08));
+	}
+
+	private static double Cross2D(XYZ origin, XYZ a, XYZ b)
+	{
+		return (a.X - origin.X) * (b.Y - origin.Y) - (a.Y - origin.Y) * (b.X - origin.X);
+	}
+
+	private static bool PointNearCurve(Eps_Point point, Curve curve, double tolerance)
+	{
+		try
+		{
+			Curve flat = FlattenCurveXY(curve);
+			if (flat == null) return false;
+			XYZ probe = new XYZ(point.x, point.y, 0.0);
+			IntersectionResult result = flat.Project(probe);
 			if (result == null || result.XYZPoint == null) return false;
-			return point.XYZ.DistanceTo(result.XYZPoint) <= HostJoinTolFt;
+			return HorizontalDistance(probe, result.XYZPoint) <= tolerance;
 		}
 		catch (Exception)
 		{
@@ -2037,7 +2268,7 @@ public class RevitGeometry
 				if (used.Contains(edge)) continue;
 				Eps_Point other = OtherEnd(edge, current);
 				if (other == null) continue;
-				if (EPShared.eplGeoE_ArePntsDuplicates2D(other, origin, HostJoinTolFt) && path.Count >= 2)
+				if (EPShared.eplGeoE_ArePntsDuplicates2D(other, origin, HostGeoTolFt) && path.Count >= 2)
 				{
 					close = edge;
 					continue;
@@ -2064,8 +2295,8 @@ public class RevitGeometry
 
 	private static Eps_Point OtherEnd(HostEdge edge, Eps_Point at)
 	{
-		if (EPShared.eplGeoE_ArePntsDuplicates2D(at, edge.Start, HostJoinTolFt)) return edge.End;
-		if (EPShared.eplGeoE_ArePntsDuplicates2D(at, edge.End, HostJoinTolFt)) return edge.Start;
+		if (EPShared.eplGeoE_ArePntsDuplicates2D(at, edge.Start, HostGeoTolFt)) return edge.End;
+		if (EPShared.eplGeoE_ArePntsDuplicates2D(at, edge.End, HostGeoTolFt)) return edge.Start;
 		return null;
 	}
 
@@ -2089,44 +2320,82 @@ public class RevitGeometry
 		while (grew)
 		{
 			grew = false;
-			foreach (HostEdge edge in edges)
+			HostEdge tailEdge = chain[chain.Count - 1];
+			HostEdge next = BestContinuation(edges, tail, OtherEnd(tailEdge, tail), tailEdge);
+			if (next != null)
 			{
-				if (edge.Used) continue;
-				if (EPShared.eplGeoE_ArePntsDuplicates2D(tail, edge.Start, HostJoinTolFt))
+				Eps_Point newTail = OtherEnd(next, tail);
+				if (newTail != null)
 				{
-					chain.Add(edge);
-					edge.Used = true;
-					tail = edge.End;
+					chain.Add(next);
+					next.Used = true;
+					tail = newTail;
 					grew = true;
-					break;
+					continue;
 				}
-				if (EPShared.eplGeoE_ArePntsDuplicates2D(tail, edge.End, HostJoinTolFt))
+			}
+			HostEdge headEdge = chain[0];
+			HostEdge prev = BestContinuation(edges, head, OtherEnd(headEdge, head), headEdge);
+			if (prev != null)
+			{
+				Eps_Point newHead = OtherEnd(prev, head);
+				if (newHead != null)
 				{
-					chain.Add(edge);
-					edge.Used = true;
-					tail = edge.Start;
+					chain.Insert(0, prev);
+					prev.Used = true;
+					head = newHead;
 					grew = true;
-					break;
-				}
-				if (EPShared.eplGeoE_ArePntsDuplicates2D(head, edge.End, HostJoinTolFt))
-				{
-					chain.Insert(0, edge);
-					edge.Used = true;
-					head = edge.Start;
-					grew = true;
-					break;
-				}
-				if (EPShared.eplGeoE_ArePntsDuplicates2D(head, edge.Start, HostJoinTolFt))
-				{
-					chain.Insert(0, edge);
-					edge.Used = true;
-					head = edge.End;
-					grew = true;
-					break;
 				}
 			}
 		}
 		return chain;
+	}
+
+	private static HostEdge BestContinuation(List<HostEdge> edges, Eps_Point node, Eps_Point from, HostEdge current)
+	{
+		if (node == null) return null;
+		List<HostEdge> candidates = new List<HostEdge>();
+		foreach (HostEdge edge in edges)
+		{
+			if (edge.Used || edge == current) continue;
+			if (OtherEnd(edge, node) == null) continue;
+			candidates.Add(edge);
+		}
+		if (candidates.Count == 0) return null;
+		if (candidates.Count == 1) return candidates[0];
+		if (from == null || !TryUnitDirection(from, node, out double inX, out double inY))
+			return candidates[0];
+		HostEdge best = null;
+		double bestDot = CollinearDotMin;
+		foreach (HostEdge edge in candidates)
+		{
+			Eps_Point other = OtherEnd(edge, node);
+			if (other == null || !TryUnitDirection(node, other, out double outX, out double outY))
+				continue;
+			double dot = inX * outX + inY * outY;
+			if (dot >= bestDot)
+			{
+				bestDot = dot;
+				best = edge;
+			}
+		}
+		return best;
+	}
+
+	private static bool TryUnitDirection(Eps_Point from, Eps_Point to, out double dx, out double dy)
+	{
+		dx = to.x - from.x;
+		dy = to.y - from.y;
+		double length = Math.Sqrt(dx * dx + dy * dy);
+		if (length < 1E-09)
+		{
+			dx = 0.0;
+			dy = 0.0;
+			return false;
+		}
+		dx /= length;
+		dy /= length;
+		return true;
 	}
 
 	private static Eps_Leg ChainHostEdges(List<HostEdge> edges, bool close)
@@ -2138,16 +2407,16 @@ public class RevitGeometry
 		{
 			Eps_Leg piece = LegFromLocationElement(edges[i].Element);
 			if (piece == null) continue;
-			if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegEndPnt, piece.LegStartPnt, HostJoinTolFt))
+			if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegEndPnt, piece.LegStartPnt, HostGeoTolFt))
 				head.Last.Next = piece;
-			else if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegEndPnt, piece.LegEndPnt, HostJoinTolFt))
+			else if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegEndPnt, piece.LegEndPnt, HostGeoTolFt))
 				head.Last.Next = piece.Reverse();
-			else if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegStartPnt, piece.LegEndPnt, HostJoinTolFt))
+			else if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegStartPnt, piece.LegEndPnt, HostGeoTolFt))
 			{
 				piece.Last.Next = head;
 				head = piece;
 			}
-			else if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegStartPnt, piece.LegStartPnt, HostJoinTolFt))
+			else if (EPShared.eplGeoE_ArePntsDuplicates2D(head.LegStartPnt, piece.LegStartPnt, HostGeoTolFt))
 			{
 				Eps_Leg reversed = piece.Reverse();
 				reversed.Last.Next = head;
@@ -2156,7 +2425,7 @@ public class RevitGeometry
 			else
 				head.Last.Next = piece;
 		}
-		if (close && head != null && !head.IsLegClosed() && EPShared.eplGeoE_ArePntsDuplicates2D(head.LegStartPnt, head.LegEndPnt, HostJoinTolFt * 4.0))
+		if (close && head != null && !head.IsLegClosed() && EPShared.eplGeoE_ArePntsDuplicates2D(head.LegStartPnt, head.LegEndPnt, HostGeoTolFt * 2.0))
 		{
 			if (head.Last.Line != null)
 				head.Last.Line.EndPnt = new Eps_Point(head.LegStartPnt);
