@@ -3244,29 +3244,101 @@ public class RevitUtility
 		return result;
 	}
 
+	public static void HideConstructionLines(Document document, ElementSet elements, Category lineSubCategory)
+	{
+		if (document == null) return;
+		GraphicsStyle invisible = FindInvisibleLineStyle(document);
+		if (elements != null && elements.Size > 0 && invisible != null)
+		{
+			foreach (Element element in elements)
+			{
+				if (element is not CurveElement curve) continue;
+				try
+				{
+					curve.LineStyle = invisible;
+				}
+				catch (Exception)
+				{
+				}
+			}
+		}
+		Autodesk.Revit.DB.View view = document.ActiveView;
+		ICollection<ElementId> ids = elements != null && elements.Size > 0
+			? ElementSetConverter.ToIDList(elements)
+			: new List<ElementId>();
+		if (view != null && ids.Count > 0)
+		{
+			try
+			{
+				view.HideElements(ids);
+			}
+			catch (Exception)
+			{
+			}
+			OverrideGraphicSettings overrides = new OverrideGraphicSettings();
+			overrides.SetSurfaceTransparency(100);
+			overrides.SetProjectionLineWeight(1);
+			overrides.SetProjectionLineColor(new Autodesk.Revit.DB.Color(255, 255, 255));
+			foreach (ElementId id in ids)
+			{
+				try
+				{
+					view.SetElementOverrides(id, overrides);
+				}
+				catch (Exception)
+				{
+				}
+			}
+		}
+		if (elements != null && elements.Size > 0)
+			HideElementsInAllViews(document, elements);
+		if (view != null && lineSubCategory != null)
+		{
+			try
+			{
+				view.SetCategoryHidden(lineSubCategory.Id, true);
+			}
+			catch (Exception)
+			{
+			}
+		}
+	}
+
+	private static GraphicsStyle FindInvisibleLineStyle(Document document)
+	{
+		if (document == null) return null;
+		GraphicsStyle fallback = null;
+		foreach (Element element in new FilteredElementCollector(document).OfClass(typeof(GraphicsStyle)))
+		{
+			if (element is not GraphicsStyle style) continue;
+			if (style.GraphicsStyleType != GraphicsStyleType.Projection) continue;
+			string name = style.Name ?? string.Empty;
+			if (name.IndexOf("Invisible", StringComparison.OrdinalIgnoreCase) >= 0)
+				return style;
+			if (fallback == null && name.IndexOf("Hidden", StringComparison.OrdinalIgnoreCase) >= 0)
+				fallback = style;
+		}
+		return fallback;
+	}
+
 	public static void HideElementsInAllViews(Document _Document, ElementSet _ElementSet)
 	{
 		if (_ElementSet == null || _ElementSet.Size == 0)
 		{
 			return;
 		}
-		FilteredElementCollector filteredElementCollector = new FilteredElementCollector(_Document);
-		IList<Element> list = filteredElementCollector.OfClass(typeof(Autodesk.Revit.DB.View)).ToElements();
-		List<Autodesk.Revit.DB.View> list2 = new List<Autodesk.Revit.DB.View>();
-		foreach (Autodesk.Revit.DB.View item in list)
+		ICollection<ElementId> ids = ElementSetConverter.ToIDList(_ElementSet);
+		if (ids == null || ids.Count == 0)
+			return;
+		foreach (Autodesk.Revit.DB.View view in new FilteredElementCollector(_Document).OfClass(typeof(Autodesk.Revit.DB.View)).Cast<Autodesk.Revit.DB.View>())
 		{
-			if (!list2.Contains(item))
+			if (view == null || view.IsTemplate) continue;
+			try
 			{
-				if (item.GenLevel != null || item is ViewSection)
-				{
-					item.HideElements(ElementSetConverter.ToIDList(_ElementSet));
-					list2.Add(item);
-				}
-				else if (item is View3D && (item.CropBox != null || item.Origin != null || item.SketchPlane != null))
-				{
-					item.HideElements(ElementSetConverter.ToIDList(_ElementSet));
-					list2.Add(item);
-				}
+				view.HideElements(ids);
+			}
+			catch (Exception)
+			{
 			}
 		}
 	}

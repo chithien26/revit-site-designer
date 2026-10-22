@@ -2487,6 +2487,62 @@ public class RevitGeometry
 		}
 	}
 
+	public static Eps_Leg TrimLegToPathEdge(Eps_Leg branch, Eps_Leg through, double halfWidth)
+	{
+		if (branch == null || through == null || halfWidth <= 0.05) return branch;
+		Eps_Leg copy = Eps_Leg.CopyLeg(branch);
+		if (copy == null) return branch;
+		TrimEndToPathEdge(copy, through, halfWidth, true);
+		TrimEndToPathEdge(copy, through, halfWidth, false);
+		if (eplGeoE_CalcLegListLength(copy) < MinStreetLegFt)
+			return branch;
+		return copy;
+	}
+
+	private static void TrimEndToPathEdge(Eps_Leg branch, Eps_Leg through, double halfWidth, bool start)
+	{
+		Eps_Point end = start ? branch.LegStartPnt : branch.Last.LegEndPnt;
+		double station = 0.0;
+		double offset = 0.0;
+		if (eplGeoE_CalcStationOffsetAlongLegList(end, through, ref station, ref offset) != 1700)
+			return;
+		if (Math.Abs(offset) >= halfWidth - 0.05)
+			return;
+		double branchLen = eplGeoE_CalcLegListLength(branch);
+		double fromSta = start ? 0.0 : branchLen;
+		double dir = start ? 1.0 : -1.0;
+		double step = Math.Max(0.2, halfWidth / 10.0);
+		Eps_Point found = null;
+		for (double travel = step; travel <= branchLen; travel += step)
+		{
+			double sta = fromSta + dir * travel;
+			if (sta < 0.0 || sta > branchLen) break;
+			Eps_Point probe = new Eps_Point();
+			if (eplGeoE_FindPntOnLegByStationOffset(branch, sta, 0.0, ref probe) != 0) continue;
+			double throughStation = 0.0;
+			double throughOffset = 0.0;
+			if (eplGeoE_CalcStationOffsetAlongLegList(probe, through, ref throughStation, ref throughOffset) != 1700)
+				continue;
+			if (Math.Abs(throughOffset) >= halfWidth)
+			{
+				found = probe;
+				break;
+			}
+		}
+		if (found == null) return;
+		if (start)
+		{
+			if (branch.Line != null) branch.Line.StartPnt = new Eps_Point(found);
+			else if (branch.Arc != null) branch.Arc.StartPnt = new Eps_Point(found);
+		}
+		else
+		{
+			Eps_Leg last = branch.Last;
+			if (last.Line != null) last.Line.EndPnt = new Eps_Point(found);
+			else if (last.Arc != null) last.Arc.EndPnt = new Eps_Point(found);
+		}
+	}
+
 	public static void CreatePointListFromMinMaxOfArea(ref List<Eps_Point> _PointList, Eps_Point _LowerLeftPnt, Eps_Point _UpperRightPnt, double _dBaseLineAngle, double _dSpacing, bool _bSpacingType)
 	{
 		Eps_Point _MidPoint = new Eps_Point();

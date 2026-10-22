@@ -14,12 +14,13 @@ internal static class LicenseCheck
 {
 	private const string CheckUrl = "https://addin-store.onrender.com/api/licenses/check";
 	private const int TimeoutMs = 20000;
+	private static readonly TimeSpan RecheckAfter = TimeSpan.FromMinutes(2);
 	private static bool s_allowed;
-	private static DateTime s_allowedUntilUtc;
+	private static DateTime s_recheckAtUtc;
 
 	public static bool EnsureAllowed(UIApplication uiApp)
 	{
-		if (s_allowed && DateTime.UtcNow < s_allowedUntilUtc)
+		if (s_allowed && DateTime.UtcNow < s_recheckAtUtc)
 			return true;
 
 		string username;
@@ -35,13 +36,11 @@ internal static class LicenseCheck
 		try
 		{
 			CheckResult result = PostCheck(username, email);
-			if (result.Valid)
+			if (result.Valid && (!result.ExpiresAtUtc.HasValue || result.ExpiresAtUtc.Value > DateTime.UtcNow))
 			{
 				s_allowed = true;
-				s_allowedUntilUtc = result.ExpiresAtUtc ?? DateTime.UtcNow.AddHours(12);
-				if (s_allowedUntilUtc < DateTime.UtcNow.AddMinutes(5))
-					s_allowedUntilUtc = DateTime.UtcNow.AddMinutes(5);
-				RuntimeDiagnostics.Write("License valid until " + s_allowedUntilUtc.ToString("u") + ".");
+				s_recheckAtUtc = DateTime.UtcNow + RecheckAfter;
+				RuntimeDiagnostics.Write("License valid; recheck at " + s_recheckAtUtc.ToString("u") + ".");
 				return true;
 			}
 		}
@@ -53,13 +52,14 @@ internal static class LicenseCheck
 		}
 
 		string account = !string.IsNullOrWhiteSpace(email) ? email : username;
-		Deny("Chưa có license. Liên hệ admin để được cấp.\n\nTài khoản: " + account);
+		Deny("License đã hết hạn hoặc bị thu hồi. Liên hệ admin để được cấp lại.\n\nTài khoản: " + account);
 		return false;
 	}
 
 	private static void Deny(string message)
 	{
 		s_allowed = false;
+		s_recheckAtUtc = DateTime.MinValue;
 		TaskDialog dialog = new TaskDialog("Site Designer");
 		dialog.TitleAutoPrefix = false;
 		dialog.MainIcon = TaskDialogIcon.TaskDialogIconWarning;

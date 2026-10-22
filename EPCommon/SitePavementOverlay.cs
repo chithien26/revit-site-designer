@@ -286,6 +286,503 @@ internal static class SitePavementOverlay
 		return result[0];
 	}
 
+	public static bool RebuildTeeJunction(Document document, string pavementId, string curbId, IList<string> stubPavementIds, IList<string> stubCurbIds, Eps_Leg through, IList<Eps_Leg> stubs, FamilySymbol streetType)
+	{
+		if (document == null || through == null || stubs == null || stubs.Count == 0 || string.IsNullOrEmpty(pavementId))
+			return false;
+		DirectShape pavement = RevitUtility.FindDirectShape(document, pavementId);
+		if (pavement == null) return false;
+		List<Solid> throughPavement = WorldSolids(pavement);
+		List<Solid> stubPavement = WorldSolids(stubPavementIds, document);
+		List<Solid> pavementSolids = new List<Solid>();
+		pavementSolids.AddRange(throughPavement);
+		pavementSolids.AddRange(stubPavement);
+		Solid mergedPavement = UnionAll(pavementSolids);
+		if (mergedPavement != null)
+			SetWorldSolid(pavement, mergedPavement);
+		else
+			SetWorldSolids(pavement, pavementSolids);
+		DirectShape curb = string.IsNullOrEmpty(curbId) ? null : RevitUtility.FindDirectShape(document, curbId);
+		if (curb != null)
+		{
+			List<Solid> throughCurb = WorldSolids(curb);
+			List<Solid> stubCurb = WorldSolids(stubCurbIds, document);
+			List<Solid> openedCurb = new List<Solid>();
+			foreach (Solid piece in throughCurb)
+			{
+				Solid cut = piece;
+				foreach (Solid arm in stubPavement)
+					cut = TryDifference(cut, arm) ?? cut;
+				if (cut != null) openedCurb.Add(cut);
+			}
+			Solid throughKeep = UnionAll(throughPavement);
+			foreach (Solid piece in stubCurb)
+			{
+				Solid trimmed = throughKeep == null ? piece : (TryDifference(piece, throughKeep) ?? piece);
+				if (trimmed != null) openedCurb.Add(trimmed);
+			}
+			if (openedCurb.Count > 0)
+				SetWorldSolids(curb, openedCurb);
+		}
+		AddLaneMarkings(pavement, through, stubs, streetType);
+		List<string> extraIds = new List<string>();
+		AppendIds(extraIds, stubPavementIds);
+		AppendIds(extraIds, stubCurbIds);
+		List<ElementId> deleteIds = new List<ElementId>();
+		foreach (string id in extraIds)
+		{
+			if (string.IsNullOrEmpty(id) || string.Equals(id, pavementId, StringComparison.Ordinal) || string.Equals(id, curbId, StringComparison.Ordinal))
+				continue;
+			DirectShape extra = RevitUtility.FindDirectShape(document, id);
+			if (extra == null) continue;
+			RetargetFormIds(document, id, pavementId, curbId);
+			deleteIds.Add(extra.Id);
+		}
+		if (deleteIds.Count > 0)
+		{
+			try
+			{
+				document.Delete(deleteIds);
+			}
+			catch (Exception ex)
+			{
+				RuntimeDiagnostics.Write("Could not delete leftover junction DirectShapes: " + ex.Message);
+			}
+		}
+		RuntimeDiagnostics.Write("Joined type street solids at T/cross; removedShapes=" + deleteIds.Count + ".");
+		return true;
+	}
+
+	public static bool ReplaceCurbWithTeeOpenings(Document document, string curbUniqueId, Eps_Leg through, IList<Eps_Leg> stubs, double pavementHalf, FamilySymbol streetType)
+	{
+		if (document == null || string.IsNullOrEmpty(curbUniqueId) || through == null || stubs == null || stubs.Count == 0)
+			return false;
+		DirectShape curb = RevitUtility.FindDirectShape(document, curbUniqueId);
+		if (curb == null) return false;
+		double curbWidth = TypeDistance(streetType, RevitParameters.StreetCurbWidthParameter, 1.0);
+		double curbHeight = TypeDistance(streetType, RevitParameters.StreetCurbHeightParameter, 0.5);
+		ElementId materialId = MaterialId(streetType, RevitParameters.StreetCurbMaterialParameter);
+		double throughLen = RevitGeometry.eplGeoE_CalcLegListLength(through);
+		if (throughLen <= MinCurveFt) return false;
+		List<double[]> leftGaps = new List<double[]>();
+		List<double[]> rightGaps = new List<double[]>();
+		foreach (Eps_Leg stub in stubs)
+		{
+			if (stub == null) continue;
+			if (!TryTeeStation(through, stub, pavementHalf, out double station, out int side))
+				continue;
+			double gapHalf = Math.Max(pavementHalf, 1.0) + curbWidth;
+			double start = Math.Max(0.0, station - gapHalf);
+			double end = Math.Min(throughLen, station + gapHalf);
+			if (end - start < MinCurveFt) continue;
+			if (side == 1) leftGaps.Add(new double[] { start, end });
+			else rightGaps.Add(new double[] { start, end });
+		}
+		if (leftGaps.Count == 0 && rightGaps.Count == 0) return false;
+		List<Solid> solids = new List<Solid>();
+		AddCurbPieces(solids, through, throughLen, pavementHalf, curbWidth, curbHeight, materialId, 1, leftGaps);
+		AddCurbPieces(solids, through, throughLen, pavementHalf, curbWidth, curbHeight, materialId, 2, rightGaps);
+		if (solids.Count == 0) return false;
+		XYZ origin = XYZ.Zero;
+		if (curb.Location is LocationPoint location && location.Point != null)
+			origin = location.Point;
+		Transform toLocal = Transform.CreateTranslation(origin.Negate());
+		List<GeometryObject> shape = new List<GeometryObject>();
+		foreach (Solid solid in solids)
+		{
+			Solid local = SolidUtils.CreateTransformed(solid, toLocal);
+			if (local != null) shape.Add(local);
+		}
+		if (shape.Count == 0) return false;
+		try
+		{
+			curb.SetShape(shape);
+			RuntimeDiagnostics.Write("Opened through-street curb at " + (leftGaps.Count + rightGaps.Count) + " T-junction(s).");
+			return true;
+		}
+		catch (Exception ex)
+		{
+			RuntimeDiagnostics.Write("Could not open through-street curb: " + ex.Message);
+			return false;
+		}
+	}
+
+	private static List<Solid> WorldSolids(IList<string> uniqueIds, Document document)
+	{
+		List<Solid> solids = new List<Solid>();
+		if (uniqueIds == null || document == null) return solids;
+		foreach (string id in uniqueIds)
+		{
+			if (string.IsNullOrEmpty(id)) continue;
+			solids.AddRange(WorldSolids(RevitUtility.FindDirectShape(document, id)));
+		}
+		return solids;
+	}
+
+	private static List<Solid> WorldSolids(DirectShape shape)
+	{
+		List<Solid> solids = new List<Solid>();
+		if (shape == null) return solids;
+		try
+		{
+			GeometryElement geometry = shape.get_Geometry(new Options());
+			CollectSolids(geometry, solids);
+		}
+		catch (Exception)
+		{
+		}
+		return solids;
+	}
+
+	private static void CollectSolids(GeometryElement geometry, List<Solid> solids)
+	{
+		if (geometry == null || solids == null) return;
+		foreach (GeometryObject item in geometry)
+		{
+			if (item is Solid solid && solid.Faces != null && solid.Faces.Size > 0 && solid.Volume > 1e-8)
+				solids.Add(solid);
+			else if (item is GeometryInstance instance)
+				CollectSolids(instance.GetInstanceGeometry(), solids);
+		}
+	}
+
+	private static Solid UnionAll(IList<Solid> solids)
+	{
+		Solid merged = null;
+		if (solids == null) return null;
+		foreach (Solid solid in solids)
+		{
+			if (solid == null) continue;
+			Solid united = TryUnion(merged, solid);
+			merged = united ?? merged ?? solid;
+		}
+		return merged;
+	}
+
+	private static Solid TryDifference(Solid keep, Solid cut)
+	{
+		if (keep == null) return null;
+		if (cut == null) return keep;
+		try
+		{
+			return BooleanOperationsUtils.ExecuteBooleanOperation(keep, cut, BooleanOperationsType.Difference);
+		}
+		catch (Exception)
+		{
+			return keep;
+		}
+	}
+
+	private static void AppendIds(List<string> target, IList<string> source)
+	{
+		if (target == null || source == null) return;
+		foreach (string id in source)
+		{
+			if (!string.IsNullOrEmpty(id))
+				target.Add(id);
+		}
+	}
+
+	private static void AddLaneMarkings(DirectShape pavement, Eps_Leg through, IList<Eps_Leg> stubs, FamilySymbol streetType)
+	{
+		if (pavement == null || through == null) return;
+		int lanes = TypeInteger(streetType, RevitParameters.StreetNumberOfLanesParameter, 2);
+		if (lanes < 2) return;
+		double laneWidth = TypeDistance(streetType, RevitParameters.StreetLaneWidthParameter, 12.0);
+		double half = Math.Max(laneWidth * lanes * 0.5, 1.0);
+		ElementId materialId = MaterialId(streetType, RevitParameters.StreetPavementSurfaceParameter);
+		List<Solid> marks = WorldSolids(pavement);
+		List<Eps_Leg> paintedArms = new List<Eps_Leg>();
+		paintedArms.AddRange(SplitThroughForMarkings(through, stubs, half));
+		if (stubs != null)
+		{
+			foreach (Eps_Leg stub in stubs)
+			{
+				if (stub == null) continue;
+				Eps_Leg trimmed = RevitGeometry.TrimLegToPathEdge(stub, through, half) ?? stub;
+				paintedArms.Add(trimmed);
+			}
+		}
+		foreach (Eps_Leg painted in paintedArms)
+		{
+			if (painted == null) continue;
+			Eps_Leg raised = RaiseLeg(painted, 0.02);
+			for (int i = 1; i < lanes; i++)
+			{
+				double offset = -half + i * laneWidth;
+				Eps_Leg path = raised;
+				if (Math.Abs(offset) > MinCurveFt)
+				{
+					Eps_Leg shifted = new Eps_Leg();
+					if (RevitGeometry.OffsetLegList(raised, Math.Abs(offset), offset < 0.0 ? 1 : 2, ref shifted, TrimClosedObject: true) != 0)
+						continue;
+					path = shifted;
+				}
+				Solid stripe = CreateOffsetStrip(path, 0.06, 0.03, materialId);
+				if (stripe != null) marks.Add(stripe);
+			}
+		}
+		if (marks.Count > 0)
+			SetWorldSolids(pavement, marks);
+	}
+
+	private static List<Eps_Leg> SplitThroughForMarkings(Eps_Leg through, IList<Eps_Leg> stubs, double half)
+	{
+		List<Eps_Leg> pieces = new List<Eps_Leg>();
+		if (through == null)
+			return pieces;
+		double length = RevitGeometry.eplGeoE_CalcLegListLength(through);
+		List<double[]> gaps = new List<double[]>();
+		if (stubs != null)
+		{
+			foreach (Eps_Leg stub in stubs)
+			{
+				if (stub == null) continue;
+				if (!TryTeeStation(through, stub, half, out double station, out _))
+					continue;
+				gaps.Add(new double[] { Math.Max(0.0, station - half), Math.Min(length, station + half) });
+			}
+		}
+		if (gaps.Count == 0)
+		{
+			pieces.Add(through);
+			return pieces;
+		}
+		gaps.Sort((a, b) => a[0].CompareTo(b[0]));
+		double cursor = 0.0;
+		foreach (double[] gap in gaps)
+		{
+			if (gap[0] - cursor > 2.0)
+			{
+				Eps_Leg piece = ExtractBetweenStations(through, cursor, gap[0]);
+				if (piece != null) pieces.Add(piece);
+			}
+			cursor = Math.Max(cursor, gap[1]);
+		}
+		if (length - cursor > 2.0)
+		{
+			Eps_Leg tail = ExtractBetweenStations(through, cursor, length);
+			if (tail != null) pieces.Add(tail);
+		}
+		if (pieces.Count == 0)
+			pieces.Add(through);
+		return pieces;
+	}
+
+	private static Eps_Leg RaiseLeg(Eps_Leg source, double deltaZ)
+	{
+		if (source == null || Math.Abs(deltaZ) < 1e-9) return source;
+		Eps_Leg copy = Eps_Leg.CopyLeg(source);
+		for (Eps_Leg current = copy; current != null; current = current.Next)
+		{
+			if (current.Line != null)
+			{
+				if (current.Line.StartPnt != null) current.Line.StartPnt = new Eps_Point(current.Line.StartPnt.x, current.Line.StartPnt.y, current.Line.StartPnt.z + deltaZ);
+				if (current.Line.EndPnt != null) current.Line.EndPnt = new Eps_Point(current.Line.EndPnt.x, current.Line.EndPnt.y, current.Line.EndPnt.z + deltaZ);
+			}
+			if (current.Arc != null)
+			{
+				if (current.Arc.StartPnt != null) current.Arc.StartPnt = new Eps_Point(current.Arc.StartPnt.x, current.Arc.StartPnt.y, current.Arc.StartPnt.z + deltaZ);
+				if (current.Arc.EndPnt != null) current.Arc.EndPnt = new Eps_Point(current.Arc.EndPnt.x, current.Arc.EndPnt.y, current.Arc.EndPnt.z + deltaZ);
+				if (current.Arc.RadiusPnt != null) current.Arc.RadiusPnt = new Eps_Point(current.Arc.RadiusPnt.x, current.Arc.RadiusPnt.y, current.Arc.RadiusPnt.z + deltaZ);
+			}
+		}
+		return copy;
+	}
+
+	private static int TypeInteger(FamilySymbol type, string parameterName, int fallback)
+	{
+		Parameter parameter = type?.LookupParameter(parameterName);
+		if (parameter == null) return fallback;
+		if (parameter.StorageType == StorageType.Integer && parameter.AsInteger() > 0)
+			return parameter.AsInteger();
+		if (parameter.StorageType == StorageType.Double && parameter.AsDouble() > 0.0)
+			return Math.Max(1, (int)Math.Round(parameter.AsDouble()));
+		return fallback;
+	}
+
+	private static Solid TryUnion(Solid first, Solid second)
+	{
+		if (first == null) return second;
+		if (second == null) return first;
+		try
+		{
+			return BooleanOperationsUtils.ExecuteBooleanOperation(first, second, BooleanOperationsType.Union);
+		}
+		catch (Exception)
+		{
+			try
+			{
+				return BooleanOperationsUtils.ExecuteBooleanOperation(second, first, BooleanOperationsType.Union);
+			}
+			catch (Exception ex)
+			{
+				RuntimeDiagnostics.Write("Street solid union failed: " + ex.Message);
+				return null;
+			}
+		}
+	}
+
+	private static bool SetWorldSolid(DirectShape shape, Solid world)
+	{
+		return world != null && SetWorldSolids(shape, new List<Solid> { world });
+	}
+
+	private static bool SetWorldSolids(DirectShape shape, IList<Solid> worldSolids)
+	{
+		if (shape == null || worldSolids == null || worldSolids.Count == 0) return false;
+		XYZ origin = XYZ.Zero;
+		if (shape.Location is LocationPoint location && location.Point != null)
+			origin = location.Point;
+		Transform toLocal = Transform.CreateTranslation(origin.Negate());
+		List<GeometryObject> geometry = new List<GeometryObject>();
+		foreach (Solid solid in worldSolids)
+		{
+			if (solid == null) continue;
+			Solid local = SolidUtils.CreateTransformed(solid, toLocal);
+			if (local != null) geometry.Add(local);
+		}
+		if (geometry.Count == 0) return false;
+		try
+		{
+			shape.SetShape(geometry);
+			return true;
+		}
+		catch (Exception ex)
+		{
+			RuntimeDiagnostics.Write("Could not replace street DirectShape: " + ex.Message);
+			return false;
+		}
+	}
+
+	private static void RetargetFormIds(Document document, string oldId, string pavementId, string curbId)
+	{
+		if (document == null || string.IsNullOrEmpty(oldId)) return;
+		foreach (Element element in new FilteredElementCollector(document).OfClass(typeof(FamilyInstance)))
+		{
+			if (element is not FamilyInstance instance) continue;
+			Parameter primary = instance.LookupParameter(RevitParameters.PrimaryFormIDFamilyParameter);
+			if (primary != null && !primary.IsReadOnly && string.Equals(primary.AsString(), oldId, StringComparison.Ordinal) && !string.IsNullOrEmpty(pavementId))
+				primary.Set(pavementId);
+			Parameter additional = instance.LookupParameter(RevitParameters.AdditionalFormIDFamilyParameter);
+			if (additional != null && !additional.IsReadOnly && string.Equals(additional.AsString(), oldId, StringComparison.Ordinal) && !string.IsNullOrEmpty(curbId))
+				additional.Set(curbId);
+		}
+	}
+
+	private static void AddCurbPieces(List<Solid> solids, Eps_Leg through, double throughLen, double pavementHalf, double curbWidth, double curbHeight, ElementId materialId, int side, List<double[]> gaps)
+	{
+		double inner = pavementHalf;
+		double outer = pavementHalf + curbWidth;
+		if (gaps == null || gaps.Count == 0)
+		{
+			Solid full = CreateOffsetBand(through, inner, outer, side, curbHeight, materialId);
+			if (full != null) solids.Add(full);
+			return;
+		}
+		gaps.Sort((a, b) => a[0].CompareTo(b[0]));
+		List<double[]> merged = new List<double[]>();
+		foreach (double[] gap in gaps)
+		{
+			if (merged.Count == 0 || gap[0] > merged[merged.Count - 1][1] + 0.1)
+				merged.Add(new double[] { gap[0], gap[1] });
+			else
+				merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], gap[1]);
+		}
+		double cursor = 0.0;
+		foreach (double[] gap in merged)
+		{
+			if (gap[0] - cursor > 1.0)
+			{
+				Eps_Leg piece = ExtractBetweenStations(through, cursor, gap[0]);
+				Solid band = CreateOffsetBand(piece, inner, outer, side, curbHeight, materialId);
+				if (band != null) solids.Add(band);
+			}
+			cursor = gap[1];
+		}
+		if (throughLen - cursor > 1.0)
+		{
+			Eps_Leg tail = ExtractBetweenStations(through, cursor, throughLen);
+			Solid band = CreateOffsetBand(tail, inner, outer, side, curbHeight, materialId);
+			if (band != null) solids.Add(band);
+		}
+	}
+
+	private static bool TryTeeStation(Eps_Leg through, Eps_Leg stub, double pavementHalf, out double station, out int side)
+	{
+		station = 0.0;
+		side = 1;
+		Eps_Point junction = JunctionPoint(through, stub, pavementHalf);
+		if (junction == null) return false;
+		double offset = 0.0;
+		if (RevitGeometry.eplGeoE_CalcStationOffsetAlongLegList(junction, through, ref station, ref offset) != 1700)
+			return false;
+		Eps_Point probe = StubInteriorPoint(stub, through, pavementHalf) ?? junction;
+		double probeStation = 0.0;
+		double probeOffset = 0.0;
+		if (RevitGeometry.eplGeoE_CalcStationOffsetAlongLegList(probe, through, ref probeStation, ref probeOffset) != 1700)
+			probeOffset = offset;
+		side = OffsetSide(through, pavementHalf, probeOffset);
+		return true;
+	}
+
+	private static Eps_Point JunctionPoint(Eps_Leg through, Eps_Leg stub, double pavementHalf)
+	{
+		Eps_Point start = stub.LegStartPnt;
+		Eps_Point end = stub.Last.LegEndPnt;
+		if (EndOnThrough(start, through, pavementHalf + 2.0)) return start;
+		if (EndOnThrough(end, through, pavementHalf + 2.0)) return end;
+		return start;
+	}
+
+	private static bool EndOnThrough(Eps_Point point, Eps_Leg through, double maxOffset)
+	{
+		if (point == null) return false;
+		double station = 0.0;
+		double offset = 0.0;
+		if (RevitGeometry.eplGeoE_CalcStationOffsetAlongLegList(point, through, ref station, ref offset) != 1700)
+			return false;
+		return Math.Abs(offset) <= maxOffset;
+	}
+
+	private static Eps_Point StubInteriorPoint(Eps_Leg stub, Eps_Leg through, double pavementHalf)
+	{
+		double length = RevitGeometry.eplGeoE_CalcLegListLength(stub);
+		if (length <= MinCurveFt) return null;
+		bool startOn = EndOnThrough(stub.LegStartPnt, through, pavementHalf + 2.0);
+		double sta = startOn ? Math.Min(length, pavementHalf + 2.0) : Math.Max(0.0, length - pavementHalf - 2.0);
+		Eps_Point point = new Eps_Point();
+		if (RevitGeometry.eplGeoE_FindPntOnLegByStationOffset(stub, sta, 0.0, ref point) != 0)
+			return null;
+		return point;
+	}
+
+	private static int OffsetSide(Eps_Leg through, double pavementHalf, double stubOffset)
+	{
+		Eps_Leg left = new Eps_Leg();
+		if (RevitGeometry.OffsetLegList(through, Math.Max(pavementHalf, 1.0), 1, ref left, TrimClosedObject: true) != 0)
+			return stubOffset >= 0.0 ? 1 : 2;
+		double station = 0.0;
+		double leftOffset = 0.0;
+		if (RevitGeometry.eplGeoE_CalcStationOffsetAlongLegList(left.LegStartPnt, through, ref station, ref leftOffset) != 1700)
+			return stubOffset >= 0.0 ? 1 : 2;
+		return leftOffset * stubOffset >= 0.0 ? 1 : 2;
+	}
+
+	private static double TypeDistance(FamilySymbol type, string parameterName, double fallback)
+	{
+		Parameter parameter = type?.LookupParameter(parameterName);
+		if (parameter != null && parameter.AsDouble() > 0.0) return parameter.AsDouble();
+		return fallback;
+	}
+
+	private static ElementId MaterialId(FamilySymbol type, string parameterName)
+	{
+		Parameter parameter = type?.LookupParameter(parameterName);
+		if (parameter == null) return ElementId.InvalidElementId;
+		return RevitIds.Create(parameter.AsInteger());
+	}
+
 	public static Solid CreateOffsetBand(Eps_Leg center, double innerOffset, double outerOffset, int offsetDir, double thickness, ElementId materialId)
 	{
 		if (center == null || outerOffset <= innerOffset + MinCurveFt) return null;

@@ -1752,6 +1752,13 @@ public class SiteComponentCreation
 				verify.Add(host);
 		}
 		bool first = true;
+		Eps_Leg throughLeg = null;
+		string throughPavementId = null;
+		string throughCurbId = null;
+		List<string> stubPavementIds = new List<string>();
+		List<string> stubCurbIds = new List<string>();
+		List<Eps_Leg> stubLegs = new List<Eps_Leg>();
+		ElementSet leftoverLines = new ElementSet();
 		foreach (Eps_Leg streetLeg in networkLegs)
 		{
 			Eps_Leg work = streetLeg;
@@ -1779,15 +1786,54 @@ public class SiteComponentCreation
 				hideSet.Insert(modelCurve);
 			}
 			if (hideSet.Size > 0)
+			{
 				RevitUtility.HideElementsInAllViews(m_Document, hideSet);
+				AddValidHosts(leftoverLines, hideSet);
+			}
 			if (!TopographySurfaceManagement.CreateTopographySurfaceUpdate(m_Document, work, placementSettings, arcPointInterval, hostCurves, ref m_ProposedSurface, ref m_ProposedPlacementFamilyInstance, ref m_nMaxExistingTopoDrawOrder, verify))
 				return false;
+			if (throughLeg == null)
+			{
+				throughLeg = work;
+				throughPavementId = placementSettings.LoftFormID;
+				throughCurbId = placementSettings.AdditionalLoftFormID;
+			}
+			else
+			{
+				stubLegs.Add(work);
+				if (!string.IsNullOrEmpty(placementSettings.LoftFormID))
+					stubPavementIds.Add(placementSettings.LoftFormID);
+				if (!string.IsNullOrEmpty(placementSettings.AdditionalLoftFormID))
+					stubCurbIds.Add(placementSettings.AdditionalLoftFormID);
+			}
+		}
+		if (throughLeg != null && stubLegs.Count > 0 && !string.IsNullOrEmpty(throughPavementId))
+		{
+			if (!m_TransactionContainer.HasStarted())
+				m_TransactionContainer.Start(EPShared.LocalRM.GetString("LocateStreetTransaction"));
+			m_TransactionContainer.BeginTransaction();
+			SitePavementOverlay.RebuildTeeJunction(m_Document, throughPavementId, throughCurbId, stubPavementIds, stubCurbIds, throughLeg, stubLegs, placementSettings.Type);
+			m_TransactionContainer.EndTransaction();
 		}
 		if (hosts.Size > 0)
+			AddValidHosts(leftoverLines, hosts);
+		if (!m_TransactionContainer.HasStarted())
+			m_TransactionContainer.Start(EPShared.LocalRM.GetString("LocateStreetTransaction"));
+		m_TransactionContainer.BeginTransaction();
+		RevitUtility.HideConstructionLines(m_Document, leftoverLines, massLineSubCategory);
+		m_TransactionContainer.EndTransaction();
+		if (hosts.Size > 0)
 		{
-			m_TransactionContainer.BeginTransaction();
-			m_Document.Delete(ElementSetConverter.ToIDList(hosts));
-			m_TransactionContainer.EndTransaction();
+			try
+			{
+				m_TransactionContainer.BeginTransaction();
+				m_Document.Delete(ElementSetConverter.ToIDList(hosts));
+				m_TransactionContainer.EndTransaction();
+			}
+			catch (Exception)
+			{
+				RevitUtility.HideElementsInAllViews(m_Document, hosts);
+			}
 		}
 		return true;
 	}
